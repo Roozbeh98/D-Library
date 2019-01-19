@@ -1,0 +1,509 @@
+﻿body {
+    font-family: IRANSansM;
+    background-color: whitesmoke;
+    color: #9d9d9d;
+}
+/*********************************************** General Style *************************************/
+.form-form {
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #222D32;
+    box-shadow: 0.5px 0.5px 6px cornflowerblue;
+}
+
+.form-heading {
+    width: 93%;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    background-color: #222D32;
+    border: #9D9D9D 2px solid;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top: 0;
+    font-family: IRANSansB;
+    font-size: large;
+}
+.form-body {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.form-footer {
+    background-color: #222D32;
+    border: none;
+    margin-bottom: 50px;
+}
+/*********************************************** navbar ********************************************/
+.navbar-inverse {
+    background-color: #222d32;
+    height: 60px;
+    border: none;
+    border-bottom: 3px solid #9d9d9d;
+}
+
+.navHeader {
+    height: 60px;
+    background-color: #222d32;
+    padding-top: 13px;
+    border-bottom: 3px solid #9d9d9d;
+    padding-right: 30px;
+}
+
+    .navHeader a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #9d9d9d;
+    }
+
+.nav-item-out-login {
+    text-decoration: none;
+    font-size: 18px;
+    color: #9d9d9d;
+}
+.nav-item-out-login-a {
+  display:block;
+    padding: 0px;
+}
+.nav-item-out-login-a-i-search {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 6px;
+    padding-right: 1px;
+    font-size:14px;
+}
+.nav-item-out-login-a-i-login {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 5.5px;
+    padding-right: 3px;
+    font-size:14px;
+}
+
+.nav-item-out-login:hover, .nav-item-out-login:active {
+    text-decoration: none;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.main-header .navbar .nav > li > a > .label {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+}
+
+.nav-top-userInfo-icon {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 6px;
+    padding-right: 6px;
+}
+
+.main-header .navbar-custom-menu, .main-header .navbar-right {
+    margin-left: 5px;
+    float: left;
+}
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    position: absolute;
+    right: auto;
+    left: 0;
+}
+.navbar-custom-menu > .navbar-nav > li{
+    margin-top:0px;
+}
+.nav-username {
+    margin-left:5px;
+    margin-right:5px;
+    font-size:16px;
+    
+}
+.navbar-nav > .user-menu > .dropdown-menu {
+    border-radius: 0;
+    padding: 1px 0 0 0;
+    border-top-width: 0;
+    width: 280px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: 175px;
+    padding: 10px;
+    text-align: center;
+}
+
+.main-header li.user-header {
+    background-color: #222d32;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+    z-index: 5;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-body {
+    padding: 10px;
+    border-top: 1px solid #dddddd;
+    height: 55px;
+    background-color: white;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #f9f9f9;
+    padding: 7px;
+    height: 50px;
+}
+/*********************************************** Login **********************************************/
+.form-login {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    max-width: 500px;
+}
+.login-logo {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.login-button {
+    margin-bottom: 20px;
+}
+
+/*********************************************** Register *******************************************/
+.form-Register {
+    margin-top: 20vh;
+    margin-bottom: 15vh;
+    max-width: 1000px;
+}
+.register-button {
+    max-width: 930px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+/*********************************************** asid dashboard *************************************/
+.dashboard-panel {
+    background-color: #222d32;
+    margin-top: 75px;
+    /*min-width:270px;*/
+    max-width: 300px;
+}
+
+.dashboard-panel a {
+    color: #9d9d9d;
+}
+
+.img-logo {
+    margin: 20px auto 20px auto;
+}
+
+.dashboard-panel li > a:hover, .dashboard-panel li > a:focus, .dashboard-panel li.active > a {
+    background-color: #222d32;
+    color: #fff;
+    border-right: 4px solid #3c8dbc;
+}
+
+
+.dashboard-sub-panel {
+    background-color: #2c3b41;
+    color: #9d9d9d;
+}
+
+.dashboard-sub-panel li > a:hover, .dashboard-sub-panel li > a:focus, .dashboard-sub-panel li.active > a {
+    background-color: #2c3b41;
+    color: #fff;
+    border-right: 4px solid #6ca9cc;
+}
+
+/*.dashboard-panel li :active > .gly-rotate-90, .dashboard-panel li :focus > .gly-rotate-90{
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}*/
+
+/*********************************************** Main Dashboard *************************************/
+
+.main-section {
+    max-width: 70%;
+    margin-top: 75px;
+}
+/*********************************************** Build Register Code ********************************/
+.form-AddNewUser {
+    max-width: 500px;
+}
+
+
+.AddNewUser-button {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.AddNewUser-mainCodePanel {
+    float: none;
+    max-width: 500px;
+    margin: auto;
+    background-color: #222D32;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.AddNewUser-codeDetails {
+    height: 50px;
+    color: #9D9D9D;
+    border-bottom: 2px solid #5CB85C;
+    padding-top: 15px;
+    font-size:16px;
+}
+
+
+.AddNewUser-code {
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+.AddNewUser-panelCodePlace {
+    width: inherit;
+    margin: auto;
+    padding-left: 15%;
+}
+
+.AddNewUser-codePlace {
+    width: 5%;
+    float: left;
+    margin-left: 7%;
+    margin-top: 30px;
+    border-bottom: 2px solid #5CB85C;
+    color: #9D9D9D;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/*********************************************** Saerch Panel ***************************************/
+
+.saerch-panel {
+    margin-top: 15vh;
+    margin-bottom: 30vh;
+}
+.saerch-panel-logo {
+    
+    margin-bottom: 35px;
+}
+.saerch-panel-input-icon {
+    background-color: #222d32;
+    color: #9d9d9d;
+    border: 1px solid #222d32;
+}
+.saerch-panel-input-txt {
+    border: 1px solid #222d32;
+}
+.saerch-panel-input-btn {
+    background-color: #222d32;
+    color: #9d9d9d;
+    border: 1px solid #222d32;
+}
+.saerch-panel-input-btn:hover {
+
+    color: whitesmoke;
+
+}
+.saerch-panel-input-btn:active {
+    color: whitesmoke;
+}
+.saerch-panel-input {
+    max-width: 800px;
+   
+}
+/*********************************************** Error Page *****************************************/
+
+.form-error{
+    margin-top:20vh;
+    max-width:400px;
+}
+.form-heading-error {
+    display:block;
+    border: #D9534F 2px solid;
+}
+/*********************************************** Upload Regin ***************************************/
+
+.upload p{
+    margin:0px;
+}
+.upload ul{
+    margin:0px; 
+    padding:0px;
+}
+
+.upload {
+    margin: 20px 0px 0px 0px;
+    padding: 3px;
+    border: 2px solid #9d9d9d;
+    border-radius: 3px;
+    min-height:203px;
+}
+
+#drop a {
+    background: #0099e5 ;
+    padding: 5px 0px;
+    color: #fff;
+    width: 100%;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: calibri;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #5ebfef;
+    border-radius: 3px;
+}
+
+#drop input {
+    display: none;
+}
+
+#upload ul li {
+    padding: 0 0px;
+    height: 79px;
+    position: relative;
+    list-style-type: none;
+    clear: both;
+    overflow: hidden;
+    background-color: #3E4142;
+    border-bottom: 1px solid #5ebfef;
+    border-radius: 3px;
+}
+
+#upload ul li input {
+    display: none;
+}
+
+#upload ul li p {
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 70px;
+}
+
+#upload ul li i {
+    font-weight: normal;
+    font-style: normal;
+    color: #7f7f7f;
+    display: block;
+}
+
+#upload ul li canvas {
+    top: 15px;
+    left: 10px;
+    position: absolute;
+}
+
+#upload ul li span {
+    width: 15px;
+    height: 12px;
+    background: url('../images/icons.png') no-repeat;
+    position: absolute;
+    top: 34px;
+    right: 33px;
+    cursor: pointer;
+}
+
+#upload ul li.working span {
+    height: 16px;
+    background-position: 0 -12px;
+}
+
+#upload ul li.error p {
+    color: red;
+}
+
+
+.upload span {
+    color: #F1F1F1;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    display: block;
+    letter-spacing: 2px;
+}
+
+
+@media screen and (max-width:990px) {
+    /*********************************************** General Style **************************************/
+    .form-form-outdasdboard {
+        margin-top: 130px;
+    }
+    .form-form-indasdboard {
+        margin-top: 0px;
+    }
+
+    /*********************************************** navbar *********************************************/
+    .navHeader {
+        height: 60px;
+        background-color: #222d32;
+        padding-top: 13px;
+        border-bottom: 3px solid #9d9d9d;
+        text-align: center;
+    }
+    .navbar-custom-menu > .navbar-nav > li {
+        float: right;
+    }
+    /*********************************************** Login **********************************************/
+
+    /*********************************************** Register *******************************************/
+
+    /*********************************************** asid dashboard *************************************/
+
+    .dashboard-panel {
+        background-color: #222d32;
+        margin-top: 130px;
+        min-width: 270px;
+        max-width: 990px;
+    }
+
+
+    /*********************************************** Main Dashboard ************************************/
+
+    .main-section {
+        max-width: 95%;
+        margin-top: 0px;
+    }
+
+    /*********************************************** Build Register Code ********************************/
+
+    .form-AddNewUser, AddNewUser-mainCodePanel {
+        max-width: none;
+    }
+
+    /*********************************************** Saerch Panel *************************************/
+    .saerch-panel {
+        margin-top: 130px;
+    }
+    /*********************************************** Error Page *****************************************/
+
+    /*********************************************** Upload Regin ***************************************/
+
+
+}

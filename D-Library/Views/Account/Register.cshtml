@@ -1,0 +1,103 @@
+﻿@model D_Library.Models.Model.RegisterModel
+@using D_Library.Models.Repository
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<section>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-outdasdboard form-Register", @style = "" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-heading text-center">ثبت نام</div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row panel-body form-body">
+
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "" })
+
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Family, htmlAttributes: new { @class = "" })
+
+                    @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "" })
+
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group ">
+                    @Html.LabelFor(model => model.Branch, htmlAttributes: new { @class = "" })
+
+
+                    @{
+                        Rep_GroupBranch GB = new Rep_GroupBranch();
+
+                        var list = GB.Get();
+
+                        <select name="SelectBranch" class="form-control chosen-select">
+                            @foreach (var item in list)
+                            {
+                                <option value="@item.id">@item.name</option>
+                            }
+                        </select>
+
+                    }
+
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "" })
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control text-right" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label " })
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PasswordVerify, htmlAttributes: new { @class = "control-label " })
+
+                    @Html.EditorFor(model => model.PasswordVerify, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.ValidationMessageFor(model => model.PasswordVerify, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-footer form-footer">
+            <button type="submit" name="btn-register" class="btn btn-success btn-block register-button">ثبت نام</button>
+        </div>
+
+    }
+
+
+</section>
+

@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+
+    <link href="../../Content/css/bootstrap.rtl.full.min.css" rel="stylesheet" />
+    <link href="../../Content/css/fontiran.css" rel="stylesheet" />
+    <link href="../../Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../Content/css/MyCss/Panelstyle.css" rel="stylesheet" />
+
+
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div "wrapper">
+
+        <header class="main-header container-fluid  navbar-fixed-top">
+
+            <div class="row">
+
+                <div class="col-md-3  navHeader">
+                    <a href="#">سامانه کتابخانه دیجیتال</a>
+                </div>
+                <nav class="col-md-9  navbar navbar-inverse " style="border-radius:0;">
+
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu menu-item ">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o nav-top-userInfo-icon"></i>
+                                    <span class="label label-success">0</span>
+                                </a>
+
+                            </li>
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu menu-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o nav-top-userInfo-icon"></i>
+                                    <span class="label label-warning">0</span>
+                                </a>
+
+                            </li>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu menu-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="glyphicon glyphicon-user  nav-top-userInfo-icon"></i>
+
+                                    <span class="hidden-xs">روزبه شامخی</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+
+
+                                        <img src="../../Content/Images/abstract-user-flat-3.png" style="width:100px;height:100px;" class=" img-circle" alt="User Image">
+
+                                        <p>
+                                            روزبه شامخی - ادمین
+                                            <br />
+                                            <small>Member since Nov. 2012</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-4 text-left">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon glyphicon-user " data-toggle="tooltip" data-placement="top" title="پروفایل"></button>
+
+                                        </div>
+                                        <div class="col-xs-4 text-center ">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon-cog " data-toggle="tooltip" data-placement="top" title="تنظمات کاربری"></button>
+
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open " data-toggle="tooltip" data-placement="top" title="فایل های من"></button>
+
+                                        </div>
+
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat" style="width:65px;">داشبورد</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat" style="width:65px;">خروج</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+
+
+        </header>
+
+
+        <main>
+            <div class="container-fluid divMain">
+                <div class="row">
+                    <aside class="col-md-3">
+                        <ul class="navbar nav dashboard-panel">
+                            <li>
+                                <!--<div style="width: 90%; height: 90%;  border: 2px solid #6BA4D6 ;border-radius: 10%; margin: auto; margin-top: 10px; ">-->
+
+                                <img src="../../Content/Images/arm.png" alt="Logo" class="img-responsive img-rounded img-logo">
+                                <!--</div>-->
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-dashboard  "></i>
+                                    داشبورد
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    جستجو کتاب
+
+                                </a>
+                            </li>
+
+
+                            <li data-toggle="collapse" data-target="#sub-menu-file">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت فایل
+                                    <i class="glyphicon glyphicon-chevron-right pull-right gly-rotate-90"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-file">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            فایل های شخصی
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            فایل عمومی
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+                            <li data-toggle="collapse" data-target="#sub-menu-User">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت کاربران
+                                    <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-User">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            لیست کاربران
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            کاربر جدید
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+                            <li data-toggle="collapse" data-target="#sub-menu-book">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت کتاب ها
+                                    <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-book">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            لیست کتاب ها
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            کتاب جدید
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+
+                                    تنظیمات سامانه
+
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
+
+                    <section class="col-md-9 container-fluid main-section">
+
+                        <div class="row">
+
+
+
+
+                            <div class="col-md-12 text-center">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;">
+                                        <span style="font-size: 18px; font-weight:bold;">داشبورد</span>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d; height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0%</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="glyphicon glyphicon-cloud" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr">100 MB</div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                        <div class="text-center" style="font-size: 1em; font-weight:bold; ">فضا در اختیار</div>
+                                        <!--<div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>-->
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="glyphicon glyphicon-folder-open" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr">10 Max</div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                    <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                        <div class="text-center" style="font-size: 1em; font-weight:bold; ">تعداد فایل های مجاز</div>
+                                        <!--<div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>-->
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="glyphicon glyphicon-list" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr">نا محدود</div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <a href="#">
+                                        <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                            <div class="pull-left">کتاب های مورد علاقه</div>
+                                            <div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d; height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0%</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="fa fa-database" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr">100 GB</div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                        <div class="text-center" style="font-size: 1em; font-weight:bold; ">فضا سرور</div>
+                                        <!--<div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>-->
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="glyphicon glyphicon-book" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr"> نا محدود</div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                    <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                        <div class="text-center" style="font-size: 1em; font-weight:bold; ">تعداد کتاب ها</div>
+                                        <!--<div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>-->
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;height:100px;">
+
+                                        <div class=" text-center pull-left">
+                                            <div style="font-size: 2.5em;margin-top:10px; ">0</div>
+
+                                        </div>
+                                        <div class=" text-right pull-right">
+                                            <span class="fa fa-group" style="font-size: 3.5em;"></span>
+                                            <div style="font-size: 1em; font-weight:bold; direction:ltr">نا محدود</div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <a href="#">
+                                        <div class="panel-footer" style="background-color: #222d32; color: #9d9d9d;">
+                                            <div class="pull-left" style="font-size: 1em; font-weight:bold;">کاربران</div>
+                                            <div class="pull-right"><span class="glyphicon glyphicon-circle-arrow-right"></span></div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer></footer>
+    </div>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+</html>

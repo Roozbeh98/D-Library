@@ -1,0 +1,53 @@
+.register-section
+{
+    background-color: #222D32;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.register-form {
+    margin: 26vh  auto 15vh auto;
+
+    background-color: #222D32;
+    color: #9D9D9D;
+}
+
+.register-body
+{
+    padding-left:35px;
+    padding-right:35px;
+}
+
+.register-heading
+{
+    width: 93%;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    background-color:#222D32 ;
+    border: #9D9D9D 2px solid;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top: 0;
+    font-family: IRANSansB;
+    font-size: large;
+}
+
+.register-footer
+{
+    background-color:#222D32 ;
+    border:none;
+}
+
+.register-button
+{
+    max-width:930px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+@media screen and (max-width:990px) {
+    .register-form {
+        margin-top: 130px;
+    }
+}

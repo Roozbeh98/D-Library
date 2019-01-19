@@ -1,0 +1,10 @@
+﻿
+.saerch-panel {
+    margin-top: 15vh;
+}
+
+@media screen and (max-width:990px) {
+    .saerch-panel {
+        margin-top: 130px;
+    }
+}

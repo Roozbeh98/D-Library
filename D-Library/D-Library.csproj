@@ -43,8 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -101,20 +109,274 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap.rtl.css" />
+    <Content Include="Content\css\bootstrap.rtl.full.css" />
+    <Content Include="Content\css\bootstrap.rtl.full.min.css" />
+    <Content Include="Content\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\fontiran.css" />
+    <Content Include="Content\css\MasterStyle.css" />
+    <Content Include="Content\css\MyCss\CodeGeneration.css" />
+    <Content Include="Content\css\MyCss\DashboardStyle.css" />
+    <Content Include="Content\css\MyCss\LoginStyle.css" />
+    <Content Include="Content\css\MyCss\Panelstyle.css" />
+    <Content Include="Content\css\MyCss\RegistrationStyle.css" />
+    <Content Include="Content\css\MyCss\SaerchPageStyle.css" />
+    <Content Include="Content\css\MyCss\UploadFileStyle.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\abstract-user-flat-3.png" />
+    <Content Include="Content\Images\arm.png" />
+    <Content Include="Content\Images\user-icon.svg" />
+    <Content Include="Content\Plugins\Chosen\chosen-sprite%402x.png" />
+    <Content Include="Content\Plugins\Chosen\chosen-sprite.png" />
+    <Content Include="Content\Plugins\Chosen\chosen.css" />
+    <Content Include="Content\Plugins\Chosen\chosen.min.css" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload.css" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\img\loading.gif" />
+    <Content Include="Content\Plugins\jQuery.FileUpload\img\progressbar.gif" />
+    <Content Include="Content\Plugins\toast\jquery.toast.css" />
+    <Content Include="Content\Plugins\toast\toastr.css" />
+    <Content Include="Content\Plugins\toast\toastr.min.css" />
+    <Content Include="Content\Plugins\toast\toastrsample.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Domins\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Domins\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\Html\CodeGeneration.html" />
+    <Content Include="Pages\Html\Dashboard.html" />
+    <Content Include="Pages\Html\List.html" />
+    <Content Include="Pages\Html\Login.html" />
+    <Content Include="Pages\Html\Registration.html" />
+    <Content Include="Pages\Html\SaerchPage.html" />
+    <Content Include="Pages\Html\UploadFile.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Plugins\jQuery.Chosen\chosen.jquery.js" />
+    <Content Include="Scripts\Plugins\jQuery.Chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\cors\jquery.xdr-transport.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-angular.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-image.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-video.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\Plugins\jQuery.knob\jquery.knob.js" />
+    <Content Include="Scripts\Plugins\jQuery.toast\jquery.toast.min.js" />
+    <Content Include="Scripts\Plugins\jQuery.toast\toastr.js" />
+    <Content Include="Scripts\Plugins\jQuery.toast\toastr.min.js" />
+    <Content Include="Scripts\Plugins\jQuery.toast\toastrsample.js" />
+    <Content Include="Scripts\Plugins\jQuery.ui.widget\toast\jquery.toast.min.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Dashboard\BuildRegisterCode.cshtml" />
+    <Content Include="Views\Dashboard\RequestTypeSelector.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Errors\Error_401.cshtml" />
+    <Content Include="Views\Errors\Error_404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domins\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_AcssesBook.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_AcssesBookContorl.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BaseRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BaseRolesPermission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Book.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookDetails.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookDetailsNavigator.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookValidateRequest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookValidateRequestProcess.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookValidateRequestState.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_branch.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Files.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_FileType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_ForgetPassword.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Group.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Library.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Notification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_NotificationType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Permission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_RegisterCode.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_RequestKind.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_RequestType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Setting.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_SpecialAcssesBook.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_UsersPermission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_Wishlist.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaData\MetaData_Login.cs" />
+    <Compile Include="Models\MetaData\MetaData_User.cs" />
+    <Compile Include="Models\Model\AccountInfoModel.cs" />
+    <Compile Include="Models\Model\LoginModel.cs" />
+    <Compile Include="Models\Model\RegisterCodeModel.cs" />
+    <Compile Include="Models\Model\RegisterModel.cs" />
+    <Compile Include="Models\Model\RequestTypeModel.cs" />
+    <Compile Include="Models\Repository\DropDownModel.cs" />
+    <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
+    <Compile Include="Models\Repository\Rep_GroupBranch.cs" />
+    <Compile Include="Models\Repository\Rep_Professor.cs" />
+    <Compile Include="Models\Repository\Rep_RequestType.cs" />
+    <Compile Include="Models\Repository\Rep_Role.cs" />
+    <Compile Include="Models\UserManagement\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Models\UserManagement\Membership.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Plugins\toast\toastr.less" />
+    <Content Include="Content\Plugins\toast\toastr.scss" />
+    <Content Include="FontIran\eot\IRANSansWeb.eot" />
+    <Content Include="FontIran\eot\IRANSansWeb_Bold.eot" />
+    <Content Include="FontIran\eot\IRANSansWeb_Light.eot" />
+    <Content Include="FontIran\eot\IRANSansWeb_Medium.eot" />
+    <Content Include="FontIran\eot\IRANSansWeb_UltraLight.eot" />
+    <Content Include="FontIran\ttf\IRANSansWeb.ttf" />
+    <Content Include="FontIran\ttf\IRANSansWeb_Bold.ttf" />
+    <Content Include="FontIran\ttf\IRANSansWeb_Light.ttf" />
+    <Content Include="FontIran\ttf\IRANSansWeb_Medium.ttf" />
+    <Content Include="FontIran\ttf\IRANSansWeb_UltraLight.ttf" />
+    <Content Include="FontIran\woff2\IRANSansWeb.woff2" />
+    <Content Include="FontIran\woff2\IRANSansWeb_Bold.woff2" />
+    <Content Include="FontIran\woff2\IRANSansWeb_Light.woff2" />
+    <Content Include="FontIran\woff2\IRANSansWeb_Medium.woff2" />
+    <Content Include="FontIran\woff2\IRANSansWeb_UltraLight.woff2" />
+    <Content Include="FontIran\woff\IRANSansWeb.woff" />
+    <Content Include="FontIran\woff\IRANSansWeb_Bold.woff" />
+    <Content Include="FontIran\woff\IRANSansWeb_Light.woff" />
+    <Content Include="FontIran\woff\IRANSansWeb_Medium.woff" />
+    <Content Include="FontIran\woff\IRANSansWeb_UltraLight.woff" />
+    <EntityDeploy Include="Models\Domins\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Domins\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Dashboard.cshtml" />
+    <Content Include="Views\Shared\_Master.cshtml" />
+    <Content Include="Views\Shared\_NavCustomMune.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -124,8 +386,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Plugins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

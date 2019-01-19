@@ -1,0 +1,98 @@
+﻿@model D_Library.Models.Model.RegisterCodeModel
+@using D_Library.Models.Repository
+
+@{
+    ViewBag.Title = "BuildRegisterCode";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("BuildRegisterCode", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class=" form-heading  text-center">
+            تولید کد ثبت نام
+        </div>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "" })
+                <div class="input-group">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    <span class=" input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+
+                </div>
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group ">
+
+                <label>نوع کاربر</label>
+
+                @{
+                    Rep_Role Ro = new Rep_Role();
+
+                    var list = Ro.Get();
+
+                    <select name="SelectRole" class="form-control chosen-select text-center">
+                        @foreach (var item in list)
+                        {
+                            <option value="@item.id">@item.name</option>
+                        }
+                    </select>
+
+                }
+
+
+            </div>
+
+
+        </div>
+
+        <div class="panel-footer form-footer ">
+            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+        </div>
+
+    }
+    @if (ViewBag.State == "Sucsse")
+    {
+        <div class="AddNewUser-mainCodePanel">
+            <div class="AddNewUser-codeDetails text-center">کد ثبت نام کاربر '@ViewBag.Username'</div>
+            <div class="AddNewUser-code">
+                <div class="AddNewUser-panelCodePlace text-center">
+                    @{
+                        int x = Convert.ToInt32(ViewBag.Code);
+                        int xr = 0;
+                        for (int i = 0, j = 100000; i < 6; i++)
+                        {
+
+                            int c = x % 10;
+                            xr += c * j;
+                            x /= 10;
+                            j /= 10;
+                        }
+
+                        for (int i = 0; i < 6; i++)
+                        {
+
+                            int c = xr % 10;
+
+
+                            <div class="AddNewUser-codePlace">@c </div>
+                            xr /= 10;
+                        }
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+</section>
+

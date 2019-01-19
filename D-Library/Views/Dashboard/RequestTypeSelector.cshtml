@@ -1,0 +1,111 @@
+﻿@model D_Library.Models.Model.RequestTypeModel
+@using D_Library.Models.Repository
+
+@{
+    ViewBag.Title = "RequestTypeSelector";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("RequestTypeSelector", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
+            {
+
+                @Html.AntiForgeryToken()
+                <div class=" form-heading  text-center">
+                    درخواست
+                </div>
+                @Html.ValidationSummary(false, "", new { @class = "text-danger", @id = "upload" })
+                <div class="panel-body">
+
+                    <div class="form-group ">
+                        <label>نوع درخواست</label>
+                        @{
+                            Rep_RequestType Ro = new Rep_RequestType();
+
+                            var list = Ro.Get_BookValidType();
+
+                            <select name="SelectRole" class="form-control chosen-select  text-center " style="height:30px;">
+                                @foreach (var item in list)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+
+                            </select>
+                        }
+                    </div>
+
+
+
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Master, htmlAttributes: new { @class = "" })
+                        @{
+                            Rep_Professor mas = new Rep_Professor();
+
+                            var list2 = mas.GetAllProfessor();
+
+                            <select name="SelectRole" class="form-control chosen-select  text-center " style="height:30px;">
+                                @foreach (var item in list2)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+
+                            </select>
+                        }
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "" })
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control text-center", @style = "width:100%;" } })
+                            <span class=" input-group-addon" style=""><i class="glyphicon glyphicon-star"></i></span>
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Titel, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+
+                <div class="panel-footer form-footer ">
+                    <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+                </div>
+
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="upload">
+                <div>
+                    <form id="upload" method="post" action="/Home/UploadFiles" enctype="multipart/form-data">
+
+                        <div id="drop">
+                            <a>Upload File</a>
+                            <input type="file" name="upl" multiple id="fileuploader" />
+                        </div>
+
+                        <ul style="overflow-x:hidden; overflow-y:auto; height:90px;">
+
+                            <!-- The file uploads will be shown here -->
+                        </ul>
+
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+<script src="~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/jQuery.FileUpload/jquery.fileupload.js"></script>
+<script src="~/Scripts/jQuery Component/jquery.ui.widget.js"></script>
+<script src="~/Scripts/jQuery Component/jquery.knob.js"></script>
+<script src="~/Scripts/script.js"></script>
+
