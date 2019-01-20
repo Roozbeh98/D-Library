@@ -35,6 +35,13 @@ namespace D_Library.Controllers
                 }
             }
         }
+
+        public ActionResult Uploader()
+        {
+
+            return View();
+        }
+
     }
 
 }
