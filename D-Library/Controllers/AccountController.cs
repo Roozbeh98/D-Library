@@ -53,10 +53,16 @@ namespace D_Library.Controllers
         {
             //if (Session.Count > 0)
             //{
-            if (Session["User"] != null)
+            if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Dashboard", "Dashboard");
+
             }
+
+            //if (Session["User"] != null)
+            //{
+            //    return RedirectToAction("Dashboard", "Dashboard");
+            //}
             //}
 
             if (!ModelState.IsValid)
