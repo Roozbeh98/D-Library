@@ -149,6 +149,14 @@ namespace D_Library.Controllers
         }
 
         #endregion
+
+        #region book
+        public ActionResult NewBookType()
+        {
+            return View();
+        }
+        #endregion
+
         [HttpGet]
         public ActionResult RequestTypeSelector()
         {

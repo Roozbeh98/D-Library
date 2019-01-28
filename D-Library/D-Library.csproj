@@ -233,6 +233,8 @@
     <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload.js" />
     <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.iframe-transport.js" />
     <Content Include="Scripts\Plugins\jQuery.knob\jquery.knob.js" />
+    <Content Include="Scripts\Plugins\jQuery.multiselect\multiselect.js" />
+    <Content Include="Scripts\Plugins\jQuery.multiselect\multiselect.min.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\Plugins\jQuery.toast\jquery.toast.min.js" />
@@ -371,6 +373,7 @@
     <Compile Include="Models\Model\RequestTypeModel.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
+    <Compile Include="Models\Repository\Rep_Book.cs" />
     <Compile Include="Models\Repository\Rep_GroupBranch.cs" />
     <Compile Include="Models\Repository\Rep_Professor.cs" />
     <Compile Include="Models\Repository\Rep_RequestType.cs" />
@@ -424,6 +427,7 @@
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Shared\_NavCustomMune.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Dashboard\NewBookType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -475,7 +479,7 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
