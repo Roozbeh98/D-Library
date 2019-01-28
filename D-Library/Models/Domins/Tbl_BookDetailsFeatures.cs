@@ -12,24 +12,19 @@ namespace D_Library.Models.Domins
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_BookType
+    public partial class Tbl_BookDetailsFeatures
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_BookType()
+        public Tbl_BookDetailsFeatures()
         {
-            this.Tbl_Book = new HashSet<Tbl_Book>();
             this.Tbl_BookDetailsNavigator = new HashSet<Tbl_BookDetailsNavigator>();
-            this.Tbl_RequestType = new HashSet<Tbl_RequestType>();
         }
     
-        public int BookType_ID { get; set; }
-        public string BookType_Name { get; set; }
+        public int BDF_ID { get; set; }
+        public string BDF_Name { get; set; }
+        public string BDF_Titel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_RequestType> Tbl_RequestType { get; set; }
     }
 }

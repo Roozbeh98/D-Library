@@ -5,7 +5,7 @@
 }
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("BuildRegisterCode", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-form-indasdboard", @style = "" }))
+    @using (Html.BeginForm("BuildRegisterCode", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-newbooktype form-form form-form-indasdboard", @style = "" }))
     {
 
         @Html.AntiForgeryToken()
@@ -67,6 +67,5 @@
     jQuery(document).ready(function ($) {
         $('#multiselect').multiselect();
     });
-
 
 </script>

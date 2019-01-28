@@ -14,36 +14,11 @@ namespace D_Library.Models.Domins
     
     public partial class Tbl_BookDetailsNavigator
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_BookDetailsNavigator()
-        {
-            this.Tbl_BookType = new HashSet<Tbl_BookType>();
-        }
+        public int BDN_ID { get; set; }
+        public int BDN_BDFID { get; set; }
+        public int BDN_BookTypeID { get; set; }
     
-        public int BDN__ID { get; set; }
-        public Nullable<bool> BDN_Name { get; set; }
-        public Nullable<bool> BDN_DigitalVersionAvailable { get; set; }
-        public Nullable<bool> BDN_PhysicalVersionAvailable { get; set; }
-        public Nullable<int> BDN_LibraryID { get; set; }
-        public Nullable<bool> BDN_FileEnabel { get; set; }
-        public Nullable<bool> BDN_FileCount { get; set; }
-        public Nullable<bool> BDN_PageCount { get; set; }
-        public Nullable<bool> BDN_Titel { get; set; }
-        public Nullable<bool> BDN_WriterName { get; set; }
-        public Nullable<bool> BDN_Language { get; set; }
-        public Nullable<bool> BDN_Description { get; set; }
-        public Nullable<bool> BDN_Abstract { get; set; }
-        public Nullable<bool> BDN_ReleaseDate { get; set; }
-        public Nullable<bool> BDN_ReleaseCount { get; set; }
-        public Nullable<bool> BDN_StudentID { get; set; }
-        public Nullable<bool> BDN_MasterID { get; set; }
-        public Nullable<bool> BDN_Publishers { get; set; }
-        public Nullable<bool> BDN_ISBN { get; set; }
-        public Nullable<bool> BDN_Subject { get; set; }
-        public Nullable<bool> BDN_GroupID { get; set; }
-        public Nullable<bool> BDN_BranchID { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookType> Tbl_BookType { get; set; }
+        public virtual Tbl_BookDetailsFeatures Tbl_BookDetailsFeatures { get; set; }
+        public virtual Tbl_BookType Tbl_BookType { get; set; }
     }
 }
