@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using D_Library.Models.Domins;
 using D_Library.Models.Model;
+using D_Library.Models.Repository;
 
 namespace D_Library.Controllers
 {
@@ -151,10 +152,22 @@ namespace D_Library.Controllers
         #endregion
 
         #region book
+        [HttpGet]
         public ActionResult NewBookType()
+        {
+            NewBookTypeMoodel moodel = new NewBookTypeMoodel();
+            Rep_Book book = new Rep_Book();
+            moodel.FromList = book.Get_BookDetailsListAll();
+            return View(moodel);
+        }
+
+        [HttpPost]
+        public ActionResult NewBookType(string TypeInput,object to )
         {
             return View();
         }
+
+
         #endregion
 
         [HttpGet]

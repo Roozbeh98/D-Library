@@ -63,7 +63,7 @@
 }
 .nav-item-out-login-a {
   display:block;
-    padding: 0px;
+    padding:0px;
 }
 .nav-item-out-login-a-i-search {
     width: 30px;
@@ -349,6 +349,10 @@
     max-width: 800px;
 }
 
+.btn-regin-md {
+    margin-top: 30%;
+}
+
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/
     .form-form-outdasdboard {
@@ -406,4 +410,7 @@
 
     /*********************************************** NewBookType ****************************************/
 
+    .btn-regin-md {
+       margin-top:22px;
+    }
 }

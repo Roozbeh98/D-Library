@@ -295,6 +295,9 @@
     <Compile Include="Models\Domins\Tbl_BookDetails.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domins\Tbl_BookDetailsFeatures.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Domins\Tbl_BookDetailsNavigator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -368,6 +371,7 @@
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
+    <Compile Include="Models\Model\NewBookTypeMoodel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
