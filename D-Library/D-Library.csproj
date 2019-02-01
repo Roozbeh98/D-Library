@@ -370,6 +370,7 @@
     <Compile Include="Models\MetaData\MetaData_Login.cs" />
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
+    <Compile Include="Models\Model\BookTypeTableMoodel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\NewBookTypeMoodel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
@@ -432,6 +433,7 @@
     <Content Include="Views\Shared\_NavCustomMune.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Dashboard\NewBookType.cshtml" />
+    <Content Include="Views\Dashboard\BookType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

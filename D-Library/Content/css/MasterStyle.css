@@ -34,6 +34,94 @@
     border: none;
     margin-bottom: 50px;
 }
+
+.table-btn-create {
+    margin-bottom: 10px;
+    width: 100px;
+    font-weight:bold;
+    color: whitesmoke;
+}
+
+
+.table-panel {
+
+    margin-right: auto;
+    margin-left: auto;
+    border:0px;
+    box-shadow: 0.5px 0.5px 6px cornflowerblue;
+    /*#2c3b41*/
+}
+
+.table-heading {
+    background-color: #222D32;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    height:auto;
+    padding-top:12px;
+    padding-bottom:12px;
+}
+
+.table-heading > span {
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+.table > tbody > tr > th {
+    border-top: 0px;
+    background-color: #222D32;
+   
+    
+}
+.table-tr {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.table > tbody > tr > td {
+    border-top: 0px;
+   
+}
+
+.table > tbody > tr > td a {
+    color: whitesmoke;
+}
+
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #2b3337;
+}
+
+.table-body {
+    background-color: #374449;
+}
+.table-footer {
+    border-top-width: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #222D32;
+}
+
+.table-footer-pagenumbers {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.table-footer-pagenumbers > li > a {
+   border:0px;
+   background-color: #222D32;
+   font-size:16px;
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > a:active {
+    background-color: #222D32;
+    color: #9d9d9d;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover {
+    background-color: #222D32;
+    color: #9d9d9d;
+}
 /*********************************************** navbar ********************************************/
 .navbar-inverse {
     background-color: #222d32;

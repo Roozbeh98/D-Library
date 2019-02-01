@@ -1,0 +1,92 @@
+﻿@model D_Library.Models.Model.BookTypeTableMoodel
+
+@{
+    ViewBag.Title = "BookType";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+
+    <div class="table-panel">
+        <div class="table-heading  text-center ">
+            <span>
+                last
+            </span>
+
+        </div>
+        <div class="panel-body table-body">
+            <div>
+                <span class="pull-left">
+                   
+                </span>
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookType", "Dashboard")">
+                    <span class="glyphicon glyphicon-plus-sign pull-left"></span>
+                    <span class="text-center">افزودن</span>
+                </a>
+            </div>
+
+
+
+
+            <table class="table table-striped">
+
+                <tr class="table-tr">
+                    <th scope="col">#</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.BookType)</th>
+                    <th scope="col"></th>
+
+
+                </tr>
+
+                @foreach (var item in Model.BookType)
+                {
+                    <tr>
+                        <td scope="row">1</td>
+                        <td scope="row">
+                            <a href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID }) ">@Html.DisplayFor(modelItem => item.BookType_Name)</a>
+                        </td>
+                        <td scope="row" class="pull-right">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.BookType_ID })   "></a>
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BookType_ID })"> </a>
+                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID })   "></a>
+                        </td>
+                    </tr>
+                }
+
+
+            </table>
+
+        </div>
+        <div class="panel-footer table-footer">
+            <!--code for the pagination-->
+            <div class="text-center">
+                <ul class="pagination pagination-md table-footer-pagenumbers">
+                    @if (Model.PageCount == 0)
+                    {
+                        Model.PageCount++;
+                    }
+                    @for (int i = 0; i < Model.PageCount; i++)
+                    {
+                    
+                            if (i + 1 == Model.CarentPage)
+                            {
+                                <li class="active"><a href="#">@(i + 1)</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="#">@(i + 1)</a></li>
+
+                            }
+
+                    }
+
+
+                </ul>
+            </div>
+            <!--code for the pagination-->
+        </div>
+    </div>
+
+
+</section>
+

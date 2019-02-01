@@ -14,7 +14,7 @@ namespace D_Library.Controllers
         ELEntities db = new ELEntities();
         // GET: Dashboard
 
-       
+
         public ActionResult Index()
         {
             return View();
@@ -34,7 +34,7 @@ namespace D_Library.Controllers
         }
         #region users
 
-     
+
         [HttpGet]
         public ActionResult BuildRegisterCode()
         {
@@ -47,7 +47,7 @@ namespace D_Library.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BuildRegisterCode( RegisterCodeModel model, int SelectRole)
+        public ActionResult BuildRegisterCode(RegisterCodeModel model, int SelectRole)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -63,7 +63,7 @@ namespace D_Library.Controllers
 
             var q = db.Tbl_Login.Where(a => a.Login_UserName == model.Username).SingleOrDefault();
             int Code;
-            if (q != null )
+            if (q != null)
             {
                 if (!q.Login_RegisterActive)
                 {
@@ -106,7 +106,7 @@ namespace D_Library.Controllers
                 L.Login_BaseRoleID = SelectRole;
                 L.Login_CustomRole = false;
                 L.Login_UserActive = true;
-               
+
 
                 Tbl_RegisterCode r = new Tbl_RegisterCode();
                 Random rnd = new Random();
@@ -115,7 +115,7 @@ namespace D_Library.Controllers
 
                 r.RegisterCode_Code = Code.ToString();
                 r.RegisterCode_Date = DateTime.Now;
-              
+
 
                 L.Tbl_RegisterCode = r;
 
@@ -152,6 +152,39 @@ namespace D_Library.Controllers
         #endregion
 
         #region book
+
+        public ActionResult BookType(string Page)
+        {
+            BookTypeTableMoodel tableMoodel = new BookTypeTableMoodel();
+            tableMoodel.BookType = db.Tbl_BookType;
+            int c = Convert.ToInt32(db.Tbl_BookType.Count() / 10);
+           
+            if (!string.IsNullOrEmpty(Page))
+            {
+                tableMoodel.CarentPage = Convert.ToInt32(Page);
+           
+            }
+            else
+            {
+                tableMoodel.CarentPage = 1;
+
+            }
+
+            return View(tableMoodel);
+        }
+
+        [HttpPost]
+        public ActionResult BookType(NewBookTypeMoodel moodel, string[] to)
+        {
+
+            return View();
+
+
+
+
+        }
+
+
         [HttpGet]
         public ActionResult NewBookType()
         {
@@ -162,10 +195,48 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewBookType(string TypeInput,object to )
+        public ActionResult NewBookType(NewBookTypeMoodel moodel, string[] to)
         {
-            return View();
+            Tbl_BookType bookType = new Tbl_BookType();
+
+
+            bookType.BookType_Name = moodel.TypeName;
+            db.Tbl_BookType.Add(bookType);
+
+
+            foreach (var item in to)
+            {
+                Tbl_BookDetailsNavigator detailsNavigator = new Tbl_BookDetailsNavigator();
+                detailsNavigator.Tbl_BookType = bookType;
+                detailsNavigator.BDN_BDFID = Convert.ToInt32(item);
+                db.Tbl_BookDetailsNavigator.Add(detailsNavigator);
+            }
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+
+
+                ViewBag.Message = "عملبات با موفقیت انجام شده!";
+                ViewBag.State = "Sucsse";
+                return View();
+
+
+
+            }
+            else
+            {
+                ViewBag.Message = "عملبات با موفقیت انجام نشده!";
+                ViewBag.State = "Error";
+                return View();
+            }
+
+
+
         }
+
+
+
+
 
 
         #endregion
