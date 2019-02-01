@@ -32,6 +32,8 @@ namespace D_Library.Controllers
             }
             return View();
         }
+
+
         #region users
 
 
@@ -144,6 +146,37 @@ namespace D_Library.Controllers
                 ViewBag.State = "Error";
                 return View();
             }
+
+
+
+        }
+
+        public ActionResult UsersList(string Page)
+        {
+            UserListMoodel tableMoodel = new UserListMoodel();
+            tableMoodel.Users = db.Tbl_User;
+            int c = Convert.ToInt32(db.Tbl_BookType.Count() / 10);
+
+            if (!string.IsNullOrEmpty(Page))
+            {
+                tableMoodel.CarentPage = Convert.ToInt32(Page);
+
+            }
+            else
+            {
+                tableMoodel.CarentPage = 1;
+
+            }
+
+            return View(tableMoodel);
+        }
+
+        [HttpPost]
+        public ActionResult UsersList(NewBookTypeMoodel moodel, string[] to)
+        {
+
+            return View();
+
 
 
 

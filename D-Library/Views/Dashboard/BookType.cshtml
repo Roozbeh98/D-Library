@@ -17,7 +17,7 @@
         <div class="panel-body table-body">
             <div>
                 <span class="pull-left">
-                   
+
                 </span>
                 <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookType", "Dashboard")">
                     <span class="glyphicon glyphicon-plus-sign pull-left"></span>
@@ -37,11 +37,15 @@
 
 
                 </tr>
+                @{
+                    int x = 0;
+                }
 
                 @foreach (var item in Model.BookType)
                 {
+                    x++;
                     <tr>
-                        <td scope="row">1</td>
+                        <td scope="row">@x</td>
                         <td scope="row">
                             <a href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID }) ">@Html.DisplayFor(modelItem => item.BookType_Name)</a>
                         </td>
@@ -67,16 +71,16 @@
                     }
                     @for (int i = 0; i < Model.PageCount; i++)
                     {
-                    
-                            if (i + 1 == Model.CarentPage)
-                            {
-                                <li class="active"><a href="#">@(i + 1)</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="#">@(i + 1)</a></li>
 
-                            }
+                        if (i + 1 == Model.CarentPage)
+                        {
+                            <li class="active"><a href="#">@(i + 1)</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#">@(i + 1)</a></li>
+
+                        }
 
                     }
 

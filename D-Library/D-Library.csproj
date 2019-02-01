@@ -376,6 +376,7 @@
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
+    <Compile Include="Models\Model\UserListMoodel.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
     <Compile Include="Models\Repository\Rep_Book.cs" />
@@ -434,6 +435,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Dashboard\NewBookType.cshtml" />
     <Content Include="Views\Dashboard\BookType.cshtml" />
+    <Content Include="Views\Dashboard\UsersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
