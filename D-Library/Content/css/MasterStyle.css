@@ -37,7 +37,7 @@
 
 .table-btn-create {
     margin-bottom: 10px;
-    width: 100px;
+    width: 100%;
     font-weight:bold;
     color: whitesmoke;
 }
@@ -66,6 +66,13 @@
     font-weight:bold;
 }
 
+
+
+.table > thead > tr > th {
+    vertical-align: bottom;
+    background-color: #222D32;
+    border-bottom: 2px solid #9d9d9d;
+}
 
 .table > tbody > tr > th {
     border-top: 0px;
@@ -126,6 +133,9 @@
     background-color: #222D32;
     color: #9d9d9d;
 }
+
+
+
 /*********************************************** navbar ********************************************/
 .navbar-inverse {
     background-color: #222d32;
@@ -437,13 +447,21 @@
 
 /*********************************************** NewBookType ****************************************/
 .form-newbooktype {
-    
     max-width: 800px;
 }
 
 .btn-regin-md {
     margin-top: 30%;
 }
+/*********************************************** UserListTable ****************************************/
+.userlisttable-panel {
+    max-width: 1200px;
+}
+/*********************************************** BookTypeTable ****************************************/
+.booktypeteble-panel{
+    max-width:600px;
+}
+
 
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/
@@ -505,4 +523,8 @@
     .btn-regin-md {
        margin-top:22px;
     }
+    /*********************************************** UserListTable ****************************************/
+
+    /*********************************************** BookTypeTable ****************************************/
+
 }

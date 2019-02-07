@@ -7,7 +7,7 @@
 
 <section class="col-md-9 container-fluid main-section">
 
-    <div class="table-panel">
+    <div class="table-panel booktypeteble-panel">
         <div class="table-heading  text-center ">
             <span>
                 last
@@ -15,82 +15,107 @@
 
         </div>
         <div class="panel-body table-body">
-            <div>
-                <span class="pull-left">
-
-                </span>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookType", "Dashboard")">
-                    <span class="glyphicon glyphicon-plus-sign pull-left"></span>
-                    <span class="text-center">افزودن</span>
-                </a>
-            </div>
 
 
 
 
-            <table id="myTable" class="table table-striped">
+            <table id="BookTypeList" class="table table-striped table-table" style="width:100%;">
+                <thead>
+                    <tr class="table-tr">
+                        <th scope="col" width="20px">#</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.BookType)</th>
+                        <th scope="col" data-orderable="false"></th>
 
-                <tr class="table-tr">
-                    <th scope="col">#</th>
-                    <th scope="col">@Html.DisplayNameFor(model => model.BookType)</th>
-                    <th scope="col"></th>
 
-
-                </tr>
-                @{
-                    int x = 0;
-                }
-
-                @foreach (var item in Model.BookType)
-                {
-                    x++;
-                    <tr>
-                        <td scope="row">@x</td>
-                        <td scope="row">
-                            <a href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID }) ">@Html.DisplayFor(modelItem => item.BookType_Name)</a>
-                        </td>
-                        <td scope="row" class="pull-right">
-                            <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.BookType_ID })   "></a>
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BookType_ID })"> </a>
-                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID })   "></a>
-                        </td>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @{
+                        int x = 0;
+                    }
 
+                    @foreach (var item in Model.BookType)
+                    {
+                        x++;
+                        <tr>
+                            <td scope="row">@x</td>
+                            <td scope="row">
+                                <a href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID }) ">@Html.DisplayFor(modelItem => item.BookType_Name)</a>
+                            </td>
+                            <td scope="row" class="pull-right">
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BookType_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID })   "></a>
+                            </td>
+                        </tr>
+                    }
 
+                </tbody>
             </table>
 
-        </div>
-        <div class="panel-footer table-footer">
-            <!--code for the pagination-->
-            <div class="text-center">
-                <ul class="pagination pagination-md table-footer-pagenumbers">
-                    @if (Model.PageCount == 0)
-                    {
-                        Model.PageCount++;
-                    }
-                    @for (int i = 0; i < Model.PageCount; i++)
-                    {
-
-                        if (i + 1 == Model.CarentPage)
-                        {
-                            <li class="active"><a href="#">@(i + 1)</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="#">@(i + 1)</a></li>
-
-                        }
-
-                    }
-
-
-                </ul>
-            </div>
-            <!--code for the pagination-->
         </div>
     </div>
 
 
 </section>
 
+
+<script>
+    $(document).ready(function () {
+        $('#BookTypeList').DataTable({
+            "language": {
+
+                "sEmptyTable": "هیچ داده ای در جدول وجود ندارد",
+                "sInfo": "نمایش _START_ تا _END_ از _TOTAL_ رکورد",
+                "sInfoEmpty": "نمایش 0 تا 0 از 0 رکورد",
+                "sInfoFiltered": "(فیلتر شده از _MAX_ رکورد)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "_MENU_",
+                "sLoadingRecords": "در حال بارگزاری...",
+                "sProcessing": "در حال پردازش...",
+                "sSearch": "",
+                "sSearchPlaceholder":"جستجو",
+                "sZeroRecords": "رکوردی با این مشخصات پیدا نشد",
+                "oPaginate": {
+                    "sFirst": "ابتدا",
+                    "sLast": "انتها",
+                    "sNext": "بعدی",
+                    "sPrevious": "قبلی"
+                },
+                "oAria": {
+                    "sSortAscending": ": فعال سازی نمایش به صورت صعودی",
+                    "sSortDescending": ": فعال سازی نمایش به صورت نزولی"
+                }
+
+
+            },
+            "scrollX": true
+
+
+        });
+    });
+
+
+
+
+
+
+    $(function () {
+        var element1 = document.getElementById('BookTypeList_filter').parentElement;
+        var element2 = document.getElementById('BookTypeList_length').parentElement;
+        element1.classList.remove('col-sm-6');
+        element2.classList.remove('col-sm-6');
+
+        element1.classList.add('col-md-6');
+        element2.classList.add('col-md-3');
+
+
+        var element3 = element2.parentElement;
+
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookType", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        addbtn.appendTo(element3)
+    });
+
+
+
+</script>

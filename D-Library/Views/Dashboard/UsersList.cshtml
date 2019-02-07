@@ -8,7 +8,7 @@
 
 <section class="col-md-9 container-fluid main-section">
 
-    <div class="table-panel">
+    <div class="table-panel userlisttable-panel">
         <div class="table-heading  text-center ">
             <span>
                 last
@@ -16,123 +16,153 @@
 
         </div>
         <div class="panel-body table-body">
-            <div>
-                <span class="pull-left">
-
-                </span>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BuildRegisterCode", "Dashboard")">
-                    <span class="glyphicon glyphicon-plus-sign pull-left"></span>
-                    <span class="text-center">افزودن</span>
-                </a>
-            </div>
 
 
 
 
-            <table class="table table-striped">
-
-                <tr class="table-tr">
-                    <th scope="col">#</th>
-                    <th scope="col">نام کاربری</th>
-                    <th scope="col">نام</th>
-                    <th scope="col">نام خانوادگی</th>
-                    <th scope="col">موبایل</th>
-                    <th scope="col">وضعیت</th>
-                    <th scope="col">درجه</th>
-                    <th scope="col"></th>
-
-
-                </tr>
-
-                @{
-                    int x = 0;
-                }
-
-                @foreach (var item in Model.Users)
-                {
-                    x++;
-                    <tr>
-                        @{
-                            var q = item.Tbl_Login.SingleOrDefault();
-                        }
-                        <td scope="row">@x</td>
-                        <td scope="row">
-                            <span>@q.Login_UserName</span>
-                        </td>
-                        <td scope="row">
-                            <span>@Html.DisplayFor(modelItem => item.User_Name)</span>
-                        </td>
-                        <td scope="row">
-                            <span>@Html.DisplayFor(modelItem => item.User_Family)</span>
-                        </td>
-                        <td scope="row">
-                            <span>@Html.DisplayFor(modelItem => item.User_Mobile)</span>
-                        </td>
-                        <td scope="row">
-                            @{
-
-
-                                if (q.Login_UserActive)
-                                {
-                                    <span>فعال</span>
-                                }
-                                else
-                                {
-                                    <span>غیر فعال</span>
-
-                                }
-                            }
 
 
 
-                        </td>
 
-                        <td scope="row">
-                            <span>@q.Tbl_BaseRole.BaseRole_Titel</span>
-                        </td>
-                        <td scope="row" class="pull-right">
-                            <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.User_ID})   "></a>
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.User_ID })"> </a>
-                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.User_ID})   "></a>
-                        </td>
+            <table id="UserListTable" class="table table-striped "  style="width:100%;">
+                <thead>
+                    <tr class="table-tr">
+                        <th scope="col">#</th>
+                        <th scope="col">نام کاربری</th>
+                        <th scope="col">نام</th>
+                        <th scope="col">نام خانوادگی</th>
+                        <th scope="col">موبایل</th>
+                        <th scope="col">وضعیت</th>
+                        <th scope="col">درجه</th>
+                        <th scope="col" data-orderable="false"></th>
+
+
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @{
+                        int x = 0;
+                    }
 
+                    @foreach (var item in Model.Users)
+                    {
+                        x++;
+                        <tr>
+                            @{
+                                var q = item.Tbl_Login.SingleOrDefault();
+                            }
+                            <td scope="row">@x</td>
+                            <td scope="row">
+                                <span>@q.Login_UserName</span>
+                            </td>
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.User_Name)</span>
+                            </td>
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.User_Family)</span>
+                            </td>
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.User_Mobile)</span>
+                            </td>
+                            <td scope="row">
+                                @{
+
+
+                                    if (q.Login_UserActive)
+                                    {
+                                        <span>فعال</span>
+                                    }
+                                    else
+                                    {
+                                        <span>غیر فعال</span>
+
+                                    }
+                                }
+
+
+
+                            </td>
+
+                            <td scope="row">
+                                <span>@q.Tbl_BaseRole.BaseRole_Titel</span>
+                            </td>
+                            <td scope="row" class="pull-right">
+                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.User_ID})   "></a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.User_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.User_ID})   "></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
 
             </table>
 
         </div>
-        <div class="panel-footer table-footer">
-            <!--code for the pagination-->
-            <div class="text-center">
-                <ul class="pagination pagination-md table-footer-pagenumbers">
-                    @if (Model.PageCount == 0)
-                    {
-                        Model.PageCount++;
-                    }
-                    @for (int i = 0; i < Model.PageCount; i++)
-                    {
-
-                        if (i + 1 == Model.CarentPage)
-                        {
-                            <li class="active"><a href="#">@(i + 1)</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="#">@(i + 1)</a></li>
-
-                        }
-
-                    }
-
-
-                </ul>
-            </div>
-            <!--code for the pagination-->
-        </div>
     </div>
+
+
 
 
 </section>
 
+<script>
+    $(document).ready(function () {
+        $('#UserListTable').DataTable({
+            "language": {
+
+                "sEmptyTable": "هیچ داده ای در جدول وجود ندارد",
+                "sInfo": "نمایش _START_ تا _END_ از _TOTAL_ رکورد",
+                "sInfoEmpty": "نمایش 0 تا 0 از 0 رکورد",
+                "sInfoFiltered": "(فیلتر شده از _MAX_ رکورد)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "_MENU_",
+                "sLoadingRecords": "در حال بارگزاری...",
+                "sProcessing": "در حال پردازش...",
+                "sSearch": "",
+                "sSearchPlaceholder":"جستجو",
+                "sZeroRecords": "رکوردی با این مشخصات پیدا نشد",
+                "oPaginate": {
+                    "sFirst": "ابتدا",
+                    "sLast": "انتها",
+                    "sNext": "بعدی",
+                    "sPrevious": "قبلی"
+                },
+                "oAria": {
+                    "sSortAscending": ": فعال سازی نمایش به صورت صعودی",
+                    "sSortDescending": ": فعال سازی نمایش به صورت نزولی"
+                }
+
+
+            },
+            "scrollX": true
+
+
+        });
+    });
+
+
+
+
+
+
+    $(function () {
+        var element1 = document.getElementById('UserListTable_filter').parentElement;
+        var element2 = document.getElementById('UserListTable_length').parentElement;
+        element1.classList.remove('col-sm-6');
+        element2.classList.remove('col-sm-6');
+
+        element1.classList.add('col-md-6');
+        element2.classList.add('col-md-3');
+
+        
+        var element3 = element2.parentElement;
+
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BuildRegisterCode", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        addbtn.appendTo(element3)
+    });
+
+
+
+</script>
 

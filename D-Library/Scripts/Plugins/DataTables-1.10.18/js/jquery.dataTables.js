@@ -4816,7 +4816,7 @@
 		var select = $('<select/>', {
 			'name':          tableId+'_length',
 			'aria-controls': tableId,
-			'class':         classes.sLengthSelect
+            'class':  'chosen-select'     
 		} );
 	
 		for ( var i=0, ien=lengths.length ; i<ien ; i++ ) {
@@ -14423,7 +14423,7 @@
 		"sFilterInput": "",
 	
 		/* Page length */
-		"sLengthSelect": "",
+        "sLengthSelect": "chosen-select",
 	
 		/* Scrolling */
 		"sScrollWrapper": "dataTables_scroll",
