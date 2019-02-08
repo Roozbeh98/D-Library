@@ -151,35 +151,20 @@ namespace D_Library.Controllers
 
         }
 
-        public ActionResult UsersList(string Page)
+        [HttpGet]
+        public ActionResult UsersList()
         {
-            UserListMoodel tableMoodel = new UserListMoodel();
+            UserListModel tableMoodel = new UserListModel();
             tableMoodel.Users = db.Tbl_User;
-            int c = Convert.ToInt32(db.Tbl_BookType.Count() / 10);
-
-            if (!string.IsNullOrEmpty(Page))
-            {
-                tableMoodel.CarentPage = Convert.ToInt32(Page);
-
-            }
-            else
-            {
-                tableMoodel.CarentPage = 1;
-
-            }
 
             return View(tableMoodel);
         }
 
-        [HttpPost]
-        public ActionResult UsersList(NewBookTypeMoodel moodel, string[] to)
+        [HttpGet]
+
+        public ActionResult UsersRegisterNotCompleteList()
         {
-
             return View();
-
-
-
-
         }
 
         #endregion

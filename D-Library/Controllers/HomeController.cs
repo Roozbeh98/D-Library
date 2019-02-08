@@ -14,7 +14,20 @@ namespace D_Library.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string looking)
+        {
+            return View();
+        }
+
+        public ActionResult SearchResult()
         {
             return View();
         }

@@ -8,11 +8,9 @@ using D_Library.Models.Domins;
 
 namespace D_Library.Models.Model
 {
-    public class UserListMoodel
+    public class UserListModel
     {
         [Display(Name = "نام گروه")]
         public IEnumerable<Tbl_User> Users { get; set; }
-        public int CarentPage { get; set; }
-        public int PageCount { get; set; }
     }
 }

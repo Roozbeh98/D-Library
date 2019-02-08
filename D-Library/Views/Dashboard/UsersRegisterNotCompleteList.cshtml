@@ -1,7 +1,8 @@
-﻿@model D_Library.Models.Model.UserListModel
+﻿@using D_Library.Models.Repository
+
 
 @{
-    ViewBag.Title = "UsersList";
+    ViewBag.Title = "UsersRegisterNotCompleteList";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
@@ -19,42 +20,36 @@
                     <tr class="table-tr">
                         <th scope="col">#</th>
                         <th scope="col">نام کاربری</th>
-                        <th scope="col">نام</th>
-                        <th scope="col">نام خانوادگی</th>
-                        <th scope="col">موبایل</th>
-                        <th scope="col">وضعیت</th>
                         <th scope="col">درجه</th>
+                        <th scope="col">وضعیت</th>
+                        <th scope="col">تاریخ انقضا</th>
+                        <th scope="col">کد ثبت نام</th>
                         <th scope="col" data-orderable="false"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @{
                         int x = 0;
+                        Rep_UsersRegisterNotCompleteList ur = new Rep_UsersRegisterNotCompleteList();
+
                     }
 
-                    @foreach (var item in Model.Users)
+                    @foreach (var item in ur.GetList())
                     {
                         x++;
                         <tr>
-                            @{
-                                var q = item.Tbl_Login.SingleOrDefault();
-                            }
+
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <span>@q.Login_UserName</span>
+                                <span>@item.Username</span>
                             </td>
                             <td scope="row">
-                                <span>@Html.DisplayFor(modelItem => item.User_Name)</span>
+                                <span>@item.Role</span>
                             </td>
                             <td scope="row">
-                                <span>@Html.DisplayFor(modelItem => item.User_Family)</span>
-                            </td>
-                            <td scope="row">
-                                <span>@Html.DisplayFor(modelItem => item.User_Mobile)</span>
-                            </td>
-                            <td scope="row">
+
                                 @{
-                                    if (q.Login_UserActive)
+                                    if (@item.Is_Expiry)
                                     {
                                         <span>فعال</span>
                                     }
@@ -63,14 +58,16 @@
                                         <span>غیر فعال</span>
                                     }
                                 }
+
                             </td>
                             <td scope="row">
-                                <span>@q.Tbl_BaseRole.BaseRole_Titel</span>
+                                <span>@item.Expiry_Time.ToShortDateString()</span>
+                            </td>
+                            <td scope="row">
+                                <span>@item.Code</span>
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.User_ID})   "></a>
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.User_ID })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.User_ID})   "></a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.ID})"></a>
                             </td>
                         </tr>
                     }
