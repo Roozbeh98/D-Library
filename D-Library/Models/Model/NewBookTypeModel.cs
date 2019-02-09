@@ -7,7 +7,7 @@ using D_Library.Models.Repository;
 
 namespace D_Library.Models.Model
 {
-    public class NewBookTypeMoodel
+    public class NewBookTypeModel
     {
         [Display(Name = "نام گروه")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]

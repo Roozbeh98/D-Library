@@ -7,11 +7,10 @@ using D_Library.Models.Domins;
 
 namespace D_Library.Models.Model
 {
-    public class BookTypeTableMoodel
+    public class BookTypeTableModel
     {
         [Display(Name = "نام گروه")]
         public IEnumerable<Tbl_BookType> BookType { get; set; }
-        public int CarentPage { get; set; }
-        public int PageCount { get; set; }
+
     }
 }

@@ -48,6 +48,7 @@ namespace D_Library.Controllers
             }
             return View();
         }
+
         [HttpPost]
         public ActionResult BuildRegisterCode(RegisterCodeModel model, int SelectRole)
         {
@@ -161,59 +162,97 @@ namespace D_Library.Controllers
         }
 
         [HttpGet]
-
         public ActionResult UsersRegisterNotCompleteList()
         {
             return View();
         }
 
-        #endregion
-
-        #region book
-
-        public ActionResult BookType(string Page)
+        [HttpGet]
+        public ActionResult BaseRoleList()
         {
-            BookTypeTableMoodel tableMoodel = new BookTypeTableMoodel();
-            tableMoodel.BookType = db.Tbl_BookType;
-            int c = Convert.ToInt32(db.Tbl_BookType.Count() / 10);
-           
-            if (!string.IsNullOrEmpty(Page))
-            {
-                tableMoodel.CarentPage = Convert.ToInt32(Page);
-           
-            }
-            else
-            {
-                tableMoodel.CarentPage = 1;
-
-            }
+            BaseRoleList tableMoodel = new BaseRoleList();
+            tableMoodel.BaseRole = db.Tbl_BaseRole;
 
             return View(tableMoodel);
         }
 
-        [HttpPost]
-        public ActionResult BookType(NewBookTypeMoodel moodel, string[] to)
+        [HttpGet]
+        public ActionResult NewBaseRole()
         {
+            NewBaseRoleModel moodel = new NewBaseRoleModel();
+            Rep_Role permission = new Rep_Role();
+            moodel.FromList = permission.GetAllPermission();
+            return View(moodel);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult NewBaseRole(NewBaseRoleModel moodel, string[] to)
+        {
+            Tbl_BaseRole baseRole = new Tbl_BaseRole();
 
+
+            baseRole.BaseRole_Name = moodel.RoleName;
+            baseRole.BaseRole_Titel = moodel.TitelName;
+            db.Tbl_BaseRole.Add(baseRole);
+
+
+            foreach (var item in to)
+            {
+                Tbl_BaseRolesPermission rolesPermission = new Tbl_BaseRolesPermission();
+                rolesPermission.Tbl_BaseRole = baseRole;
+
+                rolesPermission.BRP_PermissionID = Convert.ToInt32(item);
+                db.Tbl_BaseRolesPermission.Add(rolesPermission);
+            }
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+
+
+                ViewBag.Message = "عملبات با موفقیت انجام شده!";
+                ViewBag.State = "Sucsse";
+                return View();
+
+
+
+            }
+            else
+            {
+                ViewBag.Message = "عملبات با موفقیت انجام نشده!";
+                ViewBag.State = "Error";
+                return View();
+            }
 
 
 
         }
 
 
+
+        #endregion
+
+        #region book
+
+        [HttpGet]
+        public ActionResult BookType()
+        {
+            BookTypeTableModel tableMoodel = new BookTypeTableModel();
+            tableMoodel.BookType = db.Tbl_BookType;
+
+            return View(tableMoodel);
+        }
+
         [HttpGet]
         public ActionResult NewBookType()
         {
-            NewBookTypeMoodel moodel = new NewBookTypeMoodel();
+            NewBookTypeModel moodel = new NewBookTypeModel();
             Rep_Book book = new Rep_Book();
             moodel.FromList = book.Get_BookDetailsListAll();
             return View(moodel);
         }
 
         [HttpPost]
-        public ActionResult NewBookType(NewBookTypeMoodel moodel, string[] to)
+        public ActionResult NewBookType(NewBookTypeModel moodel, string[] to)
         {
             Tbl_BookType bookType = new Tbl_BookType();
 
