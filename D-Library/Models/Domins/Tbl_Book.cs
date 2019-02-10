@@ -27,10 +27,10 @@ namespace D_Library.Models.Domins
         public Nullable<int> Book_Code { get; set; }
         public string Book_Name { get; set; }
         public int Book_BookTypeID { get; set; }
-        public int Book_BDID { get; set; }
+        public Nullable<int> Book_BDID { get; set; }
         public int Book_UploaderUserID { get; set; }
         public bool Book_GuestSearchEnabel { get; set; }
-        public int Book_ABCID { get; set; }
+        public Nullable<int> Book_ABCID { get; set; }
         public bool Book_Publish { get; set; }
     
         public virtual Tbl_AcssesBookContorl Tbl_AcssesBookContorl { get; set; }

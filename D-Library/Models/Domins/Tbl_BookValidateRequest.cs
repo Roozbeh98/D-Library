@@ -28,11 +28,11 @@ namespace D_Library.Models.Domins
         public int BVR_RequestTypeID { get; set; }
         public Nullable<int> BVR_BookID { get; set; }
     
-        public virtual Tbl_Book Tbl_Book { get; set; }
         public virtual Tbl_RequestType Tbl_RequestType { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
         public virtual Tbl_User Tbl_User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookValidateRequestProcess> Tbl_BookValidateRequestProcess { get; set; }
+        public virtual Tbl_Book Tbl_Book { get; set; }
     }
 }

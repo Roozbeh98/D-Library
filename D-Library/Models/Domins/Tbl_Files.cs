@@ -25,8 +25,8 @@ namespace D_Library.Models.Domins
         public bool File_DownloadAcssesLocalIP { get; set; }
         public bool File_DownloadAcssesGlobalIP { get; set; }
     
-        public virtual Tbl_Book Tbl_Book { get; set; }
         public virtual Tbl_FileType Tbl_FileType { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
+        public virtual Tbl_Book Tbl_Book { get; set; }
     }
 }

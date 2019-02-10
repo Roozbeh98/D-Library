@@ -138,6 +138,7 @@
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\loading.gif" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\progressbar.gif" />
+    <Content Include="Content\Plugins\MaterialDesignSwitch\MaterialDesignSwitch.css" />
     <Content Include="Content\Plugins\toast\jquery.toast.css" />
     <Content Include="Content\Plugins\toast\toastr.css" />
     <Content Include="Content\Plugins\toast\toastr.min.css" />
@@ -200,6 +201,7 @@
     <Content Include="Pages\Html\Login.html" />
     <Content Include="Pages\Html\Registration.html" />
     <Content Include="Pages\Html\SaerchPage.html" />
+    <Content Include="Pages\Html\SW.html" />
     <Content Include="Pages\Html\Tabel.html" />
     <Content Include="Pages\Html\UploadFile.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -408,6 +410,7 @@
     <Compile Include="Models\Model\BookTypeTableModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\NewBaseRoleModel.cs" />
+    <Compile Include="Models\Model\NewBookModel.cs" />
     <Compile Include="Models\Model\NewBookTypeModel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
@@ -478,6 +481,8 @@
     <Content Include="Views\Dashboard\NewBookType.cshtml" />
     <Content Include="Views\Dashboard\NewBaseRole.cshtml" />
     <Content Include="Views\Dashboard\BookType.cshtml" />
+    <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
+    <Content Include="Views\Dashboard\NewBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -487,6 +492,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Enum\" />
     <Folder Include="Models\Plugins\" />
   </ItemGroup>
   <ItemGroup>

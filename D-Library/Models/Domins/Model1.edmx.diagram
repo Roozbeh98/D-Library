@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="ELModel.Tbl_AcssesBookContorl" Width="1.5" PointX="0.75" PointY="11.125" />
         <EntityTypeShape EntityType="ELModel.Tbl_BaseRole" Width="1.5" PointX="5.25" PointY="28.75" />
         <EntityTypeShape EntityType="ELModel.Tbl_BaseRolesPermission" Width="1.5" PointX="13.5" PointY="26.5" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Book" Width="1.5" PointX="12.75" PointY="20.375" />
         <EntityTypeShape EntityType="ELModel.Tbl_BookDetails" Width="1.5" PointX="7.5" PointY="17.625" />
         <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsFeatures" Width="1.5" PointX="10.5" PointY="14.625" />
         <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsNavigator" Width="1.5" PointX="12.75" PointY="17.625" />
@@ -37,17 +36,9 @@
         <EntityTypeShape EntityType="ELModel.Tbl_Wishlist" Width="1.5" PointX="18" PointY="26" />
         <AssociationConnector Association="ELModel.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" />
         <AssociationConnector Association="ELModel.FK_Tbl_AcssesBook_Tbl_Group" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl" />
         <AssociationConnector Association="ELModel.FK_Tbl_BaseRolesPermission_Tbl_BaseRole" />
         <AssociationConnector Association="ELModel.FK_Tbl_Login_Tbl_BaseRole" />
         <AssociationConnector Association="ELModel.FK_Tbl_BaseRolesPermission_Tbl_Permission" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_Book" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_BookDetails" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_User" />
-        <AssociationConnector Association="ELModel.FK_Tbl_BookValidateRequest_Tbl_Book" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Files_Tbl_Book" />
-        <AssociationConnector Association="ELModel.FK_Tbl_SpecialAcssesBook_Tbl_Book" />
-        <AssociationConnector Association="ELModel.FK_Tbl_Wishlist_Tbl_Book" />
         <AssociationConnector Association="ELModel.FK_Tbl_BookDetails_Tbl_branch" />
         <AssociationConnector Association="ELModel.FK_Tbl_BookDetails_Tbl_Group" />
         <AssociationConnector Association="ELModel.FK_Tbl_BookDetails_Tbl_Library" />
@@ -75,6 +66,15 @@
         <AssociationConnector Association="ELModel.FK_Tbl_SpecialAcssesBook_Tbl_User" />
         <AssociationConnector Association="ELModel.FK_Tbl_UsersPermission_Tbl_User" />
         <AssociationConnector Association="ELModel.FK_Tbl_Wishlist_Tbl_User" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Book" Width="1.5" PointX="12.75" PointY="21.125" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_Book" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_BookDetails" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_User" />
+        <AssociationConnector Association="ELModel.FK_Tbl_BookValidateRequest_Tbl_Book" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Files_Tbl_Book" />
+        <AssociationConnector Association="ELModel.FK_Tbl_SpecialAcssesBook_Tbl_Book" />
+        <AssociationConnector Association="ELModel.FK_Tbl_Wishlist_Tbl_Book" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

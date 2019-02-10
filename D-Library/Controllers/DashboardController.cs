@@ -7,6 +7,7 @@ using D_Library.Models.Domins;
 using D_Library.Models.Model;
 using D_Library.Models.Repository;
 
+
 namespace D_Library.Controllers
 {
     public class DashboardController : Controller
@@ -232,6 +233,35 @@ namespace D_Library.Controllers
         #endregion
 
         #region book
+
+        [HttpGet]
+        public ActionResult NewBook(int id)
+        {
+            Rep_Book rep = new Rep_Book();
+            NewBookModel model = new NewBookModel();
+            model.DetailsNav = rep.Get_BookDetailsListByBookType(id);
+            model.ID = id;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult NewBook(NewBookModel model)
+        {
+            var f = model.ID;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult NewBookTypeSelector()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewBookTypeSelector(int BookTypeSelection)
+        {
+
+            return RedirectToAction("NewBook", "Dashboard", new { id=BookTypeSelection });
+        }
 
         [HttpGet]
         public ActionResult BookType()

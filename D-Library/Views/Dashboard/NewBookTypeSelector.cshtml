@@ -1,0 +1,41 @@
+﻿@using D_Library.Models.Repository
+@{
+    ViewBag.Title = "NewBookTypeSelector";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("NewBookTypeSelector", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class=" form-heading  text-center">
+            انتخاب نوع کتاب
+        </div>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="panel-body">
+            <div class="form-group ">
+                <label>نوع کتاب</label>
+                @{
+                    Rep_Book Ro = new Rep_Book();
+
+                    var list = Ro.Get_BookTypeCreate();
+
+                    <select name="BookTypeSelection" class="form-control chosen-select text-center">
+                        @foreach (var item in list)
+                        {
+                            <option value="@item.id">@item.name</option>
+                        }
+                    </select>
+
+                }
+            </div>
+        </div>
+
+        <div class="panel-footer form-footer ">
+            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+        </div>
+    }
+</section>
+
+
+

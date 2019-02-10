@@ -15,6 +15,12 @@ namespace D_Library.Models.UserManagement
            
         }
 
+        public int Get_IDByUserName(string Username)
+        {
+            var id = db.Tbl_Login.Where(a => a.Login_UserName == Username).SingleOrDefault().Login_UserID;
+            return (int)id;
+        }
+
         public List<string> GetRoles(string Username)
         {
             List<string> Roles = new List<string>();
