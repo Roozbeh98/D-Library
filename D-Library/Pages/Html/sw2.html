@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../../Content/Plugins/MaterialDesignSwitch/MaterialDesignSwitch.css" rel="stylesheet" />
+
+    <style>
+        input[type=checkbox] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 200px;
+            height: 100px;
+            background-color: grey;
+            display: block;
+            border-radius: 100px;
+            position: relative;
+        }
+
+            label:after {
+                content: '';
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 90px;
+                height: 90px;
+                background-color: #fff;
+                border-radius: 100px;
+                transition: 0.3s;
+            }
+
+        input:checked + label {
+            background: #bada55;
+        }
+
+            input:checked + label:after {
+                right: calc(100% - 5px);
+                transform: translate(100%);
+            }
+
+        label:active:after {
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="switch" />
+    <label for="switch">toggle</label>
+
+    
+    <script>
+
+
+    </script>
+
+</body>
+</html>

@@ -202,6 +202,7 @@
     <Content Include="Pages\Html\Registration.html" />
     <Content Include="Pages\Html\SaerchPage.html" />
     <Content Include="Pages\Html\SW.html" />
+    <Content Include="Pages\Html\sw2.html" />
     <Content Include="Pages\Html\Tabel.html" />
     <Content Include="Pages\Html\UploadFile.html" />
     <Content Include="Scripts\bootstrap.js" />

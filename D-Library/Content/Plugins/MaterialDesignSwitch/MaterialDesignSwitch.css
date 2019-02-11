@@ -1,5 +1,8 @@
 ﻿.material-switch > input[type="checkbox"] {
-    display: none;
+    /*display: none;*/
+    height: 0;
+    width: 0;
+    visibility: hidden;
 }
 
 .material-switch > label {
@@ -28,7 +31,7 @@
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
         content: '';
         height: 24px;
-        left: -4px;
+        right: -4px;
         margin-top: -8px;
         position: absolute;
         top: -4px;
@@ -43,5 +46,10 @@
 
 .material-switch > input[type="checkbox"]:checked + label::after {
     background: inherit;
-    left: 20px;
+    right: 20px;
+}
+
+.material-switch-body{
+    height:15px;
+
 }
