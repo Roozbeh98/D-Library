@@ -238,6 +238,7 @@ namespace D_Library.Controllers
         public ActionResult NewBook(int id)
         {
             Rep_Book rep = new Rep_Book();
+            Rep_Professor professor = new Rep_Professor();
             NewBookModel model = new NewBookModel();
             model.DetailsNav = rep.Get_BookDetailsListByBookType(id);
             model.ID = id;

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace D_Library.Models.Model
 {
@@ -27,7 +27,7 @@ namespace D_Library.Models.Model
         [Required( ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(200, ErrorMessage = "مقدار وارد شده بیش 200 کارکتراست")]
         [EmailAddress(ErrorMessage = "ایمیل را به درستی وارد نمایید")]
-        [Remote("EmailValid", "Account", HttpMethod = "Post",ErrorMessage ="این ایمیل قبلا ثبت شده است")]
+        [Remote("EmailValid", "Account", HttpMethod ="Post",ErrorMessage ="این ایمیل قبلا ثبت شده است")]
         public string Email { get; set; }
         [Display(Name = "رمز عبور")]
         [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]

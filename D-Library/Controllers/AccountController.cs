@@ -298,7 +298,7 @@ namespace D_Library.Controllers
         #region validtor
 
         [HttpPost]
-        public JsonResult EamilValid(string Email)
+        public JsonResult EmailValid(string Email)
         {
             try
             {

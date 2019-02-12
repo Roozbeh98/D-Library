@@ -280,7 +280,6 @@
     <Content Include="Scripts\Plugins\jQuery.toast\toastrsample.js" />
     <Content Include="Scripts\Plugins\jQuery.ui.widget\jquery.ui.widget.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Dashboard\BuildRegisterCode.cshtml" />
     <Content Include="Views\Dashboard\RequestTypeSelector.cshtml" />
@@ -425,6 +424,7 @@
     <Compile Include="Models\Repository\Rep_Professor.cs" />
     <Compile Include="Models\Repository\Rep_RequestType.cs" />
     <Compile Include="Models\Repository\Rep_Role.cs" />
+    <Compile Include="Models\Repository\Rep_Student.cs" />
     <Compile Include="Models\Repository\Rep_UsersRegisterNotCompleteList.cs" />
     <Compile Include="Models\UserManagement\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\UserManagement\Membership.cs" />
@@ -484,6 +484,7 @@
     <Content Include="Views\Dashboard\BookType.cshtml" />
     <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
     <Content Include="Views\Dashboard\NewBook.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,13 +1,15 @@
 ﻿@model D_Library.Models.Model.NewBookModel
-
+@using D_Library.Models.Repository
 @{
+    /**/
+
     ViewBag.Title = "NewBook";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("NewBook", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "width:600px;" }))
+    @using (Html.BeginForm("NewBook", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "max-width:600px;" }))
     {
 
         @Html.AntiForgeryToken()
@@ -39,22 +41,27 @@
             <div class="form-group material-switch-body">
                 @Html.LabelFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = "pull-left" })
                 <div class="material-switch pull-right">
-                    @Html.EditorFor(model => model.Book.Book_GuestSearchEnabel, new { htmlAttributes = new { @class = " " }, @value = "true" })
+                    @Html.CheckBoxFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = " " })
                     <label for="Book_Book_GuestSearchEnabel" class="label-success"> </label>
                 </div>
             </div>
 
-            
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Book.Book_Name, htmlAttributes: new { @class = "" })
-                <div class="input-group">
-                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    @Html.EditorFor(model => model.Book.Book_Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+            <div class="form-group material-switch-body">
+                @Html.LabelFor(model => model.Details.BD_DigitalVersionAvailable, htmlAttributes: new { @class = "pull-left" })
+                <div class="material-switch pull-right">
+                    @Html.CheckBoxFor(model => model.Details.BD_DigitalVersionAvailable.Value, htmlAttributes: new { @class = " " })
+                    <label for="Details_BD_DigitalVersionAvailable_Value" class="label-success"> </label>
                 </div>
-                @Html.ValidationMessageFor(model => model.Book.Book_Name, "", new { @class = "text-danger" })
             </div>
 
+            <div class="form-group material-switch-body">
+                @Html.LabelFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = "pull-left" })
+                <div class="material-switch pull-right">
+                    @Html.CheckBoxFor(model => model.Details.BD_PhysicalVersionAvailable.Value, htmlAttributes: new { @class = " " })
+                    <label for="Details_BD_PhysicalVersionAvailable_Value" class="label-success"> </label>
+                </div>
+            </div>
 
 
             @{
@@ -62,17 +69,38 @@
                 {
                     switch (item)
                     {
-                        case "Name":
-
+                        case "Titel":
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Titel, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Titel, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Titel, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Abstract":
 
                             break;
                         case "Student":
+                            <div class="form-group ">
+                                @Html.LabelFor(model => Model.Details.BD_StudentID, htmlAttributes: new { @class = "" })
+                                @{
+                                    Rep_Student _Student = new Rep_Student();
+                                    @Html.DropDownListFor(model => Model.Details.BD_StudentID, _Student.Get_AllSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                                }
 
+                            </div>
                             break;
                         case "Master":
+                            <div class="form-group ">
+                                @Html.LabelFor(model => Model.Details.BD_MasterID, htmlAttributes: new { @class = "" })
+                                @{
+                                    Rep_Professor _Professor = new Rep_Professor();
+                                    @Html.DropDownListFor(model => Model.Details.BD_MasterID, _Professor.Get_AllProfessorSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                                }
 
+                            </div>
                             break;
                         case "ISBN":
 
