@@ -63,6 +63,7 @@
                 </div>
             </div>
 
+            @* language here *@
 
             @{
                 foreach (var item in Model.DetailsNav)
@@ -89,7 +90,6 @@
                                     Rep_Student _Student = new Rep_Student();
                                     @Html.DropDownListFor(model => Model.Details.BD_StudentID, _Student.Get_AllSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
                                 }
-
                             </div>
                             break;
                         case "Master":
@@ -99,35 +99,95 @@
                                     Rep_Professor _Professor = new Rep_Professor();
                                     @Html.DropDownListFor(model => Model.Details.BD_MasterID, _Professor.Get_AllProfessorSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
                                 }
-
                             </div>
                             break;
                         case "ISBN":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_ISBN, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_ISBN, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_ISBN, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Group":
-
+                            <div class="form-group ">
+                                @Html.LabelFor(model => Model.Details.BD_GroupID, htmlAttributes: new { @class = "" })
+                                @{
+                                    Rep_GroupBranch gp = new Rep_GroupBranch();
+                                    @Html.DropDownListFor(model => Model.Details.BD_GroupID, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                                }
+                            </div>
                             break;
                         case "Branch":
-
+                            <div class="form-group ">
+                                @Html.LabelFor(model => Model.Details.BD_BranchID, htmlAttributes: new { @class = "" })
+                                @{
+                                    Rep_GroupBranch br = new Rep_GroupBranch();
+                                    @Html.DropDownListFor(model => Model.Details.BD_BranchID, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                                }
+                            </div>
                             break;
                         case "Publishers":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Publishers, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Publishers, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Publishers, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Subject":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Subject, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Subject, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Subject, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Description":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Description, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Description, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Description, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "WriterName":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_WriterName, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_WriterName, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_WriterName, "", new { @class = "text-danger" })
+                            </div>
                             break;
-                        case "Published":
-
+                        case "ReleaseCount":
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_ReleaseCount, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_ReleaseCount, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_ReleaseCount, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Translator":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Translator, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Translator, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Translator, "", new { @class = "text-danger" })
+                            </div>
                             break;
 
 

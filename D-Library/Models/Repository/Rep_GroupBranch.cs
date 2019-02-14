@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using D_Library.Models.Domins;
 
 namespace D_Library.Models.Repository
@@ -18,21 +19,6 @@ namespace D_Library.Models.Repository
         public List<DropDownModel> Get()
         {
             List<DropDownModel> t = new List<DropDownModel>();
-
-            //var q = db.Tbl_Group.OrderBy(a => a.Group_ID).ToList();
-
-            //foreach (var item in q)
-            //{
-            //    var qb = (from a in db.Tbl_branch where a.branch_GroupID == item.Group_ID select a).ToList();
-            //    foreach (var itemqb in qb)
-            //    {
-            //        t.Add(new DropDownModel(itemqb.branch_ID, string.Format("{0} - {1}", item.Group_Name, itemqb.branch_Name)));
-            //    }
-
-            //}
-
-           
-
             foreach (var itemG in db.Tbl_Group)
             {
                 foreach (var itemB in itemG.Tbl_branch)
@@ -45,7 +31,29 @@ namespace D_Library.Models.Repository
             return t;
         }
 
+        public IEnumerable<SelectListItem> Get_AllBranchSelectList()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
 
+            foreach (var item in db.Tbl_Group)
+            {
+                list.Add(new SelectListItem() { Value = item.Group_ID.ToString(), Text = item.Group_Name });
+            }
+
+            return list.AsEnumerable();
+        }
+
+        public IEnumerable<SelectListItem> Get_AllGroupSelectList()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (var item in db.Tbl_branch)
+            {
+                list.Add(new SelectListItem() { Value = item.branch_ID.ToString(), Text = item.branch_Name });
+            }
+
+            return list.AsEnumerable();
+        }
     }
 
 

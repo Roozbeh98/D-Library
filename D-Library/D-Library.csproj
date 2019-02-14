@@ -403,6 +403,8 @@
     <Compile Include="Models\Domins\Tbl_Wishlist.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MetaData\MetaData_Book.cs" />
+    <Compile Include="Models\MetaData\MetaData_BookDetails.cs" />
     <Compile Include="Models\MetaData\MetaData_Login.cs" />
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />

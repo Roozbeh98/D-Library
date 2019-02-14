@@ -17,6 +17,7 @@ namespace D_Library.Models.Domins
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_User()
         {
+            this.Tbl_Book = new HashSet<Tbl_Book>();
             this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
             this.Tbl_BookDetails1 = new HashSet<Tbl_BookDetails>();
             this.Tbl_BookValidateRequest = new HashSet<Tbl_BookValidateRequest>();
@@ -27,7 +28,6 @@ namespace D_Library.Models.Domins
             this.Tbl_SpecialAcssesBook = new HashSet<Tbl_SpecialAcssesBook>();
             this.Tbl_UsersPermission = new HashSet<Tbl_UsersPermission>();
             this.Tbl_Wishlist = new HashSet<Tbl_Wishlist>();
-            this.Tbl_Book = new HashSet<Tbl_Book>();
         }
     
         public int User_ID { get; set; }
@@ -39,6 +39,8 @@ namespace D_Library.Models.Domins
         public Nullable<int> User_BranchID { get; set; }
         public bool User_SABAlloow { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -60,7 +62,5 @@ namespace D_Library.Models.Domins
         public virtual ICollection<Tbl_UsersPermission> Tbl_UsersPermission { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Wishlist> Tbl_Wishlist { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
     }
 }

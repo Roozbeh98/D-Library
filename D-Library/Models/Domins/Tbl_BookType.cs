@@ -17,19 +17,19 @@ namespace D_Library.Models.Domins
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_BookType()
         {
+            this.Tbl_Book = new HashSet<Tbl_Book>();
             this.Tbl_BookDetailsNavigator = new HashSet<Tbl_BookDetailsNavigator>();
             this.Tbl_RequestType = new HashSet<Tbl_RequestType>();
-            this.Tbl_Book = new HashSet<Tbl_Book>();
         }
     
         public int BookType_ID { get; set; }
         public string BookType_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_RequestType> Tbl_RequestType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
     }
 }

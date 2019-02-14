@@ -18,7 +18,7 @@ namespace D_Library.Models.Domins
         public int Wishlist_BookID { get; set; }
         public int Wishlist_UserID { get; set; }
     
-        public virtual Tbl_User Tbl_User { get; set; }
         public virtual Tbl_Book Tbl_Book { get; set; }
+        public virtual Tbl_User Tbl_User { get; set; }
     }
 }

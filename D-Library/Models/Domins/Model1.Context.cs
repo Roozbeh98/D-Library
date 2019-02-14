@@ -29,6 +29,7 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_AcssesBookContorl> Tbl_AcssesBookContorl { get; set; }
         public virtual DbSet<Tbl_BaseRole> Tbl_BaseRole { get; set; }
         public virtual DbSet<Tbl_BaseRolesPermission> Tbl_BaseRolesPermission { get; set; }
+        public virtual DbSet<Tbl_Book> Tbl_Book { get; set; }
         public virtual DbSet<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         public virtual DbSet<Tbl_BookDetailsFeatures> Tbl_BookDetailsFeatures { get; set; }
         public virtual DbSet<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }
@@ -54,6 +55,5 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_User> Tbl_User { get; set; }
         public virtual DbSet<Tbl_UsersPermission> Tbl_UsersPermission { get; set; }
         public virtual DbSet<Tbl_Wishlist> Tbl_Wishlist { get; set; }
-        public virtual DbSet<Tbl_Book> Tbl_Book { get; set; }
     }
 }

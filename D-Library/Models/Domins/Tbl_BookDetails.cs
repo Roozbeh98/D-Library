@@ -21,7 +21,6 @@ namespace D_Library.Models.Domins
         }
     
         public int BD_ID { get; set; }
-        public string BD_Name { get; set; }
         public Nullable<bool> BD_DigitalVersionAvailable { get; set; }
         public Nullable<bool> BD_PhysicalVersionAvailable { get; set; }
         public Nullable<int> BD_LibraryID { get; set; }
@@ -42,13 +41,14 @@ namespace D_Library.Models.Domins
         public string BD_Subject { get; set; }
         public Nullable<int> BD_GroupID { get; set; }
         public Nullable<int> BD_BranchID { get; set; }
+        public string BD_Translator { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
         public virtual Tbl_branch Tbl_branch { get; set; }
         public virtual Tbl_Group Tbl_Group { get; set; }
         public virtual Tbl_Library Tbl_Library { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
         public virtual Tbl_User Tbl_User1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
     }
 }
