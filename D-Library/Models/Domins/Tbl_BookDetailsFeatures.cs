@@ -23,6 +23,7 @@ namespace D_Library.Models.Domins
         public int BDF_ID { get; set; }
         public string BDF_Name { get; set; }
         public string BDF_Titel { get; set; }
+        public int BDF_Priority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }

@@ -65,6 +65,15 @@
 
             @* language here *@
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.Details.BD_PageCount, htmlAttributes: new { @class = "" })
+                <div class="input-group">
+                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    @Html.EditorFor(model => model.Details.BD_PageCount, new { htmlAttributes = new { @class = "form-control text-center" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.Details.BD_PageCount, "", new { @class = "text-danger" })
+            </div>
+
             @{
                 foreach (var item in Model.DetailsNav)
                 {
@@ -81,7 +90,14 @@
                             </div>
                             break;
                         case "Abstract":
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Details.BD_Abstract, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    @Html.EditorFor(model => model.Details.BD_Abstract, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Details.BD_Abstract, "", new { @class = "text-danger" })
+                            </div>
                             break;
                         case "Student":
                             <div class="form-group ">
@@ -154,7 +170,7 @@
                                 @Html.LabelFor(model => model.Details.BD_Description, htmlAttributes: new { @class = "" })
                                 <div class="input-group">
                                     <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    @Html.EditorFor(model => model.Details.BD_Description, new { htmlAttributes = new { @class = "form-control text-center" } })
+                                    @Html.EditorFor(model => model.Details.BD_Description, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                                 @Html.ValidationMessageFor(model => model.Details.BD_Description, "", new { @class = "text-danger" })
                             </div>

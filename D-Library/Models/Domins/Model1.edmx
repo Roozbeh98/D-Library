@@ -86,6 +86,7 @@
           <Property Name="BDF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BDF_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="BDF_Titel" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BDF_Priority" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_BookDetailsNavigator">
           <Key>
@@ -1271,6 +1272,7 @@
           <Property Name="BDF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BDF_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BDF_Titel" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BDF_Priority" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tbl_BookDetailsNavigator" Relationship="ELModel.FK_Tbl_BookDetailsNavigator_Tbl_BookDetailsFeatures" FromRole="Tbl_BookDetailsFeatures" ToRole="Tbl_BookDetailsNavigator" />
         </EntityType>
         <EntityType Name="Tbl_BookDetailsNavigator">
@@ -2112,6 +2114,7 @@
           <EntitySetMapping Name="Tbl_BookDetailsFeatures">
             <EntityTypeMapping TypeName="ELModel.Tbl_BookDetailsFeatures">
               <MappingFragment StoreEntitySet="Tbl_BookDetailsFeatures">
+                <ScalarProperty Name="BDF_Priority" ColumnName="BDF_Priority" />
                 <ScalarProperty Name="BDF_Titel" ColumnName="BDF_Titel" />
                 <ScalarProperty Name="BDF_Name" ColumnName="BDF_Name" />
                 <ScalarProperty Name="BDF_ID" ColumnName="BDF_ID" />

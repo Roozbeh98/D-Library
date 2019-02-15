@@ -35,9 +35,9 @@ namespace D_Library.Models.Repository
         {
             List<SelectListItem> list = new List<SelectListItem>();
 
-            foreach (var item in db.Tbl_Group)
+            foreach (var item in db.Tbl_branch)
             {
-                list.Add(new SelectListItem() { Value = item.Group_ID.ToString(), Text = item.Group_Name });
+                list.Add(new SelectListItem() { Value = item.branch_ID.ToString(), Text = item.branch_Name });
             }
 
             return list.AsEnumerable();
@@ -47,12 +47,13 @@ namespace D_Library.Models.Repository
         {
             List<SelectListItem> list = new List<SelectListItem>();
 
-            foreach (var item in db.Tbl_branch)
+            foreach (var item in db.Tbl_Group)
             {
-                list.Add(new SelectListItem() { Value = item.branch_ID.ToString(), Text = item.branch_Name });
+                list.Add(new SelectListItem() { Value = item.Group_ID.ToString(), Text = item.Group_Name });
             }
 
             return list.AsEnumerable();
+
         }
     }
 

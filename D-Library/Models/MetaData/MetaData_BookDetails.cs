@@ -20,28 +20,28 @@ namespace D_Library.Models.Domins
         [Display(Name = "تعداد صفحه ها")]
         public Nullable<int> BD_PageCount { get; set; }
         [Display(Name = "عنوان")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_Titel { get; set; }
         [Display(Name = "نویسنده")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_WriterName { get; set; }
         [Display(Name = "زبان")]
         public string BD_Language { get; set; }
         [Display(Name = "توصیحات")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]
         public string BD_Description { get; set; }
         [Display(Name = "چکیده")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]
         public string BD_Abstract { get; set; }
         [Display(Name = "تاریخ انتشار")]
         [DataType(DataType.Time)]
         public Nullable<System.DateTime> BD_ReleaseDate { get; set; }
         [Display(Name = "نوبت چاپ")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public Nullable<int> BD_ReleaseCount { get; set; }
         [Display(Name = "دانشجو")]
@@ -49,15 +49,15 @@ namespace D_Library.Models.Domins
         [Display(Name = "استاد")]
         public Nullable<int> BD_MasterID { get; set; }
         [Display(Name = "انتشارات")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_Publishers { get; set; }
         [Display(Name = "شابک")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_ISBN { get; set; }
         [Display(Name = "موضوع")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_Subject { get; set; }
         [Display(Name = "گروه")]
@@ -65,7 +65,7 @@ namespace D_Library.Models.Domins
         [Display(Name = "رشته")]
         public Nullable<int> BD_BranchID { get; set; }
         [Display(Name = "مترجم")]
-        [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_Translator { get; set; }
     }

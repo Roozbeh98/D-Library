@@ -1,8 +1,8 @@
 ﻿.material-switch > input[type="checkbox"] {
     /*display: none;*/
-    height: 0;
+    /*height: 0;
     width: 0;
-    visibility: hidden;
+    visibility: hidden;*/
 }
 
 .material-switch > label {

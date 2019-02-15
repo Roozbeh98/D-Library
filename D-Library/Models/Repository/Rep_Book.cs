@@ -32,11 +32,15 @@ namespace D_Library.Models.Repository
             List<string> list = new List<string>();
 
             var q = db.Tbl_BookDetailsNavigator.Where(a => a.Tbl_BookType.BookType_ID == id);
+            SortedDictionary<int, string> order = new SortedDictionary<int, string>();
+
 
             foreach (var item in q)
             {
-                list.Add(item.Tbl_BookDetailsFeatures.BDF_Name);
+                order.Add(item.Tbl_BookDetailsFeatures.BDF_Priority, item.Tbl_BookDetailsFeatures.BDF_Name);
             }
+
+            list.AddRange(order.Values.ToList());
 
             return list;
         }
