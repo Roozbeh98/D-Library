@@ -1,0 +1,149 @@
+﻿@model D_Library.Models.Model.BookListModel
+
+@{
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+    <div class="table-panel userlisttable-panel">
+        <div class="table-heading  text-center ">
+            <span>
+                لیست کاربران
+            </span>
+        </div>
+        <div class="panel-body table-body">
+            <table id="BookListTable" class="table table-striped " style="width:100%;">
+                <thead>
+                    <tr class="table-tr">
+                        <th scope="col">#</th>
+                        <th scope="col">کد کتاب</th>
+                        <th scope="col">نام کتاب</th>
+                        <th scope="col">نوع</th>
+                        <th scope="col">نسخه دیجتال</th>
+                        <th scope="col">نسخه فیزیکی</th>
+                        <th scope="col">تایید انتشار</th>
+                        <th scope="col" data-orderable="false"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int x = 0;
+                    }
+
+                    @foreach (var item in Model.Books)
+                    {
+                        x++;
+                        <tr>
+                            @{
+// var q = item.Tbl_Login.SingleOrDefault();
+                            }
+                            <td scope="row">@x</td>
+
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.Book_Code)</span>
+                            </td>
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.Book_Name)</span>
+                            </td>
+                            <td scope="row">
+                                <span>@Html.DisplayFor(modelItem => item.Tbl_BookType.BookType_Name)</span>
+                            </td>
+                            <td scope="row">
+                                @{
+                                    if (item.Tbl_BookDetails.BD_DigitalVersionAvailable.Value)
+                                    {
+                                        <span>دارد</span>
+                                    }
+                                    else
+                                    {
+                                        <span>ندارد</span>
+                                    }
+                                }
+                            </td>
+                            <td scope="row">
+                                @{
+                                    if (item.Tbl_BookDetails.BD_PhysicalVersionAvailable.Value)
+                                    {
+                                        <span>دارد</span>
+                                    }
+                                    else
+                                    {
+                                        <span>ندارد</span>
+                                    }
+                                }
+                            </td>
+                            <td scope="row">
+                                @{
+                                    if (item.Book_Publish)
+                                    {
+                                        <span>شده</span>
+                                    }
+                                    else
+                                    {
+                                        <span>نشده</span>
+                                    }
+                                }
+
+                            </td>
+                            <td scope="row" class="pull-right">
+                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.Book_ID})   "></a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.Book_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Book_ID})   "></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('#BookListTable').DataTable({
+            "language": {
+
+                "sEmptyTable": "هیچ داده ای در جدول وجود ندارد",
+                "sInfo": "نمایش _START_ تا _END_ از _TOTAL_ رکورد",
+                "sInfoEmpty": "نمایش 0 تا 0 از 0 رکورد",
+                "sInfoFiltered": "(فیلتر شده از _MAX_ رکورد)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "_MENU_",
+                "sLoadingRecords": "در حال بارگزاری...",
+                "sProcessing": "در حال پردازش...",
+                "sSearch": "",
+                "sSearchPlaceholder":"جستجو",
+                "sZeroRecords": "رکوردی با این مشخصات پیدا نشد",
+                "oPaginate": {
+                    "sFirst": "ابتدا",
+                    "sLast": "انتها",
+                    "sNext": "بعدی",
+                    "sPrevious": "قبلی"
+                },
+                "oAria": {
+                    "sSortAscending": ": فعال سازی نمایش به صورت صعودی",
+                    "sSortDescending": ": فعال سازی نمایش به صورت نزولی"
+                }
+            },
+            "scrollX": true
+        });
+    });
+
+    $(function () {
+        var element1 = document.getElementById('BookListTable_filter').parentElement;
+        var element2 = document.getElementById('BookListTable_length').parentElement;
+        element1.classList.remove('col-sm-6');
+        element2.classList.remove('col-sm-6');
+
+        element1.classList.add('col-md-6');
+        element2.classList.add('col-md-3');
+
+        var element3 = element2.parentElement;
+
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookTypeSelector", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        addbtn.appendTo(element3)
+    });
+
+</script>

@@ -409,6 +409,7 @@
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\BaseRoleList.cs" />
+    <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookTypeTableModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\NewBaseRoleModel.cs" />
@@ -487,6 +488,7 @@
     <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
     <Content Include="Views\Dashboard\NewBook.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Dashboard\BookList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

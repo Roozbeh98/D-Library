@@ -263,7 +263,7 @@ namespace D_Library.Controllers
             _book.Book_Publish = false;
 
 
-            if (model.Details.BD_DigitalVersionAvailable != null)
+            if (model.Details.BD_DigitalVersionAvailable.HasValue)
             {
                 _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
 
@@ -274,7 +274,7 @@ namespace D_Library.Controllers
 
             }
 
-            if (model.Details.BD_PhysicalVersionAvailable != null)
+            if (model.Details.BD_PhysicalVersionAvailable.HasValue)
             {
                 _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
 
@@ -349,7 +349,7 @@ namespace D_Library.Controllers
             {
                 ViewBag.Message = "عملبات با موفقیت انجام شده!";
                 ViewBag.State = "Sucsse";
-                return RedirectToAction("NewBook", "Dashboard", new { id = model.ID });
+                return RedirectToAction("BookList", "Dashboard");
             }
             else
             {
@@ -434,9 +434,8 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult BookList()
         {
-            NewBookTypeModel moodel = new NewBookTypeModel();
-            Rep_Book book = new Rep_Book();
-            moodel.FromList = book.Get_BookDetailsListAll();
+            BookListModel moodel = new BookListModel();
+            moodel.Books = db.Tbl_Book;
             return View(moodel);
         }
 
