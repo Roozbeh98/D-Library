@@ -42,7 +42,7 @@ namespace D_Library.Controllers
                 {
                     var file = Request.Files[i];
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Pages/"), fileName);
 
                     file.SaveAs(path);
                 }

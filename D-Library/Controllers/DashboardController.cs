@@ -432,6 +432,22 @@ namespace D_Library.Controllers
 
 
         [HttpGet]
+        public ActionResult BookUplaod()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BookUplaod(HttpPostedFileBase fileuplaod)
+        {
+            var x = fileuplaod;
+
+            return View();
+        }
+
+
+        [HttpGet]
         public ActionResult BookList()
         {
             BookListModel moodel = new BookListModel();
@@ -439,7 +455,7 @@ namespace D_Library.Controllers
             return View(moodel);
         }
 
-
+        
 
         #endregion
 

@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <title>Test</title>
+
+    <link href="../../Content/css/bootstrap.rtl.full.min.css" rel="stylesheet" />
+    <link href="../../Content/css/fontiran.css" rel="stylesheet" />
+    <link href="../../Content/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="../../Content/Plugins/JQuery.Filepond/fine-uploader-new.min.css" rel="stylesheet" />
+    <link href="../../Content/Plugins/JQuery.Filepond/filepond.css" rel="stylesheet" />
+
+    <link href="../../Content/css/MyCss/Panelstyle.css" rel="stylesheet" />
+    <link href="../../Content/css/MyCss/CodeGeneration.css" rel="stylesheet" />
+
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="../../Scripts/Plugins/JQuery.Filepond/filepond.js"></script>
+    <script src="../../Scripts/Plugins/JQuery.Filepond/filepond.jquery.js"></script>
+
+    <script src="../../Scripts/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header class="main-header container-fluid  navbar-fixed-top">
+
+            <div class="row">
+
+                <div class="col-md-3  navHeader">
+                    <a href="#">سامانه کتابخانه دیجیتال</a>
+                </div>
+                <nav class="col-md-9  navbar navbar-inverse " style="border-radius:0;">
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu menu-item ">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o nav-top-userInfo-icon"></i>
+                                    <span class="label label-success">0</span>
+                                </a>
+
+                            </li>111
+
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu menu-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o nav-top-userInfo-icon"></i>
+                                    <span class="label label-warning">0</span>
+                                </a>
+
+                            </li>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu menu-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="glyphicon glyphicon-user  nav-top-userInfo-icon"></i>
+
+                                    <span class="hidden-xs">روزبه شامخی</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+
+
+                                        <img src="../../Content/Images/abstract-user-flat-3.png" style="width:100px;height:100px;"
+                                            class=" img-circle" alt="User Image">
+
+                                        <p>
+                                            روزبه شامخی - ادمین
+                                            <br />
+                                            <small>Member since Nov. 2012</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-4 text-left">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon glyphicon-user "
+                                                data-toggle="tooltip" data-placement="top" title="پروفایل"></button>
+
+                                        </div>
+                                        <div class="col-xs-4 text-center ">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon-cog "
+                                                data-toggle="tooltip" data-placement="top" title="تنظمات کاربری"></button>
+
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open "
+                                                data-toggle="tooltip" data-placement="top" title="فایل های من"></button>
+
+                                        </div>
+
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat" style="width:65px;">داشبورد</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat" style="width:65px;">خروج</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+
+
+        </header>
+
+
+        <main>
+            <div class="container-fluid divMain">
+                <div class="row">
+                    <aside class="col-md-3">
+                        <ul class="navbar nav dashboard-panel">
+                            <li>
+                                <!--<div style="width: 90%; height: 90%;  border: 2px solid #6BA4D6 ;border-radius: 10%; margin: auto; margin-top: 10px; ">-->
+
+                                <img src="../../Content/Images/arm.png" alt="Logo" class="img-responsive img-rounded img-logo">
+                                <!--</div>-->
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-dashboard  "></i>
+                                    داشبورد
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    جستجو کتاب
+
+                                </a>
+                            </li>
+
+
+                            <li data-toggle="collapse" data-target="#sub-menu-file">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت فایل
+                                    <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-file">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            فایل های شخصی
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            فایل عمومی
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+                            <li data-toggle="collapse" data-target="#sub-menu-User">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت کاربران
+                                    <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-User">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            لیست کاربران
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            کاربر جدید
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+                            <li data-toggle="collapse" data-target="#sub-menu-book">
+
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    مدیرت کتاب ها
+                                    <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+
+                                </a>
+
+                                <ul class="collapse nav dashboard-sub-panel " id="sub-menu-book">
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            لیست کتاب ها
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="glyphicon glyphicon-book"></i>
+                                            کتاب جدید
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-book"></i>
+
+                                    تنظیمات سامانه
+
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
+
+                    <section class="col-md-9 container-fluid main-section">
+
+                        <form class="panel-info  panel-codeGeneration">
+                            <div class=" codeGeneration-heading  text-center">
+                                تولید کد ثبت نام
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>نام کاربری</label>
+                                    <div class="input-group">
+                                        <input type="text" name="inputUsername" class="form-control ">
+                                        <span class=" input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>نوع کاربر</label>
+                                    <select name="selectUserType" class="form-control">
+                                        <option>کارشناسی</option>
+                                        <option> کارشناسی ارشد</option>
+                                        <option>دکترا</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div id="fine-uploader-manual-trigger"></div>
+
+                            <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
+        ====================================================================== -->
+                            <input class="fileUpload-multiple" type="file" name="filepond" data-max-files="10" required>
+                            <input class="fileUpload-single" type="file" name="filepond" data-max-files="10" required>
+
+                            <div class="panel-footer codeGeneration-footer">
+                                <button class="btn btn-success  codeGeneration-accept" type="button" name="btnAccept">تایید</button>
+                            </div>
+                        </form>
+
+                        <div class="codeGeneration-mainCodePanel">
+                            <div class="codeGeneration-codeDetails text-center">کد ثبت نام کاربر ... کد زیر می باشد</div>
+                            <div class="codeGeneration-code">
+                                <div class="codeGeneration-panelCodePlace text-center">
+                                    <div class="codeGeneration-codePlace">2</div>
+                                    <div class="codeGeneration-codePlace">2</div>
+                                    <div class="codeGeneration-codePlace">2</div>
+                                    <div class="codeGeneration-codePlace">2</div>
+                                    <div class="codeGeneration-codePlace">2</div>
+                                    <div class="codeGeneration-codePlace">2</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer></footer>
+    </div>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        $(function () {
+
+            // Turn input element into a pond
+            $('.fileUpload-multiple').filepond();
+
+            // Turn input element into a pond with configuration options
+            $('.fileUpload-multiple').filepond({
+                allowMultiple: true
+            });
+
+            // Set allowMultiple property to true
+            $('.fileUpload-multiple').filepond('allowMultiple', true);
+
+            // Listen for addfile event
+            $('.fileUpload-multiple').on('FilePond:addfile', function (e) {
+                console.log('file added event', e);
+            });
+        });
+
+
+        $(function () {
+
+            // Turn input element into a pond
+            $('.fileUpload-single').filepond();
+
+            // Turn input element into a pond with configuration options
+            $('.fileUpload-single').filepond({
+                allowMultiple: true
+            });
+
+            // Set allowMultiple property to true
+            $('.fileUpload-single').filepond('allowMultiple', false);
+
+            // Listen for addfile event
+            $('.fileUpload-single').on('FilePond:addfile', function (e) {
+                console.log('file added event', e);
+            });
+        });
+    </script>
+
+
+    <!-- code below is for uploader -->
+
+</body>
+
+
+</html>

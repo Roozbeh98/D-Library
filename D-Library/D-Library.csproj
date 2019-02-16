@@ -132,6 +132,8 @@
     <Content Include="Content\Plugins\Chosen\chosen-sprite.png" />
     <Content Include="Content\Plugins\Chosen\chosen.css" />
     <Content Include="Content\Plugins\Chosen\chosen.min.css" />
+    <Content Include="Content\Plugins\JQuery.Filepond\filepond.css" />
+    <Content Include="Content\Plugins\JQuery.Filepond\filepond.min.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
@@ -197,6 +199,7 @@
     </Content>
     <Content Include="Pages\Html\CodeGeneration.html" />
     <Content Include="Pages\Html\Dashboard.html" />
+    <Content Include="Pages\Html\Filepond.html" />
     <Content Include="Pages\Html\List.html" />
     <Content Include="Pages\Html\Login.html" />
     <Content Include="Pages\Html\Registration.html" />
@@ -255,8 +258,20 @@
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\jquery.dataTables.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\filepond.jquery.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\filepond.js" />
     <Content Include="Scripts\Plugins\jQuery.Chosen\chosen.jquery.js" />
     <Content Include="Scripts\Plugins\jQuery.Chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-encode.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-encode.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-metadata.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-metadata.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-rename.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-rename.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-validate-size.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-validate-size.min.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-validate-type.js" />
+    <Content Include="Scripts\Plugins\JQuery.Filepond\Plugins\filepond-plugin-file-validate-type.min.js" />
     <Content Include="Scripts\Plugins\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
     <Content Include="Scripts\Plugins\jQuery.FileUpload\cors\jquery.xdr-transport.js" />
     <Content Include="Scripts\Plugins\jQuery.FileUpload\jquery.fileupload-angular.js" />
@@ -489,6 +504,7 @@
     <Content Include="Views\Dashboard\NewBook.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Dashboard\BookList.cshtml" />
+    <Content Include="Views\Dashboard\BookUplaod.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

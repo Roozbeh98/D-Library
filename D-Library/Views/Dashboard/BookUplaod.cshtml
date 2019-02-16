@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "BookUplaod";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("BookUplaod", "Dashboard", FormMethod.Post, new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class=" form-heading  text-center">
+            بارگذاری
+        </div>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="panel-body">
+            <div class="form-group ">
+
+                <input class="fileUpload-multiple" type="file" name="fileuplaod">
+
+            </div>
+        </div>
+
+        <div class="panel-footer form-footer ">
+            <button class="btn btn-success  AddNewUser-button" type="submit" value="Uplaod" name="btn-BuildCode">تایید</button>
+        </div>
+    }
+</section>
+
+<script>
+
+    FilePond.setOptions({
+        server: '@Url.Action("UploadFiles","Home")'
+
+    });
+
+
+    $(function () {
+
+        // Turn input element into a pond
+        $('.fileUpload-multiple').filepond();
+
+        // Turn input element into a pond with configuration options
+        $('.fileUpload-multiple').filepond({
+            allowMultiple: true
+        });
+
+        // Set allowMultiple property to true
+        $('.fileUpload-multiple').filepond('allowMultiple', true);
+
+        // Listen for addfile event
+        $('.fileUpload-multiple').on('FilePond:addfile', function (e) {
+            console.log('file added event', e);
+        });
+    });
+
+
+    $(function () {
+
+        // Turn input element into a pond
+        $('.fileUpload-single').filepond();
+
+        // Turn input element into a pond with configuration options
+        $('.fileUpload-single').filepond({
+            allowMultiple: true
+        });
+
+        // Set allowMultiple property to true
+        $('.fileUpload-single').filepond('allowMultiple', false);
+
+        // Listen for addfile event
+        $('.fileUpload-single').on('FilePond:addfile', function (e) {
+            console.log('file added event', e);
+        });
+    });
+</script>
