@@ -224,7 +224,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MyScripts\script.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.css" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
@@ -301,7 +300,6 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Errors\Error_401.cshtml" />
     <Content Include="Views\Errors\Error_404.cshtml" />
-    <Content Include="Views\Home\Uploader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -309,6 +307,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -516,6 +515,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\Enum\" />
     <Folder Include="Models\Plugins\" />
+    <Folder Include="Scripts\MyScripts\" />
+    <Folder Include="Views\FileManager\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

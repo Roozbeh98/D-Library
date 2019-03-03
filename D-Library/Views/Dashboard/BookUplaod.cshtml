@@ -15,7 +15,6 @@
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="panel-body">
             <div class="form-group ">
-
                 <input class="fileUpload-multiple" type="file" name="fileuplaod">
 
             </div>
@@ -30,7 +29,7 @@
 <script>
 
     FilePond.setOptions({
-        server: '@Url.Action("UploadFiles","Home")'
+        server: '@Url.Action("UploadFiles", "FileManager")'
 
     });
 

@@ -32,31 +32,8 @@ namespace D_Library.Controllers
             return View();
         }
 
-        [HttpPost]
-        public void UploadFiles()
-        {
-            if (Request.Files?.Count > 0)
-            {
-                var filesCount = Request.Files.Count;
-                for (int i = 0; i < filesCount; i++)
-                {
-                    var file = Request.Files[i];
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Pages/"), fileName);
-
-                    file.SaveAs(path);
-                }
 
 
-
-            }
-        }
-
-        public ActionResult Uploader()
-        {
-
-            return View();
-        }
 
     }
 
