@@ -1,4 +1,5 @@
-﻿
+﻿@model D_Library.Models.Model.BookUplaodModel
+
 @{
     ViewBag.Title = "BookUplaod";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
@@ -19,7 +20,7 @@
 
             </div>
         </div>
-
+        
         <div class="panel-footer form-footer ">
             <button class="btn btn-success  AddNewUser-button" type="submit" value="Uplaod" name="btn-BuildCode">تایید</button>
         </div>
@@ -29,7 +30,7 @@
 <script>
 
     FilePond.setOptions({
-        server: '@Url.Action("UploadFiles", "FileManager")'
+        server: '@Url.Action("UploadFiles", "FileManager" ,new { id = "@Model.ID" })'
 
     });
 
@@ -73,3 +74,4 @@
         });
     });
 </script>
+

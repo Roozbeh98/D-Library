@@ -18,12 +18,13 @@ namespace D_Library.Models.Domins
         public int File_Index { get; set; }
         public string File_Name { get; set; }
         public string File_Path { get; set; }
-        public int File_FileTypeID { get; set; }
+        public Nullable<int> File_FileTypeID { get; set; }
         public int File_BookID { get; set; }
         public int File_UserUploaderID { get; set; }
         public System.DateTime File_Date { get; set; }
-        public bool File_DownloadAcssesLocalIP { get; set; }
-        public bool File_DownloadAcssesGlobalIP { get; set; }
+        public Nullable<bool> File_DownloadAcssesLocalIP { get; set; }
+        public Nullable<bool> File_DownloadAcssesGlobalIP { get; set; }
+        public System.Guid File_FolderName { get; set; }
     
         public virtual Tbl_Book Tbl_Book { get; set; }
         public virtual Tbl_FileType Tbl_FileType { get; set; }

@@ -39,27 +39,30 @@
 
 
             <div class="form-group material-switch-body">
-                @Html.LabelFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = "pull-left" })
+                <label class="pull-left">نمایش در جستجو میهمان ها</label>
                 <div class="material-switch pull-right">
                     @Html.CheckBoxFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = " " })
-                    <label for="Book_Book_GuestSearchEnabel" class="label-success"> </label>
+                    @Html.LabelFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = "label-success" })
+
+
                 </div>
             </div>
 
 
             <div class="form-group material-switch-body">
-                @Html.LabelFor(model => model.Details.BD_DigitalVersionAvailable, htmlAttributes: new { @class = "pull-left" })
+                <label class="pull-left">نسخه دیجتال دارد</label>
                 <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.Details.BD_DigitalVersionAvailable.Value, htmlAttributes: new { @class = " " })
-                    <label for="Details_BD_DigitalVersionAvailable_Value" class="label-success"> </label>
+                    @Html.CheckBoxFor(model => model.Details.BD_DigitalVersionAvailable, htmlAttributes: new { @class = " " })
+                    @Html.LabelFor(model => model.Details.BD_DigitalVersionAvailable, htmlAttributes: new { @class = "label-success" })
                 </div>
             </div>
 
             <div class="form-group material-switch-body">
-                @Html.LabelFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = "pull-left" })
+                <label class="pull-left">نسخه فیزیکی دارد</label>
                 <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.Details.BD_PhysicalVersionAvailable.Value, htmlAttributes: new { @class = " " })
-                    <label for="Details_BD_PhysicalVersionAvailable_Value" class="label-success"> </label>
+                    @Html.CheckBoxFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = " " })
+                    @Html.LabelFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = "label-success" })
+
                 </div>
             </div>
 

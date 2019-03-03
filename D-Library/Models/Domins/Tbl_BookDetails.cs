@@ -21,8 +21,8 @@ namespace D_Library.Models.Domins
         }
     
         public int BD_ID { get; set; }
-        public Nullable<bool> BD_DigitalVersionAvailable { get; set; }
-        public Nullable<bool> BD_PhysicalVersionAvailable { get; set; }
+        public bool BD_DigitalVersionAvailable { get; set; }
+        public bool BD_PhysicalVersionAvailable { get; set; }
         public Nullable<int> BD_LibraryID { get; set; }
         public Nullable<bool> BD_FileEnabel { get; set; }
         public Nullable<int> BD_FileCount { get; set; }

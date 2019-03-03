@@ -262,29 +262,9 @@ namespace D_Library.Controllers
             _book.Book_GuestSearchEnabel = model.Book.Book_GuestSearchEnabel;
             _book.Book_Publish = false;
 
+            _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
 
-            if (model.Details.BD_DigitalVersionAvailable.HasValue)
-            {
-                _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
-
-            }
-            else
-            {
-                _details.BD_DigitalVersionAvailable = false;
-
-            }
-
-            if (model.Details.BD_PhysicalVersionAvailable.HasValue)
-            {
-                _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
-
-            }
-            else
-            {
-                _details.BD_PhysicalVersionAvailable = false;
-
-            }
-       
+            _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
 
             _details.BD_PageCount = model.Details.BD_PageCount;
 
@@ -349,7 +329,15 @@ namespace D_Library.Controllers
             {
                 ViewBag.Message = "عملبات با موفقیت انجام شده!";
                 ViewBag.State = "Sucsse";
-                return RedirectToAction("BookList", "Dashboard");
+                if (_details.BD_DigitalVersionAvailable)
+                {
+                    return RedirectToAction("BookUplaod", "Dashboard", new { id = _book.Book_ID });
+                }
+                else
+                {
+                    return RedirectToAction("BookList", "Dashboard");
+                }
+
             }
             else
             {
@@ -368,7 +356,6 @@ namespace D_Library.Controllers
         [HttpPost]
         public ActionResult NewBookTypeSelector(int BookTypeSelection)
         {
-
             return RedirectToAction("NewBook", "Dashboard", new { id = BookTypeSelection });
         }
 
@@ -430,18 +417,20 @@ namespace D_Library.Controllers
 
         }
 
-
         [HttpGet]
-        public ActionResult BookUplaod()
+        public ActionResult BookUplaod(int id)
         {
+            BookUplaodModel model = new BookUplaodModel();
 
-            return View();
+            model.ID = id;
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult BookUplaod(HttpPostedFileBase fileuplaod)
+        public ActionResult BookUplaod(BookUplaodModel model)
         {
-            var x = fileuplaod;
+
 
             return View();
         }
@@ -455,7 +444,7 @@ namespace D_Library.Controllers
             return View(moodel);
         }
 
-        
+
 
         #endregion
 

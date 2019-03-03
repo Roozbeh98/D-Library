@@ -9,10 +9,12 @@ namespace D_Library.Models.Domins
     internal class MetaData_BookDetails
     {
         public int BD_ID { get; set; }
-        [Display(Name = "نسخه دیجتال دارد")]
-        public Nullable<bool> BD_DigitalVersionAvailable { get; set; }
-        [Display(Name = "نسخه فیزیکی دارد")]
-        public Nullable<bool> BD_PhysicalVersionAvailable { get; set; }
+     //   [Display(Name = "نسخه دیجتال دارد")]
+        [Display(Name = " ")]
+        public bool BD_DigitalVersionAvailable { get; set; }
+       // [Display(Name = "نسخه فیزیکی دارد")]
+        [Display(Name = " ")]
+        public bool BD_PhysicalVersionAvailable { get; set; }
         [Display(Name = "کتاب خانه")]
         public Nullable<int> BD_LibraryID { get; set; }
         public Nullable<bool> BD_FileEnabel { get; set; }

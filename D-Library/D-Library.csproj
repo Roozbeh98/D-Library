@@ -425,6 +425,7 @@
     <Compile Include="Models\Model\BaseRoleList.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookTypeTableModel.cs" />
+    <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\NewBaseRoleModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
@@ -512,7 +513,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Upload\" />
     <Folder Include="Models\Enum\" />
     <Folder Include="Models\Plugins\" />
     <Folder Include="Scripts\MyScripts\" />

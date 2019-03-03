@@ -57,8 +57,8 @@
             <PropertyRef Name="BD_ID" />
           </Key>
           <Property Name="BD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BD_DigitalVersionAvailable" Type="bit" />
-          <Property Name="BD_PhysicalVersionAvailable" Type="bit" />
+          <Property Name="BD_DigitalVersionAvailable" Type="bit" Nullable="false" />
+          <Property Name="BD_PhysicalVersionAvailable" Type="bit" Nullable="false" />
           <Property Name="BD_LibraryID" Type="int" />
           <Property Name="BD_FileEnabel" Type="bit" />
           <Property Name="BD_FileCount" Type="int" />
@@ -150,12 +150,13 @@
           <Property Name="File_Index" Type="int" Nullable="false" />
           <Property Name="File_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="File_Path" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="File_FileTypeID" Type="int" Nullable="false" />
+          <Property Name="File_FileTypeID" Type="int" />
           <Property Name="File_BookID" Type="int" Nullable="false" />
           <Property Name="File_UserUploaderID" Type="int" Nullable="false" />
           <Property Name="File_Date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="File_DownloadAcssesLocalIP" Type="bit" Nullable="false" />
-          <Property Name="File_DownloadAcssesGlobalIP" Type="bit" Nullable="false" />
+          <Property Name="File_DownloadAcssesLocalIP" Type="bit" />
+          <Property Name="File_DownloadAcssesGlobalIP" Type="bit" />
+          <Property Name="File_FolderName" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_FileType">
           <Key>
@@ -578,7 +579,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tbl_Files_Tbl_FileType">
-          <End Role="Tbl_FileType" Type="Self.Tbl_FileType" Multiplicity="1" />
+          <End Role="Tbl_FileType" Type="Self.Tbl_FileType" Multiplicity="0..1" />
           <End Role="Tbl_Files" Type="Self.Tbl_Files" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tbl_FileType">
@@ -1237,8 +1238,8 @@
             <PropertyRef Name="BD_ID" />
           </Key>
           <Property Name="BD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BD_DigitalVersionAvailable" Type="Boolean" />
-          <Property Name="BD_PhysicalVersionAvailable" Type="Boolean" />
+          <Property Name="BD_DigitalVersionAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="BD_PhysicalVersionAvailable" Type="Boolean" Nullable="false" />
           <Property Name="BD_LibraryID" Type="Int32" />
           <Property Name="BD_FileEnabel" Type="Boolean" />
           <Property Name="BD_FileCount" Type="Int32" />
@@ -1353,12 +1354,13 @@
           <Property Name="File_Index" Type="Int32" Nullable="false" />
           <Property Name="File_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="File_Path" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="File_FileTypeID" Type="Int32" Nullable="false" />
+          <Property Name="File_FileTypeID" Type="Int32" />
           <Property Name="File_BookID" Type="Int32" Nullable="false" />
           <Property Name="File_UserUploaderID" Type="Int32" Nullable="false" />
           <Property Name="File_Date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="File_DownloadAcssesLocalIP" Type="Boolean" Nullable="false" />
-          <Property Name="File_DownloadAcssesGlobalIP" Type="Boolean" Nullable="false" />
+          <Property Name="File_DownloadAcssesLocalIP" Type="Boolean" />
+          <Property Name="File_DownloadAcssesGlobalIP" Type="Boolean" />
+          <Property Name="File_FolderName" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Files_Tbl_Book" FromRole="Tbl_Files" ToRole="Tbl_Book" />
           <NavigationProperty Name="Tbl_FileType" Relationship="ELModel.FK_Tbl_Files_Tbl_FileType" FromRole="Tbl_Files" ToRole="Tbl_FileType" />
           <NavigationProperty Name="Tbl_User" Relationship="ELModel.FK_Tbl_Files_Tbl_User" FromRole="Tbl_Files" ToRole="Tbl_User" />
@@ -1882,7 +1884,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tbl_Files_Tbl_FileType">
-          <End Type="ELModel.Tbl_FileType" Role="Tbl_FileType" Multiplicity="1" />
+          <End Type="ELModel.Tbl_FileType" Role="Tbl_FileType" Multiplicity="0..1" />
           <End Type="ELModel.Tbl_Files" Role="Tbl_Files" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tbl_FileType">
@@ -2184,6 +2186,7 @@
           <EntitySetMapping Name="Tbl_Files">
             <EntityTypeMapping TypeName="ELModel.Tbl_Files">
               <MappingFragment StoreEntitySet="Tbl_Files">
+                <ScalarProperty Name="File_FolderName" ColumnName="File_FolderName" />
                 <ScalarProperty Name="File_DownloadAcssesGlobalIP" ColumnName="File_DownloadAcssesGlobalIP" />
                 <ScalarProperty Name="File_DownloadAcssesLocalIP" ColumnName="File_DownloadAcssesLocalIP" />
                 <ScalarProperty Name="File_Date" ColumnName="File_Date" />
