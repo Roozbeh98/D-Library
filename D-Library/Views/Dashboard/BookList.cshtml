@@ -1,8 +1,10 @@
 ﻿@model D_Library.Models.Model.BookListModel
 
 @{
-    ViewBag.Title = "BookList";
-    Layout = "~/Views/Shared/_Dashboard.cshtml";
+                /**/
+
+                ViewBag.Title = "BookList";
+                Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
@@ -37,7 +39,7 @@
                         x++;
                         <tr>
                             @{
-// var q = item.Tbl_Login.SingleOrDefault();
+                                // var q = item.Tbl_Login.SingleOrDefault();
                             }
                             <td scope="row">@x</td>
 
@@ -52,7 +54,7 @@
                             </td>
                             <td scope="row">
                                 @{
-                                    if (item.Tbl_BookDetails.BD_DigitalVersionAvailable.Value)
+                                    if (item.Tbl_BookDetails.BD_DigitalVersionAvailable)
                                     {
                                         <span>دارد</span>
                                     }
@@ -64,7 +66,7 @@
                             </td>
                             <td scope="row">
                                 @{
-                                    if (item.Tbl_BookDetails.BD_PhysicalVersionAvailable.Value)
+                                    if (item.Tbl_BookDetails.BD_PhysicalVersionAvailable)
                                     {
                                         <span>دارد</span>
                                     }

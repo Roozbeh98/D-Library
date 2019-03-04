@@ -30,7 +30,7 @@
 <script>
 
     FilePond.setOptions({
-        server: '@Url.Action("UploadFiles", "FileManager" ,new { id = "@Model.ID" })'
+        server: '@Url.Action("UploadFiles", "FileManager" ,new { id = ViewBag.ID })'
 
     });
 

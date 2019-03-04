@@ -424,13 +424,15 @@ namespace D_Library.Controllers
 
             model.ID = id;
 
+            ViewBag.ID = id;
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult BookUplaod(BookUplaodModel model)
         {
-
+            int s = model.ID;
 
             return View();
         }
