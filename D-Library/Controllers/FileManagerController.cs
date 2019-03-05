@@ -16,9 +16,6 @@ namespace D_Library.Controllers
     {
         ELEntities db = new ELEntities();
 
-
-
-
         [HttpPost]
         public void UploadFiles(int id)
         {
@@ -71,22 +68,14 @@ namespace D_Library.Controllers
                         if (Convert.ToBoolean(db.SaveChanges() > 0))
                         {
                             file.SaveAs(path);
-
                         }
                         else
                         {
 
                         }
-
-
-             
                     }
-
                 }
             }
-
-      
-
         }
 
         [HttpPost]

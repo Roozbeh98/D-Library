@@ -424,6 +424,7 @@
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\BaseRoleList.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
+    <Compile Include="Models\Model\BookPublishModel.cs" />
     <Compile Include="Models\Model\BookTypeTableModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
@@ -505,6 +506,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Dashboard\BookList.cshtml" />
     <Content Include="Views\Dashboard\BookUplaod.cshtml" />
+    <Content Include="Views\Dashboard\BookPublish.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

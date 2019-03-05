@@ -1,0 +1,59 @@
+﻿@model D_Library.Models.Model.BookPublishModel
+@using D_Library.Models.Repository
+
+@{
+    ViewBag.Title = "BookPublish";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("‌BookPublish", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "max-width:600px;" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class=" form-heading  text-center">
+            انتشار
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-body">
+
+
+
+
+            <div class="form-group material-switch-body">
+                <label class="pull-left">نمایش در جستجو میهمان ها</label>
+                <div class="material-switch pull-right">
+                    @Html.CheckBoxFor(model => model.GusetSearch, htmlAttributes: new { @class = " " })
+                    @Html.LabelFor(model => model.GusetSearch, htmlAttributes: new { @class = "label-success" })
+                </div>
+            </div>
+
+            <div class="form-group material-switch-body">
+                <label class="pull-left">دسترسی دانلود داخلی</label>
+                <div class="material-switch pull-right">
+                    @Html.CheckBoxFor(model => model.LocalAcsses, htmlAttributes: new { @class = " " })
+                    @Html.LabelFor(model => model.LocalAcsses, htmlAttributes: new { @class = "label-success" })
+                </div>
+            </div>
+
+            <div class="form-group material-switch-body">
+                <label class="pull-left">دسترسی دانلود اینترنتی</label>
+                <div class="material-switch pull-right">
+                    @Html.CheckBoxFor(model => model.GlobalAcsses, htmlAttributes: new { @class = " " })
+                    @Html.LabelFor(model => model.GlobalAcsses, htmlAttributes: new { @class = "label-success" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel-footer form-footer ">
+            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">انتشار</button>
+        </div>
+    }
+    <script>
+        $(function () {
+            $("input[type='hidden']").remove();
+        });
+    </script>
+</section>
+

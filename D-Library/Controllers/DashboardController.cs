@@ -437,6 +437,21 @@ namespace D_Library.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult BookPublish(int id)
+        {
+            BookPublishModel model = new BookPublishModel();
+            model.ID = id;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult BookPublish(BookPublishModel model)
+        {
+            int s = model.ID;
+
+            return View();
+        }
 
         [HttpGet]
         public ActionResult BookList()
