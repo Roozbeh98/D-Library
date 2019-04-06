@@ -462,6 +462,13 @@ namespace D_Library.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult BookShow()
+        {
+
+            return View();
+        }
+
 
         #endregion
 

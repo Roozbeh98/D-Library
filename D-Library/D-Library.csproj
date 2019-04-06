@@ -210,6 +210,7 @@
     <Content Include="Pages\Html\UploadFile.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -507,6 +508,7 @@
     <Content Include="Views\Dashboard\BookList.cshtml" />
     <Content Include="Views\Dashboard\BookUplaod.cshtml" />
     <Content Include="Views\Dashboard\BookPublish.cshtml" />
+    <Content Include="Views\Dashboard\BookShow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
