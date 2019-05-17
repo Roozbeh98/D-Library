@@ -4,45 +4,109 @@
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 
-<section class=" container-fluid main-section">
-    <h2>BookShow</h2>
-    <div class="container">
+<section class=" container-fluid main-section ">
 
-        <div class="panel-group" id="gp">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a href="#test1" data-parent="#gp" data-toggle="collapse">content</a>
+    <div class="panel bookshow-cover">
+        <div class="row">
+            <div class="col-md-2" style="">
+                <img src="~/Content/Images/arm.png" class="img-responsive img-rounded bookshow-img" />
 
-                    </h4>
+            </div>
+            <div class="col-md-10">
+                <div class="pull-right">
+                    <i class="glyphicon glyphicon-certificate"></i>
+                    <i class="glyphicon glyphicon-certificate"></i>
+                    <i class="glyphicon glyphicon-certificate"></i>
                 </div>
-
-                <div id="test1" class="panel-collapse collapse in">
-                    <div class="panel-body">fuck you</div>
+                <div class="pull-left bookshow-titel-zone ">
+                    <h2 class="bookshow-titel">تست</h2>
+                    <p class="bookshow-sub-titel">تست</p>
+                    <p class="bookshow-sub-titel">تست</p>
 
                 </div>
 
             </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a href="#test2" data-parent="#gp" data-toggle="collapse">content</a>
-
-                    </h4>
-                </div>
-
-                <div id="test2" class="panel-collapse collapse">
-                    <div class="panel-body">fuck you</div>
-
-                </div>
-
-            </div>
-
         </div>
 
+    </div>
+    <div class="panel bookshow-panel">
+        <ul class=" nav nav-tabs nav-justified bookshow-panel-tabs">
 
+            <li class="active"><a href="#tab2default" data-toggle="tab">شرح</a></li>
+            <li><a href="#tab3default" data-toggle="tab">مشخصات</a></li>
+            <li><a href="#tab4default" data-toggle="tab">فایل</a></li>
+
+
+        </ul>
+
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab2default">
+                    <div class="panel-group" id="gp">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#test1" data-parent="#gp" data-toggle="collapse">content</a>
+
+                                </h4>
+                            </div>
+
+                            <div id="test1" class="panel-collapse collapse in">
+                                <div class="panel-body">fuck you</div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#test2" data-parent="#gp" data-toggle="collapse">content</a>
+
+                                </h4>
+                            </div>
+
+                            <div id="test2" class="panel-collapse collapse">
+                                <div class="panel-body">fuck you</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab3default">
+                    <div class="panel-body table-body">
+                        <table id="BookListTable" class="table table-striped " style="width:100%;">
+                            <thead>
+                                <tr class="table-tr">
+                                    <th scope="col">#</th>
+                                    <th scope="col">کد کتاب</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td scope="row">2</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">34</td>
+                                    <td scope="row">56</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab4default">
+
+                </div>
+            </div>
+        </div>
 
     </div>
+
+
+
 
 </section>

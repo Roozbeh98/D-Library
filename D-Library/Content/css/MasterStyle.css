@@ -472,6 +472,70 @@ hr {
 .booktypeteble-panel{
     max-width:600px;
 }
+/*********************************************** BookShow *********************************************/
+.bookshow-cover {
+    padding: 30px;
+    background-color: #222D32;
+    margin-bottom: 10px;
+    /*border-bottom: 5px #374449 solid*/
+}
+
+.bookshow-img {
+    height: 200px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+
+.bookshow-titel-zone {
+    padding-top: 80px;
+}
+
+.bookshow-titel{
+    font-size:20px;
+}
+
+.bookshow-sub-titel {
+    text-align: justify;
+    font-size: 16px;
+}
+
+.bookshow-panel {
+    background-color: #374449;
+    min-height: 70vh;
+}
+
+.bookshow-panel-tabs {
+    background-color: #374449;
+    border-bottom: 1px solid #222D32;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+
+.nav-tabs.nav-justified > li > a {
+    margin-left: 0;
+    border-radius: 0px;
+    border-bottom: 1px solid #222D32;
+    font-size:18px;
+}
+
+.nav-tabs.nav-justified > li > a:hover,
+.nav-tabs.nav-justified > li > a:focus {
+    border: none;
+    background-color: #222D32;
+}
+
+.nav-tabs.nav-justified > li.active > a,
+.nav-tabs.nav-justified > li.active > a:hover,
+.nav-tabs.nav-justified > li.active > a:focus {
+    border: none;
+    background-color: #222D32;
+    color:whitesmoke;
+}
 
 
 @media screen and (max-width:990px) {
@@ -541,4 +605,8 @@ hr {
 
     /*********************************************** BookTypeTable ****************************************/
 
+    /*********************************************** BookShow *********************************************/
+    .bookshow-titel-zone {
+        padding-top:0px;
+    }
 }
