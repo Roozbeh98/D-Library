@@ -489,30 +489,38 @@ hr {
 }
 
 .bookshow-titel-zone {
-    padding-top: 80px;
+    padding-top: 120px;
 }
 
 .bookshow-titel{
     font-size:20px;
+    margin:0px;
+    padding-bottom:10px;
 }
 
 .bookshow-sub-titel {
     text-align: justify;
     font-size: 16px;
+    margin: 0px;
+}
+
+.bookshow-flag-zone {
+
+}
+
+.bookshow-flag {
+
 }
 
 .bookshow-panel {
     background-color: #374449;
-    min-height: 70vh;
+    min-height: 60vh;
 }
 
 .bookshow-panel-tabs {
     background-color: #374449;
     border-bottom: 1px solid #222D32;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    padding-left: 15px;
-    padding-right: 15px
+    padding:0px 15px 0px 15px;
 }
 
 
@@ -537,6 +545,64 @@ hr {
     color:whitesmoke;
 }
 
+.bookshow-dis-panel {
+    border:0px;
+}
+
+.bookshow-dis-panel-heading {
+    background-color: #222D32;
+}
+
+.bookshow-dis-panel-body {
+    background-color: #374449;
+}
+
+.bookshow-download {
+    background-color: #222D32;
+    height:60px;
+    margin-bottom:10px;
+}
+
+.bookshow-download-titel {
+    padding:10px 25px 0px 0px;
+    margin:0px;
+}
+
+.bookshow-download-detail {
+    padding: 0px 25px 0px 0px;
+    margin: 0px;
+}
+
+.bookshow-download-icon {
+    font-size: 37px;
+    padding: 10px 0px 10px 20px;
+    color:forestgreen;
+}
+
+.bookshow-detiles{
+    margin-top:15px;
+}
+
+.bookshow-detiles-col-3-main  {
+    padding-left:0px;
+}
+.bookshow-detiles-col-3 {
+    background-color: #222D32;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom:10px;
+}
+
+.bookshow-detiles-col-9 {
+    background-color: #222D32;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.bookshow-detiles-text {
+    padding: 0px 15px 0px 0px;
+}
 
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/
@@ -608,5 +674,16 @@ hr {
     /*********************************************** BookShow *********************************************/
     .bookshow-titel-zone {
         padding-top:0px;
+    }
+    .bookshow-detiles-col-3 {
+        text-align:center;
+        margin-bottom: 5px;
+    }
+
+    .bookshow-detiles-col-9 {
+        margin-bottom: 20px;
+    }
+    .bookshow-detiles-col-3-main {
+        padding-left: 15px;
     }
 }
