@@ -528,7 +528,8 @@ hr {
     margin-left: 0;
     border-radius: 0px;
     border-bottom: 1px solid #222D32;
-    font-size:18px;
+    font-size: 18px;
+    color: #9d9d9d;
 }
 
 .nav-tabs.nav-justified > li > a:hover,
@@ -580,7 +581,7 @@ hr {
 }
 
 .bookshow-detiles{
-    margin-top:15px;
+    margin-top:10px;
 }
 
 .bookshow-detiles-col-3-main  {
@@ -672,17 +673,24 @@ hr {
     /*********************************************** BookTypeTable ****************************************/
 
     /*********************************************** BookShow *********************************************/
-    .bookshow-titel-zone {
-        padding-top:0px;
+    .bookshow-cover {
+        margin-top:130px;
     }
+
+    .bookshow-titel-zone {
+        padding-top:20px;
+    }
+
     .bookshow-detiles-col-3 {
         text-align:center;
         margin-bottom: 5px;
     }
 
     .bookshow-detiles-col-9 {
+        text-align: center;
         margin-bottom: 20px;
     }
+
     .bookshow-detiles-col-3-main {
         padding-left: 15px;
     }
