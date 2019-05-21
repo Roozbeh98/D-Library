@@ -27,14 +27,14 @@ This set of fonts are used in this project under the license: (.....)
 		 url('../FontIran/ttf/IRANSansWeb_Bold.ttf') format('truetype');
 }
 @font-face {
-	font-family: IRANSansM;
-	font-style: normal;
-	font-weight: 500;
-	src: url('../FontIran/eot/IRANSansWeb_Medium.eot');
-	src: url('../FontIran/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('../FontIran/woff2/IRANSansWeb_Medium.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('../FontIran/woff/IRANSansWeb_Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('../FontIran/ttf/IRANSansWeb_Medium.ttf') format('truetype');
+    font-family: IRANSansM;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../../FontIran/eot/IRANSansWeb_Medium.eot');
+    src: url('../../FontIran/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../../FontIran/woff2/IRANSansWeb_Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../FontIran/woff/IRANSansWeb_Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../FontIran/ttf/IRANSansWeb_Medium.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSansL;
