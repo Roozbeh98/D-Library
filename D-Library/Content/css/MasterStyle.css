@@ -444,11 +444,46 @@ hr {
     margin-top: 75px;
 }
 
-/*********************************************** Error Page *****************************************/
+.searchreultpanel-zone{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    
+}
 
-.form-error{
-    margin-top:20vh;
-    max-width:400px;
+.searchreultpanel-col {
+    margin: 5px;
+    color: #9d9d9d;
+
+    
+}
+
+.searchreultpanel-panel-body {
+    background-color: #222d32;
+    height: 300px;
+    width: 280px;
+
+}
+
+.searchreultpanel-img {
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.searchreultpanel-panel-footer {
+    background-color: #222d32;
+}
+
+.searchreultpanel-titel {
+    text-align:center;
+}
+
+
+/*********************************************** Error Page *****************************************/
+.form-error {
+    margin-top: 20vh;
+    max-width: 400px;
 }
 .form-heading-error {
     display:block;
@@ -554,14 +589,19 @@ hr {
     background-color: #222D32;
 }
 
+.bookshow-dis-titel {
+    color: #9d9d9d;
+}
+
 .bookshow-dis-panel-body {
     background-color: #374449;
 }
 
 .bookshow-download {
     background-color: #222D32;
-    height:60px;
-    margin-bottom:10px;
+    height: 60px;
+    margin-bottom: 10px;
+    color: #9d9d9d;
 }
 
 .bookshow-download-titel {
