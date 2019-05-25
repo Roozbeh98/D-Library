@@ -78,6 +78,8 @@
           <Property Name="BD_GroupID" Type="int" />
           <Property Name="BD_BranchID" Type="int" />
           <Property Name="BD_Translator" Type="nvarchar" MaxLength="50" />
+          <Property Name="BD_LCC" Type="nvarchar" MaxLength="50" />
+          <Property Name="BD_ReleaseYear" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_BookDetailsFeatures">
           <Key>
@@ -1160,6 +1162,8 @@
           <Property Name="BD_BranchID" Type="Int32" />
           <Property Name="BD_Translator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Book_Tbl_BookDetails" FromRole="Tbl_BookDetails" ToRole="Tbl_Book" />
+          <Property Name="BD_LCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BD_ReleaseYear" Type="Int32" />
         </EntityType>
         <EntityType Name="Tbl_BookDetailsFeatures">
           <Key>
@@ -1918,6 +1922,8 @@
           <EntitySetMapping Name="Tbl_BookDetails">
             <EntityTypeMapping TypeName="ELModel.Tbl_BookDetails">
               <MappingFragment StoreEntitySet="Tbl_BookDetails">
+                <ScalarProperty Name="BD_ReleaseYear" ColumnName="BD_ReleaseYear" />
+                <ScalarProperty Name="BD_LCC" ColumnName="BD_LCC" />
                 <ScalarProperty Name="BD_Translator" ColumnName="BD_Translator" />
                 <ScalarProperty Name="BD_BranchID" ColumnName="BD_BranchID" />
                 <ScalarProperty Name="BD_GroupID" ColumnName="BD_GroupID" />

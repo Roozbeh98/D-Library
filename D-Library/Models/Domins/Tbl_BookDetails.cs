@@ -42,6 +42,8 @@ namespace D_Library.Models.Domins
         public Nullable<int> BD_GroupID { get; set; }
         public Nullable<int> BD_BranchID { get; set; }
         public string BD_Translator { get; set; }
+        public string BD_LCC { get; set; }
+        public Nullable<int> BD_ReleaseYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }

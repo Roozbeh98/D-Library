@@ -70,6 +70,14 @@ namespace D_Library.Models.Domins
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_Translator { get; set; }
+        [Display(Name = "رده‌بندی کنگره")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
+        public string BD_LCC { get; set; }
+        [Display(Name = "سال نشر")]
+        //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
+        [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
+        public Nullable<int> BD_ReleaseYear { get; set; }
     }
 
     [MetadataType(typeof(MetaData_BookDetails))]
