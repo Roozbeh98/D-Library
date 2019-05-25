@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Setting";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+    <div class="text-center">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color: #222d32; color: #9d9d9d;">
+                <span style="font-size: 18px; font-weight:bold;">تنظیمات</span>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="panel bookshow-panel">
+        <ul class=" nav nav-tabs nav-justified bookshow-panel-tabs">
+            <li class="active"><a href="#Description" data-toggle="tab">شرح</a></li>
+            <li><a href="#Details" data-toggle="tab">مشخصات</a></li>
+            <li><a href="#Files" data-toggle="tab">فایل</a></li>
+        </ul>
+
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="Description">
+                    <div class="panel-group" id="gp">
+
+
+                        <div class="panel bookshow-detiles-col-9">
+                            <span class="bookshow-detiles-text">
+
+                            </span>
+                        </div>
+
+
+                        <div class="panel bookshow-dis-panel">
+
+                            <a href="#Descrip" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading bookshow-dis-panel-heading">
+                                    <h4 class="panel-title bookshow-dis-titel">
+                                        <span class="bookshow-detiles-text">
+
+                                        </span>
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="Descrip" class="panel-collapse collapse in">
+                                <div class="panel-body bookshow-dis-panel-body">
+                                    <div class="panel bookshow-detiles-col-9">
+                                        <span class="bookshow-detiles-text">
+
+                                        </span>
+                                    </div>
+                                    <div class="panel bookshow-detiles-col-9">
+                                        <span class="bookshow-detiles-text">
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel bookshow-dis-panel">
+
+                            <a href="#Abstract" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading bookshow-dis-panel-heading">
+                                    <h4 class="panel-title  bookshow-dis-titel">
+                                        <span class="bookshow-detiles-text">
+
+                                        </span>
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="Abstract" class="panel-collapse collapse">
+                                <div class="panel-body bookshow-dis-panel-body">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="tab-pane fade in active" id="Details">
+
+                </div>
+                <div class="tab-pane fade in active" id="Files">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</section>

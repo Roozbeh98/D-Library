@@ -26,7 +26,6 @@ hr {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top: 0;
-    font-family: IRANSansB;
     font-size: large;
 }
 .form-body {
@@ -138,7 +137,29 @@ hr {
     color: #9d9d9d;
 }
 
+.nav-tabs.nav-justified > li > a {
+    margin-left: 0;
+    border-radius: 0px;
+    border-bottom: 1px solid #222D32;
+    font-size: 18px;
+    color: #9d9d9d;
+}
 
+.nav-tabs.nav-justified > li > a:hover,
+.nav-tabs.nav-justified > li > a:focus {
+    border: none;
+    background-color: #222D32;
+    border-bottom: 1px solid #222D32;
+}
+
+.nav-tabs.nav-justified > li.active > a,
+.nav-tabs.nav-justified > li.active > a:hover,
+.nav-tabs.nav-justified > li.active > a:focus {
+    border: none;
+    background-color: #222D32;
+    color: whitesmoke;
+    border-bottom: 1px solid #222D32;
+}
 
 /*********************************************** navbar ********************************************/
 .navbar-inverse {
@@ -511,7 +532,7 @@ hr {
 .bookshow-cover {
     padding: 30px;
     background-color: #222D32;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     /*border-bottom: 5px #374449 solid*/
 }
 
@@ -530,7 +551,7 @@ hr {
 .bookshow-titel{
     font-size:20px;
     margin:0px;
-    padding-bottom:10px;
+    padding-bottom:5px;
 }
 
 .bookshow-sub-titel {
@@ -559,27 +580,6 @@ hr {
 }
 
 
-.nav-tabs.nav-justified > li > a {
-    margin-left: 0;
-    border-radius: 0px;
-    border-bottom: 1px solid #222D32;
-    font-size: 18px;
-    color: #9d9d9d;
-}
-
-.nav-tabs.nav-justified > li > a:hover,
-.nav-tabs.nav-justified > li > a:focus {
-    border: none;
-    background-color: #222D32;
-}
-
-.nav-tabs.nav-justified > li.active > a,
-.nav-tabs.nav-justified > li.active > a:hover,
-.nav-tabs.nav-justified > li.active > a:focus {
-    border: none;
-    background-color: #222D32;
-    color:whitesmoke;
-}
 
 .bookshow-dis-panel {
     border:0px;
@@ -644,6 +644,12 @@ hr {
 .bookshow-detiles-text {
     padding: 0px 15px 0px 0px;
 }
+
+/*********************************************** Setting **********************************************/
+.setting-panel{
+
+}
+
 
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/

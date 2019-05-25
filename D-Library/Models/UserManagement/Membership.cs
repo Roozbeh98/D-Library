@@ -14,6 +14,13 @@ namespace D_Library.Models.UserManagement
         {
            
         }
+        public string Get_FullNameByID(int id)
+        {
+            var user = db.Tbl_User.Where(a => a.User_ID == id).SingleOrDefault();
+            string fullname = string.Format("{0} {1}", user.User_Name, user.User_Family);
+
+            return fullname;
+        }
 
         public int Get_IDByUserName(string Username)
         {

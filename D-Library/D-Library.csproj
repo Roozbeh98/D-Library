@@ -426,6 +426,7 @@
     <Compile Include="Models\Model\BaseRoleList.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookPublishModel.cs" />
+    <Compile Include="Models\Model\BookShowModel.cs" />
     <Compile Include="Models\Model\BookTypeTableModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
@@ -440,6 +441,7 @@
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
     <Compile Include="Models\Repository\Rep_Book.cs" />
+    <Compile Include="Models\Repository\Rep_File.cs" />
     <Compile Include="Models\Repository\Rep_GroupBranch.cs" />
     <Compile Include="Models\Repository\Rep_Professor.cs" />
     <Compile Include="Models\Repository\Rep_RequestType.cs" />
@@ -509,6 +511,7 @@
     <Content Include="Views\Dashboard\BookUplaod.cshtml" />
     <Content Include="Views\Dashboard\BookPublish.cshtml" />
     <Content Include="Views\Dashboard\BookShow.cshtml" />
+    <Content Include="Views\Dashboard\Setting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -591,5 +594,5 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
 </Project>

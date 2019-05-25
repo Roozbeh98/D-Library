@@ -55,6 +55,21 @@ namespace D_Library.Models.Repository
             return list.AsEnumerable();
 
         }
+
+        public string Get_GroupNameByID(int id)
+        {
+            string groupname = db.Tbl_Group.Where(a => a.Group_ID == id).SingleOrDefault().Group_Name;
+            
+
+            return groupname;
+        }
+        public string Get_BranchNameByID(int id)
+        {
+            string branchname = db.Tbl_branch.Where(a => a.branch_ID == id).SingleOrDefault().branch_Name;
+
+            return branchname;
+        }
+
     }
 
 

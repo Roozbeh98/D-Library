@@ -62,5 +62,12 @@ namespace D_Library.Models.Repository
             return null;
         }
 
+        public string Get_BookTypeNameByID(int id)
+        {
+            string name = db.Tbl_BookType.Where(a => a.BookType_ID == id).SingleOrDefault().BookType_Name;
+
+            return name;
+        }
+
     }
 }

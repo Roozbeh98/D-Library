@@ -14,16 +14,7 @@ namespace D_Library.Models.Domins
     
     public partial class Tbl_Library
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_Library()
-        {
-            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
-        }
-    
         public int Library_ID { get; set; }
         public string Library_Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
     }
 }

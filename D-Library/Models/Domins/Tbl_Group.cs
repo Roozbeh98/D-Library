@@ -18,7 +18,6 @@ namespace D_Library.Models.Domins
         public Tbl_Group()
         {
             this.Tbl_AcssesBook = new HashSet<Tbl_AcssesBook>();
-            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
             this.Tbl_branch = new HashSet<Tbl_branch>();
         }
     
@@ -27,8 +26,6 @@ namespace D_Library.Models.Domins
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_AcssesBook> Tbl_AcssesBook { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_branch> Tbl_branch { get; set; }
     }

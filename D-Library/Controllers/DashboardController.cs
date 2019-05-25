@@ -456,21 +456,57 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult BookList()
         {
-            BookListModel moodel = new BookListModel();
-            moodel.Books = db.Tbl_Book;
-            return View(moodel);
+            BookListModel model = new BookListModel();
+            model.Books = db.Tbl_Book;
+            return View(model);
         }
 
 
         [HttpGet]
-        public ActionResult BookShow()
+        public ActionResult BookShow(int id)
         {
+            BookShowModel model = new BookShowModel();
+            Rep_Book rep_b = new Rep_Book();
+            Rep_File rep_f = new Rep_File();
+            model.Book = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();
 
+            model.DetailsNav = rep_b.Get_BookDetailsListByBookType(model.Book.Book_BookTypeID);
+
+            model.Details = model.Book.Tbl_BookDetails;
+
+            if (model.Details.BD_FileEnabel)
+            {
+                model.Files = rep_f.FilesByBookID(id);
+            }
+
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult test(int id)
+        {
+            Tbl_Book book = new Tbl_Book();
+            Tbl_BookDetails model = new Tbl_BookDetails();
+
+            book = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();
+            model = book.Tbl_BookDetails;
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Setting
+
+        [HttpGet]
+        public ActionResult Setting()
+        {
             return View();
         }
 
-
         #endregion
+
 
         [HttpGet]
         public ActionResult RequestTypeSelector()

@@ -1,4 +1,6 @@
-﻿
+﻿@model D_Library.Models.Model.BookShowModel
+@using D_Library.Models.Repository;
+
 @{
     ViewBag.Title = "BookShow";
     Layout = "~/Views/Shared/_Master.cshtml";
@@ -19,9 +21,17 @@
                     <i class="glyphicon glyphicon-certificate bookshow-flag"></i>
                 </div>
                 <div class="pull-left bookshow-titel-zone ">
-                    <h2 class="bookshow-titel">تست</h2>
-                    <p class="bookshow-sub-titel">تست</p>
-                    <p class="bookshow-sub-titel">تست</p>
+                    <h2 class="bookshow-titel">@Model.Book.Book_Name</h2>
+                    <p class="bookshow-sub-titel">
+                        @{
+                            Rep_Book B = new Rep_Book();
+                            string type = B.Get_BookTypeNameByID(Model.Book.Book_BookTypeID);
+                        }
+                        @type
+                    </p>
+                    <p class="bookshow-sub-titel">
+                        @Model.Book.Book_Code
+                    </p>
 
                 </div>
 
@@ -32,139 +42,283 @@
     <div class="panel bookshow-panel">
         <ul class=" nav nav-tabs nav-justified bookshow-panel-tabs">
 
-            <li class="active"><a href="#tab2default" data-toggle="tab">شرح</a></li>
-            <li><a href="#tab3default" data-toggle="tab">مشخصات</a></li>
-            <li><a href="#tab4default" data-toggle="tab">فایل</a></li>
+            @{
+                if (Model.DetailsNav.Exists(a => a == "Abstract") || Model.DetailsNav.Exists(a => a == "Description"))
+                {
+                    <li class="active"><a href="#Description" data-toggle="tab">شرح</a></li>
+                }
+
+                <li><a href="#Details" data-toggle="tab">مشخصات</a></li>
+
+                if (Model.Details.BD_FileEnabel)
+                {
+                    <li><a href="#Files" data-toggle="tab">فایل</a></li>
+                }
+            }
 
 
         </ul>
 
         <div class="panel-body">
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="tab2default">
+                <div class="tab-pane fade in active" id="Description">
                     <div class="panel-group" id="gp">
+                        @{
+                            if (Model.DetailsNav.Exists(a => a == "Description"))
+                            {
+                                <div class="panel bookshow-dis-panel">
 
-                        <div class="panel bookshow-dis-panel">
+                                    <a href="#Descrip" data-parent="#gp" data-toggle="collapse">
+                                        <div class="panel-heading bookshow-dis-panel-heading">
+                                            <h4 class="panel-title bookshow-dis-titel">
+                                                @Html.DisplayNameFor(model => model.Details.BD_Description)
+                                            </h4>
+                                        </div>
+                                    </a>
 
+                                    <div id="Descrip" class="panel-collapse collapse in">
+                                        <div class="panel-body bookshow-dis-panel-body">
+                                            @Html.DisplayFor(model => model.Details.BD_Description)
+                                        </div>
 
-                            <a href="#test1" data-parent="#gp" data-toggle="collapse">
-                                <div class="panel-heading bookshow-dis-panel-heading">
-                                    <h4 class="panel-title bookshow-dis-titel">
-                                        content
-                                    </h4>
+                                    </div>
+
                                 </div>
-                            </a>
-                            <div id="test1" class="panel-collapse collapse in">
-                                <div class="panel-body bookshow-dis-panel-body">fuck you</div>
+                            }
 
-                            </div>
+                            if (Model.DetailsNav.Exists(a => a == "Abstract"))
+                            {
+                                <div class="panel bookshow-dis-panel">
 
-                        </div>
+                                    <a href="#Abstract" data-parent="#gp" data-toggle="collapse">
+                                        <div class="panel-heading bookshow-dis-panel-heading">
+                                            <h4 class="panel-title  bookshow-dis-titel">
+                                                @Html.DisplayNameFor(model => model.Details.BD_Abstract)
+                                            </h4>
+                                        </div>
+                                    </a>
 
-                        <div class="panel bookshow-dis-panel">
+                                    <div id="Abstract" class="panel-collapse collapse">
+                                        <div class="panel-body bookshow-dis-panel-body">
+                                            @Html.DisplayFor(model => model.Details.BD_Abstract)
+                                        </div>
 
-                            <a href="#test2" data-parent="#gp" data-toggle="collapse">
-                                <div class="panel-heading bookshow-dis-panel-heading">
-                                    <h4 class="panel-title  bookshow-dis-titel">
-                                        content
-                                    </h4>
+                                    </div>
+
                                 </div>
-                            </a>
+                            }
 
-                            <div id="test2" class="panel-collapse collapse">
-                                <div class="panel-body bookshow-dis-panel-body">fuck you</div>
+                        }
 
-                            </div>
-
-                        </div>
 
                     </div>
                 </div>
-                <div class="tab-pane fade" id="tab3default">
+
+                <div class="tab-pane fade" id="Details">
 
                     <div class="bookshow-detiles">
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                        @{
+                            foreach (var item in Model.DetailsNav)
+                            {
+                                switch (item)
+                                {
+                                    case "Student":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_StudentID)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @{
+                                                            D_Library.Models.UserManagement.Membership MS = new D_Library.Models.UserManagement.Membership();
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                                                            string student = MS.Get_FullNameByID(Model.Details.BD_StudentID.Value);
+                                                        }
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                                                        @student
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case "Master":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_MasterID)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @{
+                                                            D_Library.Models.UserManagement.Membership MM = new D_Library.Models.UserManagement.Membership();
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                                                            string master = MM.Get_FullNameByID(Model.Details.BD_MasterID.Value);
+                                                        }
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                                                        @master
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="row bookshow-detiles-item">
-                            <div class="col-md-3 bookshow-detiles-col-3-main">
-                                <div class="panel bookshow-detiles-col-3 ">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="panel bookshow-detiles-col-9">
-                                    <span class="bookshow-detiles-text">fuck</span>
-                                </div>
-                            </div>
-                        </div>
+                                        break;
+                                    case "ISBN":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_ISBN)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayFor(model => model.Details.BD_ISBN)
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case "Group":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_GroupID)
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @{
+                                                            Rep_GroupBranch G = new Rep_GroupBranch();
+                                                            string g_name = G.Get_GroupNameByID(Model.Details.BD_GroupID.Value);
+                                                        }
+                                                        @g_name
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case "Branch":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_BranchID)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @{
+                                                            Rep_GroupBranch R = new Rep_GroupBranch();
+                                                            string R_name = R.Get_BranchNameByID(Model.Details.BD_BranchID.Value);
+                                                        }
+                                                        @R_name
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+
+                                    case "Subject":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_Subject)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">fuck</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+
+                                    case "WriterName":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_WriterName)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayFor(model => model.Details.BD_WriterName)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case "ReleaseCount":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_ReleaseCount)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayFor(model => model.Details.BD_ReleaseCount)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case "Translator":
+                                        <div class="row bookshow-detiles-item">
+                                            <div class="col-md-3 bookshow-detiles-col-3-main">
+                                                <div class="panel bookshow-detiles-col-3 ">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayNameFor(model => model.Details.BD_Translator)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="panel bookshow-detiles-col-9">
+                                                    <span class="bookshow-detiles-text">
+                                                        @Html.DisplayFor(model => model.Details.BD_Translator)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+
+                                    default:
+
+                                        break;
+                                }
+                            }
+                        }
 
                     </div>
                 </div>
-                <div class="tab-pane fade" id="tab4default">
+                <div class="tab-pane fade" id="Files">
 
                     <a href="#">
                         <div class="panel bookshow-download">
@@ -214,10 +368,10 @@
 
 
                 </div>
+
             </div>
         </div>
 
     </div>
 
 </section>
-

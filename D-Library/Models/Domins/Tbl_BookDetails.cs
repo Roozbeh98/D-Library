@@ -24,7 +24,7 @@ namespace D_Library.Models.Domins
         public bool BD_DigitalVersionAvailable { get; set; }
         public bool BD_PhysicalVersionAvailable { get; set; }
         public Nullable<int> BD_LibraryID { get; set; }
-        public Nullable<bool> BD_FileEnabel { get; set; }
+        public bool BD_FileEnabel { get; set; }
         public Nullable<int> BD_FileCount { get; set; }
         public Nullable<int> BD_PageCount { get; set; }
         public string BD_Titel { get; set; }
@@ -45,10 +45,5 @@ namespace D_Library.Models.Domins
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
-        public virtual Tbl_branch Tbl_branch { get; set; }
-        public virtual Tbl_Group Tbl_Group { get; set; }
-        public virtual Tbl_Library Tbl_Library { get; set; }
-        public virtual Tbl_User Tbl_User { get; set; }
-        public virtual Tbl_User Tbl_User1 { get; set; }
     }
 }

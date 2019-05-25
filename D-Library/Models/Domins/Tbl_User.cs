@@ -18,8 +18,6 @@ namespace D_Library.Models.Domins
         public Tbl_User()
         {
             this.Tbl_Book = new HashSet<Tbl_Book>();
-            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
-            this.Tbl_BookDetails1 = new HashSet<Tbl_BookDetails>();
             this.Tbl_BookValidateRequest = new HashSet<Tbl_BookValidateRequest>();
             this.Tbl_BookValidateRequest1 = new HashSet<Tbl_BookValidateRequest>();
             this.Tbl_Files = new HashSet<Tbl_Files>();
@@ -41,10 +39,6 @@ namespace D_Library.Models.Domins
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookValidateRequest> Tbl_BookValidateRequest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

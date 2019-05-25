@@ -17,7 +17,6 @@ namespace D_Library.Models.Domins
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_branch()
         {
-            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
             this.Tbl_User = new HashSet<Tbl_User>();
         }
     
@@ -25,8 +24,6 @@ namespace D_Library.Models.Domins
         public string branch_Name { get; set; }
         public int branch_GroupID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         public virtual Tbl_Group Tbl_Group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_User> Tbl_User { get; set; }

@@ -31,7 +31,7 @@ namespace D_Library.Models.Domins
         public string BD_WriterName { get; set; }
         [Display(Name = "زبان")]
         public string BD_Language { get; set; }
-        [Display(Name = "توصیحات")]
+        [Display(Name = "توضیحات")]
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]
         public string BD_Description { get; set; }
