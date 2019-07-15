@@ -497,15 +497,7 @@ namespace D_Library.Controllers
 
         #endregion
 
-        #region Setting
 
-        [HttpGet]
-        public ActionResult Setting()
-        {
-            return View();
-        }
-
-        #endregion
 
 
         [HttpGet]
