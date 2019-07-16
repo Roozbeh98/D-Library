@@ -1,0 +1,38 @@
+﻿@model D_Library.Models.Domins.Tbl_Library
+
+@{
+    ViewBag.Title = "LibraryAdd";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("LibraryAdd", "Setting", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class=" form-heading  text-center">
+            تولید کد ثبت نام
+        </div>
+
+        <div class="panel-body">
+
+
+
+
+            <div class="form-group">
+                <label>نام کتابخانه</label>
+                <div class="input-group">
+                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    @Html.EditorFor(model => model.Library_Name, new { htmlAttributes = new { @class = "form-control  text-center" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.Library_Name, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+        <div class="panel-footer form-footer ">
+            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+        </div>
+    }
+
+</section>

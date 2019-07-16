@@ -514,6 +514,7 @@
     <Content Include="Views\Dashboard\BookShow.cshtml" />
     <Content Include="Views\Setting\Setting.cshtml" />
     <Content Include="Views\Setting\LibraryList.cshtml" />
+    <Content Include="Views\Setting\LibraryAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

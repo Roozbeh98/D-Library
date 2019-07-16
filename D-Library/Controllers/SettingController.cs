@@ -13,7 +13,7 @@ namespace D_Library.Controllers
 {
     public class SettingController : Controller
     {
-        
+        ELEntities db = new ELEntities();
 
         [HttpGet]
         public ActionResult Setting()
@@ -26,7 +26,7 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult LibraryList()
         {
-            return View();
+            return View(db.Tbl_Library);
         }
         [HttpGet]
         public ActionResult LibraryAdd()

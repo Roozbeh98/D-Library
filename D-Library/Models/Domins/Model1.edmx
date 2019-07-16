@@ -1161,9 +1161,9 @@
           <Property Name="BD_GroupID" Type="Int32" />
           <Property Name="BD_BranchID" Type="Int32" />
           <Property Name="BD_Translator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Book_Tbl_BookDetails" FromRole="Tbl_BookDetails" ToRole="Tbl_Book" />
           <Property Name="BD_LCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BD_ReleaseYear" Type="Int32" />
+          <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Book_Tbl_BookDetails" FromRole="Tbl_BookDetails" ToRole="Tbl_Book" />
         </EntityType>
         <EntityType Name="Tbl_BookDetailsFeatures">
           <Key>
