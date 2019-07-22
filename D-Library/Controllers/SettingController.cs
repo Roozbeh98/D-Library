@@ -33,6 +33,13 @@ namespace D_Library.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult LibraryAdd(Tbl_Library model)
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult LibraryDelete()
         {
