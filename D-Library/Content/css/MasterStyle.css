@@ -650,6 +650,17 @@ hr {
 
 }
 
+.setting-panel-btn {
+   line-height:10px;
+   margin-left:20px
+}
+.setting-detiles-col-9 {
+    background-color: #222D32;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
 
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/
