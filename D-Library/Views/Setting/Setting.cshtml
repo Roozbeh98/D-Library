@@ -29,91 +29,71 @@
         <div class="panel-body">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="General">
+
                     <a href="@Url.Action("LibraryList","Setting")">
                         <div class="panel setting-detiles-col-9">
                             <span class="">
                                 <i class="glyphicon glyphicon-option-vertical"></i>
                                 محل کتابخانه
                             </span>
-
-
-
                         </div>
                     </a>
 
                 </div>
 
-                <div class="tab-pane" id="Book">
-                    <div class="panel-group" id="gp">
-
-                        <div class="panel bookshow-detiles-col-9">
-                            <span class="bookshow-detiles-text">
-
+                <div class="tab-pane fade" id="Book">
+                    <a href="@Url.Action("BookTypeList","Setting")">
+                        <div class="panel setting-detiles-col-9">
+                            <span class="">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                گروه ها
                             </span>
                         </div>
+                    </a>
 
-                        <div class="panel bookshow-dis-panel">
-
-                            <a href="#Descrip" data-parent="#gp" data-toggle="collapse">
-                                <div class="panel-heading bookshow-dis-panel-heading">
-                                    <h4 class="panel-title bookshow-dis-titel">
-                                        <span class="bookshow-detiles-text">
-
-                                        </span>
-                                    </h4>
-                                </div>
-                            </a>
-
-                            <div id="Descrip" class="panel-collapse collapse in">
-                                <div class="panel-body bookshow-dis-panel-body">
-                                    <div class="panel bookshow-detiles-col-9">
-                                        <span class="bookshow-detiles-text">
-
-                                        </span>
-                                    </div>
-                                    <div class="panel bookshow-detiles-col-9">
-                                        <span class="bookshow-detiles-text">
-
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                    <a href="@Url.Action("LanguageList","Setting")">
+                        <div class="panel setting-detiles-col-9">
+                            <span class="">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                زبان
+                            </span>
                         </div>
+                    </a>
 
-                        <div class="panel bookshow-dis-panel">
-
-                            <a href="#Abstract" data-parent="#gp" data-toggle="collapse">
-                                <div class="panel-heading bookshow-dis-panel-heading">
-                                    <h4 class="panel-title  bookshow-dis-titel">
-                                        <span class="bookshow-detiles-text">
-
-                                        </span>
-                                    </h4>
-                                </div>
-                            </a>
-
-                            <div id="Abstract" class="panel-collapse collapse">
-                                <div class="panel-body bookshow-dis-panel-body">
-
-                                </div>
-
-                            </div>
-
+                </div>
+                <div class="tab-pane fade" id="Users">
+                    <a href="@Url.Action("BaseRoleList","Setting")">
+                        <div class="panel setting-detiles-col-9">
+                            <span class="">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                نقش ها
+                            </span>
                         </div>
+                    </a>
 
+                    <a href="@Url.Action("GroupList","Setting")">
+                        <div class="panel setting-detiles-col-9">
+                            <span class="">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                گروه ها
+                            </span>
+                        </div>
+                    </a>
 
+                    <a href="@Url.Action("BranchList","Setting")">
+                        <div class="panel setting-detiles-col-9">
+                            <span class="">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                رشته ها
+                            </span>
+                        </div>
+                    </a>
 
-                    </div>
                 </div>
-                <div class="tab-pane" id="Users">
+                <div class="tab-pane fade" id="Network">
 
                 </div>
-                <div class="tab-pane" id="Network">
-
-                </div>
-                <div class="tab-pane" id="Server">
+                <div class="tab-pane fade" id="Server">
 
                 </div>
             </div>

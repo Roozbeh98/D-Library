@@ -183,6 +183,14 @@
           <Property Name="Group_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Group_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Tbl_Language">
+          <Key>
+            <PropertyRef Name="Language_ID" />
+          </Key>
+          <Property Name="Language_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Language_Titel" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tbl_Library">
           <Key>
             <PropertyRef Name="Library_ID" />
@@ -742,6 +750,7 @@
           <EntitySet Name="Tbl_FileType" EntityType="Self.Tbl_FileType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_ForgetPassword" EntityType="Self.Tbl_ForgetPassword" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Group" EntityType="Self.Tbl_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Language" EntityType="Self.Tbl_Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Library" EntityType="Self.Tbl_Library" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Login" EntityType="Self.Tbl_Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Notification" EntityType="Self.Tbl_Notification" Schema="dbo" store:Type="Tables" />
@@ -1071,6 +1080,7 @@
             <End Role="Tbl_User" EntitySet="Tbl_User" />
             <End Role="Tbl_Wishlist" EntitySet="Tbl_Wishlist" />
           </AssociationSet>
+          <EntitySet Name="Tbl_Language" EntityType="ELModel.Tbl_Language" />
         </EntityContainer>
         <EntityType Name="Tbl_AcssesBook">
           <Key>
@@ -1861,6 +1871,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_Language">
+          <Key>
+            <PropertyRef Name="Language_ID" />
+          </Key>
+          <Property Name="Language_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language_Titel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2193,6 +2211,15 @@
                 <ScalarProperty Name="Wishlist_UserID" ColumnName="Wishlist_UserID" />
                 <ScalarProperty Name="Wishlist_BookID" ColumnName="Wishlist_BookID" />
                 <ScalarProperty Name="Wishlist_ID" ColumnName="Wishlist_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Language">
+            <EntityTypeMapping TypeName="ELModel.Tbl_Language">
+              <MappingFragment StoreEntitySet="Tbl_Language">
+                <ScalarProperty Name="Language_Titel" ColumnName="Language_Titel" />
+                <ScalarProperty Name="Language_Name" ColumnName="Language_Name" />
+                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

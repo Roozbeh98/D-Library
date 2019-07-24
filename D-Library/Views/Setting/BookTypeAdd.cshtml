@@ -1,38 +1,29 @@
-﻿@model D_Library.Models.Model.NewBaseRoleModel
+﻿@model D_Library.Models.Model.BookTypeAddModel
 
 @{
-    ViewBag.Title = "NewBaseRole";
+    ViewBag.Title = "BookTypeAdd";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("NewBaseRole", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-newbooktype form-form form-form-indasdboard", @style = "" }))
+    @using (Html.BeginForm("NewBookType", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-newbooktype form-form form-form-indasdboard", @style = "" }))
     {
 
         @Html.AntiForgeryToken()
         <div class=" form-heading  text-center">
-            تعریف نقش جدید
+            تعریف گروه جدید کتاب
         </div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="panel-body">
 
             <div class="form-group">
-                @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "" })
+                @Html.LabelFor(model => model.TypeName, htmlAttributes: new { @class = "" })
                 <div class="input-group">
                     <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control text-center" } })
+                    @Html.EditorFor(model => model.TypeName, new { htmlAttributes = new { @class = "form-control text-center" } })
                 </div>
-                @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.TitelName, htmlAttributes: new { @class = "" })
-                <div class="input-group">
-                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    @Html.EditorFor(model => model.TitelName, new { htmlAttributes = new { @class = "form-control text-center" } })
-                </div>
-                @Html.ValidationMessageFor(model => model.TitelName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.TypeName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group ">

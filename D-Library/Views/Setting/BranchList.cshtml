@@ -1,32 +1,28 @@
-﻿@model D_Library.Models.Model.BaseRoleList
+﻿@model IEnumerable<D_Library.Models.Domins.Tbl_branch>
 
 @{
-    ViewBag.Title = "BaseRoleList";
+    ViewBag.Title = "BranchList";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
+
 
 <section class="col-md-9 container-fluid main-section">
 
     <div class="table-panel booktypeteble-panel">
         <div class="table-heading  text-center ">
             <span>
-                last
+                گروه ها
             </span>
 
         </div>
         <div class="panel-body table-body">
-
-
-
-
-            <table id="BaseRoleList" class="table table-striped table-table" style="width:100%;">
+            <table id="BookTypeList" class="table table-striped table-table" style="width:100%;">
                 <thead>
                     <tr class="table-tr">
                         <th scope="col" width="20px">#</th>
-                        <th scope="col">@Html.DisplayNameFor(model => model.BaseRole)</th>
+                        <th scope="col">گروه</th>
+                        <th scope="col">رشته</th>
                         <th scope="col" data-orderable="false"></th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -34,17 +30,20 @@
                         int x = 0;
                     }
 
-                    @foreach (var item in Model.BaseRole)
+                    @foreach (var item in Model)
                     {
                         x++;
                         <tr>
                             <td scope="row">@x</td>
-                            <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.BaseRole_ID }) ">@Html.DisplayFor(modelItem => item.BaseRole_Titel)</a>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tbl_Group.Group_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.branch_Name)
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BaseRole_ID  })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BaseRole_ID  })   "></a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.branch_ID })"> </a>
+                                @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.branch_ID })   "></a>*@
                             </td>
                         </tr>
                     }
@@ -54,16 +53,13 @@
 
         </div>
     </div>
-
-
 </section>
 
 
 <script>
     $(document).ready(function () {
-        $('#BaseRoleList').DataTable({
+        $('#BookTypeList').DataTable({
             "language": {
-
                 "sEmptyTable": "هیچ داده ای در جدول وجود ندارد",
                 "sInfo": "نمایش _START_ تا _END_ از _TOTAL_ رکورد",
                 "sInfoEmpty": "نمایش 0 تا 0 از 0 رکورد",
@@ -86,8 +82,6 @@
                     "sSortAscending": ": فعال سازی نمایش به صورت صعودی",
                     "sSortDescending": ": فعال سازی نمایش به صورت نزولی"
                 }
-
-
             },
             "scrollX": true
 
@@ -95,28 +89,18 @@
         });
     });
 
-
-
-
-
-
     $(function () {
-        var element1 = document.getElementById('BaseRoleList_filter').parentElement;
-        var element2 = document.getElementById('BaseRoleList_length').parentElement;
+        var element1 = document.getElementById('BookTypeList_filter').parentElement;
+        var element2 = document.getElementById('BookTypeList_length').parentElement;
         element1.classList.remove('col-sm-6');
         element2.classList.remove('col-sm-6');
 
         element1.classList.add('col-md-6');
         element2.classList.add('col-md-3');
 
-
         var element3 = element2.parentElement;
 
-        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBaseRole", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BranchAdd", "Setting")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
         addbtn.appendTo(element3)
     });
-
-
-
 </script>
-

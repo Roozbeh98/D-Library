@@ -380,6 +380,9 @@
     <Compile Include="Models\Domins\Tbl_Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domins\Tbl_Language.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Domins\Tbl_Library.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -424,16 +427,22 @@
     <Compile Include="Models\MetaData\MetaData_Login.cs" />
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
-    <Compile Include="Models\Model\BaseRoleList.cs" />
+    <Compile Include="Models\Model\BaseRoleListModel.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookPublishModel.cs" />
     <Compile Include="Models\Model\BookShowModel.cs" />
-    <Compile Include="Models\Model\BookTypeTableModel.cs" />
+    <Compile Include="Models\Model\BookTypeListModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
+    <Compile Include="Models\Model\BranchAddModel.cs" />
+    <Compile Include="Models\Model\BranchEditModel.cs" />
+    <Compile Include="Models\Model\GroupAddModel.cs" />
+    <Compile Include="Models\Model\GroupEditModel.cs" />
+    <Compile Include="Models\Model\LanguageAddModel.cs" />
+    <Compile Include="Models\Model\LanguageEditModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
-    <Compile Include="Models\Model\NewBaseRoleModel.cs" />
+    <Compile Include="Models\Model\BaseRoleAddModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
-    <Compile Include="Models\Model\NewBookTypeModel.cs" />
+    <Compile Include="Models\Model\BookTypeAddModel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
@@ -501,10 +510,6 @@
     <Content Include="Views\Home\SearchResult.cshtml" />
     <Content Include="Views\Dashboard\UsersRegisterNotCompleteList.cshtml" />
     <Content Include="Views\Dashboard\UsersList.cshtml" />
-    <Content Include="Views\Dashboard\BaseRoleList.cshtml" />
-    <Content Include="Views\Dashboard\NewBookType.cshtml" />
-    <Content Include="Views\Dashboard\NewBaseRole.cshtml" />
-    <Content Include="Views\Dashboard\BookType.cshtml" />
     <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
     <Content Include="Views\Dashboard\NewBook.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -515,6 +520,18 @@
     <Content Include="Views\Setting\Setting.cshtml" />
     <Content Include="Views\Setting\LibraryList.cshtml" />
     <Content Include="Views\Setting\LibraryAdd.cshtml" />
+    <Content Include="Views\Setting\LibraryEdit.cshtml" />
+    <Content Include="Views\Setting\BaseRoleList.cshtml" />
+    <Content Include="Views\Setting\BookTypeList.cshtml" />
+    <Content Include="Views\Setting\BookTypeAdd.cshtml" />
+    <Content Include="Views\Setting\BaseRoleAdd.cshtml" />
+    <Content Include="Views\Setting\LanguageAdd.cshtml" />
+    <Content Include="Views\Setting\LanguageEdit.cshtml" />
+    <Content Include="Views\Setting\LanguageList.cshtml" />
+    <Content Include="Views\Setting\GroupList.cshtml" />
+    <Content Include="Views\Setting\BranchList.cshtml" />
+    <Content Include="Views\Setting\GroupAdd.cshtml" />
+    <Content Include="Views\Setting\GroupEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,9 +1,10 @@
-﻿@model IEnumerable<D_Library.Models.Domins.Tbl_Library>
+﻿@model IEnumerable<D_Library.Models.Domins.Tbl_Language>
 
 @{
-    ViewBag.Title = "LibraryList";
+    ViewBag.Title = "LanguageList";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
+
 
 
 <section class="col-md-9 container-fluid main-section">
@@ -23,7 +24,8 @@
                 <thead>
                     <tr class="table-tr">
                         <th scope="col" width="20px">#</th>
-                        <th scope="col">نام کتابخانه</th>
+                        <th scope="col">نام فارسی</th>
+                        <th scope="col">نام لاتین</th>
                         <th scope="col" data-orderable="false"></th>
                     </tr>
                 </thead>
@@ -38,10 +40,13 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID }) ">@Html.DisplayFor(modelItem => item.Library_Name)</a>
+                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Language_ID }) ">@Html.DisplayFor(modelItem => item.Language_Name)</a>
+                            </td>
+                            <td scope="row">
+                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Language_ID }) ">@Html.DisplayFor(modelItem => item.Language_Titel)</a>
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("LibraryEdit","Setting", new { id = item.Library_ID })"> </a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("LanguageEdit","Setting", new { id = item.Language_ID })"> </a>
                                 @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
                             </td>
                         </tr>
@@ -50,7 +55,7 @@
                 </tbody>
             </table>
             <div>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("LibraryAdd", "Setting")">
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("LanguageAdd", "Setting")">
                     <span class="glyphicon glyphicon-plus-sign pull-left"></span>
                     <span class="text-center">افزودن</span>
                 </a>
@@ -58,4 +63,3 @@
         </div>
     </div>
 </section>
-

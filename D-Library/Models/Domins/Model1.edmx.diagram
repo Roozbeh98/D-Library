@@ -7,34 +7,34 @@
       <Diagram DiagramId="f1119867bf1f4a0397624bf9af1370d2" Name="Diagram1" ZoomLevel="57">
         <EntityTypeShape EntityType="ELModel.Tbl_AcssesBook" Width="1.5" PointX="3" PointY="14.25" />
         <EntityTypeShape EntityType="ELModel.Tbl_AcssesBookContorl" Width="1.5" PointX="0.75" PointY="11.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BaseRole" Width="1.5" PointX="8.25" PointY="8.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BaseRolesPermission" Width="1.5" PointX="10.5" PointY="6.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Book" Width="1.5" PointX="7.5" PointY="15.875" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookDetails" Width="1.5" PointX="5.25" PointY="8.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsFeatures" Width="1.5" PointX="5.25" PointY="24.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsNavigator" Width="1.5" PointX="7.5" PointY="21.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookType" Width="1.5" PointX="5.25" PointY="21.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequest" Width="1.5" PointX="12.75" PointY="16.375" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequestProcess" Width="1.5" PointX="18" PointY="16.875" />
-        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequestState" Width="1.5" PointX="15.75" PointY="13" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BaseRole" Width="1.5" PointX="8.25" PointY="10.625" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BaseRolesPermission" Width="1.5" PointX="10.5" PointY="11.875" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Book" Width="1.5" PointX="7.5" PointY="20.875" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookDetails" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsFeatures" Width="1.5" PointX="8.25" PointY="37.25" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookDetailsNavigator" Width="1.5" PointX="10.5" PointY="28.25" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookType" Width="1.5" PointX="5.25" PointY="30.25" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequest" Width="1.5" PointX="12.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequestProcess" Width="1.5" PointX="15" PointY="20.25" />
+        <EntityTypeShape EntityType="ELModel.Tbl_BookValidateRequestState" Width="1.5" PointX="12.75" PointY="13.5" />
         <EntityTypeShape EntityType="ELModel.Tbl_branch" Width="1.5" PointX="3" PointY="17" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Files" Width="1.5" PointX="15.75" PointY="16.125" />
-        <EntityTypeShape EntityType="ELModel.Tbl_FileType" Width="1.5" PointX="13.5" PointY="10.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_ForgetPassword" Width="1.5" PointX="12.75" PointY="13" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Files" Width="1.5" PointX="9.75" PointY="20.625" />
+        <EntityTypeShape EntityType="ELModel.Tbl_FileType" Width="1.5" PointX="7.5" PointY="34.625" />
+        <EntityTypeShape EntityType="ELModel.Tbl_ForgetPassword" Width="1.5" PointX="12.75" PointY="17" />
         <EntityTypeShape EntityType="ELModel.Tbl_Group" Width="1.5" PointX="0.75" PointY="14.375" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Library" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Login" Width="1.5" PointX="10.5" PointY="12.125" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Notification" Width="1.5" PointX="10.5" PointY="19.875" />
-        <EntityTypeShape EntityType="ELModel.Tbl_NotificationType" Width="1.5" PointX="8.25" PointY="30.125" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Permission" Width="1.5" PointX="8.25" PointY="5" />
-        <EntityTypeShape EntityType="ELModel.Tbl_RegisterCode" Width="1.5" PointX="8.25" PointY="11.625" />
-        <EntityTypeShape EntityType="ELModel.Tbl_RequestKind" Width="1.5" PointX="8.25" PointY="27.25" />
-        <EntityTypeShape EntityType="ELModel.Tbl_RequestType" Width="1.5" PointX="10.5" PointY="26.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Setting" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_SpecialAcssesBook" Width="1.5" PointX="9.75" PointY="23" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Library" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Login" Width="1.5" PointX="10.5" PointY="16.125" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Notification" Width="1.5" PointX="7.5" PointY="16.875" />
+        <EntityTypeShape EntityType="ELModel.Tbl_NotificationType" Width="1.5" PointX="5.25" PointY="21.125" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Permission" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="ELModel.Tbl_RegisterCode" Width="1.5" PointX="8.25" PointY="28.625" />
+        <EntityTypeShape EntityType="ELModel.Tbl_RequestKind" Width="1.5" PointX="8.25" PointY="31.625" />
+        <EntityTypeShape EntityType="ELModel.Tbl_RequestType" Width="1.5" PointX="10.5" PointY="31.125" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Setting" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ELModel.Tbl_SpecialAcssesBook" Width="1.5" PointX="9.75" PointY="25.5" />
         <EntityTypeShape EntityType="ELModel.Tbl_User" Width="1.5" PointX="5.25" PointY="15.75" />
-        <EntityTypeShape EntityType="ELModel.Tbl_UsersPermission" Width="1.5" PointX="10.5" PointY="17" />
-        <EntityTypeShape EntityType="ELModel.Tbl_Wishlist" Width="1.5" PointX="12.75" PointY="21" />
+        <EntityTypeShape EntityType="ELModel.Tbl_UsersPermission" Width="1.5" PointX="7.5" PointY="14" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Wishlist" Width="1.5" PointX="12.75" PointY="24.5" />
         <AssociationConnector Association="ELModel.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" />
         <AssociationConnector Association="ELModel.FK_Tbl_AcssesBook_Tbl_Group" />
         <AssociationConnector Association="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl" />
@@ -70,6 +70,7 @@
         <AssociationConnector Association="ELModel.FK_Tbl_SpecialAcssesBook_Tbl_User" />
         <AssociationConnector Association="ELModel.FK_Tbl_UsersPermission_Tbl_User" />
         <AssociationConnector Association="ELModel.FK_Tbl_Wishlist_Tbl_User" />
+        <EntityTypeShape EntityType="ELModel.Tbl_Language" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

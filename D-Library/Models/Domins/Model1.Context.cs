@@ -55,5 +55,8 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_User> Tbl_User { get; set; }
         public virtual DbSet<Tbl_UsersPermission> Tbl_UsersPermission { get; set; }
         public virtual DbSet<Tbl_Wishlist> Tbl_Wishlist { get; set; }
+        public virtual DbSet<Tbl_Language> Tbl_Language { get; set; }
+
+        public System.Data.Entity.DbSet<D_Library.Models.Model.GroupEditModel> GroupEditModels { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<D_Library.Models.Domins.Tbl_Library>
+﻿@model IEnumerable<D_Library.Models.Domins.Tbl_Group>
 
 @{
-    ViewBag.Title = "LibraryList";
+    ViewBag.Title = "GroupList";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
@@ -11,7 +11,7 @@
     <div class="table-panel booktypeteble-panel">
         <div class="table-heading  text-center ">
             <span>
-                کتابخانه
+                گروه ها
             </span>
 
         </div>
@@ -23,7 +23,7 @@
                 <thead>
                     <tr class="table-tr">
                         <th scope="col" width="20px">#</th>
-                        <th scope="col">نام کتابخانه</th>
+                        <th scope="col">نام گروه</th>
                         <th scope="col" data-orderable="false"></th>
                     </tr>
                 </thead>
@@ -38,10 +38,10 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID }) ">@Html.DisplayFor(modelItem => item.Library_Name)</a>
+                                @Html.DisplayFor(modelItem => item.Group_Name)
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("LibraryEdit","Setting", new { id = item.Library_ID })"> </a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("GroupEdit","Setting", new { id = item.Group_ID })"> </a>
                                 @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
                             </td>
                         </tr>
@@ -50,7 +50,7 @@
                 </tbody>
             </table>
             <div>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("LibraryAdd", "Setting")">
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("GroupAdd", "Setting")">
                     <span class="glyphicon glyphicon-plus-sign pull-left"></span>
                     <span class="text-center">افزودن</span>
                 </a>
@@ -58,4 +58,3 @@
         </div>
     </div>
 </section>
-
