@@ -29,7 +29,7 @@ namespace D_Library.Models.Domins
         public Nullable<int> BD_PageCount { get; set; }
         public string BD_Titel { get; set; }
         public string BD_WriterName { get; set; }
-        public string BD_Language { get; set; }
+        public Nullable<int> BD_LanguageID { get; set; }
         public string BD_Description { get; set; }
         public string BD_Abstract { get; set; }
         public Nullable<System.DateTime> BD_ReleaseDate { get; set; }
@@ -47,5 +47,7 @@ namespace D_Library.Models.Domins
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
+        public virtual Tbl_Language Tbl_Language { get; set; }
+        public virtual Tbl_Library Tbl_Library { get; set; }
     }
 }

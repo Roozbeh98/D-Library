@@ -9,6 +9,8 @@ namespace D_Library.Models.Model
 {
     public class GroupAddModel
     {
+        public int ID { get; set; }
+
         [Display(Name = "نام گروه")]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         [Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]

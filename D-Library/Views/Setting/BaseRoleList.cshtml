@@ -1,4 +1,4 @@
-﻿@model D_Library.Models.Model.BaseRoleList
+﻿@model D_Library.Models.Model.BaseRoleListModel
 
 @{
     ViewBag.Title = "BaseRoleList";
@@ -40,11 +40,11 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.BaseRole_ID }) ">@Html.DisplayFor(modelItem => item.BaseRole_Titel)</a>
+                                @Html.DisplayFor(modelItem => item.BaseRole_Titel)
                             </td>
                             <td scope="row" class="pull-right">
                                 <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BaseRole_ID  })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BaseRole_ID  })   "></a>
+                                @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BaseRole_ID  })   "></a>*@
                             </td>
                         </tr>
                     }

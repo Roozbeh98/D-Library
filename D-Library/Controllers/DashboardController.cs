@@ -210,6 +210,8 @@ namespace D_Library.Controllers
 
             _details.BD_PageCount = model.Details.BD_PageCount;
 
+            _details.BD_LanguageID = model.Details.BD_LanguageID;
+
 
 
 

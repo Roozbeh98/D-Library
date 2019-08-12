@@ -30,7 +30,7 @@ namespace D_Library.Models.Domins
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string BD_WriterName { get; set; }
         [Display(Name = "زبان")]
-        public string BD_Language { get; set; }
+        public string BD_LanguageID { get; set; }
         [Display(Name = "توضیحات")]
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]

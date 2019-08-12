@@ -1,41 +1,30 @@
 ﻿@model D_Library.Models.Model.GroupAddModel
 
-@{
-    ViewBag.Title = "GroupAdd";
-    Layout = "~/Views/Shared/_Dashboard.cshtml";
+@using (Html.BeginForm("GroupAdd", "Setting", FormMethod.Post, htmlAttributes: new { @class = "", @style = "" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="modal-main">
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+
+
+
+    </div>
+
+    <button class="btn btn-success modal-btn-singel" type="submit" name="btn-BuildCode">تایید</button>
+
 }
 
-
-
-<section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("GroupAdd", "Setting", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
-    {
-
-        @Html.AntiForgeryToken()
-        <div class=" form-heading  text-center">
-            تعریف گروه
-        </div>
-
-        <div class="panel-body">
-
-
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
-                <div class="input-group">
-                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
-                </div>
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-
-
-
-
-        </div>
-
-        <button class="btn btn-success setting-form-btn" type="submit" name="btn-BuildCode">تایید</button>
-
-    }
-
-</section>

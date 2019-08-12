@@ -14,8 +14,17 @@ namespace D_Library.Models.Domins
     
     public partial class Tbl_Language
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tbl_Language()
+        {
+            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
+        }
+    
         public int Language_ID { get; set; }
         public string Language_Name { get; set; }
         public string Language_Titel { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
     }
 }

@@ -1,40 +1,32 @@
-﻿@model D_Library.Models.Model.GroupEditModel
+﻿@model D_Library.Models.Model.GroupAddModel
 
-@{
-    ViewBag.Title = "GroupEdit";
-    Layout = "~/Views/Shared/_Dashboard.cshtml";
+
+@using (Html.BeginForm("GroupEdit", "Setting", FormMethod.Post, htmlAttributes: new { @class = "", @style = "" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="modal-main">
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+
+
+
+    </div>
+
+    <button class="btn btn-success modal-btn-singel" type="submit" name="btn-BuildCode">تایید</button>
+
 }
 
 
-<section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("GroupEdit", "Setting", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
-    {
-
-        @Html.AntiForgeryToken()
-        <div class=" form-heading  text-center">
-            ویرایش گروه
-        </div>
-
-        <div class="panel-body">
-
-            @Html.HiddenFor(model => model.ID)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
-                <div class="input-group">
-                    <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
-                </div>
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-
-
-
-
-        </div>
-
-        <button class="btn btn-success setting-form-btn" type="submit" name="btn-BuildCode">تایید</button>
-
-    }
-
-</section>

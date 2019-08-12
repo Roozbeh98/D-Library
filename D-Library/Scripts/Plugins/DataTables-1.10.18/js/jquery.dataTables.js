@@ -4816,7 +4816,7 @@
 		var select = $('<select/>', {
 			'name':          tableId+'_length',
 			'aria-controls': tableId,
-            'class':  'chosen-select'     
+            'class':  ''     
 		} );
 	
 		for ( var i=0, ien=lengths.length ; i<ien ; i++ ) {

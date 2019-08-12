@@ -17,6 +17,7 @@ namespace D_Library.Models.Domins
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_Book()
         {
+            this.Tbl_BookTag = new HashSet<Tbl_BookTag>();
             this.Tbl_BookValidateRequest = new HashSet<Tbl_BookValidateRequest>();
             this.Tbl_Files = new HashSet<Tbl_Files>();
             this.Tbl_SpecialAcssesBook = new HashSet<Tbl_SpecialAcssesBook>();
@@ -37,6 +38,8 @@ namespace D_Library.Models.Domins
         public virtual Tbl_BookType Tbl_BookType { get; set; }
         public virtual Tbl_BookDetails Tbl_BookDetails { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_BookTag> Tbl_BookTag { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookValidateRequest> Tbl_BookValidateRequest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

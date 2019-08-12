@@ -35,11 +35,11 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID }) ">@Html.DisplayFor(modelItem => item.BookType_Name)</a>
+                                @Html.DisplayFor(modelItem => item.BookType_Name)
                             </td>
                             <td scope="row" class="pull-right">
                                 <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.BookType_ID })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID })   "></a>
+                                @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.BookType_ID })   "></a>*@
                             </td>
                         </tr>
                     }
@@ -96,7 +96,7 @@
 
         var element3 = element2.parentElement;
 
-        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookType", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BookTypeAdd", "Setting")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
         addbtn.appendTo(element3)
     });
 </script>

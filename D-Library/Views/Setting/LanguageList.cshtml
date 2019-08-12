@@ -12,7 +12,7 @@
     <div class="table-panel booktypeteble-panel">
         <div class="table-heading  text-center ">
             <span>
-                کتابخانه
+                زبان ها
             </span>
 
         </div>
@@ -40,13 +40,13 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Language_ID }) ">@Html.DisplayFor(modelItem => item.Language_Name)</a>
+                                @Html.DisplayFor(modelItem => item.Language_Name)
                             </td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Language_ID }) ">@Html.DisplayFor(modelItem => item.Language_Titel)</a>
+                                @Html.DisplayFor(modelItem => item.Language_Titel)
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("LanguageEdit","Setting", new { id = item.Language_ID })"> </a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil"onclick="LanguageEdit(@item.Language_ID)"> </a>
                                 @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
                             </td>
                         </tr>
@@ -55,7 +55,7 @@
                 </tbody>
             </table>
             <div>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("LanguageAdd", "Setting")">
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " onclick="LanguageCreate()">
                     <span class="glyphicon glyphicon-plus-sign pull-left"></span>
                     <span class="text-center">افزودن</span>
                 </a>
@@ -63,3 +63,34 @@
         </div>
     </div>
 </section>
+
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+
+        function LanguageCreate() {
+            $.ajax({
+                url: "/Setting/LanguageAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف زبان');
+                $('#myModalBody').html(result);
+            });
+        }
+        function LanguageEdit(id) {
+            $.ajax({
+                url: "/Setting/LanguageEdit/"+id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش زبان');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

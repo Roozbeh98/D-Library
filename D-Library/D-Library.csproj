@@ -225,6 +225,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MyScripts\Chosen_Config.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.css" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
@@ -353,6 +354,9 @@
     <Compile Include="Models\Domins\Tbl_BookDetailsNavigator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domins\Tbl_BookTag.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Domins\Tbl_BookType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -413,6 +417,9 @@
     <Compile Include="Models\Domins\Tbl_SpecialAcssesBook.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domins\Tbl_Tag.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Domins\Tbl_User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -434,11 +441,8 @@
     <Compile Include="Models\Model\BookTypeListModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\BranchAddModel.cs" />
-    <Compile Include="Models\Model\BranchEditModel.cs" />
     <Compile Include="Models\Model\GroupAddModel.cs" />
-    <Compile Include="Models\Model\GroupEditModel.cs" />
     <Compile Include="Models\Model\LanguageAddModel.cs" />
-    <Compile Include="Models\Model\LanguageEditModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\BaseRoleAddModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
@@ -453,6 +457,7 @@
     <Compile Include="Models\Repository\Rep_Book.cs" />
     <Compile Include="Models\Repository\Rep_File.cs" />
     <Compile Include="Models\Repository\Rep_GroupBranch.cs" />
+    <Compile Include="Models\Repository\Rep_Language.cs" />
     <Compile Include="Models\Repository\Rep_Professor.cs" />
     <Compile Include="Models\Repository\Rep_RequestType.cs" />
     <Compile Include="Models\Repository\Rep_Role.cs" />
@@ -526,12 +531,16 @@
     <Content Include="Views\Setting\BookTypeAdd.cshtml" />
     <Content Include="Views\Setting\BaseRoleAdd.cshtml" />
     <Content Include="Views\Setting\LanguageAdd.cshtml" />
-    <Content Include="Views\Setting\LanguageEdit.cshtml" />
     <Content Include="Views\Setting\LanguageList.cshtml" />
     <Content Include="Views\Setting\GroupList.cshtml" />
     <Content Include="Views\Setting\BranchList.cshtml" />
     <Content Include="Views\Setting\GroupAdd.cshtml" />
+    <Content Include="Views\Setting\BranchAdd.cshtml" />
+    <Content Include="Views\Setting\LanguageEdit.cshtml" />
     <Content Include="Views\Setting\GroupEdit.cshtml" />
+    <Content Include="Views\Setting\BranchEdit.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
+    <Content Include="Views\Shared\_AsideMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -543,7 +552,6 @@
     <Folder Include="App_Data\Upload\" />
     <Folder Include="Models\Enum\" />
     <Folder Include="Models\Plugins\" />
-    <Folder Include="Scripts\MyScripts\" />
     <Folder Include="Views\FileManager\" />
   </ItemGroup>
   <ItemGroup>

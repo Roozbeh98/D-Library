@@ -33,7 +33,7 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult LibraryAdd()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -58,7 +58,7 @@ namespace D_Library.Controllers
         {
             Tbl_Library model = new Tbl_Library();
             model = db.Tbl_Library.Where(a => a.Library_ID == id).SingleOrDefault();
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -187,7 +187,7 @@ namespace D_Library.Controllers
         {
             Tbl_Language q = new Tbl_Language();
             q = db.Tbl_Language.Where(a => a.Language_ID == id).SingleOrDefault();
-            LanguageEditModel model = new LanguageEditModel();
+            LanguageAddModel model = new LanguageAddModel();
             model.ID = q.Language_ID;
             model.Name = q.Language_Name;
             model.Titel = q.Language_Titel;
@@ -195,7 +195,7 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult LanguageEdit(LanguageEditModel model)
+        public ActionResult LanguageEdit(LanguageAddModel model)
         {
             Tbl_Language q = new Tbl_Language();
             q = db.Tbl_Language.Where(a => a.Language_ID == model.ID).SingleOrDefault();
@@ -319,7 +319,7 @@ namespace D_Library.Controllers
         {
             Tbl_Group q = new Tbl_Group();
             q = db.Tbl_Group.Where(a => a.Group_ID == id).SingleOrDefault();
-            GroupEditModel model = new GroupEditModel();
+            GroupAddModel model = new GroupAddModel();
             model.ID = q.Group_ID;
             model.Name = q.Group_Name;
  
@@ -327,7 +327,7 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult GroupEdit(LanguageEditModel model)
+        public ActionResult GroupEdit(LanguageAddModel model)
         {
             Tbl_Group q = new Tbl_Group();
             q = db.Tbl_Group.Where(a => a.Group_ID == model.ID).SingleOrDefault();
@@ -362,17 +362,17 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult BranchAdd(LanguageAddModel model)
+        public ActionResult BranchAdd(BranchAddModel model)
         {
-            Tbl_Language q = new Tbl_Language();
-            q.Language_Name = model.Name;
-            q.Language_Titel = model.Titel;
+            Tbl_branch q = new Tbl_branch();
+            q.branch_GroupID = model.Group_ID;
+            q.branch_Name = model.Name;
 
-            db.Tbl_Language.Add(q);
+            db.Tbl_branch.Add(q);
 
             if (Convert.ToBoolean(db.SaveChanges() > 0))
             {
-                return RedirectToAction("LanguageList", "Setting");
+                return RedirectToAction("BranchList", "Setting");
             }
             else
             {
@@ -384,28 +384,28 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult BranchEdit(int id)
         {
-            Tbl_Language q = new Tbl_Language();
-            q = db.Tbl_Language.Where(a => a.Language_ID == id).SingleOrDefault();
-            LanguageEditModel model = new LanguageEditModel();
-            model.ID = q.Language_ID;
-            model.Name = q.Language_Name;
-            model.Titel = q.Language_Titel;
+            Tbl_branch q = new Tbl_branch();
+            q = db.Tbl_branch.Where(a => a.branch_ID == id).SingleOrDefault();
+            BranchAddModel model = new BranchAddModel();
+            model.ID = q.branch_ID;
+            model.Name = q.branch_Name;
+            model.Group_ID = q.branch_GroupID;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult BranchEdit(LanguageEditModel model)
+        public ActionResult BranchEdit(BranchAddModel model)
         {
-            Tbl_Language q = new Tbl_Language();
-            q = db.Tbl_Language.Where(a => a.Language_ID == model.ID).SingleOrDefault();
-            q.Language_Name = model.Name;
-            q.Language_Titel = model.Titel;
+            Tbl_branch q = new Tbl_branch();
+            q = db.Tbl_branch.Where(a => a.branch_ID == model.ID).SingleOrDefault();
+            q.branch_Name = model.Name;
+            q.branch_GroupID = model.Group_ID;
 
             db.Entry(q).State = System.Data.Entity.EntityState.Modified;
 
             if (Convert.ToBoolean(db.SaveChanges() > 0))
             {
-                return RedirectToAction("LanguageList", "Setting");
+                return RedirectToAction("BranchList", "Setting");
             }
             else
             {

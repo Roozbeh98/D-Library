@@ -1,18 +1,16 @@
 ﻿@model D_Library.Models.Model.BookListModel
 
 @{
-                /**/
-
                 ViewBag.Title = "BookList";
                 Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
 <section class="col-md-9 container-fluid main-section">
-    <div class="table-panel userlisttable-panel">
+    <div class="table-panel ">
         <div class="table-heading  text-center ">
             <span>
-                لیست کاربران
+                لیست کتاب ها
             </span>
         </div>
         <div class="panel-body table-body">
@@ -90,7 +88,7 @@
 
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.Book_ID})   "></a>
+                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("BookShow","Dashboard",new { id = item.Book_ID})   "></a>
                                 <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.Book_ID })"> </a>
                                 <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Book_ID})   "></a>
                             </td>

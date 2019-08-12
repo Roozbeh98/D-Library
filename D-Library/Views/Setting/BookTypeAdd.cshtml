@@ -7,7 +7,7 @@
 
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("NewBookType", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-newbooktype form-form form-form-indasdboard", @style = "" }))
+    @using (Html.BeginForm("BookTypeAdd", "Setting", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-newbooktype form-form form-form-indasdboard", @style = "" }))
     {
 
         @Html.AntiForgeryToken()

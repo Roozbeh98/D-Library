@@ -11,7 +11,7 @@
     <div class="table-panel booktypeteble-panel">
         <div class="table-heading  text-center ">
             <span>
-                گروه ها
+                رشته ها
             </span>
 
         </div>
@@ -42,7 +42,7 @@
                                 @Html.DisplayFor(modelItem => item.branch_Name)
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.branch_ID })"> </a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="BranchEdit(@item.branch_ID)"> </a>
                                 @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.branch_ID })   "></a>*@
                             </td>
                         </tr>
@@ -55,6 +55,10 @@
     </div>
 </section>
 
+
+
+
+@Html.Partial("_Modal")
 
 <script>
     $(document).ready(function () {
@@ -100,7 +104,40 @@
 
         var element3 = element2.parentElement;
 
-        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BranchAdd", "Setting")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " onclick="BranchCreate()" ><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
         addbtn.appendTo(element3)
     });
+
+
 </script>
+
+
+@section Modal{
+    <script>
+
+
+        function BranchCreate() {
+            $.ajax({
+                url: "/Setting/BranchAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف رشته');
+                $('#myModalBody').html(result);
+                
+            });
+        }
+        function BranchEdit(id) {
+            $.ajax({
+                url: "/Setting/BranchEdit/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش رشته');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

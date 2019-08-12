@@ -38,10 +38,10 @@
                         <tr>
                             <td scope="row">@x</td>
                             <td scope="row">
-                                <a href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID }) ">@Html.DisplayFor(modelItem => item.Library_Name)</a>
+                                @Html.DisplayFor(modelItem => item.Library_Name)
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("LibraryEdit","Setting", new { id = item.Library_ID })"> </a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatEdit(@item.Library_ID)"> </a>
                                 @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
                             </td>
                         </tr>
@@ -50,7 +50,7 @@
                 </tbody>
             </table>
             <div>
-                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("LibraryAdd", "Setting")">
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " onclick="LibraryLocatCreate()">
                     <span class="glyphicon glyphicon-plus-sign pull-left"></span>
                     <span class="text-center">افزودن</span>
                 </a>
@@ -59,3 +59,33 @@
     </div>
 </section>
 
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+
+        function LibraryLocatCreate() {
+            $.ajax({
+                url: "/Setting/LibraryAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف کتابخانه');
+                $('#myModalBody').html(result);
+            });
+        }
+        function LibraryLocatEdit(id) {
+            $.ajax({
+                url: "/Setting/LibraryEdit/"+id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش کتابخانه');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

@@ -12,18 +12,18 @@ namespace D_Library.Models.Domins
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_Library
+    public partial class Tbl_Tag
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_Library()
+        public Tbl_Tag()
         {
-            this.Tbl_BookDetails = new HashSet<Tbl_BookDetails>();
+            this.Tbl_BookTag = new HashSet<Tbl_BookTag>();
         }
     
-        public int Library_ID { get; set; }
-        public string Library_Name { get; set; }
+        public int Tag_ID { get; set; }
+        public string Tag_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_BookDetails> Tbl_BookDetails { get; set; }
+        public virtual ICollection<Tbl_BookTag> Tbl_BookTag { get; set; }
     }
 }

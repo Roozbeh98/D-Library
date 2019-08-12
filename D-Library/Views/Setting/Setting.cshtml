@@ -30,64 +30,85 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="General">
 
-                    <a href="@Url.Action("LibraryList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                محل کتابخانه
-                            </span>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            محل کتابخانه
                         </div>
-                    </a>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("LibraryList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
 
                 </div>
 
                 <div class="tab-pane fade" id="Book">
-                    <a href="@Url.Action("BookTypeList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                گروه ها
-                            </span>
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            گروه ها
                         </div>
-                    </a>
 
-                    <a href="@Url.Action("LanguageList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                زبان
-                            </span>
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("BookTypeList","Setting")"></a>
+                            @*<a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"> </a>*@
                         </div>
-                    </a>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            زبان
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("LanguageList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LanguageCreate()"> </a>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="tab-pane fade" id="Users">
-                    <a href="@Url.Action("BaseRoleList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                نقش ها
-                            </span>
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            نقش ها
                         </div>
-                    </a>
 
-                    <a href="@Url.Action("GroupList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                گروه ها
-                            </span>
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("BaseRoleList","Setting")"></a>
+                            @*<a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"> </a>*@
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="@Url.Action("BranchList","Setting")">
-                        <div class="panel setting-detiles-col-9">
-                            <span class="">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                رشته ها
-                            </span>
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            گروه ها
                         </div>
-                    </a>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("GroupList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="GroupCreate()"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            رشته ها
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("BranchList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="BranchCreate()"> </a>
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="tab-pane fade" id="Network">
@@ -105,4 +126,61 @@
 
 
 </section>
+
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+
+        function LibraryLocatCreate() {
+            $.ajax({
+                url: "/Setting/LibraryAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف کتابخانه');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function LanguageCreate() {
+            $.ajax({
+                url: "/Setting/LanguageAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف زبان');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function GroupCreate() {
+            $.ajax({
+                url: "/Setting/GroupAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف گروه');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function BranchCreate() {
+            $.ajax({
+                url: "/Setting/BranchAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف رشته');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}
+
 

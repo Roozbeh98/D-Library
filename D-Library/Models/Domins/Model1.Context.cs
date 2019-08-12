@@ -33,6 +33,7 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         public virtual DbSet<Tbl_BookDetailsFeatures> Tbl_BookDetailsFeatures { get; set; }
         public virtual DbSet<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }
+        public virtual DbSet<Tbl_BookTag> Tbl_BookTag { get; set; }
         public virtual DbSet<Tbl_BookType> Tbl_BookType { get; set; }
         public virtual DbSet<Tbl_BookValidateRequest> Tbl_BookValidateRequest { get; set; }
         public virtual DbSet<Tbl_BookValidateRequestProcess> Tbl_BookValidateRequestProcess { get; set; }
@@ -42,6 +43,7 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_FileType> Tbl_FileType { get; set; }
         public virtual DbSet<Tbl_ForgetPassword> Tbl_ForgetPassword { get; set; }
         public virtual DbSet<Tbl_Group> Tbl_Group { get; set; }
+        public virtual DbSet<Tbl_Language> Tbl_Language { get; set; }
         public virtual DbSet<Tbl_Library> Tbl_Library { get; set; }
         public virtual DbSet<Tbl_Login> Tbl_Login { get; set; }
         public virtual DbSet<Tbl_Notification> Tbl_Notification { get; set; }
@@ -52,11 +54,9 @@ namespace D_Library.Models.Domins
         public virtual DbSet<Tbl_RequestType> Tbl_RequestType { get; set; }
         public virtual DbSet<Tbl_Setting> Tbl_Setting { get; set; }
         public virtual DbSet<Tbl_SpecialAcssesBook> Tbl_SpecialAcssesBook { get; set; }
+        public virtual DbSet<Tbl_Tag> Tbl_Tag { get; set; }
         public virtual DbSet<Tbl_User> Tbl_User { get; set; }
         public virtual DbSet<Tbl_UsersPermission> Tbl_UsersPermission { get; set; }
         public virtual DbSet<Tbl_Wishlist> Tbl_Wishlist { get; set; }
-        public virtual DbSet<Tbl_Language> Tbl_Language { get; set; }
-
-        public System.Data.Entity.DbSet<D_Library.Models.Model.GroupEditModel> GroupEditModels { get; set; }
     }
 }
