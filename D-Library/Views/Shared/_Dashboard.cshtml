@@ -12,6 +12,7 @@
     <link href="~/Content/Plugins/Chosen/chosen.css" rel="stylesheet" />
     <link href="~/Scripts/Plugins/DataTables-1.10.18/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Plugins/JQuery.Filepond/filepond.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/jQuery.Toast/toastr.css" rel="stylesheet" />
 
     <link href="~/Content/css/MasterStyle.css" rel="stylesheet" />
     <link href="~/Content/Plugins/MaterialDesignSwitch/MaterialDesignSwitch.css" rel="stylesheet" />
@@ -24,11 +25,11 @@
 
     <script src="~/Scripts/Plugins/jQuery.Chosen/chosen.jquery.js"></script>
     <script src="~/Scripts/MyScripts/Chosen_Config.js"></script>
-    @*<script src="~/Scripts/Plugins/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>*@
     <script src="~/Scripts/Plugins/DataTables-1.10.18/js/jquery.dataTables.js"></script>
     <script src="~/Scripts/Plugins/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/Plugins/JQuery.Filepond/filepond.js"></script>
     <script src="~/Scripts/Plugins/JQuery.Filepond/filepond.jquery.js"></script>
+    <script src="~/Scripts/Plugins/jQuery.toast/toastr.js"></script>
 
 
 
@@ -73,10 +74,11 @@
 
         @{
 
+            if (ViewBag.State != null)
+            {
 
-            <script src="~/Scripts/Plugins/jQuery.toast/toastrsample.js"></script>
-            <script src="~/Scripts/Plugins/jQuery.toast/toastr.min.js"></script>
-            <link href="~/Content/Plugins/toast/toastr.min.css" rel="stylesheet" />
+            }
+
 
 
             if (ViewBag.State != null)
