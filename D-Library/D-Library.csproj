@@ -140,11 +140,9 @@
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\loading.gif" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\progressbar.gif" />
+    <Content Include="Content\Plugins\jQuery.Toast\toastr.css" />
+    <Content Include="Content\Plugins\jQuery.Toast\toastr.min.css" />
     <Content Include="Content\Plugins\MaterialDesignSwitch\MaterialDesignSwitch.css" />
-    <Content Include="Content\Plugins\toast\jquery.toast.css" />
-    <Content Include="Content\Plugins\toast\toastr.css" />
-    <Content Include="Content\Plugins\toast\toastr.min.css" />
-    <Content Include="Content\Plugins\toast\toastrsample.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -210,6 +208,8 @@
     <Content Include="Pages\Html\UploadFile.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Plugins\jQuery.Toast\toastr.less" />
+    <Content Include="Content\Plugins\jQuery.Toast\toastr.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -225,6 +225,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\MyScripts\Chosen_Config.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.css" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
@@ -290,10 +291,8 @@
     <Content Include="Scripts\Plugins\jQuery.multiselect\multiselect.min.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.min.js" />
-    <Content Include="Scripts\Plugins\jQuery.toast\jquery.toast.min.js" />
     <Content Include="Scripts\Plugins\jQuery.toast\toastr.js" />
     <Content Include="Scripts\Plugins\jQuery.toast\toastr.min.js" />
-    <Content Include="Scripts\Plugins\jQuery.toast\toastrsample.js" />
     <Content Include="Scripts\Plugins\jQuery.ui.widget\jquery.ui.widget.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
@@ -478,8 +477,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\Plugins\toast\toastr.less" />
-    <Content Include="Content\Plugins\toast\toastr.scss" />
     <Content Include="FontIran\eot\IRANSansWeb.eot" />
     <Content Include="FontIran\eot\IRANSansWeb_Bold.eot" />
     <Content Include="FontIran\eot\IRANSansWeb_Light.eot" />
