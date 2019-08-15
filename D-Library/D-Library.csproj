@@ -538,6 +538,7 @@
     <Content Include="Views\Setting\BranchEdit.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\Shared\_AsideMenu.cshtml" />
+    <Content Include="Views\Shared\_Toster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

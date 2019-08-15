@@ -66,90 +66,18 @@
                         @Html.Partial("_AsideMenu")
                     </aside>
 
-                        @RenderBody()
+                    @RenderBody()
 
                 </div>
             </div>
         </main>
 
-        @{
+       
 
-            if (ViewBag.State != null)
-            {
-                switch (switch_on)
-                {
-                    default:
-                }
-            }
+        @Html.Partial("_Toster")
 
 
 
-            if (ViewBag.State != null)
-            {
-
-
-                <div class="control-group" id="toastrTypeGroup">
-                    <div class="controls">
-                        @{
-                            string ck = "";
-                            if (ViewBag.State == "Error")
-                            {
-                                ck = "checked";
-                                <label class="radio">
-                                    <input type="radio" style="visibility:hidden" checked="@ck" name="toasts" value="error" />
-                                </label>
-                            }
-                            else
-                            {
-                                ck = "checked";
-                                <label class="radio">
-                                    <input type="radio" name="toasts" style="visibility:hidden" value="success" checked="@ck" />
-                                </label>
-                            }
-                        }
-
-                        @*<label class="radio">
-                                <input type="radio" name="toasts" style="visibility:hidden" checked value="info" />
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="toasts" style="visibility:hidden" checked value="warning" />
-                            </label>*@
-
-                    </div>
-                </div>
-                <br />
-                <div class="control-group" id="toastrPositionGroup">
-                    <div class="controls">
-
-                        <label class="radio">
-                            <input type="radio" style="visibility:hidden" checked name="positions" value="toast-bottom-left" />
-                        </label>
-
-                    </div>
-                </div>
-                <br />
-
-                if (ViewBag.State == "Error")
-                {
-                    <button type="button" style="visibility:hidden" class="btn" id="showtoasterror"></button>
-                    <script>
-                        jQuery(function () {
-                            jQuery('#showtoasterror').click();
-                        });
-                    </script>
-                }
-                else
-                {
-                    <button type="button" style="visibility:hidden" class="btn" id="showtoast"></button>
-                    <script>
-                        jQuery(function () {
-                            jQuery('#showtoast').click();
-                        });
-                    </script>
-                }
-            }
-
-        }
 
         <footer></footer>
 

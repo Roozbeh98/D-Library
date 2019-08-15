@@ -18,6 +18,7 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult Setting()
         {
+            ViewBag.TosterState = "success";
             return View();
         }
 
