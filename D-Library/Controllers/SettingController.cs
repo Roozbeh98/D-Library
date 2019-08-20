@@ -19,6 +19,9 @@ namespace D_Library.Controllers
         public ActionResult Setting()
         {
             ViewBag.TosterState = "success";
+            ViewBag.TosterType = TosterType.WithTitel;
+            ViewBag.TosterTitel = "عملیات";
+            ViewBag.TosterMassage = "موفقیت امیز بود";
             return View();
         }
 

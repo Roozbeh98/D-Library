@@ -13,6 +13,7 @@
     <link href="~/Scripts/Plugins/DataTables-1.10.18/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Plugins/JQuery.Filepond/filepond.css" rel="stylesheet" />
     <link href="~/Content/Plugins/jQuery.Toast/toastr.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/jQuery.tagify/tagify.css" rel="stylesheet" />
 
     <link href="~/Content/css/MasterStyle.css" rel="stylesheet" />
     <link href="~/Content/Plugins/MaterialDesignSwitch/MaterialDesignSwitch.css" rel="stylesheet" />
@@ -30,7 +31,9 @@
     <script src="~/Scripts/Plugins/JQuery.Filepond/filepond.js"></script>
     <script src="~/Scripts/Plugins/JQuery.Filepond/filepond.jquery.js"></script>
     <script src="~/Scripts/Plugins/jQuery.toast/toastr.js"></script>
+    <script src="~/Scripts/Plugins/jQuery.tagify/tagify.js"></script>
 
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
 
 
@@ -73,8 +76,8 @@
         </main>
 
 
-
         @Html.Partial("_Toster")
+
 
 
 
@@ -85,6 +88,7 @@
     <script src="~/Scripts/MyScripts/Chosen_Config.js"></script>
 
     @RenderSection("Modal", false)
+
 
 </body>
 </html>

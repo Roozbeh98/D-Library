@@ -20,6 +20,7 @@ namespace D_Library.Models.Domins
         public Nullable<bool> BD_FileEnabel { get; set; }
         public Nullable<int> BD_FileCount { get; set; }
         [Display(Name = "تعداد صفحه ها")]
+        [DataType(DataType.Text)]
         public Nullable<int> BD_PageCount { get; set; }
         [Display(Name = "عنوان")]
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]

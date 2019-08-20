@@ -1,5 +1,6 @@
 .toast-title {
   font-weight: bold;
+  font-size:18px;
 }
 .toast-message {
   -ms-word-wrap: break-word;
@@ -97,12 +98,12 @@ button.toast-close-button {
   position: relative;
   overflow: hidden;
   margin: 0 0 6px;
-  padding: 15px 15px 15px 50px;
+  padding: 15px 70px 15px 15px;
   width: 300px;
   -moz-border-radius: 3px 3px 3px 3px;
   -webkit-border-radius: 3px 3px 3px 3px;
   border-radius: 3px 3px 3px 3px;
-  background-position: 15px center;
+  background-position: 255px center;
   background-repeat: no-repeat;
   -moz-box-shadow: 0 0 12px #999999;
   -webkit-box-shadow: 0 0 12px #999999;
@@ -171,27 +172,39 @@ button.toast-close-button {
 /*Responsive Design*/
 @media all and (max-width: 240px) {
   #toast-container > div {
-    padding: 8px 8px 8px 50px;
+    padding: 8px 50px 8px 8px;
     width: 11em;
   }
   #toast-container .toast-close-button {
     right: -0.2em;
     top: -0.2em;
   }
+
+  #toast-container > div {
+    background-position: 255px center;
+
+  }
+
 }
 @media all and (min-width: 241px) and (max-width: 480px) {
   #toast-container > div {
-    padding: 8px 8px 8px 50px;
+    padding: 8px 50px 8px 8px;
     width: 18em;
   }
   #toast-container .toast-close-button {
     right: -0.2em;
     top: -0.2em;
   }
+  #toast-container > div {
+      background-position: 215px center;
+  }
 }
 @media all and (min-width: 481px) and (max-width: 768px) {
   #toast-container > div {
-    padding: 15px 15px 15px 50px;
+    padding: 15px 60px 15px 15px;
     width: 25em;
+  }
+  #toast-container > div {
+      background-position: 305px center;
   }
 }

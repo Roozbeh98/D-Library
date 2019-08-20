@@ -211,6 +211,13 @@ hr {
     padding-left:15px;
     padding-right:15px;
 }
+.tagify{
+    background-color:#fff;
+    border-bottom-left-radius:4px;
+    border-top-left-radius:4px;
+}
+.tagify__input {
+}
 /*********************************************** navbar ********************************************/
 .navbar-inverse {
     background-color: #222d32;

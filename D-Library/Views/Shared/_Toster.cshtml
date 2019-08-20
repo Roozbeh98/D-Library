@@ -1,17 +1,30 @@
-﻿
-<script>
- 
-    //toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!", "Fuck")
-</script>
+﻿@{
+    if (ViewBag.TosterState != null)
+    {
+        <script src="~/Scripts/MyScripts/Toster_Config.js"></script>
+        switch ((TosterType)ViewBag.TosterType)
+        {
+            case TosterType.JustTitel:
+                <script>
+                           TosterJustTitel("@ViewBag.TosterState","@ViewBag.TosterTitel");
+                </script>
+                break;
+            case TosterType.WithTitel:
+                <script>
+                            TosterWithTitel("@ViewBag.TosterState","@ViewBag.TosterMassage","@ViewBag.TosterTitel");
+                </script>
+                break;
+            case TosterType.Maseage:
+                <script>
+                            TosterWithOutTitel("@ViewBag.TosterState","@ViewBag.TosterMassage");
+                </script>
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 
-<script>
-    function TosterWithOutTitel(TosterState, TosterMassage) {
-        toastr.TosterState(TosterMassage);
-    };
-    function TosterWithTitel() {
-       
-    };
-</script>
 
 
