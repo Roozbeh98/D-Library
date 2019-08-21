@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace D_Library.Models.Domins
 {
@@ -33,10 +34,12 @@ namespace D_Library.Models.Domins
         [Display(Name = "زبان")]
         public string BD_LanguageID { get; set; }
         [Display(Name = "توضیحات")]
+        [AllowHtml]
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]
         public string BD_Description { get; set; }
         [Display(Name = "چکیده")]
+        [AllowHtml]
         //[Required(ErrorMessage = "لطفا مقدار را وارد نمایید")]
         [DataType(DataType.MultilineText)]
         public string BD_Abstract { get; set; }

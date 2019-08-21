@@ -32,8 +32,9 @@
     <script src="~/Scripts/Plugins/JQuery.Filepond/filepond.jquery.js"></script>
     <script src="~/Scripts/Plugins/jQuery.toast/toastr.js"></script>
     <script src="~/Scripts/Plugins/jQuery.tagify/tagify.js"></script>
+    <script src="~/Scripts/Plugins/ckeditor/ckeditor.js"></script>
 
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 
 
 
@@ -50,16 +51,10 @@
                     <a href="#">سامانه کتابخانه دیجیتال</a>
                 </div>
                 <nav class="col-md-9  navbar navbar-inverse " style="border-radius:0;">
-
-
                     @Html.Partial("_NavCustomMune")
-
                 </nav>
             </div>
-
-
         </header>
-
 
         <main>
             <div class="container-fluid divMain">
@@ -75,18 +70,12 @@
             </div>
         </main>
 
-
         @Html.Partial("_Toster")
-
-
-
-
 
         <footer></footer>
 
     </div>
     <script src="~/Scripts/MyScripts/Chosen_Config.js"></script>
-
     @RenderSection("Modal", false)
 
 
