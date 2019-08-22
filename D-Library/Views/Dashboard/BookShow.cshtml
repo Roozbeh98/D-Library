@@ -315,6 +315,29 @@
                                 }
                             }
                         }
+                        @if (Model.Tags.Count > 0)
+                        {
+                            <div class="row bookshow-detiles-item">
+                                <div class="col-md-3 bookshow-detiles-col-3-main">
+                                    <div class="panel bookshow-detiles-col-3 ">
+                                        <span class="bookshow-detiles-text">
+                                            برچسب
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="panel bookshow-detiles-col-9-tags">
+                                        <div class="bookshow-detiles-tags-locat">
+
+                                            @foreach (var item in Model.Tags)
+                                            {
+                                                <div class="bookshow-detiles-tag">@item</div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
 
                     </div>
                 </div>

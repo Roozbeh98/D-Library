@@ -1,0 +1,106 @@
+﻿@model IEnumerable<D_Library.Models.Domins.Tbl_Tag>
+
+@{
+    ViewBag.Title = "TagList";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+
+    <div class="table-panel booktypeteble-panel">
+        <div class="table-heading  text-center ">
+            <span>
+                برچسب
+            </span>
+
+        </div>
+        <div class="panel-body table-body">
+
+
+
+            <table id="BookTypeList" class="table table-striped table-table">
+                <thead>
+                    <tr class="table-tr">
+                        <th scope="col" width="20px">#</th>
+                        <th scope="col">نام</th>
+                        <th scope="col" data-orderable="false"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int x = 0;
+                    }
+
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            x++;
+                            <tr>
+                                <td scope="row">@x</td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.Tag_Name)
+                                </td>
+
+                                <td scope="row" class="pull-right">
+                                    <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LanguageEdit(@item.Tag_ID)"> </a>
+                                    @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3">
+                                <div class="text-center">موردی یافت نشد</div>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+            <div>
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " onclick="LanguageCreate()">
+                    <span class="glyphicon glyphicon-plus-sign pull-left"></span>
+                    <span class="text-center">افزودن</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+
+        function LanguageCreate() {
+            $.ajax({
+                url: "/Setting/TagAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+        function LanguageEdit(id) {
+            $.ajax({
+                url: "/Setting/TagEdit/"+id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

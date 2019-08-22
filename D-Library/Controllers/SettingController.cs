@@ -18,10 +18,10 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult Setting()
         {
-            ViewBag.TosterState = "success";
-            ViewBag.TosterType = TosterType.WithTitel;
-            ViewBag.TosterTitel = "عملیات";
-            ViewBag.TosterMassage = "موفقیت امیز بود";
+            //ViewBag.TosterState = "success";
+            //ViewBag.TosterType = TosterType.WithTitel;
+            //ViewBag.TosterTitel = "عملیات";
+            //ViewBag.TosterMassage = "موفقیت امیز بود";
             return View();
         }
 
@@ -211,6 +211,69 @@ namespace D_Library.Controllers
             if (Convert.ToBoolean(db.SaveChanges() > 0))
             {
                 return RedirectToAction("LanguageList", "Setting");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+        #endregion
+
+        #region Tags
+        [HttpGet]
+        public ActionResult TagList()
+        {
+            return View(db.Tbl_Tag);
+        }
+        [HttpGet]
+        public ActionResult TagAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TagAdd(TagAddModel model)
+        {
+            Tbl_Tag q = new Tbl_Tag();
+            q.Tag_Name = model.Name;
+
+            db.Tbl_Tag.Add(q);
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("TagList", "Setting");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult TagEdit(int id)
+        {
+            Tbl_Tag q = new Tbl_Tag();
+            q = db.Tbl_Tag.Where(a => a.Tag_ID == id).SingleOrDefault();
+            TagAddModel model = new TagAddModel();
+            model.ID = q.Tag_ID;
+            model.Name = q.Tag_Name;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult TagEdit(TagAddModel model)
+        {
+            Tbl_Tag q = new Tbl_Tag();
+            q = db.Tbl_Tag.Where(a => a.Tag_ID == model.ID).SingleOrDefault();
+            q.Tag_Name = model.Name;
+
+            db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("TagList", "Setting");
             }
             else
             {

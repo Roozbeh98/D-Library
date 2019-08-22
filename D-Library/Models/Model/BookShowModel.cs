@@ -15,5 +15,6 @@ namespace D_Library.Models.Model
         public Tbl_Book Book { get; set; }
         public Tbl_BookDetails Details { get; set; }
         public IEnumerable<Tbl_Files> Files { get; set; }
+        public List<string> Tags { get; set; }
     }
 }

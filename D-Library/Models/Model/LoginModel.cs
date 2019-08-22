@@ -13,7 +13,7 @@ namespace D_Library.Models.Model
         [Required(ErrorMessage =("نام کاربری باید وارد شود"))]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         public string Username { get; set; }
-        [Display(Name ="نام کاربری")]
+        [Display(Name ="رمز عبور یا کد ثبت نام")]
         [Required(ErrorMessage = ("رمز عبور یا کد ثبت نام باید وارد شود"))]
         [StringLength(100, ErrorMessage = "مقدار وارد شده بیش 100 کارکتراست")]
         [DataType(DataType.Password)]

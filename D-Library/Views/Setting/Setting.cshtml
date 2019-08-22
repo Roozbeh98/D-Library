@@ -71,6 +71,18 @@
                         </div>
                     </div>
 
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            برچسب ها
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("TagList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="TagCreate()"> </a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="tab-pane fade" id="Users">
                     <div class="panel setting-col" style="line-height:40px;">
@@ -177,6 +189,18 @@
             }).done(function (result) {
                 $('#myModal').modal('show');
                 $('#myModalLabel').html('تعریف رشته');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function TagCreate() {
+            $.ajax({
+                url: "/Setting/TagAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن برچسب');
                 $('#myModalBody').html(result);
             });
         }

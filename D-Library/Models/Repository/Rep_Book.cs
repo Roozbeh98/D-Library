@@ -69,5 +69,18 @@ namespace D_Library.Models.Repository
             return name;
         }
 
+        public List<string> Get_TagsByBookID(int id)
+        {
+            var list = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault().Tbl_BookTag.ToList();
+            List<string> tags = new List<string>();
+            foreach (var item in list)
+            {
+                tags.Add(item.Tbl_Tag.Tag_Name);
+            }
+
+            return tags;
+        }
+
+
     }
 }

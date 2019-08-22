@@ -1,5 +1,6 @@
-﻿@using D_Library.Models.Repository
-
+﻿@model D_Library.Models.Model.UsersRegisterNotCompleteListModel
+@using D_Library.Models.Repository
+@using D_Library.Models.Plugins
 
 @{
     ViewBag.Title = "UsersRegisterNotCompleteList";
@@ -61,13 +62,14 @@
 
                             </td>
                             <td scope="row">
-                                <span>@item.Expiry_Time.ToShortDateString()</span>
+                                <span> @PersianDateExtensionMethods.ToPeString(item.Expiry_Time, "yyyy/MM/dd")</span>
+
                             </td>
                             <td scope="row">
                                 <span>@item.Code</span>
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.ID})"></a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="RegisterDelete(@item.ID)"></a>
                             </td>
                         </tr>
                     }
@@ -76,7 +78,7 @@
         </div>
     </div>
 </section>
-
+@Html.Partial("_Modal")
 <script>
     $(document).ready(function () {
         $('#UserListTable').DataTable({
@@ -120,9 +122,25 @@
 
         var element3 = element2.parentElement;
 
-        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BuildRegisterCode", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("RegisterCodeBuilder", "User")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
         addbtn.appendTo(element3)
     });
 
 </script>
 
+@section Modal{
+    <script>
+
+        function RegisterDelete(id) {
+            $.ajax({
+                url: "/User/RegisterCodeDelete/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('حذف');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

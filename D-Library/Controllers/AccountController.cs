@@ -360,6 +360,11 @@ namespace D_Library.Controllers
                 }
                 else
                 {
+                    if (q.Login_RegisterActive)
+                    {
+                        return Json(true, JsonRequestBehavior.DenyGet);
+                    }
+
                     return Json(false, JsonRequestBehavior.DenyGet);
                 }
 

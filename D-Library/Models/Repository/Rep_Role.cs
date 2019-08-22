@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using D_Library.Models.Domins;
 
 namespace D_Library.Models.Repository
@@ -34,6 +35,20 @@ namespace D_Library.Models.Repository
             }
             return t;
         }
+
+
+        public IEnumerable<SelectListItem> Get_AllBaseRole()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (var item in db.Tbl_BaseRole)
+            {
+                list.Add(new SelectListItem() { Value = item.BaseRole_ID.ToString(), Text = item.BaseRole_Titel});
+            }
+
+            return list.AsEnumerable();
+        }
+
 
     }
 }

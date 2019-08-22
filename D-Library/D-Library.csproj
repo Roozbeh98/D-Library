@@ -144,6 +144,7 @@
     <Content Include="Content\Plugins\jQuery.Toast\toastr.css" />
     <Content Include="Content\Plugins\jQuery.Toast\toastr.min.css" />
     <Content Include="Content\Plugins\MaterialDesignSwitch\MaterialDesignSwitch.css" />
+    <Content Include="Content\Plugins\MdBootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -674,9 +675,10 @@
     <Content Include="Scripts\Plugins\jQuery.toast\toastr.js" />
     <Content Include="Scripts\Plugins\jQuery.toast\toastr.min.js" />
     <Content Include="Scripts\Plugins\jQuery.ui.widget\jquery.ui.widget.js" />
+    <Content Include="Scripts\Plugins\MD.BootstrapPersianDateTimePicker\jalaali.js" />
+    <Content Include="Scripts\Plugins\MD.BootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
-    <Content Include="Views\Dashboard\BuildRegisterCode.cshtml" />
     <Content Include="Views\Dashboard\RequestTypeSelector.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Errors\Error_401.cshtml" />
@@ -686,11 +688,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -827,11 +831,15 @@
     <Compile Include="Models\Model\BaseRoleAddModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
     <Compile Include="Models\Model\BookTypeAddModel.cs" />
+    <Compile Include="Models\Model\RegisterCodeDeleteModel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
+    <Compile Include="Models\Model\TagAddModel.cs" />
     <Compile Include="Models\Model\UserListModel.cs" />
     <Compile Include="Models\Model\UsersRegisterNotCompleteListModel.cs" />
+    <Compile Include="Models\Plugins\Email.cs" />
+    <Compile Include="Models\Plugins\PersianDateExtensionMethods.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
     <Compile Include="Models\Repository\Rep_Book.cs" />
@@ -891,8 +899,6 @@
     <Content Include="Views\Shared\_NavCustomMune.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
-    <Content Include="Views\Dashboard\UsersRegisterNotCompleteList.cshtml" />
-    <Content Include="Views\Dashboard\UsersList.cshtml" />
     <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
     <Content Include="Views\Dashboard\NewBook.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -921,6 +927,13 @@
     <Content Include="Views\Shared\_AsideMenu.cshtml" />
     <Content Include="Views\Shared\_Toster.cshtml" />
     <Content Include="Scripts\Plugins\ckeditor\skins\moono-dark\readme.md" />
+    <Content Include="Views\Setting\TagList.cshtml" />
+    <Content Include="Views\Setting\TagAdd.cshtml" />
+    <Content Include="Views\Setting\TagEdit.cshtml" />
+    <Content Include="Views\User\RegisterCodeBuilder.cshtml" />
+    <Content Include="Views\User\UsersList.cshtml" />
+    <Content Include="Views\User\UsersRegisterNotCompleteList.cshtml" />
+    <Content Include="Views\User\RegisterCodeDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -930,7 +943,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
-    <Folder Include="Models\Plugins\" />
+    <Folder Include="Views\Book\" />
     <Folder Include="Views\FileManager\" />
   </ItemGroup>
   <ItemGroup>
