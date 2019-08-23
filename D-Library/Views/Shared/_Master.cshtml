@@ -1,12 +1,12 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
 
     <link href="~/Content/css/bootstrap.rtl.full.min.css" rel="stylesheet" />
     <link href="~/Content/css/fontiran.css" rel="stylesheet" />
-    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.all.css" rel="stylesheet" />
+
 
     <link href="~/Content/Plugins/Chosen/chosen.css" rel="stylesheet" />
     <link href="~/Scripts/Plugins/DataTables-1.10.18/css/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -24,14 +24,8 @@
     <script src="~/Scripts/Plugins/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/Plugins/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
 
-
-
-
-
-
 </head>
 <body>
-
 
     <div class="wrapper">
 
@@ -46,111 +40,22 @@
 
                     @Html.Partial("_NavCustomMune")
 
-
                 </nav>
             </div>
 
-
         </header>
         <main>
-            <div class="container-fluid divMain">
+            <div class="container-fluid">
                 @RenderBody()
             </div>
         </main>
 
-        @{
-
-
-
-     
-
-            <script src="~/Scripts/Plugins/jQuery.toast/toastrsample.js"></script>
-            <script src="~/Scripts/Plugins/jQuery.toast/toastr.min.js"></script>
-            <link href="~/Content/Plugins/toast/toastr.min.css" rel="stylesheet" />
-
-            if (ViewBag.State != null)
-            {
-
-
-                <div class="control-group" id="toastrTypeGroup">
-                    <div class="controls">
-                        @{
-                            string ck = "";
-                            if (ViewBag.State == "Error")
-                            {
-                                ck = "checked";
-                                <label class="radio">
-                                    <input type="radio" style="visibility:hidden" checked="@ck" name="toasts" value="error" />
-                                </label>
-                            }
-                            else
-                            {
-                                ck = "checked";
-                                <label class="radio">
-                                    <input type="radio" name="toasts" style="visibility:hidden" value="success" checked="@ck" />
-                                </label>
-                            }
-                        }
-
-                        @*<label class="radio">
-                                <input type="radio" name="toasts" style="visibility:hidden" checked value="info" />
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="toasts" style="visibility:hidden" checked value="warning" />
-                            </label>*@
-
-                    </div>
-                </div>
-                <br />
-                <div class="control-group" id="toastrPositionGroup">
-                    <div class="controls">
-
-                        <label class="radio">
-                            <input type="radio" style="visibility:hidden" checked name="positions" value="toast-bottom-left" />
-                        </label>
-
-                    </div>
-                </div>
-                <br />
-
-                if (ViewBag.State == "Error")
-                {
-                    <button type="button" style="visibility:hidden" class="btn" id="showtoasterror"></button>
-                    <script>
-                        jQuery(function () {
-                            jQuery('#showtoasterror').click();
-                        });
-                    </script>
-                }
-                else
-                {
-                    <button type="button" style="visibility:hidden" class="btn" id="showtoast"></button>
-                    <script>
-                        jQuery(function () {
-                            jQuery('#showtoast').click();
-                        });
-                    </script>
-                }
-            }
-
-        }
+        @Html.Partial("_Toster")
 
         <footer></footer>
     </div>
 
-    <script>
-        var config = {
-            '.chosen-select': { no_results_text: 'موردی یافت نشده !', disable_search_threshold: 5, rtl: true },
-            '.chosen-select-deselect': { allow_single_deselect: true },
-            '.chosen-select-no-single': { disable_search_threshold: 10 },
-            '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
-            '.chosen-select-width': { width: '100vh' }
-        }
-        for (var selector in config) {
-            $(selector).chosen(config[selector]);
-        }
-
-    </script>
+    <script src="~/Scripts/MyScripts/Chosen_Config.js"></script>
 
 </body>
 </html>

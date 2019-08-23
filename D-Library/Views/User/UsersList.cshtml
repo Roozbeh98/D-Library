@@ -68,7 +68,7 @@
                                 <span>@q.Tbl_BaseRole.BaseRole_Titel</span>
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("Show","Dashboard",new { id = item.User_ID})   "></a>
+                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("UserProfile","User",new { id = item.User_ID})   "></a>
                                 <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.User_ID })"> </a>
                                 <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.User_ID})   "></a>
                             </td>

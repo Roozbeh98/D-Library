@@ -1,0 +1,377 @@
+﻿@model D_Library.Models.Model.ProfileModel
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+@Html.HiddenFor(model => model.ID)
+
+<section class="col-md-9 userprofile">
+    <header class="panel userprofile-header">
+        <div class="panel-heading text-center">
+            <span style="">اطلاعات کاربر</span>
+        </div>
+    </header>
+
+    <main class="panel row userprofile-main">
+        <aside class="col-md-3">
+            <div class="text-center userprofile-img">
+                <img src="~/Content/Images/abstract-user-flat-3.png" />
+            </div>
+
+            <div class="text-center userprofile-aside-btn-regine">
+                <a href="#" class="btn btn-success fa fa-user"></a>
+                <a href="#" class="btn btn-warning fa fa-edit"></a>
+                <a href="#" class="btn btn-primary fa fa-envelope-open-text"></a>
+            </div>
+
+            <div>
+                <ul class="nav userprofile-aside-item">
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-user pull-left"></i>
+                            @Html.DisplayFor(model => model.name, new { htmlAttributes = new { @class = "form-control text-center" } })
+                            @Html.DisplayFor(model => model.Family, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa  fa-star pull-left"></i>
+                            @Html.DisplayFor(model => model.baseRole, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-layer-group pull-left"></i>
+                            @Html.DisplayFor(model => model.Group)
+
+
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-user-graduate pull-left"></i>
+                            @Html.DisplayFor(model => model.Branch)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="col-md-9 userprofile-section">
+
+            <ul class=" nav nav-tabs nav-justified userprofile-section-tabs">
+
+                <li class="active"><a href="#Description" data-toggle="tab">شرح</a></li>
+
+                <li><a href="#Details" data-toggle="tab">فایل</a></li>
+
+                <li><a href="#Setting" data-toggle="tab">تنظیمات</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="Description">
+                    <div class="panel-group" id="gp">
+
+                        <div class="panel userprofile-File-panel ">
+
+                            <a href="#Descrip" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title userprofile-File-titel">
+                                        فایل ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="Descrip" class="panel-collapse collapse in">
+                                <div id="file" class="panel-body userprofile-File-body">
+                                    fuck
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel userprofile-File-panel">
+
+                            <a href="#Abstract" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title  userprofile-File-titel">
+                                        درخواست ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="Abstract" class="panel-collapse collapse">
+                                <div id="request" class="panel-body userprofile-File-body">
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                    fuck<br />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="Details">
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;padding-top:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;">
+                        <div class="col-md-3 bookshow-detiles-col-3-main">
+                            <div class="panel bookshow-detiles-col-3 ">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel bookshow-detiles-col-9">
+                                <span class="bookshow-detiles-text">
+                                    fuck
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="Setting">
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            تغیر رمز عبور
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش نقش
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش اطلاعات
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            حذف کاربر
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            تعلیق کاربر
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-danger btn-sm fa fa-user-slash" onclick="LibraryLocatCreate()"> </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+
+</section>
+
+<script>
+    $(function () {
+        $('#request').slimScroll({
+            height: '370px'
+        });
+        $('#file').slimScroll({
+            height: '370px'
+        });
+    });
+</script>
+
+

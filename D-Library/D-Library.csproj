@@ -113,7 +113,8 @@
     <Content Include="Content\css\bootstrap.rtl.full.css" />
     <Content Include="Content\css\bootstrap.rtl.full.min.css" />
     <Content Include="Content\css\bootstrap.rtl.min.css" />
-    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\fontawesome.all.css" />
+    <Content Include="Content\css\fontawesome.all.min.css" />
     <Content Include="Content\css\fontiran.css" />
     <Content Include="Content\css\MasterStyle.css" />
     <Content Include="Content\css\MyCss\CodeGeneration.css" />
@@ -123,7 +124,10 @@
     <Content Include="Content\css\MyCss\RegistrationStyle.css" />
     <Content Include="Content\css\MyCss\SaerchPageStyle.css" />
     <Content Include="Content\css\MyCss\UploadFileStyle.css" />
-    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fa-brands-400.svg" />
+    <Content Include="Content\fonts\fa-light-300.svg" />
+    <Content Include="Content\fonts\fa-regular-400.svg" />
+    <Content Include="Content\fonts\fa-solid-900.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\abstract-user-flat-3.png" />
     <Content Include="Content\Images\arm.png" />
@@ -208,10 +212,27 @@
     <Content Include="Pages\Html\sw2.html" />
     <Content Include="Pages\Html\Tabel.html" />
     <Content Include="Pages\Html\UploadFile.html" />
+    <Content Include="Pages\Html\User_profile_porlet_with_tabs.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Plugins\jQuery.Toast\toastr.less" />
     <Content Include="Content\Plugins\jQuery.Toast\toastr.scss" />
+    <Content Include="Content\fonts\fa-brands-400.eot" />
+    <Content Include="Content\fonts\fa-brands-400.ttf" />
+    <Content Include="Content\fonts\fa-brands-400.woff" />
+    <Content Include="Content\fonts\fa-brands-400.woff2" />
+    <Content Include="Content\fonts\fa-light-300.eot" />
+    <Content Include="Content\fonts\fa-light-300.ttf" />
+    <Content Include="Content\fonts\fa-light-300.woff" />
+    <Content Include="Content\fonts\fa-light-300.woff2" />
+    <Content Include="Content\fonts\fa-regular-400.eot" />
+    <Content Include="Content\fonts\fa-regular-400.ttf" />
+    <Content Include="Content\fonts\fa-regular-400.woff" />
+    <Content Include="Content\fonts\fa-regular-400.woff2" />
+    <Content Include="Content\fonts\fa-solid-900.eot" />
+    <Content Include="Content\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\fonts\fa-solid-900.woff" />
+    <Content Include="Content\fonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\Plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\Plugins\ckeditor\ckeditor.js" />
@@ -831,6 +852,7 @@
     <Compile Include="Models\Model\BaseRoleAddModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
     <Compile Include="Models\Model\BookTypeAddModel.cs" />
+    <Compile Include="Models\Model\ProfileModel.cs" />
     <Compile Include="Models\Model\RegisterCodeDeleteModel.cs" />
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
@@ -857,11 +879,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -934,6 +951,8 @@
     <Content Include="Views\User\UsersList.cshtml" />
     <Content Include="Views\User\UsersRegisterNotCompleteList.cshtml" />
     <Content Include="Views\User\RegisterCodeDelete.cshtml" />
+    <Content Include="Views\Account\MyProfile.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

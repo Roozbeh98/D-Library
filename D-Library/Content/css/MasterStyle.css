@@ -768,6 +768,107 @@ hr {
     margin-bottom: 20px;
 }
 
+/*********************************************** MyProfile **********************************************/
+
+
+
+/*********************************************** UserProfile **********************************************/
+.userprofile {
+    margin-top: 75px;
+}
+.userprofile-header {
+    margin-bottom: 5px;
+
+}
+
+.userprofile-header > div {
+    background-color: #222d32;
+    color: #9d9d9d;
+}
+
+.userprofile-header > div > span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.userprofile-main {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+    .userprofile-main > aside {
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 510px;
+        background-color: #222d32;
+        border-left: 3px solid #9d9d9d;
+    }
+
+.userprofile-img {
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+
+.userprofile-img > img {
+    height: auto;
+    width: 15em;
+}
+
+.userprofile-aside-btn-regine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.userprofile-aside-item > li > a {
+    color: #9d9d9d;
+}
+
+.userprofile-aside-item > li > a:hover,
+.userprofile-aside-item > li > a:active,
+.userprofile-aside-item > li > a:focus {
+    color: whitesmoke;
+    background-color: #222d32;
+}
+
+.userprofile-section {
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #374449;
+    height: 510px
+}
+
+.userprofile-section > ul {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 5px
+}
+
+.userprofile-section-tabs {
+    background-color: #374449;
+    border-bottom: 1px solid #222D32;
+}
+
+.userprofile-File-panel {
+    border: 0px;
+}
+
+.userprofile-File-heading {
+    background-color: #222D32;
+    border-radius:0px;
+}
+
+.userprofile-File-titel {
+    color: #9d9d9d;
+}
+
+.userprofile-File-body {
+    background-color: #374449;
+    height: 370px;
+}
+
 
 @media screen and (max-width:990px) {
     /*********************************************** General Style **************************************/
@@ -857,5 +958,17 @@ hr {
 
     .bookshow-detiles-col-3-main {
         padding-left: 15px;
+    }
+    /*********************************************** MyProfile **********************************************/
+
+
+
+    /*********************************************** UserProfile **********************************************/
+    .userprofile {
+        margin-top: 0px;
+    }
+
+    .userprofile-main > aside {
+        border-left: 0px solid #9d9d9d;
     }
 }

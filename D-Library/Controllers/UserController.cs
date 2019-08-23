@@ -193,7 +193,25 @@ namespace D_Library.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult UserProfile(int id)
+        {
+            var q = db.Tbl_Login.Where(a => a.Tbl_User.User_ID == id).SingleOrDefault(); ;
 
+            ProfileModel model = new ProfileModel();
+
+            model.name = q.Tbl_User.User_Name;
+            model.Family = q.Tbl_User.User_Family;
+            model.ID = q.Login_ID;
+            model.Email = q.Tbl_User.User_Email;
+            model.baseRole = q.Tbl_BaseRole.BaseRole_Titel;
+            model.Group = q.Tbl_User.Tbl_branch.Tbl_Group.Group_Name;
+            model.Branch = q.Tbl_User.Tbl_branch.branch_Name;
+            model.Mobile = q.Tbl_User.User_Mobile;
+
+            return View(model);
+
+        }
 
 
         #endregion
