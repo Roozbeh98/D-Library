@@ -21,8 +21,15 @@
             </div>
 
             <div class="text-center userprofile-aside-btn-regine">
-                <a href="#" class="btn btn-success fa fa-user"></a>
-                <a href="#" class="btn btn-warning fa fa-edit"></a>
+                @if (Model.Active)
+                {
+                    <a class="btn btn-success fa fa-user" onclick="BanUser(@Model.ID")></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger btn-sm fa fa-user-slash" onclick="BanUser(@Model.ID)"> </a>
+                }
+                <a onclick="ChangeUserInfo(@Model.ID)" class="btn btn-warning fa fa-edit"></a>
                 <a href="#" class="btn btn-primary fa fa-envelope-open-text"></a>
             </div>
 
@@ -65,7 +72,7 @@
 
                 <li class="active"><a href="#Description" data-toggle="tab">شرح</a></li>
 
-                <li><a href="#Details" data-toggle="tab">فایل</a></li>
+                <li><a href="#Details" data-toggle="tab">اطلاعات</a></li>
 
                 <li><a href="#Setting" data-toggle="tab">تنظیمات</a></li>
 
@@ -78,7 +85,7 @@
 
                         <div class="panel userprofile-File-panel ">
 
-                            <a href="#Descrip" data-parent="#gp" data-toggle="collapse">
+                            <a href="#file" data-parent="#gp" data-toggle="collapse">
                                 <div class="panel-heading userprofile-File-heading">
                                     <h4 class="panel-title userprofile-File-titel">
                                         فایل ها
@@ -86,8 +93,8 @@
                                 </div>
                             </a>
 
-                            <div id="Descrip" class="panel-collapse collapse in">
-                                <div id="file" class="panel-body userprofile-File-body">
+                            <div id="file" class="panel-collapse collapse in">
+                                <div id="filebody" class="panel-body userprofile-File-body">
 
                                 </div>
 
@@ -97,7 +104,7 @@
 
                         <div class="panel userprofile-File-panel">
 
-                            <a href="#Abstract" data-parent="#gp" data-toggle="collapse">
+                            <a href="#reguest" data-parent="#gp" data-toggle="collapse">
                                 <div class="panel-heading userprofile-File-heading">
                                     <h4 class="panel-title  userprofile-File-titel">
                                         درخواست ها
@@ -105,8 +112,27 @@
                                 </div>
                             </a>
 
-                            <div id="Abstract" class="panel-collapse collapse">
-                                <div id="request" class="panel-body userprofile-File-body">
+                            <div id="reguest" class="panel-collapse collapse">
+                                <div id="requestbody" class="panel-body userprofile-File-body">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel userprofile-File-panel">
+
+                            <a href="#message" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title  userprofile-File-titel">
+                                        پیام ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="message" class="panel-collapse collapse">
+                                <div id="messagebody" class="panel-body userprofile-File-body">
 
                                 </div>
 
@@ -120,25 +146,135 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="Details">
+                <div class="tab-pane fade" id="Details" style="margin-top:15px">
 
-                    <div class="row bookshow-detiles-item" style="padding-left:15px;padding-right:15px;padding-top:15px;">
-                        <div class="col-md-3 bookshow-detiles-col-3-main">
-                            <div class="panel bookshow-detiles-col-3 ">
-                                <span class="bookshow-detiles-text">
-                                    fuck
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.name)
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <div class="panel bookshow-detiles-col-9">
-                                <span class="bookshow-detiles-text">
-                                    fuck
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.name)
 
                                 </span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Family)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Family)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Email)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Mobile)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Mobile)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Group)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Group)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Branch)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Branch)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.baseRole)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.baseRole)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
 
@@ -150,7 +286,7 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangePassword(@Model.ID)"> </a>
                         </div>
                     </div>
 
@@ -161,7 +297,7 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeBaseRole(@Model.ID)"> </a>
                         </div>
                     </div>
 
@@ -172,7 +308,7 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="LibraryLocatCreate()"> </a>
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeUserInfo(@Model.ID)"> </a>
                         </div>
                     </div>
 
@@ -183,20 +319,37 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="LibraryLocatCreate()"> </a>
+                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="DeleteUser(@Model.ID)"> </a>
                         </div>
                     </div>
 
-                    <div class="panel setting-col" style="line-height:40px;">
-                        <div class="pull-left setting-col-titel">
-                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
-                            تعلیق کاربر
-                        </div>
+                    @if (Model.Active)
+                    {
+                        <div class="panel setting-col" style="line-height:40px;">
+                            <div class="pull-left setting-col-titel">
+                                <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                                تعلیق کاربر
+                            </div>
 
-                        <div class="pull-right ">
-                            <a class="btn btn-danger btn-sm fa fa-user-slash" style="padding-top: 8px;padding-bottom: 8px;padding-right: 9px;padding-left: 9px;" onclick="LibraryLocatCreate()"> </a>
+                            <div class="pull-right ">
+                                <a class="btn btn-danger btn-sm fa fa-user-slash" style="line-height: 18px;padding-left: 9px;padding-right: 9px;" onclick="BanUser(@Model.ID)"> </a>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="panel setting-col" style="line-height:40px;">
+                            <div class="pull-left setting-col-titel">
+                                <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                                رفع تعلیق
+                            </div>
+
+                            <div class="pull-right ">
+                                <a class="btn btn-success btn-sm fa fa-user" style="line-height: 18px;padding-left: 11px;padding-right: 11px;" onclick="BanUser(@Model.ID)"> </a>
+                            </div>
+                        </div>
+                    }
+
 
                 </div>
 
@@ -213,13 +366,82 @@
 
 <script>
     $(function () {
-        $('#request').slimScroll({
-            height: '370px'
+        $('#requestbody').slimScroll({
+            height: '334px'
         });
-        $('#file').slimScroll({
-            height: '370px'
+        $('#filebody').slimScroll({
+            height: '334px'
+        });
+        $('#filebody').slimScroll({
+            height: '334px'
         });
     });
 </script>
 
+@Html.Partial("_Modal")
 
+@section Modal{
+    <script>
+
+        function ChangePassword(id) {
+            $.ajax({
+                url: "/User/ChangePassword/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تغیر رمز عبور');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function ChangeBaseRole(id) {
+            $.ajax({
+                url: "/User/ChangeBaseRole/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function ChangeUserInfo(id) {
+            $.ajax({
+                url: "/User/ChangeUserInfo/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+        
+        function BanUser(id) {
+            $.ajax({
+                url: "/User/BanUser/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function DeleteUser(id) {
+            $.ajax({
+                url: "/User/DeleteUser/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+
+    </script>
+}

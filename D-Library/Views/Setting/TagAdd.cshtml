@@ -6,24 +6,27 @@
 
     @Html.AntiForgeryToken()
 
-<div class="modal-main">
+    <div class="modal-main">
 
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
-        <div class="input-group">
-            <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
     </div>
-
-
-</div>
 
     <button class="btn btn-success modal-btn-singel" type="submit" name="btn-BuildCode">تایید</button>
 
 }
 
 
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -41,10 +41,13 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult LibraryAdd(Tbl_Library model)
+        public ActionResult LibraryAdd(LibraryAddModel model)
         {
+            Tbl_Library library = new Tbl_Library();
 
-            db.Tbl_Library.Add(model);
+            library.Library_Name = model.Name;
+
+            db.Tbl_Library.Add(library);
 
             if (Convert.ToBoolean(db.SaveChanges() > 0))
             {
@@ -60,17 +63,21 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult LibraryEdit(int id)
         {
-            Tbl_Library model = new Tbl_Library();
-            model = db.Tbl_Library.Where(a => a.Library_ID == id).SingleOrDefault();
+            LibraryAddModel model = new LibraryAddModel();
+            var q = db.Tbl_Library.Where(a => a.Library_ID == id).SingleOrDefault();
+
+            model.ID = q.Library_ID;
+            model.Name = q.Library_Name;
+
             return PartialView(model);
         }
 
         [HttpPost]
-        public ActionResult LibraryEdit(Tbl_Library model)
+        public ActionResult LibraryEdit(LibraryAddModel model)
         {
             Tbl_Library q = new Tbl_Library();
-            q = db.Tbl_Library.Where(a => a.Library_ID == model.Library_ID).SingleOrDefault();
-            q.Library_Name = model.Library_Name;
+            q = db.Tbl_Library.Where(a => a.Library_ID == model.ID).SingleOrDefault();
+            q.Library_Name = model.Name;
 
             db.Entry(q).State = System.Data.Entity.EntityState.Modified;
 

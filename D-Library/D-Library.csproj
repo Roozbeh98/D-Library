@@ -846,8 +846,11 @@
     <Compile Include="Models\Model\BookTypeListModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\BranchAddModel.cs" />
+    <Compile Include="Models\Model\ChangePasswordModel.cs" />
+    <Compile Include="Models\Model\ChangeBaseRoleModel.cs" />
     <Compile Include="Models\Model\GroupAddModel.cs" />
     <Compile Include="Models\Model\LanguageAddModel.cs" />
+    <Compile Include="Models\Model\LibraryAddModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\BaseRoleAddModel.cs" />
     <Compile Include="Models\Model\NewBookModel.cs" />
@@ -858,6 +861,8 @@
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
     <Compile Include="Models\Model\TagAddModel.cs" />
+    <Compile Include="Models\Model\UserBanOrDeleteAccuont.cs" />
+    <Compile Include="Models\Model\UserInfoEditModel.cs" />
     <Compile Include="Models\Model\UserListModel.cs" />
     <Compile Include="Models\Model\UsersRegisterNotCompleteListModel.cs" />
     <Compile Include="Models\Plugins\Email.cs" />
@@ -925,8 +930,6 @@
     <Content Include="Views\Dashboard\BookShow.cshtml" />
     <Content Include="Views\Setting\Setting.cshtml" />
     <Content Include="Views\Setting\LibraryList.cshtml" />
-    <Content Include="Views\Setting\LibraryAdd.cshtml" />
-    <Content Include="Views\Setting\LibraryEdit.cshtml" />
     <Content Include="Views\Setting\BaseRoleList.cshtml" />
     <Content Include="Views\Setting\BookTypeList.cshtml" />
     <Content Include="Views\Setting\BookTypeAdd.cshtml" />
@@ -953,6 +956,13 @@
     <Content Include="Views\User\RegisterCodeDelete.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\ChangeBaseRole.cshtml" />
+    <Content Include="Views\Setting\LibraryAdd.cshtml" />
+    <Content Include="Views\Setting\LibraryEdit.cshtml" />
+    <Content Include="Views\User\ChangeUserInfo.cshtml" />
+    <Content Include="Views\User\DeleteUser.cshtml" />
+    <Content Include="Views\User\BanUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

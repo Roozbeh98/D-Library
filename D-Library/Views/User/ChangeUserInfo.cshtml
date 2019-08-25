@@ -1,0 +1,81 @@
+﻿@model D_Library.Models.Model.UserInfoEditModel
+@using D_Library.Models.Repository
+
+<link href="~/Content/Plugins/Chosen/chosen.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+    <div class="modal-main">
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Family, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group ">
+            @Html.LabelFor(model => Model.Group, htmlAttributes: new { @class = "" })
+            @{
+                Rep_GroupBranch gp = new Rep_GroupBranch();
+                @Html.DropDownListFor(model => Model.Group, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control chosen-select " });
+            }
+        </div>
+
+        <div class="form-group ">
+            @Html.LabelFor(model => Model.Branch, htmlAttributes: new { @class = "" })
+            @{
+                Rep_GroupBranch br = new Rep_GroupBranch();
+                @Html.DropDownListFor(model => Model.Branch, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control chosen-select  " });
+            }
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label " })
+            <div class="input-group">
+                <span class=" input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+        </div>
+
+
+    </div>
+    <div class="" style="margin-top:20px;">
+        <button class="btn btn-danger modal-btn-Dual pull-left" type="button" data-dismiss="modal">انصراف</button>
+        <button class="btn btn-success modal-btn-Dual pull-right " type="submit" name="btn-Delete">تایید</button>
+
+    </div>
+}
+
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/Plugins/jQuery.Chosen/chosen.jquery.js"></script>
+<script src="~/Scripts/MyScripts/Chosen_Config.js"></script>

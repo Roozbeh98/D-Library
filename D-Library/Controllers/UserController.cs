@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using D_Library.Models.Domins;
@@ -145,7 +147,7 @@ namespace D_Library.Controllers
             model.ID = q.Login_ID;
             model.Username = q.Login_UserName;
 
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -196,7 +198,7 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult UserProfile(int id)
         {
-            var q = db.Tbl_Login.Where(a => a.Tbl_User.User_ID == id).SingleOrDefault(); ;
+            var q = db.Tbl_Login.Where(a => a.Tbl_User.User_ID == id).SingleOrDefault();
 
             ProfileModel model = new ProfileModel();
 
@@ -208,12 +210,267 @@ namespace D_Library.Controllers
             model.Group = q.Tbl_User.Tbl_branch.Tbl_Group.Group_Name;
             model.Branch = q.Tbl_User.Tbl_branch.branch_Name;
             model.Mobile = q.Tbl_User.User_Mobile;
+            model.Active = q.Login_UserActive;
 
             return View(model);
 
         }
 
+        [HttpGet]
+        public ActionResult ChangePassword(int id)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == id).SingleOrDefault();
 
+            ChangePasswordModel model = new ChangePasswordModel();
+            model.ID = id;
+
+
+            return PartialView(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == model.ID).SingleOrDefault();
+
+
+            var SaltPassword = model.CurentPassword + q.Login_PasswordSalt;
+            var SaltPasswordBytes = Encoding.UTF8.GetBytes(SaltPassword);
+            var SaltPasswordHush = Convert.ToBase64String(SHA512.Create().ComputeHash(SaltPasswordBytes));
+
+
+            if (q.Login_PasswordHush == SaltPasswordHush)
+            {
+
+                var NewSalt = Guid.NewGuid().ToString("N");
+
+                var NewSaltPassword = model.NewPassword + NewSalt;
+                var NewSaltPasswordBytes = Encoding.UTF8.GetBytes(NewSaltPassword);
+                var NewSaltPasswordHush = Convert.ToBase64String(SHA512.Create().ComputeHash(NewSaltPasswordBytes));
+
+                q.Login_PasswordHush = NewSaltPasswordHush;
+                q.Login_PasswordSalt = NewSalt;
+
+                db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+                if (Convert.ToBoolean(db.SaveChanges() > 0))
+                {
+                    ViewBag.State = "Sucsse";
+                    ViewBag.TosterState = "success";
+                    ViewBag.TosterType = TosterType.Maseage;
+                    ViewBag.TosterMassage = "عملبات با موفقیت انجام شده!";
+
+
+                    return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+
+
+                }
+                else
+                {
+                    ViewBag.TosterState = "error";
+                    ViewBag.TosterType = TosterType.Maseage;
+                    ViewBag.TosterMassage = "عملبات با موفقیت انجام نشده!";
+                    return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+                }
+
+
+            }
+            else
+            {
+                //err
+                ViewBag.TosterState = "error";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "پسورد نادرست است!";
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult ChangeBaseRole(int id)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == id).SingleOrDefault();
+
+            ChangeBaseRoleModel model = new ChangeBaseRoleModel();
+            model.ID = id;
+            model.BaseRole = q.Login_BaseRoleID;
+
+
+            return PartialView(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult ChangeBaseRole(ChangeBaseRoleModel model)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == model.ID).SingleOrDefault();
+            q.Login_BaseRoleID = model.BaseRole;
+
+            db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                ViewBag.State = "Sucsse";
+                ViewBag.TosterState = "success";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام شده!";
+
+
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+
+
+            }
+            else
+            {
+                ViewBag.TosterState = "error";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام نشده!";
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+            }
+
+
+        }
+
+        [HttpGet]
+        public ActionResult ChangeUserInfo(int id)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == id).SingleOrDefault();
+
+            UserInfoEditModel model = new UserInfoEditModel();
+            model.ID = id;
+            model.name = q.Tbl_User.User_Name;
+            model.Family = q.Tbl_User.User_Family;
+            model.Email = q.Tbl_User.User_Email;
+            model.Branch =(int)q.Tbl_User.User_BranchID;
+            model.Group = q.Tbl_User.Tbl_branch.branch_GroupID;
+            model.Mobile = q.Tbl_User.User_Mobile;
+
+
+            return PartialView(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult ChangeUserInfo(UserInfoEditModel model)
+        {
+
+            var q = db.Tbl_Login.Where(a => a.Login_ID == model.ID).SingleOrDefault();
+            Tbl_User user = new Tbl_User();
+
+            user = q.Tbl_User;
+
+            user.User_Name = model.name;
+            user.User_Family = model.Family;
+            user.User_Email = model.Email;
+            user.User_Mobile = model.Mobile;
+            user.User_BranchID = model.Branch;
+
+            db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                ViewBag.State = "Sucsse";
+                ViewBag.TosterState = "success";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام شده!";
+
+
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+
+
+            }
+            else
+            {
+                ViewBag.TosterState = "error";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام نشده!";
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult DeleteUser(int id)
+        {
+            UserBanOrDeleteAccuont model = new UserBanOrDeleteAccuont();
+
+            var q = db.Tbl_Login.Where(a => a.Login_ID == id).SingleOrDefault();
+
+            model.ID = q.Login_ID;
+            model.Username = q.Login_UserName;
+
+            return PartialView(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(UserBanOrDeleteAccuont model)
+        {
+
+
+            return View();
+
+        }
+
+        [HttpGet]
+        public ActionResult BanUser(int id)
+        {
+            UserBanOrDeleteAccuont model = new UserBanOrDeleteAccuont();
+
+            var q = db.Tbl_Login.Where(a => a.Login_ID == id).SingleOrDefault();
+
+            model.ID = q.Login_ID;
+            model.Username = q.Login_UserName;
+                       
+            return PartialView(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult BanUser(UserBanOrDeleteAccuont model)
+        {
+            var q = db.Tbl_Login.Where(a => a.Login_ID == model.ID).SingleOrDefault();
+
+
+            if (q.Login_UserActive)
+            {
+                q.Login_UserActive = false;
+            }
+            else
+            {
+                q.Login_UserActive = true;
+            }
+          
+
+            db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                ViewBag.State = "Sucsse";
+                ViewBag.TosterState = "success";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام شده!";
+
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+
+
+            }
+            else
+            {
+                ViewBag.TosterState = "error";
+                ViewBag.TosterType = TosterType.Maseage;
+                ViewBag.TosterMassage = "عملبات با موفقیت انجام نشده!";
+                return RedirectToAction("UserProfile", "User", new { id = q.Tbl_User.User_ID });
+
+            }
+
+        }
         #endregion
     }
 }

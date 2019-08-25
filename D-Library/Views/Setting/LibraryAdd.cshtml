@@ -1,4 +1,4 @@
-﻿@model D_Library.Models.Domins.Tbl_Library
+﻿@model D_Library.Models.Model.LibraryAddModel
 
 
 @using (Html.BeginForm("LibraryAdd", "Setting", FormMethod.Post, htmlAttributes: new { @class = "", @style = "" }))
@@ -12,9 +12,9 @@
             <label>نام کتابخانه</label>
             <div class="input-group">
                 <span class=" input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                @Html.EditorFor(model => model.Library_Name, new { htmlAttributes = new { @class = "form-control  text-center" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control  text-center" } })
             </div>
-            @Html.ValidationMessageFor(model => model.Library_Name, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -22,3 +22,6 @@
 
 }
 
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

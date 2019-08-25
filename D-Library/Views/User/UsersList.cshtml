@@ -1,6 +1,8 @@
 ﻿@model D_Library.Models.Model.UserListModel
 
 @{
+    /**/
+
     ViewBag.Title = "UsersList";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
@@ -69,8 +71,15 @@
                             </td>
                             <td scope="row" class="pull-right">
                                 <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("UserProfile","User",new { id = item.User_ID})   "></a>
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.User_ID })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.User_ID})   "></a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeUserInfo(@item.Tbl_Login.SingleOrDefault().Login_ID)"> </a>
+                                @if (item.Tbl_Login.SingleOrDefault().Login_UserActive)
+                                {
+                                    <a class="btn btn-success btn-sm fa fa-user" style="line-height: 18px;padding-left: 11px;padding-right: 11px;" onclick="BanUser(@item.Tbl_Login.SingleOrDefault().Login_ID)"> </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger btn-sm fa fa-user-slash" style="line-height: 18px;padding-left: 9px;padding-right: 9px;" onclick="BanUser(@item.Tbl_Login.SingleOrDefault().Login_ID)"> </a>
+                                }
                             </td>
                         </tr>
                     }
@@ -79,6 +88,8 @@
         </div>
     </div>
 </section>
+
+@Html.Partial("_Modal")
 
 <script>
     $(document).ready(function () {
@@ -129,3 +140,34 @@
 
 </script>
 
+
+
+
+@section Modal{
+    <script>
+
+        function ChangeUserInfo(id) {
+            $.ajax({
+                url: "/User/ChangeUserInfo/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function BanUser(id) {
+            $.ajax({
+                url: "/User/BanUser/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}
