@@ -23,14 +23,17 @@
             <div class="text-center userprofile-aside-btn-regine">
                 @if (Model.Active)
                 {
-                    <a class="btn btn-success fa fa-user" onclick="BanUser(@Model.ID")></a>
+                    <a class="btn btn-success fa fa-user" onclick="BanUser(@Model.ID)"></a>
                 }
                 else
                 {
                     <a class="btn btn-danger btn-sm fa fa-user-slash" onclick="BanUser(@Model.ID)"> </a>
                 }
+
+
+
                 <a onclick="ChangeUserInfo(@Model.ID)" class="btn btn-warning fa fa-edit"></a>
-                <a href="#" class="btn btn-primary fa fa-envelope-open-text"></a>
+                <a onclick="SandMassage(@Model.ID)" class="btn btn-primary fa fa-envelope-open-text"></a>
             </div>
 
             <div>
@@ -402,7 +405,7 @@
                 data: {}
             }).done(function (result) {
                 $('#myModal').modal('show');
-                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalLabel').html('ویرایش نقش');
                 $('#myModalBody').html(result);
             });
         }
@@ -414,7 +417,7 @@
                 data: {}
             }).done(function (result) {
                 $('#myModal').modal('show');
-                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalLabel').html('ویرایش اطلاعات');
                 $('#myModalBody').html(result);
             });
         }
@@ -426,7 +429,7 @@
                 data: {}
             }).done(function (result) {
                 $('#myModal').modal('show');
-                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalLabel').html('تعلیق');
                 $('#myModalBody').html(result);
             });
         }
@@ -438,7 +441,19 @@
                 data: {}
             }).done(function (result) {
                 $('#myModal').modal('show');
-                $('#myModalLabel').html('ویرایش برچسب');
+                $('#myModalLabel').html('حذف');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function SandMassage(id) {
+            $.ajax({
+                url: "/MessagingManager/UserMassageFromManager/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('پیام');
                 $('#myModalBody').html(result);
             });
         }

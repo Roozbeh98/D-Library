@@ -170,7 +170,7 @@ hr {
 
 }
 .modal-content {
-    top: 20vh;
+    top: 15vh;
     border-radius: 0px;
     background-color: #222D32;
   
@@ -937,7 +937,7 @@ hr {
     /*********************************************** Main Dashboard ************************************/
 
     .main-section {
-        max-width: 95%;
+        max-width: unset;
         margin-top: 0px;
     }
 

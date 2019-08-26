@@ -8,14 +8,13 @@ using D_Library.Models.Domins;
 
 namespace D_Library.Models.Model
 {
-    public class NewBookModel
+    public class BookNewModel
     {
         public int ID { get; set; }
         public List<string> DetailsNav { get; set; }
         public Tbl_Book Book { get; set; }
         public Tbl_BookDetails Details { get; set; }
         [Display(Name = "برچسب")]
-
         public string Tag { get; set; }
 
     }

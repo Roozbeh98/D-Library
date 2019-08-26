@@ -1,8 +1,8 @@
 ﻿@model D_Library.Models.Model.BookListModel
 
 @{
-                ViewBag.Title = "BookList";
-                Layout = "~/Views/Shared/_Dashboard.cshtml";
+    ViewBag.Title = "لیست کتاب ها";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
@@ -88,9 +88,21 @@
 
                             </td>
                             <td scope="row" class="pull-right">
-                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("BookShow","Dashboard",new { id = item.Book_ID})   "></a>
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Dashboard", new { id = item.Book_ID })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Book_ID})   "></a>
+                                <a class="btn btn-primary btn-sm glyphicon glyphicon-file" href="@Url.Action("BookShow","Book",new { id = item.Book_ID})"></a>
+                                @if (User.IsInRole("Publish"))
+                                {
+                                    if (item.Book_Publish)
+                                    {
+                                        <a class="btn btn-success btn-sm glyphicon glyphicon-share" href="@Url.Action("PublishBook","Book", new { id = item.Book_ID })"> </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-danger btn-sm glyphicon glyphicon-share" href="@Url.Action("BookPublish","Book", new { id = item.Book_ID })"> </a>
+                                    }
+                                }
+
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Book", new { id = item.Book_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Book",new { id = item.Book_ID})"></a>
                             </td>
                         </tr>
                     }
@@ -142,7 +154,7 @@
 
         var element3 = element2.parentElement;
 
-        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("NewBookTypeSelector", "Dashboard")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
+        var addbtn = $('<div class="col-md-3"><a class="btn btn-success btn-group-lg table-btn-create  pull-right " href="@Url.Action("BookTypeSelector", "Book")"><span class="glyphicon glyphicon-plus-sign pull-left"></span><span class="text-center">افزودن</span></a></div>');
         addbtn.appendTo(element3)
     });
 

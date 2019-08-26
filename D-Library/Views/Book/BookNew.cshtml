@@ -1,13 +1,13 @@
-﻿@model D_Library.Models.Model.NewBookModel
+﻿@model D_Library.Models.Model.BookNewModel
 @using D_Library.Models.Repository
 @{
-    ViewBag.Title = "NewBook";
+    ViewBag.Title = "کتاب جدید";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("NewBook", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "max-width:990px;" }))
+    @using (Html.BeginForm("BookNew", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "max-width:990px;" }))
     {
 
         @Html.AntiForgeryToken()
@@ -36,7 +36,7 @@
             </div>
 
 
-            <div class="form-group material-switch-body">
+            @*<div class="form-group material-switch-body">
                 <label class="pull-left">نمایش در جستجو میهمان ها</label>
                 <div class="material-switch pull-right">
                     @Html.CheckBoxFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = " " })
@@ -44,7 +44,7 @@
 
 
                 </div>
-            </div>
+            </div>*@
 
 
             <div class="form-group material-switch-body">
@@ -222,7 +222,7 @@
                 @Html.LabelFor(model => model.Tag, htmlAttributes: new { @class = "" })
                 <div class="input-group">
                     <span class=" input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
-                    <input  name='Tag' placeholder='برچسب'>
+                    <input name='Tag' placeholder='برچسب'>
                 </div>
                 @Html.ValidationMessageFor(model => model.Tag, "", new { @class = "text-danger" })
             </div>
@@ -260,4 +260,5 @@
         });
     </script>
 </section>
+
 

@@ -234,6 +234,7 @@
     <Content Include="Content\fonts\fa-solid-900.woff" />
     <Content Include="Content\fonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\MyScripts\FilePond_Config.js" />
     <Content Include="Scripts\Plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\Plugins\ckeditor\ckeditor.js" />
     <Content Include="Scripts\Plugins\ckeditor\config.js" />
@@ -714,6 +715,7 @@
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessagingManagerController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -853,7 +855,7 @@
     <Compile Include="Models\Model\LibraryAddModel.cs" />
     <Compile Include="Models\Model\LoginModel.cs" />
     <Compile Include="Models\Model\BaseRoleAddModel.cs" />
-    <Compile Include="Models\Model\NewBookModel.cs" />
+    <Compile Include="Models\Model\BookNewModel.cs" />
     <Compile Include="Models\Model\BookTypeAddModel.cs" />
     <Compile Include="Models\Model\ProfileModel.cs" />
     <Compile Include="Models\Model\RegisterCodeDeleteModel.cs" />
@@ -864,6 +866,7 @@
     <Compile Include="Models\Model\UserBanOrDeleteAccuont.cs" />
     <Compile Include="Models\Model\UserInfoEditModel.cs" />
     <Compile Include="Models\Model\UserListModel.cs" />
+    <Compile Include="Models\Model\UserMassageModel.cs" />
     <Compile Include="Models\Model\UsersRegisterNotCompleteListModel.cs" />
     <Compile Include="Models\Plugins\Email.cs" />
     <Compile Include="Models\Plugins\PersianDateExtensionMethods.cs" />
@@ -921,13 +924,7 @@
     <Content Include="Views\Shared\_NavCustomMune.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
-    <Content Include="Views\Dashboard\NewBookTypeSelector.cshtml" />
-    <Content Include="Views\Dashboard\NewBook.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Dashboard\BookList.cshtml" />
-    <Content Include="Views\Dashboard\BookUplaod.cshtml" />
-    <Content Include="Views\Dashboard\BookPublish.cshtml" />
-    <Content Include="Views\Dashboard\BookShow.cshtml" />
     <Content Include="Views\Setting\Setting.cshtml" />
     <Content Include="Views\Setting\LibraryList.cshtml" />
     <Content Include="Views\Setting\BaseRoleList.cshtml" />
@@ -963,6 +960,13 @@
     <Content Include="Views\User\ChangeUserInfo.cshtml" />
     <Content Include="Views\User\DeleteUser.cshtml" />
     <Content Include="Views\User\BanUser.cshtml" />
+    <Content Include="Views\MessagingManager\UserMassageFromManager.cshtml" />
+    <Content Include="Views\Book\BookNew.cshtml" />
+    <Content Include="Views\Book\BookTypeSelector.cshtml" />
+    <Content Include="Views\Book\BookUplaod.cshtml" />
+    <Content Include="Views\Book\BookPublish.cshtml" />
+    <Content Include="Views\Book\BookList.cshtml" />
+    <Content Include="Views\Book\BookShow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -972,7 +976,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
-    <Folder Include="Views\Book\" />
     <Folder Include="Views\FileManager\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,12 @@
 ﻿@using D_Library.Models.Repository
+
 @{
-    ViewBag.Title = "NewBookTypeSelector";
+    ViewBag.Title = "انتخاب نوع کتاب";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("NewBookTypeSelector", "Dashboard", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
+    @using (Html.BeginForm("BookTypeSelector", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
     {
         @Html.AntiForgeryToken()
         <div class=" form-heading  text-center">
@@ -31,9 +32,7 @@
             </div>
         </div>
 
-        <div class="panel-footer form-footer ">
-            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
-        </div>
+        <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
     }
 </section>
 

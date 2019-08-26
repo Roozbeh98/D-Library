@@ -1,0 +1,39 @@
+﻿@model D_Library.Models.Model.BookUplaodModel
+
+@{
+    ViewBag.Title = "BookUplaod";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+    @using (Html.BeginForm("BookUplaod", "Book", FormMethod.Post, new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ID)
+        <div class=" form-heading  text-center">
+            بارگذاری
+        </div>
+        <br />
+        <div class="panel-body">
+            <div class="form-group " style="padding-right: 3px;padding-left: 3px;">
+                <input class="fileUpload-multiple" type="file" name="fileuplaod">
+
+            </div>
+        </div>
+
+        <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+    }
+</section>
+
+<script src="~/Scripts/MyScripts/FilePond_Config.js"></script>
+
+<script>
+
+    FilePond.setOptions({
+        server: '@Url.Action("UploadFiles", "FileManager" ,new { id = Model.ID })'
+
+    });
+
+
+</script>
