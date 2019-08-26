@@ -25,11 +25,12 @@ namespace D_Library.Models.Domins
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Tbl_AcssesBook> Tbl_AcssesBook { get; set; }
-        public virtual DbSet<Tbl_AcssesBookContorl> Tbl_AcssesBookContorl { get; set; }
         public virtual DbSet<Tbl_BaseRole> Tbl_BaseRole { get; set; }
         public virtual DbSet<Tbl_BaseRolesPermission> Tbl_BaseRolesPermission { get; set; }
         public virtual DbSet<Tbl_Book> Tbl_Book { get; set; }
+        public virtual DbSet<Tbl_BookAcsses> Tbl_BookAcsses { get; set; }
+        public virtual DbSet<Tbl_BookCustomAcsses> Tbl_BookCustomAcsses { get; set; }
+        public virtual DbSet<Tbl_BooKCustomAcssesType> Tbl_BooKCustomAcssesType { get; set; }
         public virtual DbSet<Tbl_BookDetails> Tbl_BookDetails { get; set; }
         public virtual DbSet<Tbl_BookDetailsFeatures> Tbl_BookDetailsFeatures { get; set; }
         public virtual DbSet<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }

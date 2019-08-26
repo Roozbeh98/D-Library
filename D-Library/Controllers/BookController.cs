@@ -7,6 +7,7 @@ using D_Library.Models.Domins;
 using D_Library.Models.Model;
 using D_Library.Models.Repository;
 using D_Library.Models.UserManagement;
+using Newtonsoft;
 
 namespace D_Library.Controllers
 {
@@ -32,6 +33,7 @@ namespace D_Library.Controllers
         {
             Tbl_Book _book = new Tbl_Book();
             Tbl_BookDetails _details = new Tbl_BookDetails();
+            Tbl_BookAcsses _acsses = new Tbl_BookAcsses();
             Membership membership = new Membership();
             Rep_Book rep = new Rep_Book();
 
@@ -41,7 +43,6 @@ namespace D_Library.Controllers
             _book.Book_Name = model.Book.Book_Name;
             _book.Book_BookTypeID = model.ID;
             _book.Book_UploaderUserID = membership.Get_IDByUserName(User.Identity.Name);
-            _book.Book_GuestSearchEnabel = false;
             _book.Book_Publish = false;
 
             _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
@@ -100,9 +101,16 @@ namespace D_Library.Controllers
                 }
             }
 
+            _acsses.BookAcsses_Guest = false;
+            _acsses.BookAcsses_Global = false;
+            _acsses.BookAcsses_Local = false;
+            _acsses.BookAcsses_Custom = false;
+
             db.Tbl_BookDetails.Add(_details);
+            db.Tbl_BookAcsses.Add(_acsses);
 
             _book.Tbl_BookDetails = _details;
+            _book.Tbl_BookAcsses = _acsses;
 
             db.Tbl_Book.Add(_book);
 
@@ -166,7 +174,16 @@ namespace D_Library.Controllers
         public ActionResult BookPublish(int id)
         {
             BookPublishModel model = new BookPublishModel();
+
+            var q = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();       
+
             model.ID = id;
+            model.Publish = q.Book_Publish;
+            model.GusetSearch = q.Tbl_BookAcsses.BookAcsses_Guest;
+            model.GlobalAcsses = q.Tbl_BookAcsses.BookAcsses_Global;
+            model.LocalAcsses = q.Tbl_BookAcsses.BookAcsses_Local;
+            model.Custom = q.Tbl_BookAcsses.BookAcsses_Custom;
+
             return View(model);
         }
 

@@ -15,6 +15,9 @@ namespace D_Library.Models.Model
         public bool LocalAcsses { get; set; }
         [Display(Name = " ")]
         public bool GlobalAcsses { get; set; }
+        [Display(Name = " ")]
+        public bool Custom { get; set; }
+        [Display(Name = " ")]
         public bool Publish { get; set; }
 
        

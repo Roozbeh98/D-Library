@@ -12,22 +12,24 @@ namespace D_Library.Models.Domins
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_AcssesBookContorl
+    public partial class Tbl_BookAcsses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_AcssesBookContorl()
+        public Tbl_BookAcsses()
         {
-            this.Tbl_AcssesBook = new HashSet<Tbl_AcssesBook>();
             this.Tbl_Book = new HashSet<Tbl_Book>();
+            this.Tbl_BookCustomAcsses = new HashSet<Tbl_BookCustomAcsses>();
         }
     
-        public int ABC_ID { get; set; }
-        public bool ABC_GroupLimitEnabel { get; set; }
-        public bool ABC_RoleLimitEnabel { get; set; }
+        public int BookAcsses_ID { get; set; }
+        public bool BookAcsses_Guest { get; set; }
+        public bool BookAcsses_Global { get; set; }
+        public bool BookAcsses_Local { get; set; }
+        public bool BookAcsses_Custom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_AcssesBook> Tbl_AcssesBook { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_BookCustomAcsses> Tbl_BookCustomAcsses { get; set; }
     }
 }

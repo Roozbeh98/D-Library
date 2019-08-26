@@ -30,12 +30,11 @@ namespace D_Library.Models.Domins
         public int Book_BookTypeID { get; set; }
         public Nullable<int> Book_BDID { get; set; }
         public int Book_UploaderUserID { get; set; }
-        public bool Book_GuestSearchEnabel { get; set; }
-        public Nullable<int> Book_ABCID { get; set; }
         public bool Book_Publish { get; set; }
+        public Nullable<int> Book_BAID { get; set; }
     
-        public virtual Tbl_AcssesBookContorl Tbl_AcssesBookContorl { get; set; }
         public virtual Tbl_BookType Tbl_BookType { get; set; }
+        public virtual Tbl_BookAcsses Tbl_BookAcsses { get; set; }
         public virtual Tbl_BookDetails Tbl_BookDetails { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

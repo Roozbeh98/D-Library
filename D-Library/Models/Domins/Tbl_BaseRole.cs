@@ -18,6 +18,7 @@ namespace D_Library.Models.Domins
         public Tbl_BaseRole()
         {
             this.Tbl_BaseRolesPermission = new HashSet<Tbl_BaseRolesPermission>();
+            this.Tbl_BookCustomAcsses = new HashSet<Tbl_BookCustomAcsses>();
             this.Tbl_Login = new HashSet<Tbl_Login>();
         }
     
@@ -28,6 +29,8 @@ namespace D_Library.Models.Domins
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BaseRolesPermission> Tbl_BaseRolesPermission { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_BookCustomAcsses> Tbl_BookCustomAcsses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Login> Tbl_Login { get; set; }
     }

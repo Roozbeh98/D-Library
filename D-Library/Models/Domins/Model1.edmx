@@ -5,22 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Tbl_AcssesBook">
-          <Key>
-            <PropertyRef Name="AcssesBook_ID" />
-          </Key>
-          <Property Name="AcssesBook_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AcssesBook_ABCID" Type="int" Nullable="false" />
-          <Property Name="AcssesBook_GroupID" Type="int" />
-        </EntityType>
-        <EntityType Name="Tbl_AcssesBookContorl">
-          <Key>
-            <PropertyRef Name="ABC_ID" />
-          </Key>
-          <Property Name="ABC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ABC_GroupLimitEnabel" Type="bit" Nullable="false" />
-          <Property Name="ABC_RoleLimitEnabel" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="Tbl_BaseRole">
           <Key>
             <PropertyRef Name="BaseRole_ID" />
@@ -48,9 +32,37 @@
           <Property Name="Book_BookTypeID" Type="int" Nullable="false" />
           <Property Name="Book_BDID" Type="int" />
           <Property Name="Book_UploaderUserID" Type="int" Nullable="false" />
-          <Property Name="Book_GuestSearchEnabel" Type="bit" Nullable="false" />
-          <Property Name="Book_ABCID" Type="int" />
           <Property Name="Book_Publish" Type="bit" Nullable="false" />
+          <Property Name="Book_BAID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_BookAcsses">
+          <Key>
+            <PropertyRef Name="BookAcsses_ID" />
+          </Key>
+          <Property Name="BookAcsses_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookAcsses_Guest" Type="bit" Nullable="false" />
+          <Property Name="BookAcsses_Global" Type="bit" Nullable="false" />
+          <Property Name="BookAcsses_Local" Type="bit" Nullable="false" />
+          <Property Name="BookAcsses_Custom" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_BookCustomAcsses">
+          <Key>
+            <PropertyRef Name="BCA_ID" />
+          </Key>
+          <Property Name="BCA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BCA_BAID" Type="int" Nullable="false" />
+          <Property Name="BCA_TypeID" Type="int" Nullable="false" />
+          <Property Name="BCA_BaseRoleID" Type="int" />
+          <Property Name="BCA_GroupID" Type="int" />
+          <Property Name="BCA_BranchID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_BooKCustomAcssesType">
+          <Key>
+            <PropertyRef Name="BCAT_ID" />
+          </Key>
+          <Property Name="BCAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BCAT_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BCAT_Display" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_BookDetails">
           <Key>
@@ -327,30 +339,6 @@
           <Property Name="Wishlist_BookID" Type="int" Nullable="false" />
           <Property Name="Wishlist_UserID" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Tbl_AcssesBook_Tbl_AcssesBookContorl">
-          <End Role="Tbl_AcssesBookContorl" Type="Self.Tbl_AcssesBookContorl" Multiplicity="1" />
-          <End Role="Tbl_AcssesBook" Type="Self.Tbl_AcssesBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_AcssesBookContorl">
-              <PropertyRef Name="ABC_ID" />
-            </Principal>
-            <Dependent Role="Tbl_AcssesBook">
-              <PropertyRef Name="AcssesBook_ABCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_AcssesBook_Tbl_Group">
-          <End Role="Tbl_Group" Type="Self.Tbl_Group" Multiplicity="0..1" />
-          <End Role="Tbl_AcssesBook" Type="Self.Tbl_AcssesBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Group">
-              <PropertyRef Name="Group_ID" />
-            </Principal>
-            <Dependent Role="Tbl_AcssesBook">
-              <PropertyRef Name="AcssesBook_GroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tbl_BaseRolesPermission_Tbl_BaseRole">
           <End Role="Tbl_BaseRole" Type="Self.Tbl_BaseRole" Multiplicity="1" />
           <End Role="Tbl_BaseRolesPermission" Type="Self.Tbl_BaseRolesPermission" Multiplicity="*" />
@@ -375,18 +363,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tbl_Book_Tbl_AcssesBookContorl">
-          <End Role="Tbl_AcssesBookContorl" Type="Self.Tbl_AcssesBookContorl" Multiplicity="0..1" />
-          <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_AcssesBookContorl">
-              <PropertyRef Name="ABC_ID" />
-            </Principal>
-            <Dependent Role="Tbl_Book">
-              <PropertyRef Name="Book_ABCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tbl_Book_Tbl_Book">
           <End Role="Tbl_BookType" Type="Self.Tbl_BookType" Multiplicity="1" />
           <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="*" />
@@ -396,6 +372,18 @@
             </Principal>
             <Dependent Role="Tbl_Book">
               <PropertyRef Name="Book_BookTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Book_Tbl_BookAcsses">
+          <End Role="Tbl_BookAcsses" Type="Self.Tbl_BookAcsses" Multiplicity="0..1" />
+          <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BookAcsses">
+              <PropertyRef Name="BookAcsses_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Book">
+              <PropertyRef Name="Book_BAID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -420,6 +408,66 @@
             </Principal>
             <Dependent Role="Tbl_Book">
               <PropertyRef Name="Book_UploaderUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BaseRole">
+          <End Role="Tbl_BaseRole" Type="Self.Tbl_BaseRole" Multiplicity="0..1" />
+          <End Role="Tbl_BookCustomAcsses" Type="Self.Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BaseRole">
+              <PropertyRef Name="BaseRole_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BaseRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BookAcsses">
+          <End Role="Tbl_BookAcsses" Type="Self.Tbl_BookAcsses" Multiplicity="1" />
+          <End Role="Tbl_BookCustomAcsses" Type="Self.Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BookAcsses">
+              <PropertyRef Name="BookAcsses_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType">
+          <End Role="Tbl_BooKCustomAcssesType" Type="Self.Tbl_BooKCustomAcssesType" Multiplicity="1" />
+          <End Role="Tbl_BookCustomAcsses" Type="Self.Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BooKCustomAcssesType">
+              <PropertyRef Name="BCAT_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_branch">
+          <End Role="Tbl_branch" Type="Self.Tbl_branch" Multiplicity="0..1" />
+          <End Role="Tbl_BookCustomAcsses" Type="Self.Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_branch">
+              <PropertyRef Name="branch_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_Group">
+          <End Role="Tbl_Group" Type="Self.Tbl_Group" Multiplicity="0..1" />
+          <End Role="Tbl_BookCustomAcsses" Type="Self.Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Group">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_GroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -796,11 +844,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ELModelStoreContainer">
-          <EntitySet Name="Tbl_AcssesBook" EntityType="Self.Tbl_AcssesBook" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tbl_AcssesBookContorl" EntityType="Self.Tbl_AcssesBookContorl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_BaseRole" EntityType="Self.Tbl_BaseRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_BaseRolesPermission" EntityType="Self.Tbl_BaseRolesPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Book" EntityType="Self.Tbl_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BookAcsses" EntityType="Self.Tbl_BookAcsses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BookCustomAcsses" EntityType="Self.Tbl_BookCustomAcsses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BooKCustomAcssesType" EntityType="Self.Tbl_BooKCustomAcssesType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_BookDetails" EntityType="Self.Tbl_BookDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_BookDetailsFeatures" EntityType="Self.Tbl_BookDetailsFeatures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_BookDetailsNavigator" EntityType="Self.Tbl_BookDetailsNavigator" Schema="dbo" store:Type="Tables" />
@@ -829,14 +878,6 @@
           <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UsersPermission" EntityType="Self.Tbl_UsersPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Wishlist" EntityType="Self.Tbl_Wishlist" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" Association="Self.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl">
-            <End Role="Tbl_AcssesBookContorl" EntitySet="Tbl_AcssesBookContorl" />
-            <End Role="Tbl_AcssesBook" EntitySet="Tbl_AcssesBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_AcssesBook_Tbl_Group" Association="Self.FK_Tbl_AcssesBook_Tbl_Group">
-            <End Role="Tbl_Group" EntitySet="Tbl_Group" />
-            <End Role="Tbl_AcssesBook" EntitySet="Tbl_AcssesBook" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tbl_BaseRolesPermission_Tbl_BaseRole" Association="Self.FK_Tbl_BaseRolesPermission_Tbl_BaseRole">
             <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
             <End Role="Tbl_BaseRolesPermission" EntitySet="Tbl_BaseRolesPermission" />
@@ -845,12 +886,12 @@
             <End Role="Tbl_Permission" EntitySet="Tbl_Permission" />
             <End Role="Tbl_BaseRolesPermission" EntitySet="Tbl_BaseRolesPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Book_Tbl_AcssesBookContorl" Association="Self.FK_Tbl_Book_Tbl_AcssesBookContorl">
-            <End Role="Tbl_AcssesBookContorl" EntitySet="Tbl_AcssesBookContorl" />
-            <End Role="Tbl_Book" EntitySet="Tbl_Book" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tbl_Book_Tbl_Book" Association="Self.FK_Tbl_Book_Tbl_Book">
             <End Role="Tbl_BookType" EntitySet="Tbl_BookType" />
+            <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Book_Tbl_BookAcsses" Association="Self.FK_Tbl_Book_Tbl_BookAcsses">
+            <End Role="Tbl_BookAcsses" EntitySet="Tbl_BookAcsses" />
             <End Role="Tbl_Book" EntitySet="Tbl_Book" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_Book_Tbl_BookDetails" Association="Self.FK_Tbl_Book_Tbl_BookDetails">
@@ -860,6 +901,26 @@
           <AssociationSet Name="FK_Tbl_Book_Tbl_User" Association="Self.FK_Tbl_Book_Tbl_User">
             <End Role="Tbl_User" EntitySet="Tbl_User" />
             <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BaseRole" Association="Self.FK_Tbl_BookCustomAcsses_Tbl_BaseRole">
+            <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BookAcsses" Association="Self.FK_Tbl_BookCustomAcsses_Tbl_BookAcsses">
+            <End Role="Tbl_BookAcsses" EntitySet="Tbl_BookAcsses" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType" Association="Self.FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType">
+            <End Role="Tbl_BooKCustomAcssesType" EntitySet="Tbl_BooKCustomAcssesType" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_branch" Association="Self.FK_Tbl_BookCustomAcsses_Tbl_branch">
+            <End Role="Tbl_branch" EntitySet="Tbl_branch" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_Group" Association="Self.FK_Tbl_BookCustomAcsses_Tbl_Group">
+            <End Role="Tbl_Group" EntitySet="Tbl_Group" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_BookDetails_Tbl_Language" Association="Self.FK_Tbl_BookDetails_Tbl_Language">
             <End Role="Tbl_Language" EntitySet="Tbl_Language" />
@@ -991,11 +1052,12 @@
     <edmx:ConceptualModels>
       <Schema Namespace="ELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ELEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tbl_AcssesBook" EntityType="ELModel.Tbl_AcssesBook" />
-          <EntitySet Name="Tbl_AcssesBookContorl" EntityType="ELModel.Tbl_AcssesBookContorl" />
           <EntitySet Name="Tbl_BaseRole" EntityType="ELModel.Tbl_BaseRole" />
           <EntitySet Name="Tbl_BaseRolesPermission" EntityType="ELModel.Tbl_BaseRolesPermission" />
           <EntitySet Name="Tbl_Book" EntityType="ELModel.Tbl_Book" />
+          <EntitySet Name="Tbl_BookAcsses" EntityType="ELModel.Tbl_BookAcsses" />
+          <EntitySet Name="Tbl_BookCustomAcsses" EntityType="ELModel.Tbl_BookCustomAcsses" />
+          <EntitySet Name="Tbl_BooKCustomAcssesType" EntityType="ELModel.Tbl_BooKCustomAcssesType" />
           <EntitySet Name="Tbl_BookDetails" EntityType="ELModel.Tbl_BookDetails" />
           <EntitySet Name="Tbl_BookDetailsFeatures" EntityType="ELModel.Tbl_BookDetailsFeatures" />
           <EntitySet Name="Tbl_BookDetailsNavigator" EntityType="ELModel.Tbl_BookDetailsNavigator" />
@@ -1024,21 +1086,13 @@
           <EntitySet Name="Tbl_User" EntityType="ELModel.Tbl_User" />
           <EntitySet Name="Tbl_UsersPermission" EntityType="ELModel.Tbl_UsersPermission" />
           <EntitySet Name="Tbl_Wishlist" EntityType="ELModel.Tbl_Wishlist" />
-          <AssociationSet Name="FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" Association="ELModel.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl">
-            <End Role="Tbl_AcssesBookContorl" EntitySet="Tbl_AcssesBookContorl" />
-            <End Role="Tbl_AcssesBook" EntitySet="Tbl_AcssesBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_AcssesBook_Tbl_Group" Association="ELModel.FK_Tbl_AcssesBook_Tbl_Group">
-            <End Role="Tbl_Group" EntitySet="Tbl_Group" />
-            <End Role="Tbl_AcssesBook" EntitySet="Tbl_AcssesBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Book_Tbl_AcssesBookContorl" Association="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl">
-            <End Role="Tbl_AcssesBookContorl" EntitySet="Tbl_AcssesBookContorl" />
-            <End Role="Tbl_Book" EntitySet="Tbl_Book" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tbl_BaseRolesPermission_Tbl_BaseRole" Association="ELModel.FK_Tbl_BaseRolesPermission_Tbl_BaseRole">
             <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
             <End Role="Tbl_BaseRolesPermission" EntitySet="Tbl_BaseRolesPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BaseRole" Association="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BaseRole">
+            <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_Login_Tbl_BaseRole" Association="ELModel.FK_Tbl_Login_Tbl_BaseRole">
             <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
@@ -1050,6 +1104,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_Book_Tbl_Book" Association="ELModel.FK_Tbl_Book_Tbl_Book">
             <End Role="Tbl_BookType" EntitySet="Tbl_BookType" />
+            <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Book_Tbl_BookAcsses" Association="ELModel.FK_Tbl_Book_Tbl_BookAcsses">
+            <End Role="Tbl_BookAcsses" EntitySet="Tbl_BookAcsses" />
             <End Role="Tbl_Book" EntitySet="Tbl_Book" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_Book_Tbl_BookDetails" Association="ELModel.FK_Tbl_Book_Tbl_BookDetails">
@@ -1079,6 +1137,22 @@
           <AssociationSet Name="FK_Tbl_Wishlist_Tbl_Book" Association="ELModel.FK_Tbl_Wishlist_Tbl_Book">
             <End Role="Tbl_Book" EntitySet="Tbl_Book" />
             <End Role="Tbl_Wishlist" EntitySet="Tbl_Wishlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BookAcsses" Association="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BookAcsses">
+            <End Role="Tbl_BookAcsses" EntitySet="Tbl_BookAcsses" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType" Association="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType">
+            <End Role="Tbl_BooKCustomAcssesType" EntitySet="Tbl_BooKCustomAcssesType" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_branch" Association="ELModel.FK_Tbl_BookCustomAcsses_Tbl_branch">
+            <End Role="Tbl_branch" EntitySet="Tbl_branch" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BookCustomAcsses_Tbl_Group" Association="ELModel.FK_Tbl_BookCustomAcsses_Tbl_Group">
+            <End Role="Tbl_Group" EntitySet="Tbl_Group" />
+            <End Role="Tbl_BookCustomAcsses" EntitySet="Tbl_BookCustomAcsses" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_BookDetails_Tbl_Language" Association="ELModel.FK_Tbl_BookDetails_Tbl_Language">
             <End Role="Tbl_Language" EntitySet="Tbl_Language" />
@@ -1181,26 +1255,6 @@
             <End Role="Tbl_Wishlist" EntitySet="Tbl_Wishlist" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Tbl_AcssesBook">
-          <Key>
-            <PropertyRef Name="AcssesBook_ID" />
-          </Key>
-          <Property Name="AcssesBook_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AcssesBook_ABCID" Type="Int32" Nullable="false" />
-          <Property Name="AcssesBook_GroupID" Type="Int32" />
-          <NavigationProperty Name="Tbl_AcssesBookContorl" Relationship="ELModel.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" FromRole="Tbl_AcssesBook" ToRole="Tbl_AcssesBookContorl" />
-          <NavigationProperty Name="Tbl_Group" Relationship="ELModel.FK_Tbl_AcssesBook_Tbl_Group" FromRole="Tbl_AcssesBook" ToRole="Tbl_Group" />
-        </EntityType>
-        <EntityType Name="Tbl_AcssesBookContorl">
-          <Key>
-            <PropertyRef Name="ABC_ID" />
-          </Key>
-          <Property Name="ABC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ABC_GroupLimitEnabel" Type="Boolean" Nullable="false" />
-          <Property Name="ABC_RoleLimitEnabel" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Tbl_AcssesBook" Relationship="ELModel.FK_Tbl_AcssesBook_Tbl_AcssesBookContorl" FromRole="Tbl_AcssesBookContorl" ToRole="Tbl_AcssesBook" />
-          <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl" FromRole="Tbl_AcssesBookContorl" ToRole="Tbl_Book" />
-        </EntityType>
         <EntityType Name="Tbl_BaseRole">
           <Key>
             <PropertyRef Name="BaseRole_ID" />
@@ -1210,6 +1264,7 @@
           <Property Name="BaseRole_Titel" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BaseRole_AllowBDNull" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Tbl_BaseRolesPermission" Relationship="ELModel.FK_Tbl_BaseRolesPermission_Tbl_BaseRole" FromRole="Tbl_BaseRole" ToRole="Tbl_BaseRolesPermission" />
+          <NavigationProperty Name="Tbl_BookCustomAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BaseRole" FromRole="Tbl_BaseRole" ToRole="Tbl_BookCustomAcsses" />
           <NavigationProperty Name="Tbl_Login" Relationship="ELModel.FK_Tbl_Login_Tbl_BaseRole" FromRole="Tbl_BaseRole" ToRole="Tbl_Login" />
         </EntityType>
         <EntityType Name="Tbl_BaseRolesPermission">
@@ -1232,11 +1287,10 @@
           <Property Name="Book_BookTypeID" Type="Int32" Nullable="false" />
           <Property Name="Book_BDID" Type="Int32" />
           <Property Name="Book_UploaderUserID" Type="Int32" Nullable="false" />
-          <Property Name="Book_GuestSearchEnabel" Type="Boolean" Nullable="false" />
-          <Property Name="Book_ABCID" Type="Int32" />
           <Property Name="Book_Publish" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Tbl_AcssesBookContorl" Relationship="ELModel.FK_Tbl_Book_Tbl_AcssesBookContorl" FromRole="Tbl_Book" ToRole="Tbl_AcssesBookContorl" />
+          <Property Name="Book_BAID" Type="Int32" />
           <NavigationProperty Name="Tbl_BookType" Relationship="ELModel.FK_Tbl_Book_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_BookType" />
+          <NavigationProperty Name="Tbl_BookAcsses" Relationship="ELModel.FK_Tbl_Book_Tbl_BookAcsses" FromRole="Tbl_Book" ToRole="Tbl_BookAcsses" />
           <NavigationProperty Name="Tbl_BookDetails" Relationship="ELModel.FK_Tbl_Book_Tbl_BookDetails" FromRole="Tbl_Book" ToRole="Tbl_BookDetails" />
           <NavigationProperty Name="Tbl_User" Relationship="ELModel.FK_Tbl_Book_Tbl_User" FromRole="Tbl_Book" ToRole="Tbl_User" />
           <NavigationProperty Name="Tbl_BookTag" Relationship="ELModel.FK_Tbl_BookTag_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_BookTag" />
@@ -1244,6 +1298,43 @@
           <NavigationProperty Name="Tbl_Files" Relationship="ELModel.FK_Tbl_Files_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_Files" />
           <NavigationProperty Name="Tbl_SpecialAcssesBook" Relationship="ELModel.FK_Tbl_SpecialAcssesBook_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_SpecialAcssesBook" />
           <NavigationProperty Name="Tbl_Wishlist" Relationship="ELModel.FK_Tbl_Wishlist_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_Wishlist" />
+        </EntityType>
+        <EntityType Name="Tbl_BookAcsses">
+          <Key>
+            <PropertyRef Name="BookAcsses_ID" />
+          </Key>
+          <Property Name="BookAcsses_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookAcsses_Guest" Type="Boolean" Nullable="false" />
+          <Property Name="BookAcsses_Global" Type="Boolean" Nullable="false" />
+          <Property Name="BookAcsses_Local" Type="Boolean" Nullable="false" />
+          <Property Name="BookAcsses_Custom" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Book_Tbl_BookAcsses" FromRole="Tbl_BookAcsses" ToRole="Tbl_Book" />
+          <NavigationProperty Name="Tbl_BookCustomAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BookAcsses" FromRole="Tbl_BookAcsses" ToRole="Tbl_BookCustomAcsses" />
+        </EntityType>
+        <EntityType Name="Tbl_BookCustomAcsses">
+          <Key>
+            <PropertyRef Name="BCA_ID" />
+          </Key>
+          <Property Name="BCA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BCA_BAID" Type="Int32" Nullable="false" />
+          <Property Name="BCA_TypeID" Type="Int32" Nullable="false" />
+          <Property Name="BCA_BaseRoleID" Type="Int32" />
+          <Property Name="BCA_GroupID" Type="Int32" />
+          <Property Name="BCA_BranchID" Type="Int32" />
+          <NavigationProperty Name="Tbl_BaseRole" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BaseRole" FromRole="Tbl_BookCustomAcsses" ToRole="Tbl_BaseRole" />
+          <NavigationProperty Name="Tbl_BookAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BookAcsses" FromRole="Tbl_BookCustomAcsses" ToRole="Tbl_BookAcsses" />
+          <NavigationProperty Name="Tbl_BooKCustomAcssesType" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType" FromRole="Tbl_BookCustomAcsses" ToRole="Tbl_BooKCustomAcssesType" />
+          <NavigationProperty Name="Tbl_branch" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_branch" FromRole="Tbl_BookCustomAcsses" ToRole="Tbl_branch" />
+          <NavigationProperty Name="Tbl_Group" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_Group" FromRole="Tbl_BookCustomAcsses" ToRole="Tbl_Group" />
+        </EntityType>
+        <EntityType Name="Tbl_BooKCustomAcssesType">
+          <Key>
+            <PropertyRef Name="BCAT_ID" />
+          </Key>
+          <Property Name="BCAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BCAT_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BCAT_Display" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BookCustomAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType" FromRole="Tbl_BooKCustomAcssesType" ToRole="Tbl_BookCustomAcsses" />
         </EntityType>
         <EntityType Name="Tbl_BookDetails">
           <Key>
@@ -1363,6 +1454,7 @@
           <Property Name="branch_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="branch_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="branch_GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_BookCustomAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_branch" FromRole="Tbl_branch" ToRole="Tbl_BookCustomAcsses" />
           <NavigationProperty Name="Tbl_Group" Relationship="ELModel.FK_Tbl_branch_Tbl_Group" FromRole="Tbl_branch" ToRole="Tbl_Group" />
           <NavigationProperty Name="Tbl_User" Relationship="ELModel.FK_Tbl_User_Tbl_branch" FromRole="Tbl_branch" ToRole="Tbl_User" />
         </EntityType>
@@ -1409,7 +1501,7 @@
           </Key>
           <Property Name="Group_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Group_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tbl_AcssesBook" Relationship="ELModel.FK_Tbl_AcssesBook_Tbl_Group" FromRole="Tbl_Group" ToRole="Tbl_AcssesBook" />
+          <NavigationProperty Name="Tbl_BookCustomAcsses" Relationship="ELModel.FK_Tbl_BookCustomAcsses_Tbl_Group" FromRole="Tbl_Group" ToRole="Tbl_BookCustomAcsses" />
           <NavigationProperty Name="Tbl_branch" Relationship="ELModel.FK_Tbl_branch_Tbl_Group" FromRole="Tbl_Group" ToRole="Tbl_branch" />
         </EntityType>
         <EntityType Name="Tbl_Language">
@@ -1581,42 +1673,6 @@
           <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Wishlist_Tbl_Book" FromRole="Tbl_Wishlist" ToRole="Tbl_Book" />
           <NavigationProperty Name="Tbl_User" Relationship="ELModel.FK_Tbl_Wishlist_Tbl_User" FromRole="Tbl_Wishlist" ToRole="Tbl_User" />
         </EntityType>
-        <Association Name="FK_Tbl_AcssesBook_Tbl_AcssesBookContorl">
-          <End Type="ELModel.Tbl_AcssesBookContorl" Role="Tbl_AcssesBookContorl" Multiplicity="1" />
-          <End Type="ELModel.Tbl_AcssesBook" Role="Tbl_AcssesBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_AcssesBookContorl">
-              <PropertyRef Name="ABC_ID" />
-            </Principal>
-            <Dependent Role="Tbl_AcssesBook">
-              <PropertyRef Name="AcssesBook_ABCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_AcssesBook_Tbl_Group">
-          <End Type="ELModel.Tbl_Group" Role="Tbl_Group" Multiplicity="0..1" />
-          <End Type="ELModel.Tbl_AcssesBook" Role="Tbl_AcssesBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Group">
-              <PropertyRef Name="Group_ID" />
-            </Principal>
-            <Dependent Role="Tbl_AcssesBook">
-              <PropertyRef Name="AcssesBook_GroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Book_Tbl_AcssesBookContorl">
-          <End Type="ELModel.Tbl_AcssesBookContorl" Role="Tbl_AcssesBookContorl" Multiplicity="0..1" />
-          <End Type="ELModel.Tbl_Book" Role="Tbl_Book" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_AcssesBookContorl">
-              <PropertyRef Name="ABC_ID" />
-            </Principal>
-            <Dependent Role="Tbl_Book">
-              <PropertyRef Name="Book_ABCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tbl_BaseRolesPermission_Tbl_BaseRole">
           <End Type="ELModel.Tbl_BaseRole" Role="Tbl_BaseRole" Multiplicity="1" />
           <End Type="ELModel.Tbl_BaseRolesPermission" Role="Tbl_BaseRolesPermission" Multiplicity="*" />
@@ -1626,6 +1682,18 @@
             </Principal>
             <Dependent Role="Tbl_BaseRolesPermission">
               <PropertyRef Name="BRP_BaseRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BaseRole">
+          <End Type="ELModel.Tbl_BaseRole" Role="Tbl_BaseRole" Multiplicity="0..1" />
+          <End Type="ELModel.Tbl_BookCustomAcsses" Role="Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BaseRole">
+              <PropertyRef Name="BaseRole_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BaseRoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1662,6 +1730,18 @@
             </Principal>
             <Dependent Role="Tbl_Book">
               <PropertyRef Name="Book_BookTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Book_Tbl_BookAcsses">
+          <End Type="ELModel.Tbl_BookAcsses" Role="Tbl_BookAcsses" Multiplicity="0..1" />
+          <End Type="ELModel.Tbl_Book" Role="Tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BookAcsses">
+              <PropertyRef Name="BookAcsses_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Book">
+              <PropertyRef Name="Book_BAID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1746,6 +1826,54 @@
             </Principal>
             <Dependent Role="Tbl_Wishlist">
               <PropertyRef Name="Wishlist_BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BookAcsses">
+          <End Type="ELModel.Tbl_BookAcsses" Role="Tbl_BookAcsses" Multiplicity="1" />
+          <End Type="ELModel.Tbl_BookCustomAcsses" Role="Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BookAcsses">
+              <PropertyRef Name="BookAcsses_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_BooKCustomAcssesType">
+          <End Type="ELModel.Tbl_BooKCustomAcssesType" Role="Tbl_BooKCustomAcssesType" Multiplicity="1" />
+          <End Type="ELModel.Tbl_BookCustomAcsses" Role="Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BooKCustomAcssesType">
+              <PropertyRef Name="BCAT_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_branch">
+          <End Type="ELModel.Tbl_branch" Role="Tbl_branch" Multiplicity="0..1" />
+          <End Type="ELModel.Tbl_BookCustomAcsses" Role="Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_branch">
+              <PropertyRef Name="branch_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BookCustomAcsses_Tbl_Group">
+          <End Type="ELModel.Tbl_Group" Role="Tbl_Group" Multiplicity="0..1" />
+          <End Type="ELModel.Tbl_BookCustomAcsses" Role="Tbl_BookCustomAcsses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Group">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Tbl_BookCustomAcsses">
+              <PropertyRef Name="BCA_GroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2055,24 +2183,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ELModelStoreContainer" CdmEntityContainer="ELEntities">
-          <EntitySetMapping Name="Tbl_AcssesBook">
-            <EntityTypeMapping TypeName="ELModel.Tbl_AcssesBook">
-              <MappingFragment StoreEntitySet="Tbl_AcssesBook">
-                <ScalarProperty Name="AcssesBook_GroupID" ColumnName="AcssesBook_GroupID" />
-                <ScalarProperty Name="AcssesBook_ABCID" ColumnName="AcssesBook_ABCID" />
-                <ScalarProperty Name="AcssesBook_ID" ColumnName="AcssesBook_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_AcssesBookContorl">
-            <EntityTypeMapping TypeName="ELModel.Tbl_AcssesBookContorl">
-              <MappingFragment StoreEntitySet="Tbl_AcssesBookContorl">
-                <ScalarProperty Name="ABC_RoleLimitEnabel" ColumnName="ABC_RoleLimitEnabel" />
-                <ScalarProperty Name="ABC_GroupLimitEnabel" ColumnName="ABC_GroupLimitEnabel" />
-                <ScalarProperty Name="ABC_ID" ColumnName="ABC_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_BaseRole">
             <EntityTypeMapping TypeName="ELModel.Tbl_BaseRole">
               <MappingFragment StoreEntitySet="Tbl_BaseRole">
@@ -2095,15 +2205,46 @@
           <EntitySetMapping Name="Tbl_Book">
             <EntityTypeMapping TypeName="ELModel.Tbl_Book">
               <MappingFragment StoreEntitySet="Tbl_Book">
+                <ScalarProperty Name="Book_BAID" ColumnName="Book_BAID" />
                 <ScalarProperty Name="Book_Publish" ColumnName="Book_Publish" />
-                <ScalarProperty Name="Book_ABCID" ColumnName="Book_ABCID" />
-                <ScalarProperty Name="Book_GuestSearchEnabel" ColumnName="Book_GuestSearchEnabel" />
                 <ScalarProperty Name="Book_UploaderUserID" ColumnName="Book_UploaderUserID" />
                 <ScalarProperty Name="Book_BDID" ColumnName="Book_BDID" />
                 <ScalarProperty Name="Book_BookTypeID" ColumnName="Book_BookTypeID" />
                 <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
                 <ScalarProperty Name="Book_Code" ColumnName="Book_Code" />
                 <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BookAcsses">
+            <EntityTypeMapping TypeName="ELModel.Tbl_BookAcsses">
+              <MappingFragment StoreEntitySet="Tbl_BookAcsses">
+                <ScalarProperty Name="BookAcsses_Custom" ColumnName="BookAcsses_Custom" />
+                <ScalarProperty Name="BookAcsses_Local" ColumnName="BookAcsses_Local" />
+                <ScalarProperty Name="BookAcsses_Global" ColumnName="BookAcsses_Global" />
+                <ScalarProperty Name="BookAcsses_Guest" ColumnName="BookAcsses_Guest" />
+                <ScalarProperty Name="BookAcsses_ID" ColumnName="BookAcsses_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BookCustomAcsses">
+            <EntityTypeMapping TypeName="ELModel.Tbl_BookCustomAcsses">
+              <MappingFragment StoreEntitySet="Tbl_BookCustomAcsses">
+                <ScalarProperty Name="BCA_BranchID" ColumnName="BCA_BranchID" />
+                <ScalarProperty Name="BCA_GroupID" ColumnName="BCA_GroupID" />
+                <ScalarProperty Name="BCA_BaseRoleID" ColumnName="BCA_BaseRoleID" />
+                <ScalarProperty Name="BCA_TypeID" ColumnName="BCA_TypeID" />
+                <ScalarProperty Name="BCA_BAID" ColumnName="BCA_BAID" />
+                <ScalarProperty Name="BCA_ID" ColumnName="BCA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BooKCustomAcssesType">
+            <EntityTypeMapping TypeName="ELModel.Tbl_BooKCustomAcssesType">
+              <MappingFragment StoreEntitySet="Tbl_BooKCustomAcssesType">
+                <ScalarProperty Name="BCAT_Display" ColumnName="BCAT_Display" />
+                <ScalarProperty Name="BCAT_Name" ColumnName="BCAT_Name" />
+                <ScalarProperty Name="BCAT_ID" ColumnName="BCAT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

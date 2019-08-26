@@ -19,11 +19,10 @@ namespace D_Library.Models.Domins
         public string Book_Name { get; set; }
         public int Book_BookTypeID { get; set; }
         public Nullable<int> Book_BDID { get; set; }
+        public Nullable<int> Book_BAID { get; set; }
         public int Book_UploaderUserID { get; set; }
        // [Display(Name = "نمایش در جستجو میهمان ها")]
         [Display(Name = " ")]
-        public bool Book_GuestSearchEnabel { get; set; }
-        public Nullable<int> Book_ABCID { get; set; }
         public bool Book_Publish { get; set; }
     }
 

@@ -78,7 +78,7 @@
 
                                     <div id="Descrip" class="panel-collapse collapse in">
                                         <div class="panel-body bookshow-dis-panel-body">
-                                            @Html.DisplayFor(model => model.Details.BD_Description)
+                                            @Html.Raw(Model.Details.BD_Description)
                                         </div>
 
                                     </div>
@@ -100,7 +100,7 @@
 
                                     <div id="Abstract" class="panel-collapse collapse">
                                         <div class="panel-body bookshow-dis-panel-body">
-                                            @Html.DisplayFor(model => model.Details.BD_Abstract)
+                                            @Html.Raw(Model.Details.BD_Abstract)
                                         </div>
 
                                     </div>
