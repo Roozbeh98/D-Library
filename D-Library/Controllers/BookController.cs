@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.IO;
 using D_Library.Models.Domins;
 using D_Library.Models.Model;
 using D_Library.Models.Repository;
 using D_Library.Models.UserManagement;
-using Newtonsoft;
+using D_Library.Models.Plugins;
+using Newtonsoft.Json;
 
 namespace D_Library.Controllers
 {
@@ -34,6 +37,7 @@ namespace D_Library.Controllers
             Tbl_Book _book = new Tbl_Book();
             Tbl_BookDetails _details = new Tbl_BookDetails();
             Tbl_BookAcsses _acsses = new Tbl_BookAcsses();
+            Tbl_BookTag _tag = new Tbl_BookTag();
             Membership membership = new Membership();
             Rep_Book rep = new Rep_Book();
 
@@ -100,6 +104,15 @@ namespace D_Library.Controllers
                         break;
                 }
             }
+            var T = new JavaScriptSerializer().Deserialize<object>(model.Tag) as Array;
+
+
+            
+            
+   
+            
+            //var tags:{ value: Array<int>}= new JavaScriptSerializer().Deserialize<dynamic>(model.Tag)
+
 
             _acsses.BookAcsses_Guest = false;
             _acsses.BookAcsses_Global = false;
@@ -126,7 +139,7 @@ namespace D_Library.Controllers
                 {
                     if (User.IsInRole("Publish"))
                     {
-                        return RedirectToAction("BookPublish", "Book" , new { id = _book.Book_ID });
+                        return RedirectToAction("BookPublish", "Book", new { id = _book.Book_ID });
                     }
                     return RedirectToAction("BookList", "Book");
                 }
@@ -175,7 +188,7 @@ namespace D_Library.Controllers
         {
             BookPublishModel model = new BookPublishModel();
 
-            var q = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();       
+            var q = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();
 
             model.ID = id;
             model.Publish = q.Book_Publish;

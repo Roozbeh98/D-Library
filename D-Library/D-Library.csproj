@@ -873,6 +873,7 @@
     <Compile Include="Models\Model\UsersRegisterNotCompleteListModel.cs" />
     <Compile Include="Models\Plugins\Email.cs" />
     <Compile Include="Models\Plugins\PersianDateExtensionMethods.cs" />
+    <Compile Include="Models\Plugins\Tags.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
     <Compile Include="Models\Repository\Rep_Book.cs" />
