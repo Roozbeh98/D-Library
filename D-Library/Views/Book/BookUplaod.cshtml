@@ -31,7 +31,12 @@
 <script>
 
     FilePond.setOptions({
-        server: '@Url.Action("UploadFiles", "FileManager" ,new { id = Model.ID })'
+        server: {
+
+            process: '@Url.Action("UploadFiles", "FileManager" ,new { id = ViewBag.ID })',
+            remove: '@Url.Action("RemoveUploadFiles", "FileManager", new { id = ViewBag.ID })'
+
+        }
 
     });
 

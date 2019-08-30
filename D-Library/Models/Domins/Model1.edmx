@@ -179,6 +179,7 @@
           <Property Name="File_DownloadAcssesLocalIP" Type="bit" />
           <Property Name="File_DownloadAcssesGlobalIP" Type="bit" />
           <Property Name="File_FolderName" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="File_DownloadKey" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_FileType">
           <Key>
@@ -1476,6 +1477,7 @@
           <NavigationProperty Name="Tbl_Book" Relationship="ELModel.FK_Tbl_Files_Tbl_Book" FromRole="Tbl_Files" ToRole="Tbl_Book" />
           <NavigationProperty Name="Tbl_FileType" Relationship="ELModel.FK_Tbl_Files_Tbl_FileType" FromRole="Tbl_Files" ToRole="Tbl_FileType" />
           <NavigationProperty Name="Tbl_User" Relationship="ELModel.FK_Tbl_Files_Tbl_User" FromRole="Tbl_Files" ToRole="Tbl_User" />
+          <Property Name="File_DownloadKey" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_FileType">
           <Key>
@@ -2360,6 +2362,7 @@
           <EntitySetMapping Name="Tbl_Files">
             <EntityTypeMapping TypeName="ELModel.Tbl_Files">
               <MappingFragment StoreEntitySet="Tbl_Files">
+                <ScalarProperty Name="File_DownloadKey" ColumnName="File_DownloadKey" />
                 <ScalarProperty Name="File_FolderName" ColumnName="File_FolderName" />
                 <ScalarProperty Name="File_DownloadAcssesGlobalIP" ColumnName="File_DownloadAcssesGlobalIP" />
                 <ScalarProperty Name="File_DownloadAcssesLocalIP" ColumnName="File_DownloadAcssesLocalIP" />

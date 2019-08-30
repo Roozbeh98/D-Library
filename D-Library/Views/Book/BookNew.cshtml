@@ -37,14 +37,14 @@
 
 
             @*<div class="form-group material-switch-body">
-                <label class="pull-left">نمایش در جستجو میهمان ها</label>
-                <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = " " })
-                    @Html.LabelFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = "label-success" })
+            <label class="pull-left">نمایش در جستجو میهمان ها</label>
+            <div class="material-switch pull-right">
+                @Html.CheckBoxFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = " " })
+                @Html.LabelFor(model => model.Book.Book_GuestSearchEnabel, htmlAttributes: new { @class = "label-success" })
 
 
-                </div>
-            </div>*@
+            </div>
+        </div>*@
 
 
             <div class="form-group material-switch-body">
@@ -57,12 +57,23 @@
 
             <div class="form-group material-switch-body">
                 <label class="pull-left">نسخه فیزیکی دارد</label>
-                <div class="material-switch pull-right">
+                <div class="material-switch pull-right PVA">
                     @Html.CheckBoxFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = " " })
                     @Html.LabelFor(model => model.Details.BD_PhysicalVersionAvailable, htmlAttributes: new { @class = "label-success" })
 
                 </div>
             </div>
+
+
+
+            <div id="PVA" class="form-group " style="display:none">
+                @Html.LabelFor(model => Model.Details.BD_LibraryID, htmlAttributes: new { @class = "" })
+                @{
+                    Rep_Library brr = new Rep_Library();
+                    @Html.DropDownListFor(model => Model.Details.BD_BranchID, brr.Get_AllLibrarySelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                }
+            </div>
+      
 
             <div class="form-group ">
                 @Html.LabelFor(model => Model.Details.BD_LanguageID, htmlAttributes: new { @class = "" })
@@ -254,6 +265,33 @@
 
             );
 
+
+        $(".PVA").click(function () {
+
+            var checkBox = document.getElementById("Details_BD_PhysicalVersionAvailable");
+
+            var text = document.getElementById("PVA");
+
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        });
+
+
+        $(".PVA").ready (function () {
+
+            var checkBox = document.getElementById("Details_BD_PhysicalVersionAvailable");
+
+            var text = document.getElementById("PVA");
+
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        });
         
         
         $(function () {

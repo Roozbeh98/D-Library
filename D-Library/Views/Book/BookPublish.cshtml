@@ -7,17 +7,16 @@
 }
 
 <section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("‌BookPublish", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info form-form form-form-indasdboard", @style = "max-width:450px;" }))
+    @using (Html.BeginForm("BookPublish", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
     {
 
         @Html.AntiForgeryToken()
         <div class=" form-heading  text-center">
             انتشار
         </div>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="panel-body" style="padding-top: 0px;padding-bottom: 10px;padding-right: 17px;padding-left: 17px;">
 
-
+            @Html.HiddenFor(model => model.ID)
 
 
             <div class="form-group material-switch-body">
@@ -44,13 +43,13 @@
                 </div>
             </div>
 
-            <div class="form-group material-switch-body">
+            @*<div class="form-group material-switch-body">
                 <label class="pull-left">شخصی ساری دسترسی</label>
                 <div class="material-switch pull-right">
                     @Html.CheckBoxFor(model => model.Custom, htmlAttributes: new { @class = " " })
                     @Html.LabelFor(model => model.Custom, htmlAttributes: new { @class = "label-success" })
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group material-switch-body">
                 <label class="pull-left">انتشار</label>

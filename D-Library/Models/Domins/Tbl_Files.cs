@@ -25,6 +25,7 @@ namespace D_Library.Models.Domins
         public Nullable<bool> File_DownloadAcssesLocalIP { get; set; }
         public Nullable<bool> File_DownloadAcssesGlobalIP { get; set; }
         public System.Guid File_FolderName { get; set; }
+        public System.Guid File_DownloadKey { get; set; }
     
         public virtual Tbl_Book Tbl_Book { get; set; }
         public virtual Tbl_FileType Tbl_FileType { get; set; }

@@ -50,12 +50,10 @@
 
                 <li><a href="#Details" data-toggle="tab">مشخصات</a></li>
 
-                if (Model.Details.BD_FileEnabel)
-                {
-                    <li><a href="#Files" data-toggle="tab">فایل</a></li>
-                }
+                <li><a href="#Files" data-toggle="tab">فایل</a></li>
             }
 
+            <li><a href="#Setting" data-toggle="tab">تنظیمات</a></li>
 
         </ul>
 
@@ -342,56 +340,90 @@
                     </div>
                 </div>
 
+
+
                 <div class="tab-pane fade" id="Files">
+                    @if (Model.Details.BD_FileEnabel)
+                    {
+                        foreach (var item in Model.Files)
+                        {
+                            <div class="bookshow-download">
+                                <div class="row">
+                                    <div class="col-md-9 panel bookshow-download-detail">
+                                        <i class="glyphicon glyphicon-file pull-left  hidden-sm hidden-xs"></i>
+                                        <h5>@item.File_Name</h5>
+                                        <p>@item.Tbl_User.User_Name</p>
+                                    </div>
 
-                    <a href="#">
-                        <div class="panel bookshow-download">
-                            <div class="pull-left">
-                                <h4 class="bookshow-download-titel">test</h4>
-                                <p class="bookshow-download-detail">test</p>
-                            </div>
-                            <div class="pull-right">
-                                <div>
-                                    <i class="glyphicon glyphicon-download bookshow-download-icon" style=""></i>
-
+                                    <div class="col-md-3 panel bookshow-download-btn">
+                                        <div>
+                                            <a asp- class="btn btn-info  glyphicon glyphicon-cloud-download" href="@Url.Action("Download","FileManager", new { Key = item.File_DownloadKey })"></a>
+                                            <a class="btn btn-danger  glyphicon glyphicon-trash" onclick="ChangeBaseRole(@Model.ID)"> </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div class="well text-center" style="background-color:#222d32; border-color:#222d32">
+                            <b>فایلی برای نمایش نیست</b>
                         </div>
-                    </a>
+                    }
+                </div>
 
-                    <a href="#">
-                        <div class="panel bookshow-download">
-                            <div class="pull-left">
-                                <h4 class="bookshow-download-titel">test</h4>
-                                <p class="bookshow-download-detail">test</p>
-                            </div>
-                            <div class="pull-right">
-                                <div>
-                                    <i class="glyphicon glyphicon-download bookshow-download-icon" style=""></i>
-
-                                </div>
-                            </div>
+                <div class="tab-pane fade" id="Setting">
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            تغیر رمز عبور
                         </div>
-                    </a>
 
-                    <a href="#">
-                        <div class="panel bookshow-download">
-                            <div class="pull-left">
-                                <h4 class="bookshow-download-titel">test</h4>
-                                <p class="bookshow-download-detail">test</p>
-                            </div>
-                            <div class="pull-right">
-                                <div>
-                                    <i class="glyphicon glyphicon-download bookshow-download-icon" style=""></i>
-
-                                </div>
-                            </div>
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangePassword(@Model.ID)"> </a>
                         </div>
-                    </a>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش نقش
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeBaseRole(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش اطلاعات
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeUserInfo(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            حذف کاربر
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="DeleteUser(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
 
 
 
                 </div>
+
 
             </div>
         </div>

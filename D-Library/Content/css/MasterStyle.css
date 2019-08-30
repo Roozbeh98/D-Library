@@ -1,7 +1,7 @@
 ﻿body {
     font-family: IRANSansM;
     background-color: whitesmoke;
-    color: #9d9d9d;
+    color: whitesmoke;
 }
 
 hr {
@@ -665,28 +665,58 @@ hr {
 .bookshow-dis-panel-body {
     background-color: #374449;
 }
-
 .bookshow-download {
     background-color: #222D32;
-    height: 60px;
-    margin-bottom: 10px;
-    color: #9d9d9d;
+    margin-bottom:10px;
 }
-
-.bookshow-download-titel {
-    padding:10px 25px 0px 0px;
-    margin:0px;
+.bookshow-download > div {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .bookshow-download-detail {
-    padding: 0px 25px 0px 0px;
-    margin: 0px;
+    background-color: #222D32;
+    min-height: 50px;
+    border-radius: 0px;
+    margin-bottom: 8px;
+    padding: 1px 10px 1px 0px;
+    margin-bottom: 0px;
 }
 
-.bookshow-download-icon {
-    font-size: 37px;
-    padding: 10px 0px 10px 20px;
-    color:forestgreen;
+.bookshow-download-detail > h5 {
+    margin-bottom: 0px;
+    font-size: medium;
+}
+
+.bookshow-download-detail > p {
+    font-size: small;
+    margin-bottom: 0px;
+    color: #9d9d9d;
+}
+
+.bookshow-download-detail > i {
+    padding:15px 0px 15px 15px;
+    font-size:large;
+}
+
+.bookshow-download-btn {
+    background-color: #222D32;
+    min-height: 50px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+}
+
+.bookshow-download-btn > div {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.bookshow-download-btn > div > a {
+    margin-top:8px;
+    margin-bottom:8px;
+    margin-right:5px;
 }
 
 .bookshow-detiles{
@@ -988,6 +1018,16 @@ hr {
 
     .bookshow-detiles-col-3-main {
         padding-left: 15px;
+    }
+
+
+    .bookshow-download-detail {
+        margin-bottom:0px;
+        text-align:center;
+    }
+
+    .bookshow-download-btn > div {
+        justify-content: center;
     }
     /*********************************************** MyProfile **********************************************/
 

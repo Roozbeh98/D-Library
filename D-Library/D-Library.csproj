@@ -880,6 +880,7 @@
     <Compile Include="Models\Repository\Rep_File.cs" />
     <Compile Include="Models\Repository\Rep_GroupBranch.cs" />
     <Compile Include="Models\Repository\Rep_Language.cs" />
+    <Compile Include="Models\Repository\Rep_Library.cs" />
     <Compile Include="Models\Repository\Rep_Professor.cs" />
     <Compile Include="Models\Repository\Rep_RequestType.cs" />
     <Compile Include="Models\Repository\Rep_Role.cs" />
@@ -968,9 +969,9 @@
     <Content Include="Views\Book\BookNew.cshtml" />
     <Content Include="Views\Book\BookTypeSelector.cshtml" />
     <Content Include="Views\Book\BookUplaod.cshtml" />
-    <Content Include="Views\Book\BookPublish.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Book\BookShow.cshtml" />
+    <Content Include="Views\Book\BookPublish.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

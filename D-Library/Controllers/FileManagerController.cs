@@ -15,6 +15,7 @@ namespace D_Library.Controllers
     public class FileManagerController : Controller
     {
         ELEntities db = new ELEntities();
+        #region upload
 
         [HttpPost]
         public void UploadFiles(int id)
@@ -24,10 +25,13 @@ namespace D_Library.Controllers
                 if (Request.Files?.Count > 0)
                 {
                     Guid folderName;
+               
+                    int index = 0;
 
                     if (db.Tbl_Files.Any(a => a.File_BookID == id))
                     {
                         folderName = db.Tbl_Files.FirstOrDefault(a => a.File_BookID == id).File_FolderName;
+                        index = db.Tbl_Files.Select(a => a.File_BookID == id).Count();
                     }
                     else
                     {
@@ -43,8 +47,8 @@ namespace D_Library.Controllers
                     {
                         Tbl_Files q = new Tbl_Files();
                         var file = Request.Files[i];
-
-                        q.File_Index = 1;
+                        index++;
+                        q.File_Index = index;
 
                         var fileName = Path.GetFileName(file.FileName);
                         q.File_Name = fileName;
@@ -57,6 +61,9 @@ namespace D_Library.Controllers
                         q.File_UserUploaderID = membership.Get_IDByUserName(User.Identity.Name);
 
                         q.File_Date = DateTime.Now;
+
+                        Guid key = Guid.NewGuid();
+                        q.File_DownloadKey = key;
 
                         q.File_DownloadAcssesGlobalIP = true;
                         q.File_DownloadAcssesLocalIP = true;
@@ -78,12 +85,34 @@ namespace D_Library.Controllers
             }
         }
 
-        [HttpPost]
-        public void RemoveUploadFiles()
+        [HttpDelete]
+        public void RemoveUploadFiles(int id)
         {
-
+            int x = 1;
 
         }
+        #endregion
+
+        #region Download
+        
+        [HttpGet]
+        public FileResult Download(string Key)
+        {
+            Tbl_Files q = db.Tbl_Files.Where(a => a.File_DownloadKey.ToString() == Key).SingleOrDefault();
+
+            if (q != null)
+            {
+                return File(q.File_Path, "*", q.File_Name);
+            }
+            else
+            {
+                return null;
+            }
+     
+        }
+
+
+        #endregion
 
     }
 }

@@ -53,6 +53,11 @@ namespace D_Library.Controllers
 
             _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
 
+            if (model.Details.BD_PhysicalVersionAvailable)
+            {
+                _details.BD_LibraryID = model.Details.BD_LibraryID;
+            }
+
             _details.BD_PageCount = model.Details.BD_PageCount;
 
             _details.BD_LanguageID = model.Details.BD_LanguageID;
@@ -104,7 +109,7 @@ namespace D_Library.Controllers
                         break;
                 }
             }
-            var T = new JavaScriptSerializer().Deserialize<object>(model.Tag) as Array;
+        
 
 
             
@@ -172,6 +177,8 @@ namespace D_Library.Controllers
 
             model.ID = id;
 
+            ViewBag.ID = id;
+
             return View(model);
         }
 
@@ -203,18 +210,36 @@ namespace D_Library.Controllers
         [HttpPost]
         public ActionResult BookPublish(BookPublishModel model)
         {
-            var q = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
             Tbl_Book book = new Tbl_Book();
 
-            //book = q;
+            book = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
+            
 
-            //book.Book_GuestSearchEnabel = model.GusetSearch;
-            //book.Tbl_AcssesBookContorl. = model.GlobalAcsses;
-            //book.Tbl_BookDetails. = model.GlobalAcsses;
-            //book.Book_GuestSearchEnabel = model.GusetSearch;
-            //book.Book_Publish = model.Publish;
+            book.Tbl_BookAcsses.BookAcsses_Guest = model.GusetSearch;
+            book.Tbl_BookAcsses.BookAcsses_Global = model.GlobalAcsses;
+            book.Tbl_BookAcsses.BookAcsses_Local = model.LocalAcsses;
+            book.Tbl_BookAcsses.BookAcsses_Custom = model.Custom;
+            book.Book_Publish = model.Publish;
 
-            return View();
+            db.Entry(book).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(book.Tbl_BookAcsses).State = System.Data.Entity.EntityState.Modified;
+
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                ViewBag.Message = "عملبات با موفقیت انجام شده!";
+                ViewBag.State = "Sucsse";
+                return RedirectToAction("BookShow", "Book", new { id = model.ID });
+
+            }
+            else
+            {
+                ViewBag.Message = "عملبات با موفقیت انجام نشده!";
+                ViewBag.State = "Error";
+                return RedirectToAction("BookShow", "Book", new { id = model.ID });
+            }
+
+        
         }
 
 
