@@ -845,6 +845,7 @@
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\BaseRoleListModel.cs" />
+    <Compile Include="Models\Model\BookDeleteModel.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookPublishModel.cs" />
     <Compile Include="Models\Model\BookShowModel.cs" />
@@ -853,6 +854,7 @@
     <Compile Include="Models\Model\BranchAddModel.cs" />
     <Compile Include="Models\Model\ChangePasswordModel.cs" />
     <Compile Include="Models\Model\ChangeBaseRoleModel.cs" />
+    <Compile Include="Models\Model\FileDeleteModel.cs" />
     <Compile Include="Models\Model\GroupAddModel.cs" />
     <Compile Include="Models\Model\LanguageAddModel.cs" />
     <Compile Include="Models\Model\LibraryAddModel.cs" />
@@ -872,6 +874,7 @@
     <Compile Include="Models\Model\UserMassageModel.cs" />
     <Compile Include="Models\Model\UsersRegisterNotCompleteListModel.cs" />
     <Compile Include="Models\Plugins\Email.cs" />
+    <Compile Include="Models\Plugins\FileManagement.cs" />
     <Compile Include="Models\Plugins\PersianDateExtensionMethods.cs" />
     <Compile Include="Models\Plugins\Tags.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
@@ -972,6 +975,8 @@
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Book\BookShow.cshtml" />
     <Content Include="Views\Book\BookPublish.cshtml" />
+    <Content Include="Views\FileManager\DeleteFile.cshtml" />
+    <Content Include="Views\Book\BookDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -981,7 +986,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
-    <Folder Include="Views\FileManager\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

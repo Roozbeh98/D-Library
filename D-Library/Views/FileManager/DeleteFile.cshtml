@@ -1,0 +1,26 @@
+﻿@model D_Library.Models.Model.FileDeleteModel
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.Key)
+
+
+    <br />
+    <h4 class="text-center">از حذف فایل ' @Model.name ' اطمینان دارید؟</h4>
+
+    <br />
+
+
+    <div class="">
+        <button class="btn btn-danger modal-btn-Dual pull-left" type="button" data-dismiss="modal">انصراف</button>
+        <button class="btn btn-success modal-btn-Dual pull-right " type="submit" name="btn-Delete">تایید</button>
+
+    </div>
+
+
+
+}

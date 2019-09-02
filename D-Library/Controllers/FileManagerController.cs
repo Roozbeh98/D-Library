@@ -9,12 +9,15 @@ using D_Library.Models.Domins;
 using D_Library.Models.Model;
 using D_Library.Models.Repository;
 using D_Library.Models.UserManagement;
+using D_Library.Models.Plugins;
+using System.Runtime;
 
 namespace D_Library.Controllers
 {
     public class FileManagerController : Controller
     {
         ELEntities db = new ELEntities();
+
         #region upload
 
         [HttpPost]
@@ -72,6 +75,21 @@ namespace D_Library.Controllers
 
                         db.Tbl_Files.Add(q);
 
+                        Tbl_BookDetails _BookDetails = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault().Tbl_BookDetails;
+
+
+
+                        if (_BookDetails.BD_FileCount != null)
+                        {
+                            _BookDetails.BD_FileCount++;
+                        }
+                        else
+                        {
+                            _BookDetails.BD_FileCount = 1;
+                        }
+
+                        db.Entry(_BookDetails).State = System.Data.Entity.EntityState.Modified;
+
                         if (Convert.ToBoolean(db.SaveChanges() > 0))
                         {
                             file.SaveAs(path);
@@ -111,6 +129,78 @@ namespace D_Library.Controllers
      
         }
 
+
+        #endregion
+
+        #region Manage
+
+        [HttpGet]
+        public ActionResult DeleteFile(int id)
+        {
+            Tbl_Files q = db.Tbl_Files.Where(a => a.File_ID == id).SingleOrDefault();
+
+            FileDeleteModel model = new FileDeleteModel();
+
+
+            model.ID = q.File_ID;
+            model.Key = q.File_DownloadKey;
+            model.name = q.File_Name;
+
+            return View(model);
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult DeleteFile(FileDeleteModel model)
+        {
+            Tbl_Files q = db.Tbl_Files.Where(a => a.File_DownloadKey == model.Key).SingleOrDefault();
+
+            if (q != null)
+            {
+
+                Tbl_BookDetails _BookDetails = db.Tbl_Book.Where(a => a.Book_ID == q.File_BookID).SingleOrDefault().Tbl_BookDetails;
+
+                if (_BookDetails.BD_FileCount > 1)
+                {
+                    _BookDetails.BD_FileCount--;   
+                }
+                else
+                {
+                    _BookDetails.BD_FileCount= null;
+                }
+
+                int book_id = q.File_BookID;
+
+                string path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), q.File_Path);
+                string root = Path.Combine(Server.MapPath("~/App_Data/Upload/"), q.File_FolderName.ToString());
+
+                db.Tbl_Files.Remove(q);
+
+                db.Entry(_BookDetails).State = System.Data.Entity.EntityState.Modified;
+
+                if (Convert.ToBoolean(db.SaveChanges() > 0))
+                {
+                    FileManagement file = new FileManagement();
+
+                    file.DeleteFileWithPath(path);
+
+                    file.Dir_Empty(root);
+
+                    return RedirectToAction("BookShow","Book",new { id = book_id });
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
 
         #endregion
 

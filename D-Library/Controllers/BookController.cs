@@ -51,7 +51,15 @@ namespace D_Library.Controllers
 
             _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
 
+            if (model.Details.BD_DigitalVersionAvailable)
+            {
+                _details.BD_FileEnabel = true;
+            }
+
+
             _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
+
+
 
             if (model.Details.BD_PhysicalVersionAvailable)
             {
@@ -109,13 +117,13 @@ namespace D_Library.Controllers
                         break;
                 }
             }
-        
 
 
-            
-            
-   
-            
+
+
+
+
+
             //var tags:{ value: Array<int>}= new JavaScriptSerializer().Deserialize<dynamic>(model.Tag)
 
 
@@ -213,7 +221,7 @@ namespace D_Library.Controllers
             Tbl_Book book = new Tbl_Book();
 
             book = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
-            
+
 
             book.Tbl_BookAcsses.BookAcsses_Guest = model.GusetSearch;
             book.Tbl_BookAcsses.BookAcsses_Global = model.GlobalAcsses;
@@ -239,9 +247,8 @@ namespace D_Library.Controllers
                 return RedirectToAction("BookShow", "Book", new { id = model.ID });
             }
 
-        
-        }
 
+        }
 
         [HttpGet]
         public ActionResult BookPublishModal(int id)
@@ -273,7 +280,6 @@ namespace D_Library.Controllers
             return View(model);
         }
 
-
         [HttpGet]
         public ActionResult BookShow(int id)
         {
@@ -295,6 +301,62 @@ namespace D_Library.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult BookDelete(int id)
+        {
+            var q = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();
+
+            BookDeleteModel model = new BookDeleteModel();
+
+            model.ID = q.Book_ID;
+            model.Name = q.Book_Name;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult BookDelete(BookDeleteModel model)
+        {
+            Tbl_Book _Book = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
+
+            if (_Book.Tbl_BookDetails.BD_FileEnabel)
+            {
+                foreach (var item in _Book.Tbl_Files.ToList())
+                {
+                    string path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.File_Path);
+                    string root = Path.Combine(Server.MapPath("~/App_Data/Upload/"), item.File_FolderName.ToString());
+                    db.Tbl_Files.Remove(item);
+                    FileManagement file = new FileManagement();
+                    file.DeleteFileWithPath(path);
+                    file.Dir_Empty(root);
+                }
+            }
+
+            db.Tbl_BookDetails.Remove(_Book.Tbl_BookDetails);
+
+            if (_Book.Tbl_BookAcsses.BookAcsses_Custom)
+            {
+                foreach (var item in db.Tbl_BookCustomAcsses.Where( a => a.Tbl_BookAcsses == _Book.Tbl_BookAcsses).ToList())
+                {
+                    db.Tbl_BookCustomAcsses.Remove(item);
+                }
+            }
+
+            db.Tbl_BookAcsses.Remove(_Book.Tbl_BookAcsses);
+            db.Tbl_Book.Remove(_Book);
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("BookList", "Book");
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
 
         #endregion
     }
