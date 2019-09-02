@@ -24,7 +24,6 @@ namespace D_Library.Controllers
         public ActionResult BookNew(int id)
         {
             Rep_Book rep = new Rep_Book();
-            Rep_Professor professor = new Rep_Professor();
             BookNewModel model = new BookNewModel();
             model.DetailsNav = rep.Get_BookDetailsListByBookType(id);
             model.ID = id;
@@ -167,6 +166,147 @@ namespace D_Library.Controllers
         }
 
         [HttpGet]
+        public ActionResult BookEdit(int id)
+        {
+            var q = db.Tbl_Book.Where(a => a.Book_ID == id).SingleOrDefault();
+
+
+            Rep_Book rep = new Rep_Book();
+            BookEditModel model = new BookEditModel();
+            model.DetailsNav = rep.Get_BookDetailsListByBookType(q.Tbl_BookType.BookType_ID);
+            model.ID = q.Book_ID;
+            model.Details = q.Tbl_BookDetails;
+            model.Book = q;
+    
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult BookEdit(BookEditModel model)
+        {
+            Tbl_Book _book = new Tbl_Book();
+            Tbl_BookDetails _details = new Tbl_BookDetails();
+            Tbl_BookTag _tag = new Tbl_BookTag();
+            Membership membership = new Membership();
+            Rep_Book rep = new Rep_Book();
+
+            var q = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
+
+
+            _book = q;
+            _details = q.Tbl_BookDetails;
+
+            model.DetailsNav = rep.Get_BookDetailsListByBookType(q.Tbl_BookType.BookType_ID);
+
+            _book.Book_Code = model.Book.Book_Code;
+            _book.Book_Name = model.Book.Book_Name;
+            _book.Book_UploaderUserID = membership.Get_IDByUserName(User.Identity.Name);
+
+            _details.BD_DigitalVersionAvailable = model.Details.BD_DigitalVersionAvailable;
+            if (model.Details.BD_DigitalVersionAvailable)
+            {
+                _details.BD_FileEnabel = true;
+            }
+
+            _details.BD_PhysicalVersionAvailable = model.Details.BD_PhysicalVersionAvailable;
+            if (model.Details.BD_PhysicalVersionAvailable)
+            {
+                _details.BD_LibraryID = model.Details.BD_LibraryID;
+            }
+
+            _details.BD_PageCount = model.Details.BD_PageCount;
+
+            _details.BD_LanguageID = model.Details.BD_LanguageID;
+
+            foreach (var item in model.DetailsNav)
+            {
+                switch (item)
+                {
+                    case "Titel":
+                        _details.BD_Titel = model.Details.BD_Titel;
+                        break;
+                    case "Abstract":
+                        _details.BD_Abstract = model.Details.BD_Abstract;
+                        break;
+                    case "Student":
+                        _details.BD_StudentID = model.Details.BD_StudentID;
+                        break;
+                    case "Master":
+                        _details.BD_MasterID = model.Details.BD_MasterID;
+                        break;
+                    case "ISBN":
+                        _details.BD_ISBN = model.Details.BD_ISBN;
+                        break;
+                    case "Group":
+                        _details.BD_GroupID = model.Details.BD_GroupID;
+                        break;
+                    case "Branch":
+                        _details.BD_BranchID = model.Details.BD_BranchID;
+                        break;
+                    case "Publishers":
+                        _details.BD_Publishers = model.Details.BD_Publishers;
+                        break;
+                    case "Subject":
+                        _details.BD_Subject = model.Details.BD_Subject;
+                        break;
+                    case "Description":
+                        _details.BD_Description = model.Details.BD_Description;
+                        break;
+                    case "WriterName":
+                        _details.BD_WriterName = model.Details.BD_WriterName;
+                        break;
+                    case "ReleaseCount":
+                        _details.BD_ReleaseCount = model.Details.BD_ReleaseCount;
+                        break;
+                    case "Translator":
+                        _details.BD_Translator = model.Details.BD_Translator;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            db.Entry(_details).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(_book).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("BookShow", "Book", new { id = _book.Book_ID });
+            }
+            else
+            {
+                ViewBag.Message = "عملبات با موفقیت انجام نشده!";
+                ViewBag.State = "Error";
+                return RedirectToAction("BookShow", "Book", new { id = _book.Book_ID });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult BookTagEdit(int id)
+        {
+            BookTagsModel model = new BookTagsModel();
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult BookTagEdit(BookTagsModel Tags)
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult BookAddFile(int id)
+        {
+            ViewBag.ID = id;
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult BookTypeSelector()
         {
             return View();
@@ -251,7 +391,7 @@ namespace D_Library.Controllers
         }
 
         [HttpGet]
-        public ActionResult BookPublishModal(int id)
+        public ActionResult BookPublishAdvanced(int id)
         {
             BookPublishModel model = new BookPublishModel();
             model.ID = id;
@@ -265,7 +405,7 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookPublishModal(BookPublishModel model)
+        public ActionResult BookPublishAdvanced(BookPublishModel model)
         {
             int s = model.ID;
 
@@ -337,7 +477,7 @@ namespace D_Library.Controllers
 
             if (_Book.Tbl_BookAcsses.BookAcsses_Custom)
             {
-                foreach (var item in db.Tbl_BookCustomAcsses.Where( a => a.Tbl_BookAcsses == _Book.Tbl_BookAcsses).ToList())
+                foreach (var item in db.Tbl_BookCustomAcsses.Where(a => a.Tbl_BookAcsses == _Book.Tbl_BookAcsses).ToList())
                 {
                     db.Tbl_BookCustomAcsses.Remove(item);
                 }

@@ -16,9 +16,9 @@ hr {
 }
 
 .form-heading {
-    width: 93%;
     height: 50px;
-    margin: auto;
+    margin-right: 15px;
+    margin-left: 15px;
     margin-bottom: 0px;
     padding-top: 10px;
     background-color: #222D32;
@@ -131,6 +131,10 @@ hr {
    font-size:16px;
 }
 
+#BookListTable_length {
+    color: #9d9d9d;
+}
+
 .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > a:active {
     background-color: #222D32;
     color: #9d9d9d;
@@ -225,6 +229,7 @@ hr {
     border-top-left-radius:4px;
 }
 .tagify__input {
+    color: black;
 }
 /*********************************************** navbar ********************************************/
 .navbar-inverse {

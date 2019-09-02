@@ -1,49 +1,41 @@
 ﻿@model D_Library.Models.Model.BookPublishModel
 @using D_Library.Models.Repository
 
-@{
-    ViewBag.Title = "BookPublish";
-    Layout = "~/Views/Shared/_Dashboard.cshtml";
-}
+@using (Html.BeginForm())
+{
 
-<section class="col-md-9 container-fluid main-section">
-    @using (Html.BeginForm("BookPublish", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
-    {
+    @Html.AntiForgeryToken()
 
-        @Html.AntiForgeryToken()
-        <div class=" form-heading  text-center">
-            انتشار
+    <div class="panel-body" style="padding-top: 0px;padding-bottom: 10px;padding-right: 17px;padding-left: 17px;">
+
+        @Html.HiddenFor(model => model.ID)
+
+
+        <div class="form-group material-switch-body">
+            <label class="pull-left">نمایش در جستجو میهمان ها</label>
+            <div class="material-switch pull-right">
+                @Html.CheckBoxFor(model => model.GusetSearch, htmlAttributes: new { @class = " " })
+                @Html.LabelFor(model => model.GusetSearch, htmlAttributes: new { @class = "label-success" })
+            </div>
         </div>
-        <div class="panel-body" style="padding-top: 0px;padding-bottom: 10px;padding-right: 17px;padding-left: 17px;">
 
-            @Html.HiddenFor(model => model.ID)
-
-
-            <div class="form-group material-switch-body">
-                <label class="pull-left">نمایش در جستجو میهمان ها</label>
-                <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.GusetSearch, htmlAttributes: new { @class = " " })
-                    @Html.LabelFor(model => model.GusetSearch, htmlAttributes: new { @class = "label-success" })
-                </div>
+        <div class="form-group material-switch-body">
+            <label class="pull-left">دسترسی دانلود داخلی</label>
+            <div class="material-switch pull-right">
+                @Html.CheckBoxFor(model => model.LocalAcsses, htmlAttributes: new { @class = " " })
+                @Html.LabelFor(model => model.LocalAcsses, htmlAttributes: new { @class = "label-success" })
             </div>
+        </div>
 
-            <div class="form-group material-switch-body">
-                <label class="pull-left">دسترسی دانلود داخلی</label>
-                <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.LocalAcsses, htmlAttributes: new { @class = " " })
-                    @Html.LabelFor(model => model.LocalAcsses, htmlAttributes: new { @class = "label-success" })
-                </div>
+        <div class="form-group material-switch-body">
+            <label class="pull-left">دسترسی دانلود اینترنتی</label>
+            <div class="material-switch pull-right">
+                @Html.CheckBoxFor(model => model.GlobalAcsses, htmlAttributes: new { @class = " " })
+                @Html.LabelFor(model => model.GlobalAcsses, htmlAttributes: new { @class = "label-success" })
             </div>
+        </div>
 
-            <div class="form-group material-switch-body">
-                <label class="pull-left">دسترسی دانلود اینترنتی</label>
-                <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.GlobalAcsses, htmlAttributes: new { @class = " " })
-                    @Html.LabelFor(model => model.GlobalAcsses, htmlAttributes: new { @class = "label-success" })
-                </div>
-            </div>
-
-            @*<div class="form-group material-switch-body">
+        @*<div class="form-group material-switch-body">
                 <label class="pull-left">شخصی ساری دسترسی</label>
                 <div class="material-switch pull-right">
                     @Html.CheckBoxFor(model => model.Custom, htmlAttributes: new { @class = " " })
@@ -51,22 +43,22 @@
                 </div>
             </div>*@
 
-            <div class="form-group material-switch-body">
-                <label class="pull-left">انتشار</label>
-                <div class="material-switch pull-right">
-                    @Html.CheckBoxFor(model => model.Publish, htmlAttributes: new { @class = " " })
-                    @Html.LabelFor(model => model.Publish, htmlAttributes: new { @class = "label-success" })
-                </div>
+        <div class="form-group material-switch-body">
+            <label class="pull-left">انتشار</label>
+            <div class="material-switch pull-right">
+                @Html.CheckBoxFor(model => model.Publish, htmlAttributes: new { @class = " " })
+                @Html.LabelFor(model => model.Publish, htmlAttributes: new { @class = "label-success" })
             </div>
-
         </div>
 
-        <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
-    }
-    <script>
-        $(function () {
-            $("input[type='hidden']").remove();
-        });
-    </script>
-</section>
+    </div>
+
+    <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+}
+
+<script>
+    $(function () {
+        $("input[type='hidden']").remove();
+    });
+</script>
 

@@ -846,9 +846,11 @@
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\BaseRoleListModel.cs" />
     <Compile Include="Models\Model\BookDeleteModel.cs" />
+    <Compile Include="Models\Model\BookEditModel.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
     <Compile Include="Models\Model\BookPublishModel.cs" />
     <Compile Include="Models\Model\BookShowModel.cs" />
+    <Compile Include="Models\Model\BookTagsModel.cs" />
     <Compile Include="Models\Model\BookTypeListModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\BranchAddModel.cs" />
@@ -974,9 +976,12 @@
     <Content Include="Views\Book\BookUplaod.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Book\BookShow.cshtml" />
-    <Content Include="Views\Book\BookPublish.cshtml" />
     <Content Include="Views\FileManager\DeleteFile.cshtml" />
     <Content Include="Views\Book\BookDelete.cshtml" />
+    <Content Include="Views\Book\BookAddFile.cshtml" />
+    <Content Include="Views\Book\BookPublish.cshtml" />
+    <Content Include="Views\Book\BookEdit.cshtml" />
+    <Content Include="Views\Book\BookTagEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

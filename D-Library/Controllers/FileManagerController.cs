@@ -57,7 +57,8 @@ namespace D_Library.Controllers
                         q.File_Name = fileName;
 
                         var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), string.Format("{0}/", folderName.ToString()), fileName);
-                        q.File_Path = path;
+
+                        q.File_Path = Path.Combine(string.Format("{0}/", folderName.ToString()), fileName);
 
                         q.File_BookID = id;
 
@@ -120,7 +121,9 @@ namespace D_Library.Controllers
 
             if (q != null)
             {
-                return File(q.File_Path, "*", q.File_Name);
+                string path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), q.File_Path);
+
+                return File(path, "*", q.File_Name);
             }
             else
             {

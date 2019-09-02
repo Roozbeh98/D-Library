@@ -1,0 +1,33 @@
+﻿<link href="~/Content/Plugins/JQuery.Filepond/filepond.css" rel="stylesheet" />
+
+
+
+<div class="panel-body">
+    <div class="form-group " style="padding-right: 3px;padding-left: 3px;">
+        <input class="fileUpload-multiple" type="file" name="fileuplaod">
+
+    </div>
+</div>
+
+<button class="btn btn-success  AddNewUser-button" type="button" data-dismiss="modal">تایید</button>
+
+
+
+<script src="~/Scripts/Plugins/JQuery.Filepond/filepond.js"></script>
+<script src="~/Scripts/Plugins/JQuery.Filepond/filepond.jquery.js"></script>
+<script src="~/Scripts/MyScripts/FilePond_Config.js"></script>
+
+
+<script>
+    FilePond.setOptions({
+        server: {
+
+            process: '@Url.Action("UploadFiles", "FileManager", new { id = ViewBag.ID })',
+            remove: '@Url.Action("RemoveUploadFiles", "FileManager", new { id = ViewBag.ID })'
+
+        }
+
+    });
+
+
+</script>

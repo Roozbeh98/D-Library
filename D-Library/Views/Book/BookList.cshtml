@@ -93,16 +93,16 @@
                                 {
                                     if (item.Book_Publish)
                                     {
-                                        <a class="btn btn-success btn-sm glyphicon glyphicon-share" href="@Url.Action("BookPublish","Book", new { id = item.Book_ID })"> </a>
+                                        <a class="btn btn-success btn-sm glyphicon glyphicon-share" onclick="BookPublish(@item.Book_ID)"> </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-danger btn-sm glyphicon glyphicon-share" href="@Url.Action("BookPublish","Book", new { id = item.Book_ID })"> </a>
+                                        <a class="btn btn-danger btn-sm glyphicon glyphicon-share" onclick="BookPublish(@item.Book_ID)"> </a>
                                     }
                                 }
 
-                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("Edit","Book", new { id = item.Book_ID })"> </a>
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Book",new { id = item.Book_ID})"></a>
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("BookEdit","Book", new { id = item.Book_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="BookDelete(@item.Book_ID)"></a>
                             </td>
                         </tr>
                     }
@@ -159,3 +159,37 @@
     });
 
 </script>
+
+@Html.Partial("_Modal")
+
+
+@section Modal{
+    <script>
+
+
+
+        function BookDelete(id) {
+            $.ajax({
+                url: "/Book/BookDelete/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('حذف');
+                $('#myModalBody').html(result);
+            });
+        }
+        function BookPublish(id) {
+            $.ajax({
+                url: "/Book/BookPublish/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('انتشار');
+                $('#myModalBody').html(result);
+            });
+        }
+
+    </script>
+}

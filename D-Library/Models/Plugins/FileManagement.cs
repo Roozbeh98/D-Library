@@ -15,16 +15,25 @@ namespace D_Library.Models.Plugins
 
         public void DeleteFileWithPath(string path)
         {
-            File.Delete(path);
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
         }
 
         public void Dir_Empty(string root)
         {
-            int x = Directory.GetFiles(root).Count();
-
-            if ( x == 0)
+            if (Directory.Exists(root))
             {
-                Directory.Delete(root);
+
+                int x = Directory.GetFiles(root).Count();
+
+                if (x == 0)
+                {
+                    Directory.Delete(root);
+                }
             }
         }
     }

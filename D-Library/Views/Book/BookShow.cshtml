@@ -386,6 +386,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="Setting">
+
                     <div class="panel setting-col" style="line-height:40px;">
                         <div class="pull-left setting-col-titel">
                             <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
@@ -393,7 +394,29 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangePassword(@Model.ID)"> </a>
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" href="@Url.Action("BookEdit","Book", new { id = Model.Book.Book_ID })"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش برچسب  
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="BookTagEdit(@Model.Book.Book_ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            افزودن فایل
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="BookAddFile(@Model.Book.Book_ID)"> </a>
                         </div>
                     </div>
 
@@ -406,11 +429,11 @@
                         <div class="pull-right ">
                             @if (Model.Book.Book_Publish)
                             {
-                                <a class="btn btn-success btn-sm glyphicon glyphicon-share" href="@Url.Action("BookPublish","Book", new { id = Model.Book.Book_ID })"> </a>
+                                <a class="btn btn-success btn-sm glyphicon glyphicon-share" onclick="BookPublish(@Model.Book.Book_ID)"> </a>
                             }
                             else
                             {
-                                <a class="btn btn-danger btn-sm glyphicon glyphicon-share" href="@Url.Action("BookPublish","Book", new { id = Model.Book.Book_ID })"> </a>
+                                <a class="btn btn-danger btn-sm glyphicon glyphicon-share" onclick="BookPublish(@Model.Book.Book_ID)"> </a>
                             }
                         </div>
                     </div>
@@ -469,6 +492,42 @@
             });
         }
 
+        function BookAddFile(id) {
+            $.ajax({
+                url: "/Book/BookAddFile/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن');
+                $('#myModalBody').html(result);
+            });
+        }
+        
+        function BookPublish(id) {
+            $.ajax({
+                url: "/Book/BookPublish/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('انتشار');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function BookTagEdit(id) {
+            $.ajax({
+                url: "/Book/BookTagEdit/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش');
+                $('#myModalBody').html(result);
+            });
+        }
+        
 
     </script>
 }
