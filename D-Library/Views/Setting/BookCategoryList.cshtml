@@ -1,0 +1,91 @@
+﻿@model IEnumerable<D_Library.Models.Domins.Tbl_BookCategory>
+
+@{
+    ViewBag.Title = "BookCategoryList";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<section class="col-md-9 container-fluid main-section">
+
+    <div class="table-panel booktypeteble-panel">
+        <div class="table-heading  text-center ">
+            <span>
+                گروه ها
+            </span>
+
+        </div>
+        <div class="panel-body table-body">
+
+
+
+            <table id="BookTypeList" class="table table-striped table-table">
+                <thead>
+                    <tr class="table-tr">
+                        <th scope="col" width="20px">#</th>
+                        <th scope="col">نام گروه</th>
+                        <th scope="col" data-orderable="false"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int x = 0;
+                    }
+
+                    @foreach (var item in Model)
+                    {
+                        x++;
+                        <tr>
+                            <td scope="row">@x</td>
+                            <td scope="row">
+                                @Html.DisplayFor(modelItem => item.BC_Name)
+                            </td>
+                            <td scope="row" class="pull-right">
+                                <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="BookCategoryEdit(@item.BC_ID)"> </a>
+                                @*<a class="btn btn-danger btn-sm glyphicon glyphicon-trash" href="@Url.Action("Delete","Dashboard",new { id = item.Library_ID })   "></a>*@
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div>
+                <a class="btn btn-success btn-group-lg table-btn-create  pull-right " onclick="BookCategoryCreate()">
+                    <span class="glyphicon glyphicon-plus-sign pull-left"></span>
+                    <span class="text-center">افزودن</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+        function BookCategoryCreate() {
+            $.ajax({
+                url: "/Setting/BookCategoryAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف گروه');
+                $('#myModalBody').html(result);
+            });
+        }
+        function BookCategoryEdit(id) {
+            $.ajax({
+                url: "/Setting/BookCategoryEdit/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش گروه');
+                $('#myModalBody').html(result);
+            });
+        }
+    </script>
+}

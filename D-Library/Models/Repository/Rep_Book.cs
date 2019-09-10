@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using D_Library.Models.Domins;
 
 
@@ -25,6 +26,18 @@ namespace D_Library.Models.Repository
             }
 
             return list;
+        }
+
+        public IEnumerable<SelectListItem> Get_BookCategorySelectList()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (var item in db.Tbl_BookCategory)
+            {
+                list.Add(new SelectListItem() { Value = item.BC_ID.ToString(), Text = item.BC_Name });
+            }
+
+            return list.AsEnumerable();
         }
 
         public List<string> Get_BookDetailsListByBookType(int id)
@@ -56,6 +69,19 @@ namespace D_Library.Models.Repository
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> Get_BookDetailsAllSelectList()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (var item in db.Tbl_BookDetailsFeatures)
+            {
+                list.Add(new SelectListItem() { Value = item.BDF_ID.ToString(), Text = item.BDF_Titel });
+            }
+
+            return list.AsEnumerable();
+        }
+
         public List<DropDownModel> Get_BookDetailsListByType(int? TypeId)
         {
 

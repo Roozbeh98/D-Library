@@ -54,8 +54,8 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("BookTypeList","Setting")"></a>
-                            @*<a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"> </a>*@
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("BookCategoryList","Setting")"></a>
+                            <a class="btn btn-success btn-sm glyphicon glyphicon-plus" onclick="BookCategoryCreate()"> </a>
                         </div>
                     </div>
 
@@ -213,6 +213,18 @@
             }).done(function (result) {
                 $('#myModal').modal('show');
                 $('#myModalLabel').html('افزودن برچسب');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function BookCategoryCreate() {
+            $.ajax({
+                url: "/Setting/BookCategoryAdd",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعریف گروه');
                 $('#myModalBody').html(result);
             });
         }

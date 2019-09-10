@@ -33,9 +33,9 @@ namespace D_Library.Models.Domins
         public bool Book_Publish { get; set; }
         public Nullable<int> Book_BAID { get; set; }
     
-        public virtual Tbl_BookType Tbl_BookType { get; set; }
         public virtual Tbl_BookAcsses Tbl_BookAcsses { get; set; }
         public virtual Tbl_BookDetails Tbl_BookDetails { get; set; }
+        public virtual Tbl_BookType Tbl_BookType { get; set; }
         public virtual Tbl_User Tbl_User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookTag> Tbl_BookTag { get; set; }

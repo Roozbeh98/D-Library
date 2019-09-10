@@ -98,6 +98,71 @@ namespace D_Library.Controllers
 
         #region Book
 
+        #region BookCatgory
+        [HttpGet]
+        public ActionResult BookCategoryList()
+        {
+            return View(db.Tbl_BookCategory);
+        }
+        [HttpGet]
+        public ActionResult BookCategoryAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BookCategoryAdd(BookCategoryAddModel model)
+        {
+            Tbl_BookCategory q = new Tbl_BookCategory();
+            q.BC_Name = model.Name;
+
+            db.Tbl_BookCategory.Add(q);
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("BookCategoryList", "Setting");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult BookCategoryEdit(int id)
+        {
+            Tbl_BookCategory q = db.Tbl_BookCategory.Where(a => a.BC_ID == id).SingleOrDefault();
+
+            BookCategoryAddModel model = new BookCategoryAddModel();
+
+            model.ID = q.BC_ID;
+            model.Name = q.BC_Name;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult BookCategoryEdit(BookCategoryAddModel model)
+        {
+            Tbl_BookCategory q = db.Tbl_BookCategory.Where(a => a.BC_ID == model.ID).SingleOrDefault();
+
+            q.BC_Name = model.Name;
+
+            db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("BookCategoryList", "Setting");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+        #endregion
+
         #region Booktype
 
         [HttpGet]
@@ -113,22 +178,25 @@ namespace D_Library.Controllers
         public ActionResult BookTypeAdd()
         {
             BookTypeAddModel moodel = new BookTypeAddModel();
-            Rep_Book book = new Rep_Book();
-            moodel.FromList = book.Get_BookDetailsListAll();
+
             return View(moodel);
         }
 
         [HttpPost]
-        public ActionResult BookTypeAdd(BookTypeAddModel moodel, string[] to)
+        public ActionResult BookTypeAdd(BookTypeAddModel model)
         {
             Tbl_BookType bookType = new Tbl_BookType();
+            Tbl_BookCategory bookCategory = db.Tbl_BookCategory.Where(a => a.BC_ID == model.Category).SingleOrDefault();
 
+            
 
-            bookType.BookType_Name = moodel.TypeName;
+            bookType.BookType_Name = model.TypeName;
+            bookType.Tbl_BookCategory = bookCategory;
+
             db.Tbl_BookType.Add(bookType);
 
 
-            foreach (var item in to)
+            foreach (var item in model.to)
             {
                 Tbl_BookDetailsNavigator detailsNavigator = new Tbl_BookDetailsNavigator();
                 detailsNavigator.Tbl_BookType = bookType;
@@ -157,6 +225,25 @@ namespace D_Library.Controllers
 
 
         }
+
+        [HttpGet]
+        public ActionResult BookTypeEdit()
+        {
+            BookTypeListModel tableMoodel = new BookTypeListModel();
+            tableMoodel.BookType = db.Tbl_BookType;
+
+            return View(tableMoodel);
+        }
+
+        [HttpPost]
+        public ActionResult BookTypeEdit(int x)
+        {
+            BookTypeAddModel moodel = new BookTypeAddModel();
+            Rep_Book book = new Rep_Book();
+
+            return View(moodel);
+        }
+
 
         #endregion
 

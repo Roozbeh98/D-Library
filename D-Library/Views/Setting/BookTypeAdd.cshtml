@@ -1,5 +1,5 @@
 ﻿@model D_Library.Models.Model.BookTypeAddModel
-
+@using D_Library.Models.Repository
 @{
     ViewBag.Title = "BookTypeAdd";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
@@ -12,10 +12,24 @@
 
         @Html.AntiForgeryToken()
         <div class=" form-heading  text-center">
-            تعریف گروه جدید کتاب
+            تعریف زیر گروه کتاب
         </div>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="panel-body">
+            @{
+                Rep_Book _book = new Rep_Book();
+
+            }
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+
+                @Html.DropDownListFor(model => model.Category, _book.Get_BookCategorySelectList(), new { @class = " Select2_Normal form-control" })
+
+            </div>
+
+
 
             <div class="form-group">
                 @Html.LabelFor(model => model.TypeName, htmlAttributes: new { @class = "" })
@@ -30,14 +44,8 @@
                 <label>نام گروه</label>
                 <div class="row">
                     <div class="col-md-5">
-                        <select name="from" id="multiselect" class="form-control" size="8" multiple="multiple">
-                            @{
-                                foreach (var item in Model.FromList)
-                                {
-                                    <option value="@item.id">@item.name</option>
-                                }
-                            }
-                        </select>
+                        @Html.DropDownListFor(model => model.from, _book.Get_BookDetailsAllSelectList(), htmlAttributes: new { id = "multiselect", size = "8", multiple = "multiple", @class = "form-control" })
+
                     </div>
 
                     <div class="col-md-2 ">
@@ -65,9 +73,9 @@
 
         </div>
 
-        <div class="panel-footer form-footer ">
-            <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
-        </div>
+
+        <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+
     }
 </section>
 

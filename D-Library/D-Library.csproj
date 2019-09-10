@@ -144,6 +144,10 @@
     <Content Include="Content\Plugins\jQuery.FileUpload\css\jquery.fileupload.css" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\loading.gif" />
     <Content Include="Content\Plugins\jQuery.FileUpload\img\progressbar.gif" />
+    <Content Include="Content\Plugins\jQuery.Select2\search-magnifier-interface-symbol.svg" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap.css" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2.css" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2.min.css" />
     <Content Include="Content\Plugins\jQuery.tagify\tagify.css" />
     <Content Include="Content\Plugins\jQuery.Toast\toastr.css" />
     <Content Include="Content\Plugins\jQuery.Toast\toastr.min.css" />
@@ -233,8 +237,13 @@
     <Content Include="Content\fonts\fa-solid-900.ttf" />
     <Content Include="Content\fonts\fa-solid-900.woff" />
     <Content Include="Content\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap-build.less" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap-build.scss" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap.less" />
+    <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\MyScripts\FilePond_Config.js" />
+    <Content Include="Scripts\MyScripts\Select2_Config.js" />
     <Content Include="Scripts\Plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\Plugins\ckeditor\ckeditor.js" />
     <Content Include="Scripts\Plugins\ckeditor\config.js" />
@@ -689,6 +698,10 @@
     <Content Include="Scripts\Plugins\jQuery.knob\jquery.knob.js" />
     <Content Include="Scripts\Plugins\jQuery.multiselect\multiselect.js" />
     <Content Include="Scripts\Plugins\jQuery.multiselect\multiselect.min.js" />
+    <Content Include="Scripts\Plugins\jQuery.Select2\i18n\en.js" />
+    <Content Include="Scripts\Plugins\jQuery.Select2\i18n\fa.js" />
+    <Content Include="Scripts\Plugins\jQuery.Select2\select2.js" />
+    <Content Include="Scripts\Plugins\jQuery.Select2\select2.min.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.js" />
     <Content Include="Scripts\Plugins\jQuery.slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\Plugins\jQuery.tagify\jQuery.tagify.min.js" />
@@ -746,6 +759,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Domins\Tbl_BookAcsses.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domins\Tbl_BookCategory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Domins\Tbl_BookCustomAcsses.cs">
@@ -845,6 +861,7 @@
     <Compile Include="Models\MetaData\MetaData_User.cs" />
     <Compile Include="Models\Model\AccountInfoModel.cs" />
     <Compile Include="Models\Model\BaseRoleListModel.cs" />
+    <Compile Include="Models\Model\BookCategoryAddModel.cs" />
     <Compile Include="Models\Model\BookDeleteModel.cs" />
     <Compile Include="Models\Model\BookEditModel.cs" />
     <Compile Include="Models\Model\BookListModel.cs" />
@@ -852,6 +869,7 @@
     <Compile Include="Models\Model\BookShowModel.cs" />
     <Compile Include="Models\Model\BookTagsModel.cs" />
     <Compile Include="Models\Model\BookTypeListModel.cs" />
+    <Compile Include="Models\Model\BookTypeSelectorModel.cs" />
     <Compile Include="Models\Model\BookUplaodModel.cs" />
     <Compile Include="Models\Model\BranchAddModel.cs" />
     <Compile Include="Models\Model\ChangePasswordModel.cs" />
@@ -878,7 +896,6 @@
     <Compile Include="Models\Plugins\Email.cs" />
     <Compile Include="Models\Plugins\FileManagement.cs" />
     <Compile Include="Models\Plugins\PersianDateExtensionMethods.cs" />
-    <Compile Include="Models\Plugins\Tags.cs" />
     <Compile Include="Models\Repository\DropDownModel.cs" />
     <Compile Include="Models\Repository\Rep_AccountInfo.cs" />
     <Compile Include="Models\Repository\Rep_Book.cs" />
@@ -972,7 +989,6 @@
     <Content Include="Views\User\BanUser.cshtml" />
     <Content Include="Views\MessagingManager\UserMassageFromManager.cshtml" />
     <Content Include="Views\Book\BookNew.cshtml" />
-    <Content Include="Views\Book\BookTypeSelector.cshtml" />
     <Content Include="Views\Book\BookUplaod.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Book\BookShow.cshtml" />
@@ -982,6 +998,10 @@
     <Content Include="Views\Book\BookPublish.cshtml" />
     <Content Include="Views\Book\BookEdit.cshtml" />
     <Content Include="Views\Book\BookTagEdit.cshtml" />
+    <Content Include="Views\Book\BookTypeSelector.cshtml" />
+    <Content Include="Views\Setting\BookCategoryList.cshtml" />
+    <Content Include="Views\Setting\BookCategoryAdd.cshtml" />
+    <Content Include="Views\Setting\BookCategoryEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

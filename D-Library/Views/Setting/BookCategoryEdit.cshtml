@@ -1,14 +1,13 @@
-﻿@model D_Library.Models.Model.GroupAddModel
+﻿@model D_Library.Models.Model.BookCategoryAddModel
+
 
 @using (Html.BeginForm())
 {
-
     @Html.AntiForgeryToken()
-
 
     <div class="modal-main">
 
-
+        @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
@@ -19,13 +18,9 @@
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
 
-
-
-
     </div>
 
     <button class="btn btn-success modal-btn-singel" type="submit" name="btn-BuildCode">تایید</button>
-
 }
 
 

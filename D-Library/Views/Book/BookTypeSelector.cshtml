@@ -1,11 +1,14 @@
-﻿@using D_Library.Models.Repository
+﻿@model D_Library.Models.Model.BookTypeSelectorModel
+@using D_Library.Models.Repository
+
 
 @{
-    ViewBag.Title = "انتخاب نوع کتاب";
+    ViewBag.Title = "انتخاب نوع";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 <section class="col-md-9 container-fluid main-section">
+
     @using (Html.BeginForm("BookTypeSelector", "Book", FormMethod.Post, htmlAttributes: new { @class = "panel-info  form-form form-AddNewUser form-form-indasdboard", @style = "" }))
     {
         @Html.AntiForgeryToken()
@@ -14,27 +17,68 @@
         </div>
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="panel-body">
-            <div class="form-group ">
-                <label>نوع کتاب</label>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Catgory, htmlAttributes: new { @class = "control-label" })
                 @{
-                    Rep_Book Ro = new Rep_Book();
-
-                    var list = Ro.Get_BookTypeCreate();
-
-                    <select name="BookTypeSelection" class="form-control chosen-select text-center">
-                        @foreach (var item in list)
-                        {
-                            <option value="@item.id">@item.name</option>
-                        }
-                    </select>
-
+                    Rep_Book _Book = new Rep_Book();
                 }
+                @Html.DropDownListFor(model => model.Catgory, _Book.Get_BookCategorySelectList(), new { @class = "catgory Select2_Normal form-control" })
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubCatgory, htmlAttributes: new { @class = "control-label" })
+
+                <select name="SubCatgory" class="subcatgory Select2_Normal form-control" >
+
+                </select>
+
+                @Html.ValidationMessageFor(model => model.SubCatgory, "", new { @class = "text-danger" })
+
             </div>
         </div>
-
         <button class="btn btn-success  AddNewUser-button" type="submit" name="btn-BuildCode">تایید</button>
+
     }
 </section>
 
+<script>
+
+    $("#Catgory").on("change", function () {
+        var CatgoryID = document.getElementById("Catgory").value;
+        console.log(CatgoryID);
+        $.ajax({
+            url: "/Book/Get_SubCatgoryList?CatgoryID=" + CatgoryID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".subcatgory").empty();
+                $.each(data, function (index, row) {
+                    $(".subcatgory").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
 
 
+    $("#Catgory").ready( function () {
+        var CatgoryID = document.getElementById("Catgory").value;
+        console.log(CatgoryID);
+        $.ajax({
+            url: "/Book/Get_SubCatgoryList?CatgoryID=" + CatgoryID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".subcatgory").empty();
+                $.each(data, function (index, row) {
+                    $(".subcatgory").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+
+
+</script>

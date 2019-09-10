@@ -24,9 +24,11 @@ namespace D_Library.Models.Domins
     
         public int BookType_ID { get; set; }
         public string BookType_Name { get; set; }
+        public int BookType_BCID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Book> Tbl_Book { get; set; }
+        public virtual Tbl_BookCategory Tbl_BookCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_BookDetailsNavigator> Tbl_BookDetailsNavigator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

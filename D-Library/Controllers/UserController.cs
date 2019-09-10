@@ -136,7 +136,7 @@ namespace D_Library.Controllers
 
         }
 
-        
+
         [HttpGet]
         public ActionResult RegisterCodeDelete(int id)
         {
@@ -345,7 +345,7 @@ namespace D_Library.Controllers
             model.name = q.Tbl_User.User_Name;
             model.Family = q.Tbl_User.User_Family;
             model.Email = q.Tbl_User.User_Email;
-            model.Branch =(int)q.Tbl_User.User_BranchID;
+            model.Branch = (int)q.Tbl_User.User_BranchID;
             model.Group = q.Tbl_User.Tbl_branch.branch_GroupID;
             model.Mobile = q.Tbl_User.User_Mobile;
 
@@ -426,7 +426,7 @@ namespace D_Library.Controllers
 
             model.ID = q.Login_ID;
             model.Username = q.Login_UserName;
-                       
+
             return PartialView(model);
 
         }
@@ -445,7 +445,7 @@ namespace D_Library.Controllers
             {
                 q.Login_UserActive = true;
             }
-          
+
 
             db.Entry(q).State = System.Data.Entity.EntityState.Modified;
 
@@ -470,6 +470,91 @@ namespace D_Library.Controllers
 
             }
 
+        }
+        #endregion
+
+        #region API
+        [HttpGet]
+        public JsonResult Get_AllProfessorList(string searchTerm)
+        {
+            List<DropDownModel> t = new List<DropDownModel>();
+
+            var q = from a in db.Tbl_BaseRolesPermission where (a.Tbl_Permission.Permission_Name == "Professor") select a;
+
+
+            foreach (var item in q)
+            {
+                var p = from b in db.Tbl_Login where (b.Login_BaseRoleID == item.BRP_BaseRoleID) select b;
+
+                if (p != null)
+                {
+                    foreach (var master in p)
+                    {
+                        t.Add(new DropDownModel((int)master.Login_UserID, master.Tbl_User.User_Name + " " + master.Tbl_User.User_Family));
+                    }
+
+                }
+
+            }
+            var md = t.Select(a => new { id = a.id, text = a.name });
+
+            if (searchTerm != null)
+            {
+                md = t.Where(a => a.name.Contains(searchTerm)).Select((a => new { id = a.id, text = a.name }));
+            }
+
+
+
+            return Json(md, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult Get_AllStudentList(string searchTerm)
+        {
+            List<DropDownModel> t = new List<DropDownModel>();
+
+            var q = from a in db.Tbl_BaseRolesPermission where (a.Tbl_Permission.Permission_Name == "Student") select a;
+
+
+            foreach (var item in q)
+            {
+                var p = from b in db.Tbl_Login where (b.Login_BaseRoleID == item.BRP_BaseRoleID) select b;
+
+                if (p != null)
+                {
+                    foreach (var Student in p)
+                    {
+                        if (!Student.Login_RegisterActive)
+                        {
+                            t.Add(new DropDownModel((int)Student.Login_UserID, Student.Tbl_User.User_Name + " " + Student.Tbl_User.User_Family));
+                        }
+                    }
+                }
+            }
+
+            var md = t.Select(a => new { id = a.id, text = a.name });
+
+            if (searchTerm != null)
+            {
+                md = t.Where(a => a.name.Contains(searchTerm)).Select((a => new { id = a.id, text = a.name }));
+            }
+
+
+
+            return Json(md, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Get_BranchList(int GroupID)
+        {
+            var q = db.Tbl_Group.Where(a => a.Group_ID == GroupID).SingleOrDefault();
+
+            var t = db.Tbl_branch.Where(a => a.Tbl_Group.Group_ID == q.Group_ID).ToList();
+
+            var md = t.Select(a => new { id = a.branch_ID, text = a.branch_Name });
+
+            return Json(md, JsonRequestBehavior.AllowGet);
         }
         #endregion
     }

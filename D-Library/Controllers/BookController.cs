@@ -36,7 +36,7 @@ namespace D_Library.Controllers
             Tbl_Book _book = new Tbl_Book();
             Tbl_BookDetails _details = new Tbl_BookDetails();
             Tbl_BookAcsses _acsses = new Tbl_BookAcsses();
-            Tbl_BookTag _tag = new Tbl_BookTag();
+
             Membership membership = new Membership();
             Rep_Book rep = new Rep_Book();
 
@@ -117,15 +117,6 @@ namespace D_Library.Controllers
                 }
             }
 
-
-
-
-
-
-
-            //var tags:{ value: Array<int>}= new JavaScriptSerializer().Deserialize<dynamic>(model.Tag)
-
-
             _acsses.BookAcsses_Guest = false;
             _acsses.BookAcsses_Global = false;
             _acsses.BookAcsses_Local = false;
@@ -138,6 +129,45 @@ namespace D_Library.Controllers
             _book.Tbl_BookAcsses = _acsses;
 
             db.Tbl_Book.Add(_book);
+
+            foreach (var item in model.Tag)
+            {
+                Tbl_BookTag _booktag = new Tbl_BookTag();
+
+                int id = 0;
+
+                if (Int32.TryParse(item, out id))
+                {
+                    Tbl_Tag tag = db.Tbl_Tag.Where(a => a.Tag_ID == id).SingleOrDefault();
+
+                    if (tag == null)
+                    {
+                        Tbl_Tag _tag = new Tbl_Tag();
+                        _tag.Tag_Name = item;
+                        db.Tbl_Tag.Add(_tag);
+
+                        _booktag.Tbl_Tag = _tag;
+                        _booktag.Tbl_Book = _book;
+                    }
+                    else
+                    {
+                        _booktag.Tbl_Tag = tag;
+                        _booktag.Tbl_Book = _book;
+                    }
+                }
+                else
+                {
+                    Tbl_Tag _tag = new Tbl_Tag();
+                    _tag.Tag_Name = item;
+                    db.Tbl_Tag.Add(_tag);
+
+                    _booktag.Tbl_Tag = _tag;
+                    _booktag.Tbl_Book = _book;
+                }
+
+
+                db.Tbl_BookTag.Add(_booktag);
+            }
 
             if (Convert.ToBoolean(db.SaveChanges() > 0))
             {
@@ -177,7 +207,7 @@ namespace D_Library.Controllers
             model.ID = q.Book_ID;
             model.Details = q.Tbl_BookDetails;
             model.Book = q;
-    
+
 
 
             return View(model);
@@ -288,14 +318,91 @@ namespace D_Library.Controllers
         {
             BookTagsModel model = new BookTagsModel();
 
+            model.ID = id;
+
+            model.TagCollection = db.Tbl_Tag;
+
+            model.Tags = db.Tbl_BookTag.Where(a => a.BT_BookID == id).Select(a => a.Tbl_Tag.Tag_ID.ToString()).ToArray();
+
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult BookTagEdit(BookTagsModel Tags)
+        public ActionResult BookTagEdit(BookTagsModel model)
         {
-            return View();
+            var oldtags = db.Tbl_BookTag.Where(a => a.Tbl_Book.Book_ID == model.ID).ToList();
+            List<Tbl_Tag> newtags = new List<Tbl_Tag>();
+            var _book = db.Tbl_Book.Where(a => a.Book_ID == model.ID).SingleOrDefault();
+
+            foreach (var item in model.Tags)
+            {
+                int id = 0;
+
+                if (Int32.TryParse(item, out id))
+                {
+                    newtags.Add(db.Tbl_Tag.Where(a => a.Tag_ID == id).SingleOrDefault());
+                }
+            }
+
+            foreach (var item in oldtags)
+            {
+                if (!newtags.Exists(a => a.Tag_ID == item.Tbl_Tag.Tag_ID ))
+                {
+                    db.Tbl_BookTag.Remove(item);
+                }
+            }
+
+            foreach (var item in model.Tags)
+            {
+                Tbl_BookTag _booktag = new Tbl_BookTag();
+                int id = 0;
+
+                if (Int32.TryParse(item, out id))
+                {
+                    Tbl_Tag tag = db.Tbl_Tag.Where(a => a.Tag_ID == id).SingleOrDefault();
+
+                    if (tag != null)
+                    {
+                        if (!oldtags.Exists(a => a.Tbl_Tag.Tag_ID == id))
+                        {
+                            _booktag.Tbl_Tag = tag;
+                            _booktag.Tbl_Book = _book;
+                        }
+                    }
+                    else
+                    {
+                        Tbl_Tag _tag = new Tbl_Tag();
+                        _tag.Tag_Name = item;
+                        db.Tbl_Tag.Add(_tag);
+
+                        _booktag.Tbl_Tag = _tag;
+                        _booktag.Tbl_Book = _book;
+                    }
+
+
+                }
+                else
+                {
+                    Tbl_Tag _tag = new Tbl_Tag();
+                    _tag.Tag_Name = item;
+                    db.Tbl_Tag.Add(_tag);
+
+                    _booktag.Tbl_Tag = _tag;
+                    _booktag.Tbl_Book = _book;
+                }
+
+                db.Tbl_BookTag.Add(_booktag);
+            }
+
+            if (Convert.ToBoolean(db.SaveChanges() > 0))
+            {
+                return RedirectToAction("BookShow", "Book", new { id = _book.Book_ID });
+            }
+            else
+            {
+                return RedirectToAction("BookShow", "Book", new { id = _book.Book_ID });
+            }
         }
 
 
@@ -309,13 +416,15 @@ namespace D_Library.Controllers
         [HttpGet]
         public ActionResult BookTypeSelector()
         {
-            return View();
+            BookTypeSelectorModel model = new BookTypeSelectorModel();
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult BookTypeSelector(int BookTypeSelection)
+        public ActionResult BookTypeSelector(BookTypeSelectorModel model)
         {
-            return RedirectToAction("BookNew", "Book", new { id = BookTypeSelection });
+            return RedirectToAction("BookNew", "Book", new { id = model.SubCatgory });
         }
 
         [HttpGet]
@@ -498,6 +607,48 @@ namespace D_Library.Controllers
         }
 
 
+        #endregion
+
+        #region API
+
+        public JsonResult Get_BookCatgoryList(string searchTerm)
+        {
+            var q = db.Tbl_BookCategory.ToList();
+            if (searchTerm != null)
+            {
+                q = db.Tbl_BookCategory.Where(a => a.BC_Name.Contains(searchTerm)).ToList();
+            }
+
+            var md = q.Select(a => new { id = a.BC_ID, text = a.BC_Name });
+
+            return Json(md, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult Get_AllTagList(string searchTerm)
+        {
+            var q = db.Tbl_Tag.ToList();
+            if (searchTerm != null)
+            {
+                q = db.Tbl_Tag.Where(a => a.Tag_Name.Contains(searchTerm)).ToList();
+            }
+
+            var md = q.Select(a => new { id = a.Tag_ID, text = a.Tag_Name });
+
+            return Json(md, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Get_SubCatgoryList(int CatgoryID)
+        {
+            var q = db.Tbl_BookCategory.Where(a => a.BC_ID == CatgoryID).SingleOrDefault();
+
+            var t = db.Tbl_BookType.Where(a => a.Tbl_BookCategory.BC_ID == q.BC_ID).ToList();
+
+            var md = t.Select(a => new { id = a.BookType_ID, text = a.BookType_Name });
+
+            return Json(md, JsonRequestBehavior.AllowGet);
+        }
         #endregion
     }
 }
