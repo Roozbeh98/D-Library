@@ -5,35 +5,37 @@
 }
 
 <section>
-    <div class="container saerch-panel">
+    <div class="saerch-panel">
 
         <div class="block-heading text-center saerch-panel-logo">
-
-
-
             <img src="~/Content/Images/arm.png" />
-
         </div>
 
-        <div class="row">
+        <form class="saerch-panel-input container ">
 
-            <form class="saerch-panel-input container ">
-                <div class="input-group ">
+            <input type="text" placeholder="من به دنبال " class="form-control text-center saerch-panel-input-txt " />
+            <div class=" container text-center" style="margin-top:15px; width:100%">
+                <button class="btn btn-primary" type="button" style="width:120px">جستجو</button>
+                <button class="btn btn-primary" type="button" style="width:120px">جستجو پیشرفته</button>
+            </div>
 
+            <div class="input-group ">
 
-                    <div class="input-group-addon saerch-panel-input-icon hidden-xs">
+                @*<div class="input-group-addon saerch-panel-input-icon hidden-xs">
                         <span><i class="glyphicon glyphicon-search"></i></span>
-                    </div>
-                    <input type="text" placeholder="من به دنبال " class="form-control text-center saerch-panel-input-txt " />
-                    <div class="input-group-btn">
+                    </div>*@
+
+
+
+                @*<div class="input-group-btn">
+
                         <button class="btn btn-block saerch-panel-input-btn" type="button">جستجو</button>
-                    </div>
+                    </div>*@
 
-                </div>
+            </div>
 
-            </form>
+        </form>
 
-        </div>
 
     </div>
 

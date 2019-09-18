@@ -234,7 +234,7 @@ namespace D_Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model, int SelectBranch)
+        public ActionResult Register(RegisterModel model)
         {
             //if (Password != MatchPassword)
             //{
@@ -255,7 +255,7 @@ namespace D_Library.Controllers
             ur.User_Email = model.Email;
             ur.User_Mobile = model.Mobile;
             ur.User_Date = DateTime.Now;
-            ur.User_BranchID = SelectBranch;
+            ur.User_BranchID = model.Branch;
             ur.User_SABAlloow = false;
 
             db.Tbl_User.Add(ur);

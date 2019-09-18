@@ -131,6 +131,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\abstract-user-flat-3.png" />
     <Content Include="Content\Images\arm.png" />
+    <Content Include="Content\Images\demo-bg.jpg" />
     <Content Include="Content\Images\user-icon.svg" />
     <Content Include="Content\Plugins\Chosen\chosen-sprite%402x.png" />
     <Content Include="Content\Plugins\Chosen\chosen-sprite.png" />
@@ -243,6 +244,7 @@
     <Content Include="Content\Plugins\jQuery.Select2\select2-bootstrap.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\MyScripts\FilePond_Config.js" />
+    <Content Include="Scripts\MyScripts\SearchBackgrand.js" />
     <Content Include="Scripts\MyScripts\Select2_Config.js" />
     <Content Include="Scripts\Plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\Plugins\ckeditor\ckeditor.js" />
@@ -669,6 +671,7 @@
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\jquery.dataTables.js" />
     <Content Include="Scripts\Plugins\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Plugins\EasePack\EasePack.min.js" />
     <Content Include="Scripts\Plugins\JQuery.Filepond\filepond.jquery.js" />
     <Content Include="Scripts\Plugins\JQuery.Filepond\filepond.js" />
     <Content Include="Scripts\Plugins\jQuery.Chosen\chosen.jquery.js" />
@@ -712,6 +715,7 @@
     <Content Include="Scripts\Plugins\jQuery.ui.widget\jquery.ui.widget.js" />
     <Content Include="Scripts\Plugins\MD.BootstrapPersianDateTimePicker\jalaali.js" />
     <Content Include="Scripts\Plugins\MD.BootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker.js" />
+    <Content Include="Scripts\Plugins\TweenLite\TweenLite.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Dashboard\RequestTypeSelector.cshtml" />

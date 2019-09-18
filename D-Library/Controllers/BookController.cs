@@ -593,6 +593,14 @@ namespace D_Library.Controllers
             }
 
             db.Tbl_BookAcsses.Remove(_Book.Tbl_BookAcsses);
+
+            var tags = db.Tbl_BookTag.Where(a => a.BT_BookID == model.ID).ToList(); 
+
+            foreach (var item in tags)
+            {
+                db.Tbl_BookTag.Remove(item);
+            }
+
             db.Tbl_Book.Remove(_Book);
 
             if (Convert.ToBoolean(db.SaveChanges() > 0))

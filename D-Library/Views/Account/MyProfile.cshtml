@@ -1,195 +1,462 @@
 ﻿@model D_Library.Models.Model.ProfileModel
 
 @{
-    ViewBag.Title = "MyProfile";
+    ViewBag.Title = "UserProfile";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 
+@Html.HiddenFor(model => model.ID)
 
-<div class="row" style=" margin-top:70px">
-    <aside class="col-md-3" style="max-width:300px">
-        <div class="panel">
-            <div class="portlet light profile-sidebar-portlet bordered">
-                <div class="text-center">
-                    <i class="fa fa-user-circle fa-10x" style="font-size:10em"></i>
-                </div>
-                <div class="text-center">
-                    <div class="profile-usertitle-name"> Marcus Doe </div>
-                    <div class="profile-usertitle-job"> Developer </div>
-                </div>
-                <div class="profile-usermenu">
-                    <ul class="nav">
-                        <li class="active">
-                            <a href="#">
-                                <i class="icon-home"></i> Ticket List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-settings"></i> Support Staff
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-info"></i> Configurations
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<section class="container-fluid userprofile" style="max-width:1500px">
+    <header class="panel userprofile-header">
+        <div class="panel-heading text-center">
+            <span style="">اطلاعات کاربر</span>
         </div>
-    </aside>
-    <section class="col-md-9">
-        <div class="">
-            <div class="portlet light bordered">
-                <div class="portlet-title tabbable-line">
-                    <div class="caption caption-md">
-                        <i class="icon-globe theme-font hide"></i>
-                        <span class="caption-subject font-blue-madison bold uppercase">Your info</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div>
+    </header>
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Update</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-                        </ul>
+    <main class="panel row userprofile-main">
+        <aside class="col-md-3">
+            <div class="text-center userprofile-img">
+                <img src="~/Content/Images/abstract-user-flat-3.png" />
+            </div>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastName">Last Name</label>
-                                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <input type="file" id="exampleInputFile">
-                                        <p class="help-block">Example block-level help text here.</p>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Check me out
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
-                                </form>
+            <div class="text-center userprofile-aside-btn-regine">
+                @if (Model.Active)
+                {
+                    <a class="btn btn-success fa fa-user" onclick="BanUser(@Model.ID)"></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger btn-sm fa fa-user-slash" onclick="BanUser(@Model.ID)"> </a>
+                }
+
+
+
+                <a onclick="ChangeUserInfo(@Model.ID)" class="btn btn-warning fa fa-edit"></a>
+                <a onclick="SandMassage(@Model.ID)" class="btn btn-primary fa fa-envelope-open-text"></a>
+            </div>
+
+            <div>
+                <ul class="nav userprofile-aside-item">
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-user pull-left"></i>
+                            @Html.DisplayFor(model => model.name, new { htmlAttributes = new { @class = "form-control text-center" } })
+                            @Html.DisplayFor(model => model.Family, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa  fa-star pull-left"></i>
+                            @Html.DisplayFor(model => model.baseRole, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-layer-group pull-left"></i>
+                            @Html.DisplayFor(model => model.Group)
+
+
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="text-center">
+                            <i class="fa fa-user-graduate pull-left"></i>
+                            @Html.DisplayFor(model => model.Branch)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="col-md-9 userprofile-section">
+
+            <ul class=" nav nav-tabs nav-justified userprofile-section-tabs">
+
+                <li class="active"><a href="#Description" data-toggle="tab">شرح</a></li>
+
+                <li><a href="#Details" data-toggle="tab">اطلاعات</a></li>
+
+                <li><a href="#Setting" data-toggle="tab">تنظیمات</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="Description">
+                    <div class="panel-group" id="gp">
+
+                        <div class="panel userprofile-File-panel ">
+
+                            <a href="#file" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title userprofile-File-titel">
+                                        فایل ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="file" class="panel-collapse collapse in">
+                                <div id="filebody" class="panel-body userprofile-File-body">
+
+                                </div>
+
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="profile">Profile</div>
-                            <div role="tabpanel" class="tab-pane" id="messages">Messages</div>
-                            <div role="tabpanel" class="tab-pane" id="settings">Settings</div>
+
                         </div>
 
+                        <div class="panel userprofile-File-panel">
+
+                            <a href="#reguest" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title  userprofile-File-titel">
+                                        درخواست ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="reguest" class="panel-collapse collapse">
+                                <div id="requestbody" class="panel-body userprofile-File-body">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel userprofile-File-panel">
+
+                            <a href="#message" data-parent="#gp" data-toggle="collapse">
+                                <div class="panel-heading userprofile-File-heading">
+                                    <h4 class="panel-title  userprofile-File-titel">
+                                        پیام ها
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div id="message" class="panel-collapse collapse">
+                                <div id="messagebody" class="panel-body userprofile-File-body">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
                     </div>
                 </div>
+
+                <div class="tab-pane fade" id="Details" style="margin-top:15px">
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.name)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.name)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Family)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Family)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Email)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Mobile)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Mobile)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Group)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Group)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Branch)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.Branch)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.baseRole)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayFor(model => model.baseRole)
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="tab-pane fade" id="Setting">
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            تغیر رمز عبور
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangePassword(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش نقش
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeBaseRole(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            ویرایش اطلاعات
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangeUserInfo(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            حذف کاربر
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="DeleteUser(@Model.ID)"> </a>
+                        </div>
+                    </div>
+
+                    @if (Model.Active)
+                    {
+                        <div class="panel setting-col" style="line-height:40px;">
+                            <div class="pull-left setting-col-titel">
+                                <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                                تعلیق کاربر
+                            </div>
+
+                            <div class="pull-right ">
+                                <a class="btn btn-danger btn-sm fa fa-user-slash" style="line-height: 18px;padding-left: 9px;padding-right: 9px;" onclick="BanUser(@Model.ID)"> </a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="panel setting-col" style="line-height:40px;">
+                            <div class="pull-left setting-col-titel">
+                                <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                                رفع تعلیق
+                            </div>
+
+                            <div class="pull-right ">
+                                <a class="btn btn-success btn-sm fa fa-user" style="line-height: 18px;padding-left: 11px;padding-right: 11px;" onclick="BanUser(@Model.ID)"> </a>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <br>
-
-
+    </main>
 
 
 
 
-</div>
+</section>
 
+<script>
+    $(function () {
+        $('#requestbody').slimScroll({
+            height: '334px'
+        });
+        $('#filebody').slimScroll({
+            height: '334px'
+        });
+        $('#filebody').slimScroll({
+            height: '334px'
+        });
+    });
+</script>
 
+@Html.Partial("_Modal")
 
+@section Modal{
+    <script>
 
+        function ChangePassword(id) {
+            $.ajax({
+                url: "/User/ChangePassword/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تغیر رمز عبور');
+                $('#myModalBody').html(result);
+            });
+        }
 
+        function ChangeBaseRole(id) {
+            $.ajax({
+                url: "/User/ChangeBaseRole/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش نقش');
+                $('#myModalBody').html(result);
+            });
+        }
 
+        function ChangeUserInfo(id) {
+            $.ajax({
+                url: "/User/ChangeUserInfo/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش اطلاعات');
+                $('#myModalBody').html(result);
+            });
+        }
 
+        function BanUser(id) {
+            $.ajax({
+                url: "/User/BanUser/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('تعلیق');
+                $('#myModalBody').html(result);
+            });
+        }
 
+        function DeleteUser(id) {
+            $.ajax({
+                url: "/User/DeleteUser/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('حذف');
+                $('#myModalBody').html(result);
+            });
+        }
 
+        function SandMassage(id) {
+            $.ajax({
+                url: "/MessagingManager/UserMassageFromManager/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('پیام');
+                $('#myModalBody').html(result);
+            });
+        }
 
-
-
-
-
-
-
-    <h2>MyProfile</h2>
-
-    <div>
-        <h4>ProfileModel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.name)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.name)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Family)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Family)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.baseRole)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.baseRole)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Group)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Group)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Branch)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Branch)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Mobile)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Mobile)
-            </dd>
-
-        </dl>
-    </div>
-
+    </script>
+}

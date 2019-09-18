@@ -1,7 +1,9 @@
 ﻿@model D_Library.Models.Model.UserInfoEditModel
 @using D_Library.Models.Repository
 
-<link href="~/Content/Plugins/Chosen/chosen.css" rel="stylesheet" />
+<link href="~/Content/Plugins/jQuery.Select2/select2.min.css" rel="stylesheet" />
+<link href="~/Content/Plugins/jQuery.Select2/select2-bootstrap.css" rel="stylesheet" />
+
 
 @using (Html.BeginForm())
 {
@@ -33,7 +35,9 @@
             @Html.LabelFor(model => Model.Group, htmlAttributes: new { @class = "" })
             @{
                 Rep_GroupBranch gp = new Rep_GroupBranch();
-                @Html.DropDownListFor(model => Model.Group, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control chosen-select " });
+
+                @Html.DropDownListFor(model => Model.Group, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control group Select2_Normal  text-center" });
+
             }
         </div>
 
@@ -41,7 +45,7 @@
             @Html.LabelFor(model => Model.Branch, htmlAttributes: new { @class = "" })
             @{
                 Rep_GroupBranch br = new Rep_GroupBranch();
-                @Html.DropDownListFor(model => Model.Branch, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control chosen-select  " });
+                @Html.DropDownListFor(model => Model.Branch, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control branch Select2_Normal  text-center" });
             }
         </div>
 
@@ -72,10 +76,44 @@
     </div>
 }
 
-
-
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-<script src="~/Scripts/Plugins/jQuery.Chosen/chosen.jquery.js"></script>
-<script src="~/Scripts/MyScripts/Chosen_Config.js"></script>
+<script src="~/Scripts/Plugins/jQuery.Select2/select2.js"></script>
+<script src="~/Scripts/Plugins/jQuery.Select2/i18n/fa.js"></script>
+<script src="~/Scripts/MyScripts/Select2_Config.js"></script>
+
+<script>
+    $(".group").on("change", function () {
+        var GroupID = document.getElementById("Group").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+    $(".group").ready(function () {
+        var GroupID = document.getElementById("Group").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+</script>

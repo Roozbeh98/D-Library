@@ -31,7 +31,7 @@
 
                 @{
                     Rep_Role Ro = new Rep_Role();
-                    @Html.DropDownListFor(model => Model.SelectRole, Ro.Get_AllBaseRole(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+                    @Html.DropDownListFor(model => Model.SelectRole, Ro.Get_AllBaseRole(), htmlAttributes: new { @class = "form-control Select2_Normal  text-center" });
                 }
 
             </div>
@@ -86,3 +86,38 @@
 
 
 </section>
+
+<script>
+    $(".group").on("change", function () {
+        var GroupID = document.getElementById("Group").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+    $(".group").ready(function () {
+        var GroupID = document.getElementById("Group").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+</script>

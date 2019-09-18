@@ -411,6 +411,29 @@ namespace D_Library.Controllers
         [HttpPost]
         public ActionResult DeleteUser(UserBanOrDeleteAccuont model)
         {
+            Tbl_Login _login = db.Tbl_Login.Where(a => a.Login_ID == model.ID).SingleOrDefault();
+
+            if (_login != null)
+            {
+                _login.Login_ISDelete = true;
+
+                if (Convert.ToBoolean(db.SaveChanges() > 0))
+                {
+
+
+
+                    return RedirectToAction("UsersList", "User");
+
+
+
+                }
+                else
+                {
+
+                    return RedirectToAction("UserProfile", "User", new { id = _login.Tbl_User.User_ID });
+                }
+
+            }
 
 
             return View();

@@ -42,7 +42,9 @@ namespace D_Library.Models.Model
         [System.ComponentModel.DataAnnotations.Compare("Password",ErrorMessage = "پسورد ها برابر نیست")]
         public string PasswordVerify { get; set; }
         [Display(Name = "رشته")]
-        public string Branch { get; set; }
+        public int Branch { get; set; }
+        [Display(Name = "گروه")]
+        public int Group { get; set; }
 
     }
 }

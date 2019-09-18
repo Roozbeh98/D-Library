@@ -241,6 +241,7 @@
           <Property Name="Login_BaseRoleID" Type="int" Nullable="false" />
           <Property Name="Login_CustomRole" Type="bit" Nullable="false" />
           <Property Name="Login_UserActive" Type="bit" Nullable="false" />
+          <Property Name="Login_ISDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Notification">
           <Key>
@@ -318,6 +319,7 @@
           </Key>
           <Property Name="Tag_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tag_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tag_ISDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_User">
           <Key>
@@ -1577,6 +1579,7 @@
           <Property Name="Login_BaseRoleID" Type="Int32" Nullable="false" />
           <Property Name="Login_CustomRole" Type="Boolean" Nullable="false" />
           <Property Name="Login_UserActive" Type="Boolean" Nullable="false" />
+          <Property Name="Login_ISDelete" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Tbl_BaseRole" Relationship="ELModel.FK_Tbl_Login_Tbl_BaseRole" FromRole="Tbl_Login" ToRole="Tbl_BaseRole" />
           <NavigationProperty Name="Tbl_ForgetPassword" Relationship="ELModel.FK_Tbl_ForgetPassword_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_ForgetPassword" />
           <NavigationProperty Name="Tbl_RegisterCode" Relationship="ELModel.FK_Tbl_Login_Tbl_RegisterCode" FromRole="Tbl_Login" ToRole="Tbl_RegisterCode" />
@@ -1670,6 +1673,7 @@
           </Key>
           <Property Name="Tag_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tag_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tag_ISDelete" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Tbl_BookTag" Relationship="ELModel.FK_Tbl_BookTag_Tbl_Tag" FromRole="Tbl_Tag" ToRole="Tbl_BookTag" />
         </EntityType>
         <EntityType Name="Tbl_User">
@@ -2484,6 +2488,7 @@
           <EntitySetMapping Name="Tbl_Login">
             <EntityTypeMapping TypeName="ELModel.Tbl_Login">
               <MappingFragment StoreEntitySet="Tbl_Login">
+                <ScalarProperty Name="Login_ISDelete" ColumnName="Login_ISDelete" />
                 <ScalarProperty Name="Login_UserActive" ColumnName="Login_UserActive" />
                 <ScalarProperty Name="Login_CustomRole" ColumnName="Login_CustomRole" />
                 <ScalarProperty Name="Login_BaseRoleID" ColumnName="Login_BaseRoleID" />
@@ -2578,6 +2583,7 @@
           <EntitySetMapping Name="Tbl_Tag">
             <EntityTypeMapping TypeName="ELModel.Tbl_Tag">
               <MappingFragment StoreEntitySet="Tbl_Tag">
+                <ScalarProperty Name="Tag_ISDelete" ColumnName="Tag_ISDelete" />
                 <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
                 <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
               </MappingFragment>

@@ -30,6 +30,7 @@ namespace D_Library.Models.Domins
         public int Login_BaseRoleID { get; set; }
         public bool Login_CustomRole { get; set; }
         public bool Login_UserActive { get; set; }
+        public bool Login_ISDelete { get; set; }
     
         public virtual Tbl_BaseRole Tbl_BaseRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

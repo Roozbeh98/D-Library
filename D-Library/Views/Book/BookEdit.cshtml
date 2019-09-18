@@ -122,19 +122,28 @@
                         case "Student":
                             <div class="form-group ">
                                 @Html.LabelFor(model => Model.Details.BD_StudentID, htmlAttributes: new { @class = "" })
-                                @{
+                                @{ 
                                     Rep_Student _Student = new Rep_Student();
-                                    @Html.DropDownListFor(model => Model.Details.BD_StudentID, _Student.Get_AllSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
                                 }
+
+                                @Html.DropDownListFor(model=> model.Details.BD_StudentID , _Student.Get_AllSelectList(), htmlAttributes: new { @class = "form-control student text-center" })
+
+                                @*<select name="Details.BD_StudentID" id="Details_BD_StudentID" class="form-control student text-center"></select>*@
+                                @Html.ValidationMessageFor(model => model.Details.BD_MasterID, "", new { @class = "text-danger" })
                             </div>
                             break;
                         case "Master":
                             <div class="form-group ">
                                 @Html.LabelFor(model => Model.Details.BD_MasterID, htmlAttributes: new { @class = "" })
-                                @{
+
+                                @{ 
                                     Rep_Professor _Professor = new Rep_Professor();
-                                    @Html.DropDownListFor(model => Model.Details.BD_MasterID, _Professor.Get_AllProfessorSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
                                 }
+
+                                @Html.DropDownListFor(model=> model.Details.BD_MasterID , _Professor.Get_AllProfessorSelectList(), htmlAttributes: new { @class = "form-control master text-center" })
+
+                                @*<select name="Details.BD_MasterID" id="Details_BD_MasterID" class="form-control master text-center"></select>*@
+                                @Html.ValidationMessageFor(model => model.Details.BD_MasterID, "", new { @class = "text-danger" })
                             </div>
                             break;
                         case "ISBN":
@@ -152,7 +161,17 @@
                                 @Html.LabelFor(model => Model.Details.BD_GroupID, htmlAttributes: new { @class = "" })
                                 @{
                                     Rep_GroupBranch gp = new Rep_GroupBranch();
-                                    @Html.DropDownListFor(model => Model.Details.BD_GroupID, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+
+                                    if (!Model.DetailsNav.Exists(a => a == "Branch"))
+                                    {
+                                        @Html.DropDownListFor(model => Model.Details.BD_GroupID, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control Select2_Normal  text-center" });
+                                    }
+                                    else
+                                    {
+                                        @Html.DropDownListFor(model => Model.Details.BD_GroupID, gp.Get_AllGroupSelectList(), htmlAttributes: new { @class = "form-control group Select2_Normal  text-center" });
+
+                                    }
+
                                 }
                             </div>
                             break;
@@ -161,7 +180,18 @@
                                 @Html.LabelFor(model => Model.Details.BD_BranchID, htmlAttributes: new { @class = "" })
                                 @{
                                     Rep_GroupBranch br = new Rep_GroupBranch();
-                                    @Html.DropDownListFor(model => Model.Details.BD_BranchID, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control chosen-select  text-center" });
+
+                                    if (!Model.DetailsNav.Exists(a => a == "Group"))
+                                    {
+                                        @Html.DropDownListFor(model => Model.Details.BD_BranchID, br.Get_AllBranchSelectList(), htmlAttributes: new { @class = "form-control Select2_Normal  text-center" });
+                                    }
+                                    else
+                                    {
+                                        <select name="Branch" class="branch Select2_Normal form-control"></select>
+
+                                        @Html.ValidationMessageFor(model => model.Details.BD_BranchID, "", new { @class = " text-danger" })
+                                    }
+
                                 }
                             </div>
                             break;
@@ -242,7 +272,91 @@
 
 </section>
 
+
+
 <script>
+
+
+    $(".group").on("change", function () {
+        var GroupID = document.getElementById("Details_BD_GroupID").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+    $(".group").ready(function () {
+        var GroupID = document.getElementById("Details_BD_GroupID").value;
+        console.log(GroupID);
+        $.ajax({
+            url: "/User/Get_BranchList?GroupID=" + GroupID,
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $(".branch").empty();
+                $.each(data, function (index, row) {
+                    $(".branch").append("<option value='" + row.id + "'>" + row.text + "</option>")
+                });
+            }
+        })
+    });
+
+    $(".master").ready(function () {
+        $("#Details_BD_MasterID").select2({
+            theme: "bootstrap",
+            language: "fa",
+            dir: "rtl",
+            minimumResultsForSearch: 6,
+            placeholder: 'انتخاب کنید',
+            ajax: {
+                url: '/User/Get_AllProfessorList',
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchTerm: params.term
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+    });
+
+    $(".student").ready(function () {
+        $("#Details_BD_StudentID").select2({
+            theme: "bootstrap",
+            language: "fa",
+            dir: "rtl",
+            tokenSeparators: [',', ' '],
+            minimumResultsForSearch: 6,
+            placeholder: 'انتخاب کنید',
+            ajax: {
+                url: '/User/Get_AllStudentList',
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchTerm: params.term
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+    });
 
     $(".PVA").click(function () {
 
