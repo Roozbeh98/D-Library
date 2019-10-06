@@ -1,4 +1,4 @@
-﻿
+﻿@model D_Library.Models.Model.SearchResultModel
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Master.cshtml";
@@ -10,31 +10,19 @@
         <div class="block-heading text-center saerch-panel-logo">
             <img src="~/Content/Images/arm.png" />
         </div>
+        @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, htmlAttributes: new { @class = "saerch-panel-input container", @style = "" }))
+        {
+            @Html.EditorFor(model => model.looking, new { htmlAttributes = new { @class = "form-control text-center saerch-panel-input-txt", placeholder = "من به دنبال " } })
 
-        <form class="saerch-panel-input container ">
-
-            <input type="text" placeholder="من به دنبال " class="form-control text-center saerch-panel-input-txt " />
+            @Html.ValidationMessageFor(model => model.looking, "", new { @class = "text-danger" })
+            @*<input name="looking" type="text" placeholder="من به دنبال " class="form-control text-center saerch-panel-input-txt " />*@
             <div class=" container text-center" style="margin-top:15px; width:100%">
-                <button class="btn btn-primary" type="button" style="width:120px">جستجو</button>
+                <button class="btn btn-primary" type="submit" style="width:120px">جستجو</button>
                 <button class="btn btn-primary" type="button" style="width:120px">جستجو پیشرفته</button>
             </div>
-
-            <div class="input-group ">
-
-                @*<div class="input-group-addon saerch-panel-input-icon hidden-xs">
-                        <span><i class="glyphicon glyphicon-search"></i></span>
-                    </div>*@
+        }
 
 
-
-                @*<div class="input-group-btn">
-
-                        <button class="btn btn-block saerch-panel-input-btn" type="button">جستجو</button>
-                    </div>*@
-
-            </div>
-
-        </form>
 
 
     </div>

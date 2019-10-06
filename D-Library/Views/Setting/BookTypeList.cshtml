@@ -20,6 +20,7 @@
                 <thead>
                     <tr class="table-tr">
                         <th scope="col" width="20px">#</th>
+                        <th scope="col">گروه</th>
                         <th scope="col">@Html.DisplayNameFor(model => model.BookType)</th>
                         <th scope="col" data-orderable="false"></th>
                     </tr>
@@ -34,6 +35,7 @@
                         x++;
                         <tr>
                             <td scope="row">@x</td>
+                            <td scope="row">@Html.DisplayFor(modelItem => item.Tbl_BookCategory.BC_Name)</td>
                             <td scope="row">
                                 @Html.DisplayFor(modelItem => item.BookType_Name)
                             </td>

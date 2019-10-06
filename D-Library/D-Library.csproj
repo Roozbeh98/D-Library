@@ -733,6 +733,7 @@
     <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagingManagerController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -891,6 +892,8 @@
     <Compile Include="Models\Model\RegisterCodeModel.cs" />
     <Compile Include="Models\Model\RegisterModel.cs" />
     <Compile Include="Models\Model\RequestTypeModel.cs" />
+    <Compile Include="Models\Model\SearchResultItemModel.cs" />
+    <Compile Include="Models\Model\SearchResultModel.cs" />
     <Compile Include="Models\Model\TagAddModel.cs" />
     <Compile Include="Models\Model\UserBanOrDeleteAccuont.cs" />
     <Compile Include="Models\Model\UserInfoEditModel.cs" />
@@ -954,7 +957,6 @@
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Shared\_NavCustomMune.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Home\SearchResult.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Setting\Setting.cshtml" />
     <Content Include="Views\Setting\LibraryList.cshtml" />
@@ -1006,6 +1008,7 @@
     <Content Include="Views\Setting\BookCategoryList.cshtml" />
     <Content Include="Views\Setting\BookCategoryAdd.cshtml" />
     <Content Include="Views\Setting\BookCategoryEdit.cshtml" />
+    <Content Include="Views\Search\SearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

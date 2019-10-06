@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.IO;
+using D_Library.Models.Domins;
+using D_Library.Models.Model;
+using D_Library.Models.Repository;
+using D_Library.Models.UserManagement;
+using D_Library.Models.Plugins;
+using Newtonsoft.Json;
 
 namespace D_Library.Controllers
 {
     public class HomeController : Controller
     {
+        ELEntities db = new ELEntities();
         // GET: Home
         public ActionResult Index()
         {
@@ -20,20 +28,6 @@ namespace D_Library.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Search(string looking)
-        {
-            return View();
-        }
-
-        public ActionResult SearchResult()
-        {
-            return View();
-        }
-
-
-
 
     }
 

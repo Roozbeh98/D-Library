@@ -1,0 +1,73 @@
+﻿@model D_Library.Models.Model.SearchResultModel
+
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<section class="form-form-outdasdboard searchreultpanel">
+
+    <div class="row">
+        @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, htmlAttributes: new { @class = "saerch-panel-input container", @style = "" }))
+        {
+            <div class="input-group ">
+                <div class="input-group-addon saerch-panel-input-icon ">
+                    <img src="~/Content/Images/arm.png" style="width:15px; height:20px;" />
+                </div>
+                @Html.EditorFor(model => model.looking, new { htmlAttributes = new { @class = "form-control text-center saerch-panel-input-txt", placeholder = "من به دنبال " } })
+
+                @* <input name="looking" type="text" placeholder="من به دنبال " value="@(Model.looking != null ? Model.looking : "")" class="form-control text-center saerch-panel-input-txt " />*@
+                <div class="input-group-btn">
+                    <button class="btn btn-block saerch-panel-input-btn" type="submit">جستجو</button>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.looking, "", new { @class = "text-danger" })
+
+        }
+
+
+
+
+    </div>
+    <hr />
+    @if (Model.Items != null)
+    {
+        if (Model.Items.Count() > 0)
+        {
+            <div class="searchreultpanel-zone">
+
+                @foreach (var item in Model.Items)
+                {
+                    <a href="@Url.Action("BookShow","Book",new { id = item.ID})">
+                        <div class="panel  searchreultpanel-col">
+                            <div class="panel-heading searchreultpanel-panel-body" style="">
+                                <img src="~/Content/Images/arm.png" class="img-responsive img-rounded searchreultpanel-img" />
+                            </div>
+
+                            <div class="panel-footer searchreultpanel-panel-footer">
+                                <p class="searchreultpanel-titel">@item.Name </p>
+                            </div>
+                        </div>
+
+                    </a>
+                }
+
+
+            </div>
+        }
+        else
+        {
+            <h3 class="text-center" style="color:#9d9d9d;margin-top: 40vh;">موردی یافت نشد !</h3>
+        }
+    }
+    else
+    {
+        <h3 class="text-center" style="color:#9d9d9d;margin-top: 40vh;">موردی یافت نشد !</h3>
+
+
+    }
+
+
+
+
+</section>
