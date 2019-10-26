@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.IO;
 using D_Library.Models.Domins;
-
+using D_Library.Models.Model;
+using D_Library.Models.Repository;
+using D_Library.Models.UserManagement;
+using D_Library.Models.Plugins;
+using Newtonsoft.Json;
+using System.Data.Entity;
 
 namespace D_Library.Models.Repository
 {
@@ -105,6 +112,30 @@ namespace D_Library.Models.Repository
             }
 
             return tags;
+        }
+
+        public IQueryable<Tbl_Book> Get_UserAccessBookList()
+        {
+
+            IQueryable<Tbl_Book> Books;
+
+
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                string ip = HttpContext.Current.Request.UserHostAddress;
+
+                Books = db.Tbl_Book.Where(a => a.Tbl_BookAcsses.BookAcsses_Guest == true);
+
+            }
+            else
+            {
+                 Books = db.Tbl_Book.Where(a => a.Tbl_BookAcsses.BookAcsses_Guest == true && a.Book_Publish);
+            }
+
+   
+
+
+            return Books;
         }
 
 
